@@ -183,7 +183,11 @@ class Model6:
         if t in ('BooleanLatch', 'NumericLatch'):
             clk = bool(g('clock', False)); s = self.st[n]; s['pend'] = clk
             if clk and not s.get('clk', False):
-                return bool(g('in', False)) if t == 'BooleanLatch' else num(g('in'))
+                # one capture per rising edge (kitControl latches on the edge event; a feedback loop through the latch,
+                # e.g. latch + add integrator, must not re-latch while the settle loop iterates in the same step)
+                if s.get('capt') != self.t:
+                    s['capt'] = self.t; s['cv'] = bool(g('in', False)) if t == 'BooleanLatch' else num(g('in'))
+                return s['cv']
             return self.out[n]
         if t == 'Counter':
             s = self.st[n]; up, clr = bool(g('countUp', False)), bool(g('clearIn', False))

@@ -4,7 +4,7 @@ Base: compact V5 (`c_v5.bog`: V4 logic proven by FPT + V5 corrections).
 Everything is generated from patterns verified in this N4.15 installation:
   * kitControl slot names via javap of kitControl-rt.jar
   * alarm / history / totalizer / tag XML shapes copied from working stations
-    ST5130_Klongluang and Makro_PraditBackup230926 on the same workstation
+    (two reference stations on the same workstation)
   * MELCO 212_Point rules: AlarmClass Emergency/Critical/Warning/Info, History
     CoV cap 4000 / Interval cap 550000, melco:pointNameString, _AI/_LOCAL/_ACTIVE,
     folder UpperCamelCase with 2-digit equipment numbers.

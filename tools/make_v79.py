@@ -15,6 +15,7 @@ import eqreg
 import v79_scale
 import v79_air                                            # noqa: F401  # wraps v79_scale.scale
 import v79_office                                         # noqa: F401  # r4: R9 office VAV / rooms / metering (wraps scale)
+import v79_r6                                             # noqa: F401  # r6: OAU cascade, FAHU, TEF, KEF/MAU, relief, B1 ventilation, EPMS (wraps scale)
 
 M6.STATION = M7.STATION = 'ALT_CP_Ref_V7_9'
 M7.FOXS_PORT = '4927'

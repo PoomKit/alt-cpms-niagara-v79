@@ -36,4 +36,26 @@ O15  PASS     toilet exhaust damper opens on the schedule (end switch proves ope
      cmd True fb True -> fire: cmd False, fault False
 O16  PASS     exhaust damper commanded open, end switch stays closed -> damper fault alarm (test 4 s)
      cmd True, fault True
-19/19 PASS
+R01  PASS     OAU-01 airflow setpoint = (sum of floor Vot + running ground-floor AHU design OA) x 3.6 x 1.1 (DCV cascade)
+     demand 13687 L/s -> OAU setpoint 54202 m3/h
+R02  PASS     AHU-01: RA damper = 100 - OA, relief tracks OA, OA airflow 80 % of design -> ventilation low alarm
+     RA 60.0, relief 40.0, OA 752 L/s, alarm True
+R03  PASS     toilet exhaust fan runs with the toilet dampers (schedule), proven, stops on fire alarm
+     run True, after fire cmd False
+R04  PASS     hood on -> KEF, MAU only after KEF proof at 85 %; suppression release -> MAU stops, gas shut off, KEF keeps running (strategy)
+     MAU True 85.0 %, after release MAU False KEF True gas True
+R05  PASS     relief fan holds the building static pressure near +12 Pa while the AHUs run (G36 5.16.10)
+     RF 46 %, building 15.0 Pa
+R06  PASS     B1 emergency ventilation (V7.7 refrigerant detection) -> PAF / PEF at 100 %; room 35 C -> heat ventilation at normal speed; 27 C -> off
+     emergency 100.0 %, heat 50.0 %, cool room False
+R11  PASS     floors 2-8 AHUs count in the plant demand / T&R totals (cooling calls, running units)
+     running 7.0, calls 7.0, requests 0.0
+R07  PASS     EPMS: period close latches the register (1000 kWh), period energy 250 kWh good; register 900 kWh -> reset alarm, billing hold
+     start 1000.0, period 250.0, after 900: reset True quality False
+R08  PASS     corridor sensor reading 60 C -> sensor fault alarm
+     True
+R10  PASS     tenant thermal allocation = floor BTU x tenant airflow share; register integrates every minute (test 2 s)
+     share 0.414, 49.7 kW_th, register 6.32 -> 18.29 kWh_th
+R09  PASS     coil dT from the coil TT pair; dT 1 K with the PICV open -> coil low dT alarm; isolation valve commanded open without end switch -> alarm
+     dT 6.0 K (valve 66 %) -> low dT True, valve alarm True
+30/30 PASS

@@ -18,6 +18,7 @@ import eqreg
 import v79_scale as SC
 import v79_air                                            # noqa: F401  wraps SC.scale
 import v79_office                                         # noqa: F401  wraps SC.scale (r4)
+import v79_r6                                             # noqa: F401  wraps SC.scale (r6)
 
 COMPONENTS = os.path.join(HERE, '..', 'registers', 'V7_COMPONENTS.csv')
 

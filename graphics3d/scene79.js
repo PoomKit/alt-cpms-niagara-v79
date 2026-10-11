@@ -6,7 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Sky } from 'three/examples/jsm/objects/Sky.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { buildOffice } from './office79.js';
+import { installR9 } from './r9office.js';
 import { buildDevices } from './devices79.js';
 
 const M = window.MODEL, AL = window.ALARMS, PTS = window.PTS, EFX = window.EFFECTS;
@@ -84,6 +84,11 @@ const MAT = {
   frp: new THREE.MeshStandardMaterial({ color: 0xe9edef, roughness: .42, metalness: .05 }),
   screen: new THREE.MeshStandardMaterial({ color: 0x0d3550, emissive: 0x1a6ea0, emissiveIntensity: .8 }),
 };
+// r6 (R9 palette): neutral concrete, powder-coated housings, galvanised steel (reference appearance, not an as-built colour)
+MAT.almond.color.set('#dedbd0'); MAT.almond.roughness = .58; MAT.almond.metalness = .12; MAT.almondDark.color.set('#a4aaa7'); MAT.almondDark.roughness = .64;
+MAT.motor.color.set('#345e73'); MAT.motor.roughness = .52; MAT.iron.color.set('#526970'); MAT.iron.roughness = .65;
+MAT.panel.color.set('#d2d8d7'); MAT.panel.roughness = .62; MAT.panel.metalness = .12; MAT.galv.color.set('#a9b2b4'); MAT.galv.roughness = .48; MAT.galv.metalness = .68;
+MAT.frp.color.set('#e4e6df'); MAT.frp.roughness = .72; MAT.yellow.color.set('#c9ab50'); MAT.yellow.roughness = .68; MAT.steel.color.set('#667279'); MAT.steel.roughness = .65;
 const svcMat = {}; for (const k in M.service) { const [, col, ins] = M.service[k];
   svcMat[k] = ins ? new THREE.MeshStandardMaterial({ color: 0xd3d8dc, metalness: .85, roughness: .3 }) : new THREE.MeshStandardMaterial({ color: new THREE.Color(col), metalness: .35, roughness: .4 });
   svcMat[k + '_band'] = new THREE.MeshStandardMaterial({ color: new THREE.Color(col), metalness: .2, roughness: .5 }); }
@@ -154,7 +159,7 @@ onFloor(1, wall(0, R.y, 0, 0, RHm, []));
   for (let x = 6000; x < BLD.x; x += 9000) for (let y = 4000; y < BLD.y; y += 8000) { const q = P3(x, y, -500);
     mesh(box(1.2, .06, .2), new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff4e0, emissiveIntensity: 1.2 }), g, q); } }
 // floors, columns, curtain wall, core
-const glassM = new THREE.MeshStandardMaterial({ color: 0x9db8c2, metalness: .15, roughness: .04, transparent: true, opacity: .26, depthWrite: false, side: THREE.DoubleSide, envMapIntensity: 1.4 });
+const glassM = new THREE.MeshStandardMaterial({ color: 0x9db8c2, metalness: .15, roughness: .04, transparent: true, opacity: .42, depthWrite: false, side: THREE.DoubleSide, envMapIntensity: .65 });
 const mullM = new THREE.MeshStandardMaterial({ color: 0x3f4448, metalness: .6, roughness: .4 });   // dark anodised aluminium
 const slabM = MAT.slab.clone(); slabM.transparent = true; XRAY.push(slabM);
 for (let f = 2; f <= BLD.floors + 1; f++) { const z = f > BLD.floors ? ROOFZ : zOf(f);
@@ -325,7 +330,7 @@ function useModel(rec, model, map, name){ const L = mm(rec.e.L), W = mm(rec.e.W)
   rec.spin = []; if (rec.e.type === 'pump') for (const n of ['motorFan', 'shaft']) { const x = node(n); if (x) rec.spin.push({ m: x, axis: 'x' }); }
   if (rec.e.type === 'ahu') { const x = node('fanWheel'); if (x) rec.spin.push({ m: x, axis: 'z', fan: true }); }
   if (rec.e.type === 'fan') { const x = node('fanWheel'); if (x) rec.spin.push({ m: x, axis: 'y', fan: true }); }
-  if (rec.e.type === 'panel') { const x = node('pilots'); rec.parts.leds = x ? [x] : []; }
+  if (rec.e.type === 'panel') { const x = node('pilots'); rec.parts.leds = []; if (x) x.traverse(m => { if (m.isMesh) rec.parts.leds.push(m); }); }   // multi-material node = group of meshes
   if (rec.e.type === 'panel' || rec.e.type === 'ahu') { const x = node('screen'); if (x && rec.parts.lcd) x.material = rec.parts.lcd.mat; }
   rec.ghost = undefined; }
 for (const id in EQ) { const r = EQ[id], t = r.e.type;
@@ -382,8 +387,8 @@ for (const p of M.pipes) { const g = new THREE.Group(); LAYER.piping.add(g); if 
   PIPE[p.id] = rec; }
 // supports: hangers (overhead), stanchions (low runs), sleepers (roof), riser clamps
 const SUP = new THREE.MeshStandardMaterial({ color: 0x8d969c, metalness: .7, roughness: .45 });
-const ceilingAt = z => { if (z < BLD.f1_h) return BLD.f1_h - BLD.slab; for (let f = 2; f <= BLD.floors; f++) if (z < zOf(f) + BLD.typ_h) return zOf(f) + BLD.typ_h - BLD.slab; return ROOFZ; };
-const floorAt = z => { if (z >= ROOFZ) return ROOFZ; if (z < BLD.f1_h) return 0; for (let f = BLD.floors; f >= 2; f--) if (z >= zOf(f)) return zOf(f); return 0; };
+const ceilingAt = z => { if (z < 0) return -800; if (z < BLD.f1_h) return BLD.f1_h - BLD.slab; for (let f = 2; f <= BLD.floors; f++) if (z < zOf(f) + BLD.typ_h) return zOf(f) + BLD.typ_h - BLD.slab; return ROOFZ; };
+const floorAt = z => { if (z < 0) return -6000; if (z >= ROOFZ) return ROOFZ; if (z < BLD.f1_h) return 0; for (let f = BLD.floors; f >= 2; f--) if (z >= zOf(f)) return zOf(f); return 0; };
 const levels = [...Array(BLD.floors - 1).keys()].map(i => zOf(i + 2)).concat([ROOFZ]);
 for (const p of M.pipes) { const rr = PIPE[p.id].rad, v = p.pts, G = PIPE[p.id].g;
   for (let i = 0; i < v.length - 1; i++) { const [a, b] = [v[i], v[i + 1]], L = Math.hypot(b[0] - a[0], b[1] - a[1]);
@@ -481,8 +486,8 @@ function weather(){ const now = new Date(); const W = { temp: val('OA_Temperatur
   if (OVR.on) Object.assign(W, { temp: OVR.temp, rh: OVR.rh, hour: OVR.hour, wb: OVR.temp - (100 - OVR.rh) / 5 * .9 });
   W.night = W.hour < 6.1 || W.hour > 18.6; W.rain = W.rh >= 92 && W.temp <= 30; W.fog = W.rh >= 95 && (W.hour < 9 || W.night); W.hot = W.temp >= 36;
   W.cover = Math.max(0, Math.min(1, (W.rh - 50) / 40)) + (W.rain ? .3 : 0);
-  W.label = W.night ? (W.rain ? 'ฝนตกกลางคืน / Night rain' : 'กลางคืน / Night') : W.rain ? 'ฝนตก / Rain' : W.fog ? 'หมอก / Mist' : W.hot ? 'ร้อนจัด แดดแรง / Very hot' :
-    W.cover > .65 ? 'เมฆมาก / Overcast' : W.cover > .3 ? 'มีเมฆบางส่วน / Partly cloudy' : 'ท้องฟ้าแจ่มใส / Clear'; return W; }
+  W.label = W.night ? (W.rain ? 'Night rain' : 'Night') : W.rain ? 'Rain' : W.fog ? 'Mist' : W.hot ? 'Very hot, strong sun' :
+    W.cover > .65 ? 'Overcast' : W.cover > .3 ? 'Partly cloudy' : 'Clear sky'; return W; }
 let lastEnv = '';
 function applyWeather(W, t){
   const el = THREE.MathUtils.degToRad(Math.max(-20, 78 * Math.sin(Math.PI * (W.hour - 6.2) / 12.4))), az = THREE.MathUtils.degToRad(90 + (W.hour - 6) / 12 * 180);
@@ -490,8 +495,8 @@ function applyWeather(W, t){
   U.turbidity.value = 4 + W.cover * 10 + (W.hot ? 4 : 0); U.rayleigh.value = W.night ? .2 : 1.4 + W.cover * 1.5;
   sun.position.copy(sv.clone().multiplyScalar(90)).add(sun.target.position); const day = Math.max(0, Math.sin(el)); const dim = 1 - W.cover * .65;
   sun.intensity = (W.night ? 0 : 3.4 * Math.min(1, day * 2.2)) * dim; sun.color.setHSL(.09 + .04 * day, .55, .62 + .25 * day);
-  hemi.intensity = W.night ? .12 : .35 + .35 * day; hemi.color.set(W.cover > .6 ? 0xb8c4cc : 0xcfe3ff);
-  renderer.toneMappingExposure = W.night ? .4 : .42 + .1 * (1 - W.cover) + (W.hot ? .05 : 0);
+  hemi.intensity = W.night ? .22 : .45 + .3 * day; hemi.color.set(W.cover > .6 ? 0xb8c4cc : 0xcfe3ff);
+  renderer.toneMappingExposure = W.night ? .5 : .58 + .08 * (1 - W.cover);
   stars.material.opacity = W.night ? .85 * (1 - W.cover) : 0; lampLights.forEach(L => L.intensity = W.night || W.cover > .9 ? 60 : 0);
   storeGlass.material.emissiveIntensity = W.night ? .9 : .05;
   clouds.forEach((c, i) => { c.material.opacity = Math.min(.95, W.cover * (.45 + (i % 5) * .12)); c.material.color.set(W.rain ? 0x8c949b : W.night ? 0x40474f : 0xffffff); c.position.x += Math.sin(i) * .02; });
@@ -625,7 +630,7 @@ const LBL = {}; for (const e of [...M.equipment, ...M.air_equipment]) { const d 
 function placeLabels(){ const w = host.clientWidth, h = host.clientHeight; for (const id in LBL) { const p = eqTop(id).project(camera); const d = LBL[id];
   const far = camera.position.distanceTo(eqTop(id)) > 60 && ![...ACTIVE.values()].some(a => a.e.includes(id));
   if (p.z > 1 || !$('labelsOn').checked || far || !EQ[id].g.visible || !EQ[id].g.parent.visible) { d.style.display = 'none'; continue; }
-  if (EQ[id].ghost) { d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`; d.className = 'lbl ghost'; d.querySelector('span').textContent = 'ยังไม่ติดตั้ง (slot ว่าง)'; continue; } d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`;
+  if (EQ[id].ghost) { d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`; d.className = 'lbl ghost'; d.querySelector('span').textContent = 'Not installed (empty slot)'; continue; } d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`;
   const r = EQ[id], al = [...ACTIVE.values()].filter(a => a.e.includes(id)); const run = running(id);
   d.className = 'lbl' + (al.some(a => ['Critical', 'Emergency'].includes(a.c)) ? ' alm' : al.length ? ' warn' : run ? ' run' : '');
   d.querySelector('span').textContent = al.length ? (EFX[al[0].x][0] + (al.length > 1 ? ` +${al.length - 1}` : '')) : r.e.pt ? (run ? statusText(id) : 'Off / Standby') : ''; } }
@@ -637,25 +642,25 @@ function info(id){ const e = [...M.equipment, ...M.air_equipment].find(x => x.id
   <h4>Alarms of this unit (${al.length})</h4><div class="alist">${al.map(a => `<div class="${ACTIVE.has(a.n) ? 'on' : ''}" data-n="${a.n}"><i>${EFX[a.x][0]}</i>${a.t}</div>`).join('')}</div>`;
   $('info').className = 'open'; $('info').querySelectorAll('[data-n]').forEach(d => d.onclick = () => { if (DEMO) toggleAlarm(d.dataset.n); info(id); }); }
 function renderAlarmList(){ const list = [...ACTIVE.values()]; $('acount').textContent = list.length; $('acount').className = list.length ? 'n on' : 'n';
-  $('alist').innerHTML = list.length ? list.map(a => `<div class="${a.c}"><b>${a.e.join(', ')}</b> ${a.t}<i>${EFX[a.x][0]} / ${EFX[a.x][1]}</i></div>`).join('') : '<div class="none">ไม่มี alarm / No active alarm</div>'; }
+  $('alist').innerHTML = list.length ? list.map(a => `<div class="${a.c}"><b>${a.e.join(', ')}</b> ${a.t}<i>${EFX[a.x][0]} / ${EFX[a.x][1]}</i></div>`).join('') : '<div class="none">No active alarm</div>'; }
 function toggleAlarm(n, on){ const a = AL.find(x => x.n === n); if (!a) return; if (on ?? !ACTIVE.has(n)) ACTIVE.set(n, a); else ACTIVE.delete(n); renderAlarmList(); }
 const ray = new THREE.Raycaster(), mp = new THREE.Vector2();
 renderer.domElement.addEventListener('dblclick', ev => { const b = renderer.domElement.getBoundingClientRect(); mp.set((ev.clientX - b.left) / b.width * 2 - 1, -(ev.clientY - b.top) / b.height * 2 + 1);
   ray.setFromCamera(mp, camera); const hit = ray.intersectObjects([...plant.children, ...LAYER.air.children], true)[0]; let o = hit && hit.object; while (o && !o.userData.eq) o = o.parent; if (o) { const c = new THREE.Box3().setFromObject(o).getCenter(new THREE.Vector3()), d = camera.position.clone().sub(controls.target).setLength(9); flyTo(c.clone().add(d).toArray(), c.toArray()); return info(o.userData.eq); }
   const zh = ray.intersectObjects(LAYER.zones.children, true).find(h => h.object.userData.zone); if (zh) { const c = zh.object.position, d = camera.position.clone().sub(controls.target).setLength(22); flyTo(c.clone().add(d).toArray(), c.toArray()); zoneInfo(zh.object.userData.zone); } });
 function zoneInfo(code){ const z = ZONE[code].z, al = AL.filter(a => a.e.includes('Z-' + code));
-  $('info').innerHTML = `<h3>Zone ${code} · ${z.name}</h3><table><tr><td>ชั้น</td><td>${z.floor}</td></tr><tr><td>อุณหภูมิ</td><td>${val(z.t, NaN).toFixed(1)} °C</td></tr><tr><td>ความชื้น</td><td>${val(z.h, NaN).toFixed(0)} %RH</td></tr><tr><td>CO2</td><td>${val(z.c, NaN).toFixed(0)} ppm</td></tr><tr><td>Out of service</td><td>${V[z.oos] ? 'ใช่' : 'ไม่'}</td></tr><tr><td>จุดใน station</td><td>${z.t}<br>${z.h}<br>${z.c}</td></tr></table><h4>Alarm (${al.length})</h4><div class="alist">${al.map(a => `<div class="${ACTIVE.has(a.n) ? 'on' : ''}">${a.t}</div>`).join('')}</div>`; $('info').className = 'open'; }
+  $('info').innerHTML = `<h3>Zone ${code} · ${z.name}</h3><table><tr><td>Floor</td><td>${z.floor}</td></tr><tr><td>Temperature</td><td>${val(z.t, NaN).toFixed(1)} °C</td></tr><tr><td>Humidity</td><td>${val(z.h, NaN).toFixed(0)} %RH</td></tr><tr><td>CO2</td><td>${val(z.c, NaN).toFixed(0)} ppm</td></tr><tr><td>Out of service</td><td>${V[z.oos] ? 'Yes' : 'No'}</td></tr><tr><td>Station point</td><td>${z.t}<br>${z.h}<br>${z.c}</td></tr></table><h4>Alarm (${al.length})</h4><div class="alist">${al.map(a => `<div class="${ACTIVE.has(a.n) ? 'on' : ''}">${a.t}</div>`).join('')}</div>`; $('info').className = 'open'; }
 
 // ------------------------------------------------------------------ controls (demo simulator, weather override, views)
 const gal = $('gallery'); EFFECT_ORDER.forEach(k => { const b = document.createElement('button'); b.textContent = EFX[k][0]; b.title = EFX[k][1];
   b.onclick = () => { const a = AL.find(x => x.x === k && (k === 'airside' || x.e[0] !== 'BUILDING')) || AL.find(x => x.x === k); if (a) toggleAlarm(a.n); }; gal.appendChild(b); });
-$('asel').innerHTML = '<option value="">— เลือก alarm ใดก็ได้ (ทั้งหมด ' + AL.length + ' รายการ) —</option>' + EFFECT_ORDER.map(k => `<optgroup label="${EFX[k][0]} / ${EFX[k][1]}">${AL.filter(a => a.x === k).map(a => `<option value="${a.n}">${a.e.join(',')} · ${a.t}</option>`).join('')}</optgroup>`).join('');
+$('asel').innerHTML = '<option value="">— pick any alarm (all ' + AL.length + ' entries) —</option>' + EFFECT_ORDER.map(k => `<optgroup label="${EFX[k][0]} / ${EFX[k][1]}">${AL.filter(a => a.x === k).map(a => `<option value="${a.n}">${a.e.join(',')} · ${a.t}</option>`).join('')}</optgroup>`).join('');
 $('asel').onchange = e => { if (e.target.value) toggleAlarm(e.target.value); e.target.value = ''; };
 $('aclear').onclick = () => { ACTIVE.clear(); renderAlarmList(); };
 for (const k of ['temp', 'rh', 'hour']) $('w_' + k).oninput = e => { OVR[k] = +e.target.value; OVR.on = true; $('wovr').checked = true; };
 $('wovr').onchange = e => OVR.on = e.target.checked;
-$('xray').onchange = e => XRAY.forEach(m => { m.opacity = e.target.checked ? .16 : 1; m.depthWrite = !e.target.checked; }); $('xray').onchange({ target: $('xray') });
-const VIEWS = { iso: [[95, 70, 60], [30, 12, -20], 'all'], plant: [[26, 13, 4], [20, 1, -9], '1'], pumps: [[44, 9, 2], [37, 0, -7], '1'], room: [[1.5, 1.7, -13.6], [20, 1.2, -10.5], '1'], roof: [[34, 56, 20], [24, 36, -6], 'all'], floor: [[70, 40, 40], [32, 22, -20], '5'], site: [[150, 110, 120], [32, 10, -20], 'all'] };
+$('xray').onchange = e => { XRAY.forEach(m => { m.opacity = e.target.checked ? .16 : 1; m.depthWrite = !e.target.checked; }); glassM.opacity = e.target.checked ? .14 : .42; glassM.depthWrite = false; }; $('xray').onchange({ target: $('xray') });
+const VIEWS = { iso: [[112, 84, 82], [32, 14, -20], 'all'], plant: [[40, 20, 20], [20, 1, -9], '1'], pumps: [[51, 12, 5], [37, 1, -7], '1'], room: [[1.5, 1.7, -13.6], [20, 1.2, -10.5], '1'], roof: [[54, 58, 28], [26, 36, -6], 'all'], floor: [[70, 40, 40], [32, 22, -20], '5'], site: [[150, 110, 120], [32, 10, -20], 'all'] };
 if (BASEMENT) { const pl = M.equipment.filter(e => e.z < -1000), c = pl.reduce((a, e) => [a[0] + e.x / pl.length, a[1] + e.y / pl.length], [0, 0]), t = P3(c[0], c[1], B1Z + 1200);
   const pu = pl.filter(e => e.type === 'pump'), cp = pu.length ? pu.reduce((a, e) => [a[0] + e.x / pu.length, a[1] + e.y / pu.length], [0, 0]) : c, tp = P3(cp[0], cp[1], B1Z + 800);
   VIEWS.plant = [[t.x + 14, t.y + 13, t.z + 16], t.toArray(), '0']; VIEWS.pumps = [[tp.x + 7, tp.y + 7, tp.z + 9], tp.toArray(), '0'];
@@ -665,7 +670,7 @@ document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => { const 
 // ------------------------------------------------------------------ data: BajaScript (station) or DEMO
 // ------------------------------------------------------------------ data: BajaScript (station) or DEMO
 function demoTick(){ const t = Date.now() / 1000, h = new Date().getHours() + new Date().getMinutes() / 60, s = Math.sin, ph = Math.floor(t / 50) % 3;
-  try { if (OFF) OFF.demo(t, h); if (DEVS) DEVS.demo(t); } catch (e) { /* office layer not built yet */ }
+  try { if (DEVS) DEVS.demo(t); } catch (e) { /* device layer not built yet */ }
   const inst = slot => (M.installed[slot] ?? false), chs = Object.keys(M.installed).filter(k => /^CH\d/.test(k) && inst(k));
   const nCh = Math.min(chs.length, [1, 2, 3][ph]), runCh = chs.slice(0, nCh), load = 270 * nCh + 25 * s(t / 30);
   Object.assign(V, { OA_Temperature: 30 + 5 * s(Math.PI * (h - 9) / 12), OA_Humidity: 66 - 14 * s(Math.PI * (h - 9) / 12), OA_WetBulb: 26.5,
@@ -685,9 +690,11 @@ function demoTick(){ const t = Date.now() / 1000, h = new Date().getHours() + ne
   for (const z of M.zones) { const k = z.floor * 7 + +z.code.slice(-2); V[z.t] = (occ ? 24 : 27.5) + 1.4 * s(t / 37 + k) + (k % 5 === 0 ? 2.2 : 0); V[z.h] = 58 + 8 * s(t / 45 + k); V[z.c] = (occ ? 720 : 480) + 180 * s(t / 53 + k) + (k % 6 === 0 ? 380 : 0); } }
 let DEMO_ID = 0;
 function startDemo(){ if (DEMO) return; DEMO = true; $('mode').textContent = 'DEMO · 1 → 2 → 3 chillers every 50 s (installed slots only)'; $('mode').className = 'mode demo'; demoTick(); DEMO_ID = setInterval(demoTick, 1000); $('sim').style.display = ''; }
-function startLive(){ const ready = window.BAJA_READY; if (!ready) return startDemo(); let ok = false; setTimeout(() => { if (!ok) startDemo(); }, 7000);
+function offline(){ if (DEMO) { clearInterval(DEMO_ID); DEMO = false; } $('mode').textContent = 'OFFLINE · no data from the station'; $('mode').className = 'mode offline'; $('sim').style.display = 'none'; }
+const SERVED = /^https?:$/.test(location.protocol) && !/[?&]demo\b/.test(location.search);   // served by the station: never fall back to DEMO numbers
+function startLive(){ const ready = window.BAJA_READY; if (!ready || !SERVED) return startDemo(); let ok = false; setTimeout(() => { if (!ok) offline(); }, 7000);
   ready.then(() => window.require(['baja!'], function (baja) { ok = true; if (DEMO) { clearInterval(DEMO_ID); DEMO = false; $('sim').style.display = 'none'; ACTIVE.clear(); }
-    $('mode').textContent = 'LIVE · ข้อมูลจาก station'; $('mode').className = 'mode live';
+    $('mode').textContent = 'LIVE · station data'; $('mode').className = 'mode live';
     const sub = new baja.Subscriber(); const KEY = new Map();   // component -> Set of keys (one point can be both a value and an alarm source)
     sub.attach('changed', function (prop) { if (prop.getName() === 'out') read(this); });
     function read(c){ for (const k of KEY.get(c) || []) read1(c, k); }
@@ -708,9 +715,9 @@ function startLive(){ const ready = window.BAJA_READY; if (!ready) return startD
       catch (e) { p = Promise.reject(e); }
       jobs.push(p.catch(() => Promise.all(part.map(one))));
     }
-    Promise.all(jobs).then(() => { if (!FAIL.size) return; $('mode').textContent = `LIVE · ข้อมูลจาก station · resolve ไม่ได้ ${FAIL.size} จุด (ดู Point mapping)`; $('mode').className = 'mode live warn';
+    Promise.all(jobs).then(() => { if (!FAIL.size) return; $('mode').textContent = `LIVE · station data · ${FAIL.size} points not resolved (see Point mapping)`; $('mode').className = 'mode live warn';
       console.warn('3D LIVE: ORDs not resolved', [...FAIL]); });
-  }, () => { ok = true; startDemo(); }), () => { ok = true; startDemo(); }); }
+  }, () => { ok = true; offline(); }), () => { ok = true; offline(); }); }
 startLive();
 
 // ------------------------------------------------------------------ installed / not installed (ghost), zones, future systems, floor filter, layers
@@ -763,12 +770,12 @@ function applyFloor(){ const plantOn = !ISO || FSEL === (BASEMENT ? '0' : '1') |
   for (const f in FLOORS) { const show = FSEL === 'all' || FSEL === 'roof' || (ISO ? +f === +FSEL : +f <= +FSEL); for (const o of FLOORS[f]) o.visible = show; }
   for (const id in LBL) LBL[id].dataset.hidden = EQ[id].g.visible && EQ[id].g.parent.visible ? '' : '1'; }
 function initPanels(){ const lay = $('layers'); if (!lay) return;
-  const names = { shell: 'อาคาร (โครงสร้าง/กระจก)', plant: 'Chiller plant', piping: 'ท่อ CHW / CDW', air: 'Air side (AHU/FCU/พัดลม)', zones: 'Zone AirPlug เดิม (4 zone/ชั้น)', systems: 'ระบบอื่น (fire / lighting ...)',
-    ...(LAYER.office ? { office: 'ห้อง (สีตาม temp / RH / CO2)', ducts: 'ท่อลม SA / RA / OA / EA', terminals: 'VAV / หัวจ่าย / เซนเซอร์ / มิเตอร์', airflow: 'ลมไหลในท่อ (ตาม airflow จริง)' } : {}),
-    ...(LAYER.devices ? { devices: 'อุปกรณ์วัด / วาล์ว / damper / VSD (R9)', water: 'ท่อน้ำเย็นแยกชั้น → AHU', arch: 'ช่องท่อ / ลิฟต์ / บันไดหนีไฟ / ประตูผู้เช่า' } : {}) };
+  const names = { shell: 'Building (structure / glazing)', plant: 'Chiller plant', piping: 'CHW / CDW piping', air: 'Air side (AHU / fans)', zones: 'Legacy AirPlug zones (4 per floor)', systems: 'Other systems (fire / lighting ...)',
+    ...(LAYER.office ? { office: 'Rooms (colour by temp / RH / CO2)', ducts: 'SA / RA / OA / EA ducts', terminals: 'VAV / diffusers / sensors / meters', airflow: 'Airflow in ducts (measured airflow)' } : {}),
+    ...(LAYER.devices ? { devices: 'Field devices (Blender) / station points' } : {}) };
   lay.innerHTML = Object.entries(names).map(([k, n]) => `<label><input type="checkbox" data-layer="${k}" checked> ${n}</label>`).join('');
   lay.querySelectorAll('[data-layer]').forEach(c => c.onchange = () => { LAYER[c.dataset.layer].visible = c.checked; applyFloor(); });
-  $('fsel').innerHTML = '<option value="all">ทุกชั้น</option>' + (BASEMENT ? '<option value="0">B1 ห้องเครื่อง</option>' : '') + [...Array(BLD.floors).keys()].map(i => `<option value="${i + 1}">ชั้น ${i + 1}</option>`).join('') + '<option value="roof">ดาดฟ้า</option>';
+  $('fsel').innerHTML = '<option value="all">All floors</option>' + (BASEMENT ? '<option value="0">B1 plant room</option>' : '') + [...Array(BLD.floors).keys()].map(i => `<option value="${i + 1}">Floor ${i + 1}</option>`).join('') + '<option value="roof">Roof</option>';
   const goFloor = () => { applyFloor(); if (FSEL === 'all') return flyTo(...VIEWS.iso.slice(0, 2)); const z = FSEL === 'roof' ? ROOFZ : zOf(+FSEL);
     flyTo([62, mm(z) + 34, 22], [32, mm(z) + 1.5, -20]); };
   $('fsel').onchange = e => { FSEL = e.target.value; goFloor(); };
@@ -777,25 +784,24 @@ function initPanels(){ const lay = $('layers'); if (!lay) return;
   const step = d => { const opts = ['all', ...(BASEMENT ? ['0'] : []), ...[...Array(BLD.floors).keys()].map(i => String(i + 1)), 'roof'], i = Math.max(0, Math.min(opts.length - 1, opts.indexOf(FSEL) + d)); FSEL = opts[i]; $('fsel').value = FSEL; goFloor(); };
   const nav = { navUp: () => step(1), navDn: () => step(-1), navIn: () => zoomBy(.6), navOut: () => zoomBy(1.6), navHome: () => { FSEL = 'all'; $('fsel').value = 'all'; ISO = false; if ($('fiso')) $('fiso').checked = false; applyFloor(); flyTo(...VIEWS.iso.slice(0, 2)); } };
   for (const k in nav) if ($(k)) $(k).onclick = nav[k];
-  $('sysl').innerHTML = M.systems.map(sy => `<div><b style="color:${sy.color}">●</b> ${sy.name_th} <i>${sy.devices.length ? sy.devices.length + ' จุด' : 'วางแผน · เพิ่มอุปกรณ์ในทะเบียน sheet Systems'}</i></div>`).join(''); }
+  $('sysl').innerHTML = M.systems.map(sy => `<div><b style="color:${sy.color}">●</b> ${sy.name_th} <i>${sy.devices.length ? sy.devices.length + ' points' : 'planned · add devices in the register (sheet Systems)'}</i></div>`).join(''); }
 // ------------------------------------------------------------------ V7.9 r4 office layer (R9 design: rooms, VAV, ducts, airflow)
-const OFF = buildOffice({ scene, LAYER, onFloor, V, FAIL, glb });
-// V7.9 r5: R9 field devices, floor CHW branches, building core (devices79.js)
-const DEVS = buildDevices({ scene, LAYER, onFloor, V, FAIL, glb, isDemo: () => DEMO });
-const alarmRooms = () => new Set([...ACTIVE.values()].flatMap(a => a.e).filter(e => e.startsWith('RM:')));
-renderer.domElement.addEventListener('dblclick', ev => { if (!OFF) return; const b = renderer.domElement.getBoundingClientRect();
+// V7.9 r5: Blender field devices with station bindings (devices79.js); water / core drawn by the R9 layer
+const DEVS = buildDevices({ scene, LAYER, onFloor, V, FAIL, glb, isDemo: () => DEMO, reapply: () => applyFloor() });
+renderer.domElement.addEventListener('dblclick', ev => { if (!DEVS || !LAYER.devices.visible) return; const b = renderer.domElement.getBoundingClientRect();
   mp.set((ev.clientX - b.left) / b.width * 2 - 1, -(ev.clientY - b.top) / b.height * 2 + 1); ray.setFromCamera(mp, camera);
   if (ray.intersectObjects([...plant.children, ...LAYER.air.children], true).some(h => h.object.visible)) return;
-  const dh = DEVS && LAYER.devices.visible ? DEVS.pick(ray) : null; if (dh) { $('info').innerHTML = DEVS.info(dh); $('info').className = 'open'; return; }
-  const id = OFF.pick(ray); if (!id) return; const al = AL.filter(a => a.e.includes('RM:' + id)).map(a => ({ t: a.t, on: ACTIVE.has(a.n) }));
-  $('info').innerHTML = OFF.roomInfo(id, al); $('info').className = 'open'; });
+  const dh = DEVS.pick(ray); if (dh) { ev.stopImmediatePropagation(); $('info').innerHTML = DEVS.info(dh); $('info').className = 'open'; } }, true);
 initPanels();
-if (OFF) { LAYER.zones.visible = false; const z = document.querySelector('[data-layer="zones"]'); if (z) z.checked = false; }
-window.__DEVS = DEVS; window.__V = V; window.__EQ = EQ; window.__ZONE = ZONE; window.__PIPE = PIPE;  // test / diagnostics hooks (read only)
+window.__CAMSET = (p, t) => flyTo(p, t, 10); window.__DEVS = DEVS; window.__V = V; window.__EQ = EQ; window.__ZONE = ZONE; window.__PIPE = PIPE;  // test / diagnostics hooks (read only)
+// ------------------------------------------------------------------ V7.9 r6: R9 office / architecture / airflow layer (r9office.js)
+// S gives the R9 code the scene names it used inside the original page closure; the R9 code also wraps applyFloor / updateZones / ...
+const S = Object.defineProperties({}, { $: { get: () => $ }, FAIL: { get: () => FAIL }, devicesFloor: { get: () => DEVS && DEVS.floorVis }, BLD: { get: () => BLD }, DEMO: { get: () => DEMO }, EQ: { get: () => EQ }, LAYCHK: { get: () => LAYCHK }, LAYER: { get: () => LAYER }, LBL: { get: () => LBL }, M: { get: () => M }, MAT: { get: () => MAT }, MRANGE: { get: () => MRANGE }, P3: { get: () => P3 }, PIPE: { get: () => PIPE }, ROOFZ: { get: () => ROOFZ }, T: { get: () => T }, V: { get: () => V }, VALVE: { get: () => VALVE }, ZONE: { get: () => ZONE }, apron: { get: () => apron }, box: { get: () => box }, camera: { get: () => camera }, canvasTex: { get: () => canvasTex }, cyl: { get: () => cyl }, flyTo: { get: () => flyTo }, ground: { get: () => ground }, hemi: { get: () => hemi }, isInst: { get: () => isInst }, mesh: { get: () => mesh }, mm: { get: () => mm }, mp: { get: () => mp }, onFloor: { get: () => onFloor }, ray: { get: () => ray }, renderer: { get: () => renderer }, scene: { get: () => scene }, sky: { get: () => sky }, sun: { get: () => sun }, svcMat: { get: () => svcMat }, textSprite: { get: () => textSprite }, trees: { get: () => trees }, zOf: { get: () => zOf }, zoomBy: { get: () => zoomBy },
+  FSEL: { get: () => FSEL, set: v => { FSEL = v; } }, ISO: { get: () => ISO, set: v => { ISO = v; } }, METRIC: { get: () => METRIC, set: v => { METRIC = v; } }, applyFloor: { get: () => applyFloor, set: v => { applyFloor = v; } }, applyWeather: { get: () => applyWeather, set: v => { applyWeather = v; } }, updateGhosts: { get: () => updateGhosts, set: v => { updateGhosts = v; } }, updateZones: { get: () => updateZones, set: v => { updateZones = v; } } });
+installR9(S);
 
 // ------------------------------------------------------------------ loop
 renderer.setAnimationLoop(() => { const dt = Math.min(.05, clock.getDelta()), t = clock.elapsedTime; flyStep(); controls.update();
-  if (OFF) OFF.update(t, dt, { metric: METRIC, flow: !!($('flow') && $('flow').checked), showLabels: f => FSEL !== 'all' && FSEL !== 'roof' && +FSEL === f, alarmRooms: alarmRooms() });
   if (DEVS) DEVS.update(t, dt, { flow: !!($('flow') && $('flow').checked) });
   const W = weather(); applyWeather(W, t);
   if (rain.material.opacity > 0) { rain.position.y -= dt * 24; if (rain.position.y < -20) rain.position.y += 20; }
@@ -805,5 +811,5 @@ renderAlarmList();
 $('mapBtn').onclick = () => { const rows = window.MAP || []; const fmt = v => v === undefined ? '—' : typeof v === 'number' ? v.toFixed(2) : String(v);
   $('info').className = 'open wide'; const draw = () => { if (!$('info').classList.contains('wide')) return;
     const got = rows.filter(r => V[r.p] !== undefined).length, nf = rows.filter(r => FAIL.has(r.p)).length;
-    $('info').innerHTML = `<h3>Point mapping · ${DEMO ? 'DEMO (ค่าจำลอง)' : 'LIVE'} · รับค่าแล้ว ${got}/${rows.length} จุด${nf ? ` · resolve ไม่ได้ ${nf} จุด` : ''} · alarm ${AL.filter(a => a.s).length} จุด${FAIL.size - nf > 0 ? ` (resolve ไม่ได้ ${FAIL.size - nf})` : ''}</h3><button onclick="document.getElementById('info').className=''">ปิด</button>
-    <table>${rows.map(r => `<tr><td>${r.p}</td><td class="${V[r.p] === undefined ? 'no' : 'ok'}">${FAIL.has(r.p) ? 'resolve ไม่ได้' : fmt(V[r.p])}</td><td>${r.u}</td><td style="color:#9fb0c0">station:|slot:${r.s}</td></tr>`).join('')}</table>`; setTimeout(draw, 1000); }; draw(); };
+    $('info').innerHTML = `<h3>Point mapping · ${DEMO ? 'DEMO (simulated values)' : 'LIVE'} · values received ${got}/${rows.length} points${nf ? ` · not resolved ${nf} points` : ''} · alarm ${AL.filter(a => a.s).length} points${FAIL.size - nf > 0 ? ` (not resolved ${FAIL.size - nf})` : ''}</h3><button onclick="document.getElementById('info').className=''">off</button>
+    <table>${rows.map(r => `<tr><td>${r.p}</td><td class="${V[r.p] === undefined ? 'no' : 'ok'}">${FAIL.has(r.p) ? 'not resolved' : fmt(V[r.p])}</td><td>${r.u}</td><td style="color:#9fb0c0">station:|slot:${r.s}</td></tr>`).join('')}</table>`; setTimeout(draw, 1000); }; draw(); };

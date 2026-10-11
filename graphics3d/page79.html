@@ -42,30 +42,30 @@ select,input[type=range]{width:100%} select{background:#0f161e;color:var(--txt);
 @media (max-width:760px){aside{top:auto;height:44vh;width:auto;left:12px}#info{width:auto;right:12px}}
 </style></head><body>
 <div id="view"></div><div id="labels"></div><div id="kpi"></div>
-<header><div><h1>CPMS Reference Building · 8 ชั้น</h1><div class="sub">Chiller plant ชั้นใต้ดิน B1 (สูงสุด 6 ชุด/ชนิด) · Cooling tower บนดาดฟ้า · AHU + VAV ทุกชั้น (แบบ R9) · ALT_CP_Ref_V7_9</div></div>
+<header><div><h1>CPMS Reference Building · 8 storeys</h1><div class="sub">Chiller plant in basement B1 (up to 6 units per type) · Cooling towers on the roof · AHU + VAV on every floor (R9 design) · ALT_CP_Ref_V7_9</div></div>
 <span class="mode" id="mode">…</span><div id="wx"></div>
-<div class="views"><button data-view="iso">ทั้งอาคาร</button><button data-view="plant">Chiller plant</button><button data-view="pumps">ปั๊ม/วาล์ว</button><button data-view="room">ในห้องเครื่อง</button><button data-view="roof">ดาดฟ้า</button><button data-view="floor">ชั้นใช้งาน</button><button data-view="site">ทั้งพื้นที่</button></div></header>
+<div class="views"><button data-view="iso">Whole building</button><button data-view="plant">Chiller plant</button><button data-view="pumps">Pumps / valves</button><button data-view="room">In the plant room</button><button data-view="roof">Roof</button><button data-view="floor">Active floor</button><button data-view="site">Whole site</button></div></header>
 <aside>
-<section><h2>ชั้นและ layer</h2><select id="fsel"></select>
-<label class="chk1"><input type="checkbox" id="fiso"> แสดงเฉพาะชั้นที่เลือก (digital twin)</label>
-<div class="zrow">สี zone ตาม <select id="zmetric"><option value="t">อุณหภูมิ</option><option value="h">ความชื้น</option><option value="c">CO2</option></select><div id="zlegend"></div></div><div class="chk" id="layers" style="margin-top:6px;flex-direction:column;gap:2px"></div>
-<div class="hint" style="margin-top:6px">อุปกรณ์ที่ยังไม่ติดตั้ง (Installed = ปิด) แสดงเป็นเงาจาง · สี zone: น้ำเงิน = เย็น → เขียว 24 °C → แดง = ร้อน</div>
-<h2 style="margin-top:8px">ระบบในอนาคต</h2><div id="sysl" class="hint"></div></section>
-<section><h2>Alarm ที่เกิดอยู่ <span class="n" id="acount">0</span></h2><div id="alist"></div></section>
-<section id="sim" style="display:none"><h2>จำลอง alarm (DEMO)</h2><div class="hint">กดเพื่อดูภาพอาการแต่ละแบบ หรือเลือก alarm ใดก็ได้จากทะเบียน</div>
-<div id="gallery"></div><select id="asel"></select><div style="margin-top:6px"><button id="aclear">ล้างทั้งหมด</button></div></section>
-<section><h2>สภาพอากาศ</h2><div class="chk"><label><input type="checkbox" id="wovr"> ใช้ค่าทดลองแทนเซนเซอร์</label></div>
-<div class="row"><label>อุณหภูมิ</label><input type="range" id="w_temp" min="18" max="42" step=".5" value="33"></div>
-<div class="row"><label>ความชื้น</label><input type="range" id="w_rh" min="30" max="100" value="60"></div>
-<div class="row"><label>เวลา</label><input type="range" id="w_hour" min="0" max="23.9" step=".1" value="13"></div>
-<div class="hint">ฝนตก: RH ≥ 92% และ ≤ 30 °C · หมอก: RH ≥ 95% ช่วงเช้า/กลางคืน · ร้อนจัด: ≥ 36 °C · เมฆ: ตาม RH</div></section>
-<section><div class="chk"><label><input type="checkbox" id="xray" checked> มองทะลุผนัง/หลังคา</label><label><input type="checkbox" id="labelsOn" checked> ป้ายชื่อ</label><label><input type="checkbox" id="flow" checked> ท่อโปร่ง เห็นน้ำไหล</label></div><div style="margin-top:6px"><button id="mapBtn">Point mapping (สถานะการเชื่อมจุด)</button></div>
-<div class="hint">ลากเพื่อหมุน · scroll ซูม · ดับเบิลคลิกอุปกรณ์เพื่อดูข้อมูล</div></section>
+<section><h2>Floors and layers</h2><select id="fsel"></select>
+<label class="chk1"><input type="checkbox" id="fiso"> Show the selected floor only (digital twin)</label>
+<div class="zrow">Zone colour by <select id="zmetric"><option value="t">Temperature</option><option value="h">Humidity</option><option value="c">CO2</option></select><div id="zlegend"></div></div><div class="chk" id="layers" style="margin-top:6px;flex-direction:column;gap:2px"></div>
+<div class="hint" style="margin-top:6px">Equipment not installed (Installed = off) is shown as a ghost · zone colour: blue = cool → green 24 °C → red = warm</div>
+<h2 style="margin-top:8px">Future systems</h2><div id="sysl" class="hint"></div></section>
+<section><h2>Active alarms <span class="n" id="acount">0</span></h2><div id="alist"></div></section>
+<section id="sim" style="display:none"><h2>Alarm simulation (DEMO)</h2><div class="hint">Press to preview each effect, or pick any alarm from the register</div>
+<div id="gallery"></div><select id="asel"></select><div style="margin-top:6px"><button id="aclear">Clear all</button></div></section>
+<section><h2>Weather</h2><div class="chk"><label><input type="checkbox" id="wovr"> Use test values instead of the sensors</label></div>
+<div class="row"><label>Temperature</label><input type="range" id="w_temp" min="18" max="42" step=".5" value="33"></div>
+<div class="row"><label>Humidity</label><input type="range" id="w_rh" min="30" max="100" value="60"></div>
+<div class="row"><label>Time</label><input type="range" id="w_hour" min="0" max="23.9" step=".1" value="13"></div>
+<div class="hint">Rain: RH ≥ 92 % and ≤ 30 °C · Mist: RH ≥ 95 % at night / early morning · Very hot: ≥ 36 °C · Cloud: by RH</div></section>
+<section><div class="chk"><label><input type="checkbox" id="xray" checked> X-ray walls / roof</label><label><input type="checkbox" id="labelsOn" checked> Labels</label><label><input type="checkbox" id="flow" checked> Transparent pipes (water flow)</label></div><div style="margin-top:6px"><button id="mapBtn">Point mapping (connection status)</button></div>
+<div class="hint">Drag to rotate · scroll to zoom · double-click equipment for details</div></section>
 </aside><div id="info"></div>
 <script>/*DATA*/</script>
 <script>/*APP*/</script>
-<div id="nav"><button id="navUp" title="ชั้นถัดไป">▲</button><button id="navDn" title="ชั้นก่อนหน้า">▼</button><button id="navIn" title="ซูมเข้า">＋</button><button id="navOut" title="ซูมออก">－</button><button id="navHome" title="มุมมองเริ่มต้น">⌂</button>
-<span>ลากซ้าย = หมุน · ลากขวา/Shift = เลื่อน · ล้อ = ซูมที่ตำแหน่งเมาส์ · ดับเบิลคลิก = ไปที่จุดนั้น · ปุ่มลูกศร = เลื่อน</span></div>
+<div id="nav"><button id="navUp" title="Next floor">▲</button><button id="navDn" title="Previous floor">▼</button><button id="navIn" title="Zoom in">＋</button><button id="navOut" title="Zoom out">－</button><button id="navHome" title="Home view">⌂</button>
+<span>Left drag = rotate · right drag / Shift = pan · wheel = zoom at the cursor · double-click = go to that point · arrow keys = pan</span></div>
 <style>#nav{position:absolute;right:12px;bottom:14px;display:flex;gap:6px;align-items:center;z-index:5}#nav button{width:38px;height:38px;border-radius:8px;border:1px solid #2b3a4d;background:rgba(10,20,34,.88);color:#e8eef4;font-size:18px;cursor:pointer}
 #nav span{font-size:11px;color:#cbd5df;background:rgba(10,20,34,.7);padding:6px 8px;border-radius:6px;max-width:420px}.chk1{display:block;margin:6px 0;font-size:12px}.zrow{font-size:12px;margin:4px 0 8px}
 #zlegend{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:11px}#zlegend i{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,hsl(223,75%,50%),hsl(120,75%,45%),hsl(0,75%,50%))}</style>

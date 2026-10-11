@@ -28,7 +28,7 @@ def data_block():
     alarms = base['ALARMS'] + [a for a in op['alarms'] if a['n'] not in names]
     glbs = {os.path.basename(f)[:-4]: base64.b64encode(open(f, 'rb').read()).decode() for f in sorted(glob.glob(os.path.join(HERE, 'models', '*.glb')))}
     return (f"window.MODEL={J(D('r9_model.json'))};window.ALARMS={J(alarms)};window.PTS={J(pts)};window.MAP={J(mp)};"
-            f"window.EFFECTS={J(base['EFFECTS'])};window.OFFICE={J(D('office79.json'))};window.R9BIND={J(D('r9_bindings.json')['bind'])};"
+            f"window.EFFECTS={J(base['EFFECTS'])};window.OFFICE_DESIGN=window.OFFICE={J(D('office79.json'))};window.R9BIND={J(D('r9_bindings.json')['bind'])};"
             f"window.GLB={J(glbs)};")
 
 

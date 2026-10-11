@@ -160,6 +160,18 @@
 "p": "FM_F08_Flow",
 "s": "/ChillerPlant/Metering/Floors/F08/FM_F08_Flow"
 },
+"KEF-DESIGN": {
+"p": "KEF_Status",
+"s": "/AirSide/Roof/Kitchen/KEF_Status"
+},
+"MAT-AHU-01": {
+"p": "AHU01_MAT",
+"s": "/AirSide/AHU01/R9/AHU01_MAT"
+},
+"MAT-AHU-02": {
+"p": "AHU02_MAT",
+"s": "/AirSide/AHU02/R9/AHU02_MAT"
+},
 "MAT-AHU-F02": {
 "p": "AHU_F02_MAT",
 "s": "/AirSide/Floors/F02/AHU_F02_MAT"
@@ -187,6 +199,82 @@
 "MAT-AHU-F08": {
 "p": "AHU_F08_MAT",
 "s": "/AirSide/Floors/F08/AHU_F08_MAT"
+},
+"MAU-DESIGN": {
+"p": "MAU_Status",
+"s": "/AirSide/Roof/Kitchen/MAU_Status"
+},
+"MBFV-AHU-01-CHR": {
+"p": "ISO_AHU01_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU01/ISO_AHU01_CHR_Fb"
+},
+"MBFV-AHU-01-CHS": {
+"p": "ISO_AHU01_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU01/ISO_AHU01_CHS_Fb"
+},
+"MBFV-AHU-02-CHR": {
+"p": "ISO_AHU02_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU02/ISO_AHU02_CHR_Fb"
+},
+"MBFV-AHU-02-CHS": {
+"p": "ISO_AHU02_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU02/ISO_AHU02_CHS_Fb"
+},
+"MBFV-AHU-F02-CHR": {
+"p": "ISO_AHU_F02_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F02/ISO_AHU_F02_CHR_Fb"
+},
+"MBFV-AHU-F02-CHS": {
+"p": "ISO_AHU_F02_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F02/ISO_AHU_F02_CHS_Fb"
+},
+"MBFV-AHU-F03-CHR": {
+"p": "ISO_AHU_F03_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F03/ISO_AHU_F03_CHR_Fb"
+},
+"MBFV-AHU-F03-CHS": {
+"p": "ISO_AHU_F03_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F03/ISO_AHU_F03_CHS_Fb"
+},
+"MBFV-AHU-F04-CHR": {
+"p": "ISO_AHU_F04_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F04/ISO_AHU_F04_CHR_Fb"
+},
+"MBFV-AHU-F04-CHS": {
+"p": "ISO_AHU_F04_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F04/ISO_AHU_F04_CHS_Fb"
+},
+"MBFV-AHU-F05-CHR": {
+"p": "ISO_AHU_F05_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F05/ISO_AHU_F05_CHR_Fb"
+},
+"MBFV-AHU-F05-CHS": {
+"p": "ISO_AHU_F05_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F05/ISO_AHU_F05_CHS_Fb"
+},
+"MBFV-AHU-F06-CHR": {
+"p": "ISO_AHU_F06_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F06/ISO_AHU_F06_CHR_Fb"
+},
+"MBFV-AHU-F06-CHS": {
+"p": "ISO_AHU_F06_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F06/ISO_AHU_F06_CHS_Fb"
+},
+"MBFV-AHU-F07-CHR": {
+"p": "ISO_AHU_F07_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F07/ISO_AHU_F07_CHR_Fb"
+},
+"MBFV-AHU-F07-CHS": {
+"p": "ISO_AHU_F07_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F07/ISO_AHU_F07_CHS_Fb"
+},
+"MBFV-AHU-F08-CHR": {
+"p": "ISO_AHU_F08_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F08/ISO_AHU_F08_CHR_Fb"
+},
+"MBFV-AHU-F08-CHS": {
+"p": "ISO_AHU_F08_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/AHU_F08/ISO_AHU_F08_CHS_Fb"
 },
 "MBFV-CH-01-CDR": {
 "p": "CH01_CdwHPVFb",
@@ -235,6 +323,86 @@
 "MBFV-CH-06-CHS": {
 "p": "CH06_ChwIsoFb",
 "s": "/ChillerPlant/Expansion/CH06/CH06_ChwIsoFb"
+},
+"MBFV-MAU-DESIGN-CHR": {
+"p": "ISO_MAU_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/MAU/ISO_MAU_CHR_Fb"
+},
+"MBFV-MAU-DESIGN-CHS": {
+"p": "ISO_MAU_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/MAU/ISO_MAU_CHS_Fb"
+},
+"MBFV-OAU-01-CHR": {
+"p": "ISO_OAU01_CHR_Fb",
+"s": "/ChillerPlant/Metering/Coils/OAU01/ISO_OAU01_CHR_Fb"
+},
+"MBFV-OAU-01-CHS": {
+"p": "ISO_OAU01_CHS_Fb",
+"s": "/ChillerPlant/Metering/Coils/OAU01/ISO_OAU01_CHS_Fb"
+},
+"MBFV-R-F01": {
+"p": "ISO_F01_CHR_Fb",
+"s": "/ChillerPlant/Metering/Floors/F01/ISO_F01_CHR_Fb"
+},
+"MBFV-R-F02": {
+"p": "ISO_F02_CHR_Fb",
+"s": "/ChillerPlant/Metering/Floors/F02/ISO_F02_CHR_Fb"
+},
+"MBFV-R-F03": {
+"p": "ISO_F03_CHR_Fb",
+"s": "/ChillerPlant/Metering/Floors/F03/ISO_F03_CHR_Fb"
+},
+"MBFV-R-F04": {
+"p": "ISO_F04_CHR_Fb",
+"s": "/ChillerPlant/Metering/Floors/F04/ISO_F04_CHR_Fb"
+},
+"MBFV-R-F05": {
+"p": "ISO_F05_CHR_Fb",
+"s": "/ChillerPlant/Metering/Floors/F05/ISO_F05_CHR_Fb"
+},
+"MBFV-R-F06": {
+"p": "ISO_F06_CHR_Fb",
+"s": "/ChillerPlant/Metering/Floors/F06/ISO_F06_CHR_Fb"
+},
+"MBFV-R-F07": {
+"p": "ISO_F07_CHR_Fb",
+"s": "/ChillerPlant/Metering/Floors/F07/ISO_F07_CHR_Fb"
+},
+"MBFV-R-F08": {
+"p": "ISO_F08_CHR_Fb",
+"s": "/ChillerPlant/Metering/Floors/F08/ISO_F08_CHR_Fb"
+},
+"MBFV-S-F01": {
+"p": "ISO_F01_CHS_Fb",
+"s": "/ChillerPlant/Metering/Floors/F01/ISO_F01_CHS_Fb"
+},
+"MBFV-S-F02": {
+"p": "ISO_F02_CHS_Fb",
+"s": "/ChillerPlant/Metering/Floors/F02/ISO_F02_CHS_Fb"
+},
+"MBFV-S-F03": {
+"p": "ISO_F03_CHS_Fb",
+"s": "/ChillerPlant/Metering/Floors/F03/ISO_F03_CHS_Fb"
+},
+"MBFV-S-F04": {
+"p": "ISO_F04_CHS_Fb",
+"s": "/ChillerPlant/Metering/Floors/F04/ISO_F04_CHS_Fb"
+},
+"MBFV-S-F05": {
+"p": "ISO_F05_CHS_Fb",
+"s": "/ChillerPlant/Metering/Floors/F05/ISO_F05_CHS_Fb"
+},
+"MBFV-S-F06": {
+"p": "ISO_F06_CHS_Fb",
+"s": "/ChillerPlant/Metering/Floors/F06/ISO_F06_CHS_Fb"
+},
+"MBFV-S-F07": {
+"p": "ISO_F07_CHS_Fb",
+"s": "/ChillerPlant/Metering/Floors/F07/ISO_F07_CHS_Fb"
+},
+"MBFV-S-F08": {
+"p": "ISO_F08_CHS_Fb",
+"s": "/ChillerPlant/Metering/Floors/F08/ISO_F08_CHS_Fb"
 },
 "MD-EA-F02-A-JAN": {
 "p": "TE_F02_A_JAN_DmpFb",
@@ -944,6 +1112,14 @@
 "p": "AHU_F08_OADmpFb",
 "s": "/AirSide/Floors/F08/AHU_F08_OADmpFb"
 },
+"MD-RA-AHU-01": {
+"p": "AHU01_RADmpFb",
+"s": "/AirSide/AHU01/R9/AHU01_RADmpFb"
+},
+"MD-RA-AHU-02": {
+"p": "AHU02_RADmpFb",
+"s": "/AirSide/AHU02/R9/AHU02_RADmpFb"
+},
 "MD-RA-AHU-F02": {
 "p": "AHU_F02_RADmpFb",
 "s": "/AirSide/Floors/F02/AHU_F02_RADmpFb"
@@ -972,6 +1148,14 @@
 "p": "AHU_F08_RADmpFb",
 "s": "/AirSide/Floors/F08/AHU_F08_RADmpFb"
 },
+"MD-RELIEF-AHU-01": {
+"p": "AHU01_RelDmpFb",
+"s": "/AirSide/AHU01/R9/AHU01_RelDmpFb"
+},
+"MD-RELIEF-AHU-02": {
+"p": "AHU02_RelDmpFb",
+"s": "/AirSide/AHU02/R9/AHU02_RelDmpFb"
+},
 "MD-RELIEF-AHU-F02": {
 "p": "AHU_F02_RelDmpFb",
 "s": "/AirSide/Floors/F02/AHU_F02_RelDmpFb"
@@ -999,6 +1183,14 @@
 "MD-RELIEF-AHU-F08": {
 "p": "AHU_F08_RelDmpFb",
 "s": "/AirSide/Floors/F08/AHU_F08_RelDmpFb"
+},
+"OA-AF-AHU-01": {
+"p": "AHU01_OAFlow",
+"s": "/AirSide/AHU01/R9/AHU01_OAFlow"
+},
+"OA-AF-AHU-02": {
+"p": "AHU02_OAFlow",
+"s": "/AirSide/AHU02/R9/AHU02_OAFlow"
 },
 "OA-AF-AHU-F02": {
 "p": "AHU_F02_OAFlow",
@@ -1064,9 +1256,49 @@
 "p": "AHU_F08_PICVFb",
 "s": "/AirSide/Floors/F08/AHU_F08_PICVFb"
 },
+"PICV-MAU-DESIGN": {
+"p": "MAU_ValveCmd",
+"s": "/AirSide/Roof/Kitchen/MAU_ValveCmd"
+},
 "PICV-OAU-01": {
 "p": "OAU01_ValveFeedback",
 "s": "/AirSide/OAU01/Points/OAU01_ValveFeedback"
+},
+"PT-AHU-01": {
+"p": "COIL_AHU01_DP",
+"s": "/ChillerPlant/Metering/Coils/AHU01/COIL_AHU01_DP"
+},
+"PT-AHU-02": {
+"p": "COIL_AHU02_DP",
+"s": "/ChillerPlant/Metering/Coils/AHU02/COIL_AHU02_DP"
+},
+"PT-AHU-F02": {
+"p": "COIL_AHU_F02_DP",
+"s": "/ChillerPlant/Metering/Coils/AHU_F02/COIL_AHU_F02_DP"
+},
+"PT-AHU-F03": {
+"p": "COIL_AHU_F03_DP",
+"s": "/ChillerPlant/Metering/Coils/AHU_F03/COIL_AHU_F03_DP"
+},
+"PT-AHU-F04": {
+"p": "COIL_AHU_F04_DP",
+"s": "/ChillerPlant/Metering/Coils/AHU_F04/COIL_AHU_F04_DP"
+},
+"PT-AHU-F05": {
+"p": "COIL_AHU_F05_DP",
+"s": "/ChillerPlant/Metering/Coils/AHU_F05/COIL_AHU_F05_DP"
+},
+"PT-AHU-F06": {
+"p": "COIL_AHU_F06_DP",
+"s": "/ChillerPlant/Metering/Coils/AHU_F06/COIL_AHU_F06_DP"
+},
+"PT-AHU-F07": {
+"p": "COIL_AHU_F07_DP",
+"s": "/ChillerPlant/Metering/Coils/AHU_F07/COIL_AHU_F07_DP"
+},
+"PT-AHU-F08": {
+"p": "COIL_AHU_F08_DP",
+"s": "/ChillerPlant/Metering/Coils/AHU_F08/COIL_AHU_F08_DP"
 },
 "PT-CDP-01": {
 "p": "CDP01_DischargePressure",
@@ -1124,6 +1356,70 @@
 "p": "CH02_EvapDP",
 "s": "/ChillerPlant/Chiller02/Points/CH02_EvapDP"
 },
+"PT-CH-03-CDR": {
+"p": "CH03_CondDP",
+"s": "/ChillerPlant/Expansion/CH03/CH03_CondDP"
+},
+"PT-CH-03-CDS": {
+"p": "CH03_CondDP",
+"s": "/ChillerPlant/Expansion/CH03/CH03_CondDP"
+},
+"PT-CH-03-CHR": {
+"p": "CH03_EvapDP",
+"s": "/ChillerPlant/Expansion/CH03/CH03_EvapDP"
+},
+"PT-CH-03-CHS": {
+"p": "CH03_EvapDP",
+"s": "/ChillerPlant/Expansion/CH03/CH03_EvapDP"
+},
+"PT-CH-04-CDR": {
+"p": "CH04_CondDP",
+"s": "/ChillerPlant/Expansion/CH04/CH04_CondDP"
+},
+"PT-CH-04-CDS": {
+"p": "CH04_CondDP",
+"s": "/ChillerPlant/Expansion/CH04/CH04_CondDP"
+},
+"PT-CH-04-CHR": {
+"p": "CH04_EvapDP",
+"s": "/ChillerPlant/Expansion/CH04/CH04_EvapDP"
+},
+"PT-CH-04-CHS": {
+"p": "CH04_EvapDP",
+"s": "/ChillerPlant/Expansion/CH04/CH04_EvapDP"
+},
+"PT-CH-05-CDR": {
+"p": "CH05_CondDP",
+"s": "/ChillerPlant/Expansion/CH05/CH05_CondDP"
+},
+"PT-CH-05-CDS": {
+"p": "CH05_CondDP",
+"s": "/ChillerPlant/Expansion/CH05/CH05_CondDP"
+},
+"PT-CH-05-CHR": {
+"p": "CH05_EvapDP",
+"s": "/ChillerPlant/Expansion/CH05/CH05_EvapDP"
+},
+"PT-CH-05-CHS": {
+"p": "CH05_EvapDP",
+"s": "/ChillerPlant/Expansion/CH05/CH05_EvapDP"
+},
+"PT-CH-06-CDR": {
+"p": "CH06_CondDP",
+"s": "/ChillerPlant/Expansion/CH06/CH06_CondDP"
+},
+"PT-CH-06-CDS": {
+"p": "CH06_CondDP",
+"s": "/ChillerPlant/Expansion/CH06/CH06_CondDP"
+},
+"PT-CH-06-CHR": {
+"p": "CH06_EvapDP",
+"s": "/ChillerPlant/Expansion/CH06/CH06_EvapDP"
+},
+"PT-CH-06-CHS": {
+"p": "CH06_EvapDP",
+"s": "/ChillerPlant/Expansion/CH06/CH06_EvapDP"
+},
 "PT-CHP-01": {
 "p": "CHP01_DischargePressure",
 "s": "/ChillerPlant/CHP01/Points/CHP01_DischargePressure"
@@ -1147,6 +1443,14 @@
 "PT-CHP-06": {
 "p": "CHP06_DischargePressure",
 "s": "/ChillerPlant/Expansion/CHP06/CHP06_DischargePressure"
+},
+"PT-MAU-DESIGN": {
+"p": "COIL_MAU_DP",
+"s": "/ChillerPlant/Metering/Coils/MAU/COIL_MAU_DP"
+},
+"PT-OAU-01": {
+"p": "COIL_OAU01_DP",
+"s": "/ChillerPlant/Metering/Coils/OAU01/COIL_OAU01_DP"
 },
 "RAT-AHU-01": {
 "p": "AHU01_RAT",
@@ -1184,6 +1488,10 @@
 "p": "AHU_F08_RAT",
 "s": "/AirSide/Floors/F08/AHU_F08_RAT"
 },
+"RF-RELIEF": {
+"p": "RF_Status",
+"s": "/AirSide/Roof/Relief/RF_Status"
+},
 "SAT-AHU-01": {
 "p": "AHU01_SAT",
 "s": "/AirSide/AHU01/Points/AHU01_SAT"
@@ -1219,6 +1527,82 @@
 "SAT-AHU-F08": {
 "p": "AHU_F08_SAT",
 "s": "/AirSide/Floors/F08/AHU_F08_SAT"
+},
+"TEF-DESIGN": {
+"p": "TEF_Status",
+"s": "/AirSide/Roof/TEF/TEF_Status"
+},
+"TT-AHU-01-CHR": {
+"p": "COIL_AHU01_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/AHU01/COIL_AHU01_CHR_T"
+},
+"TT-AHU-01-CHS": {
+"p": "COIL_AHU01_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/AHU01/COIL_AHU01_CHS_T"
+},
+"TT-AHU-02-CHR": {
+"p": "COIL_AHU02_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/AHU02/COIL_AHU02_CHR_T"
+},
+"TT-AHU-02-CHS": {
+"p": "COIL_AHU02_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/AHU02/COIL_AHU02_CHS_T"
+},
+"TT-AHU-F02-CHR": {
+"p": "COIL_AHU_F02_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F02/COIL_AHU_F02_CHR_T"
+},
+"TT-AHU-F02-CHS": {
+"p": "COIL_AHU_F02_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F02/COIL_AHU_F02_CHS_T"
+},
+"TT-AHU-F03-CHR": {
+"p": "COIL_AHU_F03_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F03/COIL_AHU_F03_CHR_T"
+},
+"TT-AHU-F03-CHS": {
+"p": "COIL_AHU_F03_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F03/COIL_AHU_F03_CHS_T"
+},
+"TT-AHU-F04-CHR": {
+"p": "COIL_AHU_F04_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F04/COIL_AHU_F04_CHR_T"
+},
+"TT-AHU-F04-CHS": {
+"p": "COIL_AHU_F04_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F04/COIL_AHU_F04_CHS_T"
+},
+"TT-AHU-F05-CHR": {
+"p": "COIL_AHU_F05_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F05/COIL_AHU_F05_CHR_T"
+},
+"TT-AHU-F05-CHS": {
+"p": "COIL_AHU_F05_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F05/COIL_AHU_F05_CHS_T"
+},
+"TT-AHU-F06-CHR": {
+"p": "COIL_AHU_F06_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F06/COIL_AHU_F06_CHR_T"
+},
+"TT-AHU-F06-CHS": {
+"p": "COIL_AHU_F06_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F06/COIL_AHU_F06_CHS_T"
+},
+"TT-AHU-F07-CHR": {
+"p": "COIL_AHU_F07_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F07/COIL_AHU_F07_CHR_T"
+},
+"TT-AHU-F07-CHS": {
+"p": "COIL_AHU_F07_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F07/COIL_AHU_F07_CHS_T"
+},
+"TT-AHU-F08-CHR": {
+"p": "COIL_AHU_F08_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F08/COIL_AHU_F08_CHR_T"
+},
+"TT-AHU-F08-CHS": {
+"p": "COIL_AHU_F08_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/AHU_F08/COIL_AHU_F08_CHS_T"
 },
 "TT-CH-01-CDR": {
 "p": "CH01_CdwLeavingTemp",
@@ -1291,6 +1675,22 @@
 "TT-CH-06-CHR": {
 "p": "CH06_ChwReturnTemp",
 "s": "/ChillerPlant/Expansion/CH06/CH06_ChwReturnTemp"
+},
+"TT-MAU-DESIGN-CHR": {
+"p": "COIL_MAU_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/MAU/COIL_MAU_CHR_T"
+},
+"TT-MAU-DESIGN-CHS": {
+"p": "COIL_MAU_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/MAU/COIL_MAU_CHS_T"
+},
+"TT-OAU-01-CHR": {
+"p": "COIL_OAU01_CHR_T",
+"s": "/ChillerPlant/Metering/Coils/OAU01/COIL_OAU01_CHR_T"
+},
+"TT-OAU-01-CHS": {
+"p": "COIL_OAU01_CHS_T",
+"s": "/ChillerPlant/Metering/Coils/OAU01/COIL_OAU01_CHS_T"
 },
 "TT-R-F01": {
 "p": "TT_R_F01",

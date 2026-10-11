@@ -286,6 +286,14 @@ def tower(L=2.6, D=2.6, H=2.7, blades=None):
                               [torus(1.0, 0.03, (0, H + 0.1, 0), 'y', p['frp'])]))
     group('fanMotor', collect(lambda: [box(0.34, 0.3, 0.3, (0.95, H + 0.25, -0.75), p['motor'], bevel=0.02),
                                        box(0.24, 0.2, 0.14, (1.15, H + 0.25, -0.45), p['panel'], bevel=0.01)]))
+    # r6: condenser-water connections (coordinated with the pipes, tools/r9_connections.py): CDR -> hot-water header on the north face
+    # feeding both hot-water basins; CDS <- basin outlet on the south face
+    group('nozzles', collect(lambda: [cyl(0.11, 0.2, (0, 2.84 * H / 2.7, -D / 2 - 0.05), 'z', p['steel'], n=28),
+                                      cyl(0.09, L * 0.62, (0, 2.84 * H / 2.7, -D / 2 + 0.12), 'x', p['steel'], n=24)] +
+                             [cyl(0.07, 0.25, (s * L * 0.3, 2.84 * H / 2.7 - 0.05, -D / 2 + 0.12), 'y', p['steel'], n=20) for s in (-1, 1)] +
+                             flange((0, 2.84 * H / 2.7, -D / 2 - 0.15), 'z', 0.19, 0.11, 0.025, p['iron']) +
+                             [cyl(0.11, 0.17, (-0.7 * L / 2.6, 0.2, D / 2 + 0.065), 'z', p['steel'], n=28)] +
+                             flange((-0.7 * L / 2.6, 0.2, D / 2 + 0.15), 'z', 0.19, 0.11, 0.025, p['iron'])))
     if blades is not None:                                  # render only: the page draws its own spinning blades
         for i in range(6):
             a = blades + i * math.pi / 3
@@ -303,30 +311,46 @@ def fan(blades=0.0):
         box(0.42, 0.16, 0.02, (0.33 * math.cos(a), 0.33 * math.sin(a), 0.12), p['black'], bevel=0)
 
 
-def ahu(L=3.6, W=1.8, H=2.1):
-    """modular double-skin AHU: mixing box with OA louvre, filter, CHW coil, plug fan sections; access doors, handles, drain pan"""
+def ahu(L=3.6, W=1.8, H=2.1, oa_only=False):
+    """modular double-skin AHU, airflow west -> east (r6, coordinated with the R9 ducts and pipes, tools/r9_connections.py):
+    RA plenum (RA collar on top at the west end) -> mixing box (OA collar on the +z side at mid length) -> filter -> chilled-water coil
+    (CHS / CHR flanged stubs on the -z side, counter-flow: CHS on the leaving-air side, drain pan + trap) -> plug fan (SA collar on top
+    at the east end). Access doors with handles / hinges on the +z side, base frame."""
     p = P()
-    secs = [(-L / 2, -L / 2 + 0.7, 'mix'), (-L / 2 + 0.7, -L / 2 + 1.2, 'filter'), (-L / 2 + 1.2, -L / 2 + 2.1, 'coil'), (-L / 2 + 2.1, L / 2, 'fan')]
+    k = L / 3.6
+    secs = [(-L / 2, -1.0 * k, 'ra'), (-1.0 * k, .4 * k, 'mix'), (.4 * k, .8 * k, 'filter'), (.8 * k, 1.3 * k, 'coil'), (1.3 * k, L / 2, 'fan')]
     objs = []
     for x0, x1, kind in secs:
         objs += collect(lambda x0=x0, x1=x1: [box(x1 - x0 - 0.01, H, W, ((x0 + x1) / 2, H / 2 + 0.12, 0), p['ahuPanel'], bevel=0.02)])
-        objs += collect(lambda x0=x0, x1=x1: [box(0.04, H + 0.02, W + 0.02, (x1, H / 2 + 0.12, 0), p['steel'], bevel=0.006)])
-        if kind in ('filter', 'fan', 'coil'):
-            dx = (x1 - x0) * 0.7
+        objs += collect(lambda x1=x1: [box(0.04, H + 0.02, W + 0.02, (x1, H / 2 + 0.12, 0), p['steel'], bevel=0.006)])
+        if kind in ('filter', 'fan', 'coil', 'ra'):
+            dx = min((x1 - x0) * 0.7, 0.9)
             objs += collect(lambda x0=x0, x1=x1, dx=dx: [box(dx, H * 0.8, 0.02, ((x0 + x1) / 2, H / 2 + 0.12, W / 2 + 0.012), p['ahuPanel'], bevel=0.008),
                                                        box(0.03, 0.14, 0.04, ((x0 + x1) / 2 + dx * 0.4, H / 2 + 0.12, W / 2 + 0.03), p['black'], bevel=0.005),
                                                        box(0.06, 0.03, 0.03, ((x0 + x1) / 2 - dx * 0.48, H * 0.8, W / 2 + 0.03), p['steel']),
                                                        box(0.06, 0.03, 0.03, ((x0 + x1) / 2 - dx * 0.48, H * 0.3, W / 2 + 0.03), p['steel'])])
     objs += collect(lambda: [box(L, 0.12, W, (0, 0.06, 0), p['steel'], bevel=0.006)])
-    objs += collect(lambda: [box(0.02, 0.06, W * 0.85, (-L / 2 - 0.01, 0.4 + i * 0.09, 0), p['louver'], bevel=0.003) for i in range(14)])
-    objs += collect(lambda: [box(0.02, H * 0.6, 0.5, (-L / 2 + 1.65, H * 0.55, W / 2 + 0.02), p['coil'], bevel=0)])   # coil header face
-    objs += collect(lambda: [cyl(0.05, 0.4, (-L / 2 + 1.45, 0.6 + i * 0.9, W / 2 + 0.2), 'z', p['steel'], n=24) for i in (0, 1)])
-    objs += collect(lambda: [box(0.9, 0.06, 0.4, (-L / 2 + 1.65, 0.16, W / 2 - 0.25), p['steel'], bevel=0.006)])        # drain pan lip
+    # duct collars: RA (top, west end), SA (top, east end), OA (+z side, mid length, 1.47 m)
+    objs += collect(lambda: [box(0.62 * k, 0.12, W * 0.72, (L / 2 - 0.33 * k, H + 0.18, 0), p['galv'], bevel=0.004)])
+    if not oa_only:                                         # 100 % OA units (OAU / MAU) take air through the weather hood instead
+        objs += collect(lambda: [box(0.62 * k, 0.12, W * 0.72, (-L / 2 + 0.33 * k, H + 0.18, 0), p['galv'], bevel=0.004),
+                                 box(1.5 * k, 0.3, 0.12, (0, 1.47, W / 2 + 0.06), p['galv'], bevel=0.004)])
+        objs += collect(lambda: [box(1.4 * k, 0.03, 0.01, (0, 1.47 + 0.11 - i * 0.075, W / 2 + 0.125), p['louver'], bevel=0) for i in range(4)])
+    # coil: fin face visible through the -z inspection panel, headers, flanged CHS / CHR stubs, drain pan and trap
+    cx = 1.05 * k
+    objs += collect(lambda: [box(0.42 * k, H * 0.72, 0.012, (cx, H * 0.55, -W / 2 - 0.006), p['coil'], bevel=0)])
+    objs += collect(lambda: [cyl(0.06, H * 0.7, (cx - 0.2 * k, H * 0.55, -W / 2 - 0.07), 'y', p['copper'], n=20),
+                             cyl(0.06, H * 0.7, (cx + 0.1 * k, H * 0.55, -W / 2 - 0.07), 'y', p['copper'], n=20)])
+    for xs, ys in ((1.15 * k, 1.5 * H / 2.1), (0.85 * k, 0.9 * H / 2.1)):
+        objs += collect(lambda xs=xs, ys=ys: [cyl(0.045, 0.16, (xs, ys, -W / 2 - 0.07), 'z', p['steel'], n=20)] +
+                        flange((xs, ys, -W / 2 - 0.145), 'z', 0.09, 0.045, 0.012, p['iron'], bolts=4))
+    objs += collect(lambda: [box(0.5 * k, 0.06, 0.4, (cx, 0.16, -W / 2 + 0.25), p['steel'], bevel=0.006),
+                             cyl(0.02, 0.3, (cx, 0.1, -W / 2 - 0.15), 'z', p['black'], n=12, bevel=0)])
     group('casing', objs)
-    group('fanWheel', collect(lambda: [cyl(H * 0.3, 0.25, (L * 0.25, H / 2 + 0.12, 0), 'z', p['steel'], n=48)] +
-                              [box(H * 0.26, 0.04, 0.22, (L * 0.25 + H * 0.15 * math.cos(a), H / 2 + 0.12 + H * 0.15 * math.sin(a), 0), p['black'], bevel=0)
+    group('fanWheel', collect(lambda: [cyl(H * 0.28, 0.25, (1.55 * k, H / 2 + 0.12, 0), 'x', p['steel'], n=48)] +
+                              [box(0.22, 0.04, H * 0.24, (1.55 * k, H / 2 + 0.12 + H * 0.14 * math.sin(a), H * 0.14 * math.cos(a)), p['black'], bevel=0)
                                for a in [i * math.pi / 5 for i in range(10)]]))
-    box(0.5, 0.19, 0.004, (-L * 0.25, H * 0.85, W / 2 + 0.03), p['screen'], 'screen', bevel=0)
+    box(0.5, 0.19, 0.004, (-L / 2 + 0.4 * k, H * 0.85, W / 2 + 0.03), p['screen'], 'screen', bevel=0)
 
 
 def vav():
@@ -344,7 +368,7 @@ def vav():
 def oau(L=4.2, W=2.0, H=2.2):
     """roof outdoor-air unit (also the R9 MAU): weatherproof AHU with rain canopy, OA intake hood + bird screen, roof curb"""
     p = P()
-    ahu(L, W, H)
+    ahu(L, W, H, oa_only=True)
     group('weather', collect(lambda: [box(L + 0.16, 0.05, W + 0.16, (0, H + 0.17, 0), p['galv'], bevel=0.006),
                                       box(L + 0.1, 0.12, W + 0.1, (0, -0.02, 0), p['steel'], bevel=0.006)] +
                              [box(0.6, 0.04, W * 0.9, (-L / 2 - 0.3, H * 0.75 + 0.3 * 0.5, 0), p['galv'], bevel=0.004)] +
@@ -379,7 +403,8 @@ def exptank(D=0.9, H=1.6):
                             [box(0.05, 0.3, 0.05, (D * 0.32 * math.cos(a), 0.15, D * 0.32 * math.sin(a)), p['steel'], bevel=0.004)
                              for a in (0.5, 2.6, 4.7)] +
                             [cyl(0.02, 0.06, (0, 0.25 + H * 0.92, 0), 'y', p['steel'], n=12, bevel=0)]))
-    group('connection', collect(lambda: [cyl(0.04, 0.4, (0, 0.04, 0), 'y', p['steel'], n=20), cyl(0.06, 0.08, (0, -0.06, 0), 'x', p['iron'], n=20)] +
+    group('connection', collect(lambda: [cyl(0.04, D * 0.06, (D * 0.47, 0.4 * H / 1.6, 0), 'x', p['steel'], n=20)] +       # r6: side connection (CHW-ET)
+                                flange((D * 0.5, 0.4 * H / 1.6, 0), 'x', 0.08, 0.04, 0.015, p['iron'], bolts=4) +
                                 gauge((0.15, 0.25 + H * 0.2, D * 0.42), 'z')))
 
 
@@ -388,15 +413,15 @@ def bypass(L=1.3, W=0.5, H=1.04):
     p = P()
     group('frame', collect(lambda: [box(0.06, H, 0.06, (s * L * 0.45, H / 2, z), p['steel'], bevel=0.004) for s in (-1, 1) for z in (-W * 0.4, W * 0.4)] +
                            [box(L, 0.06, W * 0.86, (0, 0.03, 0), p['steel'], bevel=0.004)]))
-    group('pipe', collect(lambda: [cyl(0.06, L, (0, H * 0.55, 0), 'x', p['steel'], n=24)] +
-                          [x for xx in (-L * 0.38, L * 0.38) for x in flange((xx, H * 0.55, 0), 'x', 0.11, 0.065, 0.02, p['iron'], bolts=6) or []]))
-    group('valves', collect(lambda: [cyl(0.1, 0.06, (s * L * 0.3, H * 0.55, 0), 'x', p['iron'], n=24) for s in (-1, 1)] +
-                            [box(0.03, 0.22, 0.03, (s * L * 0.3, H * 0.55 + 0.14, 0), p['steel'], bevel=0) for s in (-1, 1)] +
-                            [box(0.2, 0.025, 0.04, (s * L * 0.3, H * 0.55 + 0.25, 0), p['red'], bevel=0.004) for s in (-1, 1)] +
-                            [sphere(0.11, (0, H * 0.55, 0), p['iron'], scale=(1.3, 1, 1)), cyl(0.025, 0.2, (0, H * 0.55 + 0.17, 0), 'y', p['steel'], n=12)] +
+    group('pipe', collect(lambda: [cyl(0.06, L, (0, 0.62 * H / 1.04, 0), 'x', p['steel'], n=24)] +
+                          [x for xx in (-L * 0.38, L * 0.38) for x in flange((xx, 0.62 * H / 1.04, 0), 'x', 0.11, 0.065, 0.02, p['iron'], bolts=6) or []]))
+    group('valves', collect(lambda: [cyl(0.1, 0.06, (s * L * 0.3, 0.62 * H / 1.04, 0), 'x', p['iron'], n=24) for s in (-1, 1)] +
+                            [box(0.03, 0.22, 0.03, (s * L * 0.3, 0.62 * H / 1.04 + 0.14, 0), p['steel'], bevel=0) for s in (-1, 1)] +
+                            [box(0.2, 0.025, 0.04, (s * L * 0.3, 0.62 * H / 1.04 + 0.25, 0), p['red'], bevel=0.004) for s in (-1, 1)] +
+                            [sphere(0.11, (0, 0.62 * H / 1.04, 0), p['iron'], scale=(1.3, 1, 1)), cyl(0.025, 0.2, (0, 0.62 * H / 1.04 + 0.17, 0), 'y', p['steel'], n=12)] +
                             [cyl(0.07, 0.18, (-L * 0.15, H * 0.5, 0), 'y', p['iron'], n=20)]))
-    group('actuator', collect(lambda: [box(0.2, 0.22, 0.16, (0, H * 0.55 + 0.37, 0), p['actuator'], bevel=0.015),
-                                       box(0.12, 0.05, 0.004, (0, H * 0.55 + 0.4, 0.082), p['black'], bevel=0)]))
+    group('actuator', collect(lambda: [box(0.2, 0.22, 0.16, (0, 0.62 * H / 1.04 + 0.37, 0), p['actuator'], bevel=0.015),
+                                       box(0.12, 0.05, 0.004, (0, 0.62 * H / 1.04 + 0.4, 0.082), p['black'], bevel=0)]))
 
 
 def panel(L=2.4, W=0.5, H=2.1):

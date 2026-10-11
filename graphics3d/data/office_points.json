@@ -2,6 +2,28 @@
 "alarms": [
 {
 "av": true,
+"c": "Warning",
+"e": [
+"AHU-01"
+],
+"n": "AHU01_VentilationLowAlarm",
+"s": "/AirSide/AHU01/R9/AHU01_VentilationLowAlarm",
+"t": "AHU01: outdoor airflow below 90 % of design minimum for 10 min (ASHRAE 62.1)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"AHU-02"
+],
+"n": "AHU02_VentilationLowAlarm",
+"s": "/AirSide/AHU02/R9/AHU02_VentilationLowAlarm",
+"t": "AHU02: outdoor airflow below 90 % of design minimum for 10 min (ASHRAE 62.1)",
+"x": "perf"
+},
+{
+"av": true,
 "c": "Critical",
 "e": [
 "AHU-F02"
@@ -851,6 +873,17 @@
 "av": true,
 "c": "Warning",
 "e": [
+"CP-01"
+],
+"n": "BLDG_DP_HighAlarm",
+"s": "/AirSide/Roof/Relief/BLDG_DP_HighAlarm",
+"t": "Building static pressure high for 5 min (relief / doors)",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
 "FLOOR-01"
 ],
 "n": "BTU_F01_LowDeltaTAlarm",
@@ -1553,6 +1586,457 @@
 },
 {
 "av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_AHU01_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU01/COIL_AHU01_LowDeltaTAlarm",
+"t": "AHU01: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_AHU02_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU02/COIL_AHU02_LowDeltaTAlarm",
+"t": "AHU02: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_AHU_F02_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F02/COIL_AHU_F02_LowDeltaTAlarm",
+"t": "AHU_F02: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_AHU_F03_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F03/COIL_AHU_F03_LowDeltaTAlarm",
+"t": "AHU_F03: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_AHU_F04_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F04/COIL_AHU_F04_LowDeltaTAlarm",
+"t": "AHU_F04: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_AHU_F05_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F05/COIL_AHU_F05_LowDeltaTAlarm",
+"t": "AHU_F05: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_AHU_F06_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F06/COIL_AHU_F06_LowDeltaTAlarm",
+"t": "AHU_F06: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_AHU_F07_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F07/COIL_AHU_F07_LowDeltaTAlarm",
+"t": "AHU_F07: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_AHU_F08_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F08/COIL_AHU_F08_LowDeltaTAlarm",
+"t": "AHU_F08: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_MAU_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/MAU/COIL_MAU_LowDeltaTAlarm",
+"t": "MAU: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "COIL_OAU01_LowDeltaTAlarm",
+"s": "/ChillerPlant/Metering/Coils/OAU01/COIL_OAU01_LowDeltaTAlarm",
+"t": "OAU01: coil CHW dT low for 30 min (coil fouling / PICV setting / airflow)",
+"x": "perf"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F01_FOOD_SensorFaultAlarm",
+"s": "/AirSide/Floors/F01/Corridor/CS_F01_FOOD_SensorFaultAlarm",
+"t": "Corridor sensor CS-F01-FOOD: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F01_LOBBY_SensorFaultAlarm",
+"s": "/AirSide/Floors/F01/Corridor/CS_F01_LOBBY_SensorFaultAlarm",
+"t": "Corridor sensor CS-F01-LOBBY: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F02_A_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F02/Corridor/CS_F02_A_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F02-A-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F02_B_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F02/Corridor/CS_F02_B_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F02-B-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F02_LIFT_SensorFaultAlarm",
+"s": "/AirSide/Floors/F02/Corridor/CS_F02_LIFT_SensorFaultAlarm",
+"t": "Corridor sensor CS-F02-LIFT: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F02_PUBLIC_SensorFaultAlarm",
+"s": "/AirSide/Floors/F02/Corridor/CS_F02_PUBLIC_SensorFaultAlarm",
+"t": "Corridor sensor CS-F02-PUBLIC: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F03_A_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F03/Corridor/CS_F03_A_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F03-A-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F03_B_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F03/Corridor/CS_F03_B_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F03-B-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F03_LIFT_SensorFaultAlarm",
+"s": "/AirSide/Floors/F03/Corridor/CS_F03_LIFT_SensorFaultAlarm",
+"t": "Corridor sensor CS-F03-LIFT: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F03_PUBLIC_SensorFaultAlarm",
+"s": "/AirSide/Floors/F03/Corridor/CS_F03_PUBLIC_SensorFaultAlarm",
+"t": "Corridor sensor CS-F03-PUBLIC: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F04_A_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F04/Corridor/CS_F04_A_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F04-A-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F04_B_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F04/Corridor/CS_F04_B_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F04-B-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F04_LIFT_SensorFaultAlarm",
+"s": "/AirSide/Floors/F04/Corridor/CS_F04_LIFT_SensorFaultAlarm",
+"t": "Corridor sensor CS-F04-LIFT: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F04_PUBLIC_SensorFaultAlarm",
+"s": "/AirSide/Floors/F04/Corridor/CS_F04_PUBLIC_SensorFaultAlarm",
+"t": "Corridor sensor CS-F04-PUBLIC: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F05_A_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F05/Corridor/CS_F05_A_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F05-A-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F05_B_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F05/Corridor/CS_F05_B_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F05-B-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F05_LIFT_SensorFaultAlarm",
+"s": "/AirSide/Floors/F05/Corridor/CS_F05_LIFT_SensorFaultAlarm",
+"t": "Corridor sensor CS-F05-LIFT: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F05_PUBLIC_SensorFaultAlarm",
+"s": "/AirSide/Floors/F05/Corridor/CS_F05_PUBLIC_SensorFaultAlarm",
+"t": "Corridor sensor CS-F05-PUBLIC: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F06_A_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F06/Corridor/CS_F06_A_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F06-A-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F06_B_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F06/Corridor/CS_F06_B_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F06-B-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F06_LIFT_SensorFaultAlarm",
+"s": "/AirSide/Floors/F06/Corridor/CS_F06_LIFT_SensorFaultAlarm",
+"t": "Corridor sensor CS-F06-LIFT: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F06_PUBLIC_SensorFaultAlarm",
+"s": "/AirSide/Floors/F06/Corridor/CS_F06_PUBLIC_SensorFaultAlarm",
+"t": "Corridor sensor CS-F06-PUBLIC: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F07_A_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F07/Corridor/CS_F07_A_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F07-A-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F07_B_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F07/Corridor/CS_F07_B_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F07-B-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F07_LIFT_SensorFaultAlarm",
+"s": "/AirSide/Floors/F07/Corridor/CS_F07_LIFT_SensorFaultAlarm",
+"t": "Corridor sensor CS-F07-LIFT: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F07_PUBLIC_SensorFaultAlarm",
+"s": "/AirSide/Floors/F07/Corridor/CS_F07_PUBLIC_SensorFaultAlarm",
+"t": "Corridor sensor CS-F07-PUBLIC: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F08_A_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F08/Corridor/CS_F08_A_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F08-A-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F08_B_NORTH_SensorFaultAlarm",
+"s": "/AirSide/Floors/F08/Corridor/CS_F08_B_NORTH_SensorFaultAlarm",
+"t": "Corridor sensor CS-F08-B-NORTH: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F08_LIFT_SensorFaultAlarm",
+"s": "/AirSide/Floors/F08/Corridor/CS_F08_LIFT_SensorFaultAlarm",
+"t": "Corridor sensor CS-F08-LIFT: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "CS_F08_PUBLIC_SensorFaultAlarm",
+"s": "/AirSide/Floors/F08/Corridor/CS_F08_PUBLIC_SensorFaultAlarm",
+"t": "Corridor sensor CS-F08-PUBLIC: temperature outside the sensor range",
+"x": "sensor"
+},
+{
+"av": true,
 "c": "Critical",
 "e": [
 "CT-03/1",
@@ -1745,6 +2229,644 @@
 },
 {
 "av": true,
+"c": "Critical",
+"e": [
+"FLOOR-02"
+],
+"n": "EPMS_F02_A_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_MeterResetAlarm",
+"t": "F02-A: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-02"
+],
+"n": "EPMS_F02_B_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_MeterResetAlarm",
+"t": "F02-B: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-03"
+],
+"n": "EPMS_F03_A_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_MeterResetAlarm",
+"t": "F03-A: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-03"
+],
+"n": "EPMS_F03_B_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_MeterResetAlarm",
+"t": "F03-B: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-04"
+],
+"n": "EPMS_F04_A_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_MeterResetAlarm",
+"t": "F04-A: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-04"
+],
+"n": "EPMS_F04_B_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_MeterResetAlarm",
+"t": "F04-B: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-05"
+],
+"n": "EPMS_F05_A_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_MeterResetAlarm",
+"t": "F05-A: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-05"
+],
+"n": "EPMS_F05_B_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_MeterResetAlarm",
+"t": "F05-B: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-06"
+],
+"n": "EPMS_F06_A_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_MeterResetAlarm",
+"t": "F06-A: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-06"
+],
+"n": "EPMS_F06_B_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_MeterResetAlarm",
+"t": "F06-B: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-07"
+],
+"n": "EPMS_F07_A_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_MeterResetAlarm",
+"t": "F07-A: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-07"
+],
+"n": "EPMS_F07_B_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_MeterResetAlarm",
+"t": "F07-B: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-08"
+],
+"n": "EPMS_F08_A_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_MeterResetAlarm",
+"t": "F08-A: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"FLOOR-08"
+],
+"n": "EPMS_F08_B_MeterResetAlarm",
+"s": "/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_MeterResetAlarm",
+"t": "F08-B: energy register below the period start - meter reset / rollover, billing hold",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"CP-01"
+],
+"n": "Hood_SuppressionAlarm",
+"s": "/AirSide/Roof/Kitchen/Hood_SuppressionAlarm",
+"t": "Food court hood suppression released - MAU stopped, gas shut off",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU01_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU01/ISO_AHU01_CHR_FailAlarm",
+"t": "MBFV-AHU-01-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU01_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU01/ISO_AHU01_CHS_FailAlarm",
+"t": "MBFV-AHU-01-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU02_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU02/ISO_AHU02_CHR_FailAlarm",
+"t": "MBFV-AHU-02-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU02_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU02/ISO_AHU02_CHS_FailAlarm",
+"t": "MBFV-AHU-02-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F02_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F02/ISO_AHU_F02_CHR_FailAlarm",
+"t": "MBFV-AHU-F02-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F02_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F02/ISO_AHU_F02_CHS_FailAlarm",
+"t": "MBFV-AHU-F02-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F03_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F03/ISO_AHU_F03_CHR_FailAlarm",
+"t": "MBFV-AHU-F03-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F03_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F03/ISO_AHU_F03_CHS_FailAlarm",
+"t": "MBFV-AHU-F03-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F04_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F04/ISO_AHU_F04_CHR_FailAlarm",
+"t": "MBFV-AHU-F04-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F04_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F04/ISO_AHU_F04_CHS_FailAlarm",
+"t": "MBFV-AHU-F04-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F05_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F05/ISO_AHU_F05_CHR_FailAlarm",
+"t": "MBFV-AHU-F05-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F05_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F05/ISO_AHU_F05_CHS_FailAlarm",
+"t": "MBFV-AHU-F05-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F06_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F06/ISO_AHU_F06_CHR_FailAlarm",
+"t": "MBFV-AHU-F06-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F06_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F06/ISO_AHU_F06_CHS_FailAlarm",
+"t": "MBFV-AHU-F06-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F07_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F07/ISO_AHU_F07_CHR_FailAlarm",
+"t": "MBFV-AHU-F07-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F07_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F07/ISO_AHU_F07_CHS_FailAlarm",
+"t": "MBFV-AHU-F07-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F08_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F08/ISO_AHU_F08_CHR_FailAlarm",
+"t": "MBFV-AHU-F08-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_AHU_F08_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/AHU_F08/ISO_AHU_F08_CHS_FailAlarm",
+"t": "MBFV-AHU-F08-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F01_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F01/ISO_F01_CHR_FailAlarm",
+"t": "MBFV-R-F01: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F01_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F01/ISO_F01_CHS_FailAlarm",
+"t": "MBFV-S-F01: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F02_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F02/ISO_F02_CHR_FailAlarm",
+"t": "MBFV-R-F02: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F02_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F02/ISO_F02_CHS_FailAlarm",
+"t": "MBFV-S-F02: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F03_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F03/ISO_F03_CHR_FailAlarm",
+"t": "MBFV-R-F03: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F03_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F03/ISO_F03_CHS_FailAlarm",
+"t": "MBFV-S-F03: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F04_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F04/ISO_F04_CHR_FailAlarm",
+"t": "MBFV-R-F04: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F04_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F04/ISO_F04_CHS_FailAlarm",
+"t": "MBFV-S-F04: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F05_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F05/ISO_F05_CHR_FailAlarm",
+"t": "MBFV-R-F05: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F05_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F05/ISO_F05_CHS_FailAlarm",
+"t": "MBFV-S-F05: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F06_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F06/ISO_F06_CHR_FailAlarm",
+"t": "MBFV-R-F06: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F06_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F06/ISO_F06_CHS_FailAlarm",
+"t": "MBFV-S-F06: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F07_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F07/ISO_F07_CHR_FailAlarm",
+"t": "MBFV-R-F07: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F07_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F07/ISO_F07_CHS_FailAlarm",
+"t": "MBFV-S-F07: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F08_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F08/ISO_F08_CHR_FailAlarm",
+"t": "MBFV-R-F08: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_F08_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Floors/F08/ISO_F08_CHS_FailAlarm",
+"t": "MBFV-S-F08: floor isolation valve not open",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_MAU_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/MAU/ISO_MAU_CHR_FailAlarm",
+"t": "MBFV-MAU-DESIGN-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_MAU_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/MAU/ISO_MAU_CHS_FailAlarm",
+"t": "MBFV-MAU-DESIGN-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_OAU01_CHR_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/OAU01/ISO_OAU01_CHR_FailAlarm",
+"t": "MBFV-OAU-01-CHR: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"CP-01"
+],
+"n": "ISO_OAU01_CHS_FailAlarm",
+"s": "/ChillerPlant/Metering/Coils/OAU01/ISO_OAU01_CHS_FailAlarm",
+"t": "MBFV-OAU-01-CHS: commanded open, end switch not made",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"KEF-DESIGN"
+],
+"n": "KEF_FailAlarm",
+"s": "/AirSide/Roof/Kitchen/KEF_FailAlarm",
+"t": "KEF: commanded on, no run proof",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"MAU-DESIGN"
+],
+"n": "MAU_FailAlarm",
+"s": "/AirSide/Roof/Kitchen/MAU_FailAlarm",
+"t": "MAU: commanded on, no run proof",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Warning",
+"e": [
+"MAU-DESIGN"
+],
+"n": "MAU_SatHighAlarm",
+"s": "/AirSide/Roof/Kitchen/MAU_SatHighAlarm",
+"t": "MAU: leaving-air temperature high for 15 min (coil / PICV / CHW)",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"CP-01"
+],
+"n": "PAF_FailAlarm",
+"s": "/ChillerPlant/Alarms/PlantRoom/Ventilation/PAF_FailAlarm",
+"t": "PAF: commanded on, no run proof",
+"x": "airside"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"CP-01"
+],
+"n": "PEF_FailAlarm",
+"s": "/ChillerPlant/Alarms/PlantRoom/Ventilation/PEF_FailAlarm",
+"t": "PEF: commanded on, no run proof",
+"x": "airside"
+},
+{
+"av": true,
 "c": "Warning",
 "e": [
 "FLOOR-02"
@@ -1830,6 +2952,17 @@
 "s": "/ChillerPlant/Alarms/PlantRoom/PlantRoom_FloodAlarm",
 "t": "B1 plant room flooding - check sump pumps, isolate electrical equipment",
 "x": "overflow"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"RF-RELIEF"
+],
+"n": "RF_FailAlarm",
+"s": "/AirSide/Roof/Relief/RF_FailAlarm",
+"t": "RF: commanded on, no run proof",
+"x": "airside"
 },
 {
 "av": true,
@@ -4228,6 +5361,17 @@
 "s": "/ChillerPlant/Expansion/Sensors/SNS06/SNS06_SensorFaultAlarm",
 "t": "SNS06 KW-AUX Auxiliary board power: value outside the sensor range (open / short / not wired)",
 "x": "sensor"
+},
+{
+"av": true,
+"c": "Critical",
+"e": [
+"TEF-DESIGN"
+],
+"n": "TEF_FailAlarm",
+"s": "/AirSide/Roof/TEF/TEF_FailAlarm",
+"t": "TEF: commanded on, no run proof",
+"x": "airside"
 },
 {
 "av": true,
@@ -13978,6 +15122,18 @@
 ],
 "note": "generated by tools/office_points.py - do not edit",
 "points": {
+"AHU01_MAT": "/AirSide/AHU01/R9/AHU01_MAT",
+"AHU01_OAFlow": "/AirSide/AHU01/R9/AHU01_OAFlow",
+"AHU01_RADamperCmd": "/AirSide/AHU01/R9/AHU01_RADamperCmd",
+"AHU01_RADmpFb": "/AirSide/AHU01/R9/AHU01_RADmpFb",
+"AHU01_RelDamperCmd": "/AirSide/AHU01/R9/AHU01_RelDamperCmd",
+"AHU01_RelDmpFb": "/AirSide/AHU01/R9/AHU01_RelDmpFb",
+"AHU02_MAT": "/AirSide/AHU02/R9/AHU02_MAT",
+"AHU02_OAFlow": "/AirSide/AHU02/R9/AHU02_OAFlow",
+"AHU02_RADamperCmd": "/AirSide/AHU02/R9/AHU02_RADamperCmd",
+"AHU02_RADmpFb": "/AirSide/AHU02/R9/AHU02_RADmpFb",
+"AHU02_RelDamperCmd": "/AirSide/AHU02/R9/AHU02_RelDamperCmd",
+"AHU02_RelDmpFb": "/AirSide/AHU02/R9/AHU02_RelDmpFb",
 "AHU_F02_CoolingRequests": "/AirSide/Floors/F02/AHU_F02_CoolingRequests",
 "AHU_F02_DuctSP": "/AirSide/Floors/F02/AHU_F02_DuctSP",
 "AHU_F02_DuctSP_SP": "/AirSide/Floors/F02/AHU_F02_DuctSP_SP",
@@ -14153,6 +15309,7 @@
 "AHU_F08_StartCmd": "/AirSide/Floors/F08/AHU_F08_StartCmd",
 "AHU_F08_Status": "/AirSide/Floors/F08/AHU_F08_Status",
 "AHU_F08_ValveCmd": "/AirSide/Floors/F08/AHU_F08_ValveCmd",
+"BLDG_DP": "/AirSide/Roof/Relief/BLDG_DP",
 "BTU_F01_DeltaT": "/ChillerPlant/Metering/Floors/F01/BTU_F01_DeltaT",
 "BTU_F01_kW": "/ChillerPlant/Metering/Floors/F01/BTU_F01_kW",
 "BTU_F02_DeltaT": "/ChillerPlant/Metering/Floors/F02/BTU_F02_DeltaT",
@@ -14169,6 +15326,261 @@
 "BTU_F07_kW": "/ChillerPlant/Metering/Floors/F07/BTU_F07_kW",
 "BTU_F08_DeltaT": "/ChillerPlant/Metering/Floors/F08/BTU_F08_DeltaT",
 "BTU_F08_kW": "/ChillerPlant/Metering/Floors/F08/BTU_F08_kW",
+"CH03_CondDP": "/ChillerPlant/Expansion/CH03/CH03_CondDP",
+"CH03_EvapDP": "/ChillerPlant/Expansion/CH03/CH03_EvapDP",
+"CH04_CondDP": "/ChillerPlant/Expansion/CH04/CH04_CondDP",
+"CH04_EvapDP": "/ChillerPlant/Expansion/CH04/CH04_EvapDP",
+"CH05_CondDP": "/ChillerPlant/Expansion/CH05/CH05_CondDP",
+"CH05_EvapDP": "/ChillerPlant/Expansion/CH05/CH05_EvapDP",
+"CH06_CondDP": "/ChillerPlant/Expansion/CH06/CH06_CondDP",
+"CH06_EvapDP": "/ChillerPlant/Expansion/CH06/CH06_EvapDP",
+"COIL_AHU01_CHR_T": "/ChillerPlant/Metering/Coils/AHU01/COIL_AHU01_CHR_T",
+"COIL_AHU01_CHS_T": "/ChillerPlant/Metering/Coils/AHU01/COIL_AHU01_CHS_T",
+"COIL_AHU01_DP": "/ChillerPlant/Metering/Coils/AHU01/COIL_AHU01_DP",
+"COIL_AHU01_DeltaT": "/ChillerPlant/Metering/Coils/AHU01/COIL_AHU01_DeltaT",
+"COIL_AHU02_CHR_T": "/ChillerPlant/Metering/Coils/AHU02/COIL_AHU02_CHR_T",
+"COIL_AHU02_CHS_T": "/ChillerPlant/Metering/Coils/AHU02/COIL_AHU02_CHS_T",
+"COIL_AHU02_DP": "/ChillerPlant/Metering/Coils/AHU02/COIL_AHU02_DP",
+"COIL_AHU02_DeltaT": "/ChillerPlant/Metering/Coils/AHU02/COIL_AHU02_DeltaT",
+"COIL_AHU_F02_CHR_T": "/ChillerPlant/Metering/Coils/AHU_F02/COIL_AHU_F02_CHR_T",
+"COIL_AHU_F02_CHS_T": "/ChillerPlant/Metering/Coils/AHU_F02/COIL_AHU_F02_CHS_T",
+"COIL_AHU_F02_DP": "/ChillerPlant/Metering/Coils/AHU_F02/COIL_AHU_F02_DP",
+"COIL_AHU_F02_DeltaT": "/ChillerPlant/Metering/Coils/AHU_F02/COIL_AHU_F02_DeltaT",
+"COIL_AHU_F03_CHR_T": "/ChillerPlant/Metering/Coils/AHU_F03/COIL_AHU_F03_CHR_T",
+"COIL_AHU_F03_CHS_T": "/ChillerPlant/Metering/Coils/AHU_F03/COIL_AHU_F03_CHS_T",
+"COIL_AHU_F03_DP": "/ChillerPlant/Metering/Coils/AHU_F03/COIL_AHU_F03_DP",
+"COIL_AHU_F03_DeltaT": "/ChillerPlant/Metering/Coils/AHU_F03/COIL_AHU_F03_DeltaT",
+"COIL_AHU_F04_CHR_T": "/ChillerPlant/Metering/Coils/AHU_F04/COIL_AHU_F04_CHR_T",
+"COIL_AHU_F04_CHS_T": "/ChillerPlant/Metering/Coils/AHU_F04/COIL_AHU_F04_CHS_T",
+"COIL_AHU_F04_DP": "/ChillerPlant/Metering/Coils/AHU_F04/COIL_AHU_F04_DP",
+"COIL_AHU_F04_DeltaT": "/ChillerPlant/Metering/Coils/AHU_F04/COIL_AHU_F04_DeltaT",
+"COIL_AHU_F05_CHR_T": "/ChillerPlant/Metering/Coils/AHU_F05/COIL_AHU_F05_CHR_T",
+"COIL_AHU_F05_CHS_T": "/ChillerPlant/Metering/Coils/AHU_F05/COIL_AHU_F05_CHS_T",
+"COIL_AHU_F05_DP": "/ChillerPlant/Metering/Coils/AHU_F05/COIL_AHU_F05_DP",
+"COIL_AHU_F05_DeltaT": "/ChillerPlant/Metering/Coils/AHU_F05/COIL_AHU_F05_DeltaT",
+"COIL_AHU_F06_CHR_T": "/ChillerPlant/Metering/Coils/AHU_F06/COIL_AHU_F06_CHR_T",
+"COIL_AHU_F06_CHS_T": "/ChillerPlant/Metering/Coils/AHU_F06/COIL_AHU_F06_CHS_T",
+"COIL_AHU_F06_DP": "/ChillerPlant/Metering/Coils/AHU_F06/COIL_AHU_F06_DP",
+"COIL_AHU_F06_DeltaT": "/ChillerPlant/Metering/Coils/AHU_F06/COIL_AHU_F06_DeltaT",
+"COIL_AHU_F07_CHR_T": "/ChillerPlant/Metering/Coils/AHU_F07/COIL_AHU_F07_CHR_T",
+"COIL_AHU_F07_CHS_T": "/ChillerPlant/Metering/Coils/AHU_F07/COIL_AHU_F07_CHS_T",
+"COIL_AHU_F07_DP": "/ChillerPlant/Metering/Coils/AHU_F07/COIL_AHU_F07_DP",
+"COIL_AHU_F07_DeltaT": "/ChillerPlant/Metering/Coils/AHU_F07/COIL_AHU_F07_DeltaT",
+"COIL_AHU_F08_CHR_T": "/ChillerPlant/Metering/Coils/AHU_F08/COIL_AHU_F08_CHR_T",
+"COIL_AHU_F08_CHS_T": "/ChillerPlant/Metering/Coils/AHU_F08/COIL_AHU_F08_CHS_T",
+"COIL_AHU_F08_DP": "/ChillerPlant/Metering/Coils/AHU_F08/COIL_AHU_F08_DP",
+"COIL_AHU_F08_DeltaT": "/ChillerPlant/Metering/Coils/AHU_F08/COIL_AHU_F08_DeltaT",
+"COIL_MAU_CHR_T": "/ChillerPlant/Metering/Coils/MAU/COIL_MAU_CHR_T",
+"COIL_MAU_CHS_T": "/ChillerPlant/Metering/Coils/MAU/COIL_MAU_CHS_T",
+"COIL_MAU_DP": "/ChillerPlant/Metering/Coils/MAU/COIL_MAU_DP",
+"COIL_MAU_DeltaT": "/ChillerPlant/Metering/Coils/MAU/COIL_MAU_DeltaT",
+"COIL_OAU01_CHR_T": "/ChillerPlant/Metering/Coils/OAU01/COIL_OAU01_CHR_T",
+"COIL_OAU01_CHS_T": "/ChillerPlant/Metering/Coils/OAU01/COIL_OAU01_CHS_T",
+"COIL_OAU01_DP": "/ChillerPlant/Metering/Coils/OAU01/COIL_OAU01_DP",
+"COIL_OAU01_DeltaT": "/ChillerPlant/Metering/Coils/OAU01/COIL_OAU01_DeltaT",
+"CS_F01_FOOD_CO2": "/AirSide/Floors/F01/Corridor/CS_F01_FOOD_CO2",
+"CS_F01_FOOD_RH": "/AirSide/Floors/F01/Corridor/CS_F01_FOOD_RH",
+"CS_F01_FOOD_T": "/AirSide/Floors/F01/Corridor/CS_F01_FOOD_T",
+"CS_F01_LOBBY_CO2": "/AirSide/Floors/F01/Corridor/CS_F01_LOBBY_CO2",
+"CS_F01_LOBBY_RH": "/AirSide/Floors/F01/Corridor/CS_F01_LOBBY_RH",
+"CS_F01_LOBBY_T": "/AirSide/Floors/F01/Corridor/CS_F01_LOBBY_T",
+"CS_F02_A_NORTH_CO2": "/AirSide/Floors/F02/Corridor/CS_F02_A_NORTH_CO2",
+"CS_F02_A_NORTH_RH": "/AirSide/Floors/F02/Corridor/CS_F02_A_NORTH_RH",
+"CS_F02_A_NORTH_T": "/AirSide/Floors/F02/Corridor/CS_F02_A_NORTH_T",
+"CS_F02_B_NORTH_CO2": "/AirSide/Floors/F02/Corridor/CS_F02_B_NORTH_CO2",
+"CS_F02_B_NORTH_RH": "/AirSide/Floors/F02/Corridor/CS_F02_B_NORTH_RH",
+"CS_F02_B_NORTH_T": "/AirSide/Floors/F02/Corridor/CS_F02_B_NORTH_T",
+"CS_F02_LIFT_CO2": "/AirSide/Floors/F02/Corridor/CS_F02_LIFT_CO2",
+"CS_F02_LIFT_RH": "/AirSide/Floors/F02/Corridor/CS_F02_LIFT_RH",
+"CS_F02_LIFT_T": "/AirSide/Floors/F02/Corridor/CS_F02_LIFT_T",
+"CS_F02_PUBLIC_CO2": "/AirSide/Floors/F02/Corridor/CS_F02_PUBLIC_CO2",
+"CS_F02_PUBLIC_RH": "/AirSide/Floors/F02/Corridor/CS_F02_PUBLIC_RH",
+"CS_F02_PUBLIC_T": "/AirSide/Floors/F02/Corridor/CS_F02_PUBLIC_T",
+"CS_F03_A_NORTH_CO2": "/AirSide/Floors/F03/Corridor/CS_F03_A_NORTH_CO2",
+"CS_F03_A_NORTH_RH": "/AirSide/Floors/F03/Corridor/CS_F03_A_NORTH_RH",
+"CS_F03_A_NORTH_T": "/AirSide/Floors/F03/Corridor/CS_F03_A_NORTH_T",
+"CS_F03_B_NORTH_CO2": "/AirSide/Floors/F03/Corridor/CS_F03_B_NORTH_CO2",
+"CS_F03_B_NORTH_RH": "/AirSide/Floors/F03/Corridor/CS_F03_B_NORTH_RH",
+"CS_F03_B_NORTH_T": "/AirSide/Floors/F03/Corridor/CS_F03_B_NORTH_T",
+"CS_F03_LIFT_CO2": "/AirSide/Floors/F03/Corridor/CS_F03_LIFT_CO2",
+"CS_F03_LIFT_RH": "/AirSide/Floors/F03/Corridor/CS_F03_LIFT_RH",
+"CS_F03_LIFT_T": "/AirSide/Floors/F03/Corridor/CS_F03_LIFT_T",
+"CS_F03_PUBLIC_CO2": "/AirSide/Floors/F03/Corridor/CS_F03_PUBLIC_CO2",
+"CS_F03_PUBLIC_RH": "/AirSide/Floors/F03/Corridor/CS_F03_PUBLIC_RH",
+"CS_F03_PUBLIC_T": "/AirSide/Floors/F03/Corridor/CS_F03_PUBLIC_T",
+"CS_F04_A_NORTH_CO2": "/AirSide/Floors/F04/Corridor/CS_F04_A_NORTH_CO2",
+"CS_F04_A_NORTH_RH": "/AirSide/Floors/F04/Corridor/CS_F04_A_NORTH_RH",
+"CS_F04_A_NORTH_T": "/AirSide/Floors/F04/Corridor/CS_F04_A_NORTH_T",
+"CS_F04_B_NORTH_CO2": "/AirSide/Floors/F04/Corridor/CS_F04_B_NORTH_CO2",
+"CS_F04_B_NORTH_RH": "/AirSide/Floors/F04/Corridor/CS_F04_B_NORTH_RH",
+"CS_F04_B_NORTH_T": "/AirSide/Floors/F04/Corridor/CS_F04_B_NORTH_T",
+"CS_F04_LIFT_CO2": "/AirSide/Floors/F04/Corridor/CS_F04_LIFT_CO2",
+"CS_F04_LIFT_RH": "/AirSide/Floors/F04/Corridor/CS_F04_LIFT_RH",
+"CS_F04_LIFT_T": "/AirSide/Floors/F04/Corridor/CS_F04_LIFT_T",
+"CS_F04_PUBLIC_CO2": "/AirSide/Floors/F04/Corridor/CS_F04_PUBLIC_CO2",
+"CS_F04_PUBLIC_RH": "/AirSide/Floors/F04/Corridor/CS_F04_PUBLIC_RH",
+"CS_F04_PUBLIC_T": "/AirSide/Floors/F04/Corridor/CS_F04_PUBLIC_T",
+"CS_F05_A_NORTH_CO2": "/AirSide/Floors/F05/Corridor/CS_F05_A_NORTH_CO2",
+"CS_F05_A_NORTH_RH": "/AirSide/Floors/F05/Corridor/CS_F05_A_NORTH_RH",
+"CS_F05_A_NORTH_T": "/AirSide/Floors/F05/Corridor/CS_F05_A_NORTH_T",
+"CS_F05_B_NORTH_CO2": "/AirSide/Floors/F05/Corridor/CS_F05_B_NORTH_CO2",
+"CS_F05_B_NORTH_RH": "/AirSide/Floors/F05/Corridor/CS_F05_B_NORTH_RH",
+"CS_F05_B_NORTH_T": "/AirSide/Floors/F05/Corridor/CS_F05_B_NORTH_T",
+"CS_F05_LIFT_CO2": "/AirSide/Floors/F05/Corridor/CS_F05_LIFT_CO2",
+"CS_F05_LIFT_RH": "/AirSide/Floors/F05/Corridor/CS_F05_LIFT_RH",
+"CS_F05_LIFT_T": "/AirSide/Floors/F05/Corridor/CS_F05_LIFT_T",
+"CS_F05_PUBLIC_CO2": "/AirSide/Floors/F05/Corridor/CS_F05_PUBLIC_CO2",
+"CS_F05_PUBLIC_RH": "/AirSide/Floors/F05/Corridor/CS_F05_PUBLIC_RH",
+"CS_F05_PUBLIC_T": "/AirSide/Floors/F05/Corridor/CS_F05_PUBLIC_T",
+"CS_F06_A_NORTH_CO2": "/AirSide/Floors/F06/Corridor/CS_F06_A_NORTH_CO2",
+"CS_F06_A_NORTH_RH": "/AirSide/Floors/F06/Corridor/CS_F06_A_NORTH_RH",
+"CS_F06_A_NORTH_T": "/AirSide/Floors/F06/Corridor/CS_F06_A_NORTH_T",
+"CS_F06_B_NORTH_CO2": "/AirSide/Floors/F06/Corridor/CS_F06_B_NORTH_CO2",
+"CS_F06_B_NORTH_RH": "/AirSide/Floors/F06/Corridor/CS_F06_B_NORTH_RH",
+"CS_F06_B_NORTH_T": "/AirSide/Floors/F06/Corridor/CS_F06_B_NORTH_T",
+"CS_F06_LIFT_CO2": "/AirSide/Floors/F06/Corridor/CS_F06_LIFT_CO2",
+"CS_F06_LIFT_RH": "/AirSide/Floors/F06/Corridor/CS_F06_LIFT_RH",
+"CS_F06_LIFT_T": "/AirSide/Floors/F06/Corridor/CS_F06_LIFT_T",
+"CS_F06_PUBLIC_CO2": "/AirSide/Floors/F06/Corridor/CS_F06_PUBLIC_CO2",
+"CS_F06_PUBLIC_RH": "/AirSide/Floors/F06/Corridor/CS_F06_PUBLIC_RH",
+"CS_F06_PUBLIC_T": "/AirSide/Floors/F06/Corridor/CS_F06_PUBLIC_T",
+"CS_F07_A_NORTH_CO2": "/AirSide/Floors/F07/Corridor/CS_F07_A_NORTH_CO2",
+"CS_F07_A_NORTH_RH": "/AirSide/Floors/F07/Corridor/CS_F07_A_NORTH_RH",
+"CS_F07_A_NORTH_T": "/AirSide/Floors/F07/Corridor/CS_F07_A_NORTH_T",
+"CS_F07_B_NORTH_CO2": "/AirSide/Floors/F07/Corridor/CS_F07_B_NORTH_CO2",
+"CS_F07_B_NORTH_RH": "/AirSide/Floors/F07/Corridor/CS_F07_B_NORTH_RH",
+"CS_F07_B_NORTH_T": "/AirSide/Floors/F07/Corridor/CS_F07_B_NORTH_T",
+"CS_F07_LIFT_CO2": "/AirSide/Floors/F07/Corridor/CS_F07_LIFT_CO2",
+"CS_F07_LIFT_RH": "/AirSide/Floors/F07/Corridor/CS_F07_LIFT_RH",
+"CS_F07_LIFT_T": "/AirSide/Floors/F07/Corridor/CS_F07_LIFT_T",
+"CS_F07_PUBLIC_CO2": "/AirSide/Floors/F07/Corridor/CS_F07_PUBLIC_CO2",
+"CS_F07_PUBLIC_RH": "/AirSide/Floors/F07/Corridor/CS_F07_PUBLIC_RH",
+"CS_F07_PUBLIC_T": "/AirSide/Floors/F07/Corridor/CS_F07_PUBLIC_T",
+"CS_F08_A_NORTH_CO2": "/AirSide/Floors/F08/Corridor/CS_F08_A_NORTH_CO2",
+"CS_F08_A_NORTH_RH": "/AirSide/Floors/F08/Corridor/CS_F08_A_NORTH_RH",
+"CS_F08_A_NORTH_T": "/AirSide/Floors/F08/Corridor/CS_F08_A_NORTH_T",
+"CS_F08_B_NORTH_CO2": "/AirSide/Floors/F08/Corridor/CS_F08_B_NORTH_CO2",
+"CS_F08_B_NORTH_RH": "/AirSide/Floors/F08/Corridor/CS_F08_B_NORTH_RH",
+"CS_F08_B_NORTH_T": "/AirSide/Floors/F08/Corridor/CS_F08_B_NORTH_T",
+"CS_F08_LIFT_CO2": "/AirSide/Floors/F08/Corridor/CS_F08_LIFT_CO2",
+"CS_F08_LIFT_RH": "/AirSide/Floors/F08/Corridor/CS_F08_LIFT_RH",
+"CS_F08_LIFT_T": "/AirSide/Floors/F08/Corridor/CS_F08_LIFT_T",
+"CS_F08_PUBLIC_CO2": "/AirSide/Floors/F08/Corridor/CS_F08_PUBLIC_CO2",
+"CS_F08_PUBLIC_RH": "/AirSide/Floors/F08/Corridor/CS_F08_PUBLIC_RH",
+"CS_F08_PUBLIC_T": "/AirSide/Floors/F08/Corridor/CS_F08_PUBLIC_T",
+"EPMS_F02_A_AirShare": "/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_AirShare",
+"EPMS_F02_A_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_PeriodStart_kWh",
+"EPMS_F02_A_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_PeriodThermal_kWh",
+"EPMS_F02_A_Period_kWh": "/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_Period_kWh",
+"EPMS_F02_A_QualityOK": "/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_QualityOK",
+"EPMS_F02_A_ThermalBillable": "/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_ThermalBillable",
+"EPMS_F02_A_Thermal_kW": "/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_Thermal_kW",
+"EPMS_F02_A_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_Thermal_kWh",
+"EPMS_F02_B_AirShare": "/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_AirShare",
+"EPMS_F02_B_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_PeriodStart_kWh",
+"EPMS_F02_B_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_PeriodThermal_kWh",
+"EPMS_F02_B_Period_kWh": "/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_Period_kWh",
+"EPMS_F02_B_QualityOK": "/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_QualityOK",
+"EPMS_F02_B_ThermalBillable": "/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_ThermalBillable",
+"EPMS_F02_B_Thermal_kW": "/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_Thermal_kW",
+"EPMS_F02_B_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_Thermal_kWh",
+"EPMS_F03_A_AirShare": "/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_AirShare",
+"EPMS_F03_A_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_PeriodStart_kWh",
+"EPMS_F03_A_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_PeriodThermal_kWh",
+"EPMS_F03_A_Period_kWh": "/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_Period_kWh",
+"EPMS_F03_A_QualityOK": "/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_QualityOK",
+"EPMS_F03_A_ThermalBillable": "/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_ThermalBillable",
+"EPMS_F03_A_Thermal_kW": "/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_Thermal_kW",
+"EPMS_F03_A_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_Thermal_kWh",
+"EPMS_F03_B_AirShare": "/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_AirShare",
+"EPMS_F03_B_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_PeriodStart_kWh",
+"EPMS_F03_B_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_PeriodThermal_kWh",
+"EPMS_F03_B_Period_kWh": "/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_Period_kWh",
+"EPMS_F03_B_QualityOK": "/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_QualityOK",
+"EPMS_F03_B_ThermalBillable": "/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_ThermalBillable",
+"EPMS_F03_B_Thermal_kW": "/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_Thermal_kW",
+"EPMS_F03_B_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_Thermal_kWh",
+"EPMS_F04_A_AirShare": "/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_AirShare",
+"EPMS_F04_A_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_PeriodStart_kWh",
+"EPMS_F04_A_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_PeriodThermal_kWh",
+"EPMS_F04_A_Period_kWh": "/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_Period_kWh",
+"EPMS_F04_A_QualityOK": "/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_QualityOK",
+"EPMS_F04_A_ThermalBillable": "/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_ThermalBillable",
+"EPMS_F04_A_Thermal_kW": "/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_Thermal_kW",
+"EPMS_F04_A_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_Thermal_kWh",
+"EPMS_F04_B_AirShare": "/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_AirShare",
+"EPMS_F04_B_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_PeriodStart_kWh",
+"EPMS_F04_B_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_PeriodThermal_kWh",
+"EPMS_F04_B_Period_kWh": "/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_Period_kWh",
+"EPMS_F04_B_QualityOK": "/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_QualityOK",
+"EPMS_F04_B_ThermalBillable": "/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_ThermalBillable",
+"EPMS_F04_B_Thermal_kW": "/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_Thermal_kW",
+"EPMS_F04_B_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_Thermal_kWh",
+"EPMS_F05_A_AirShare": "/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_AirShare",
+"EPMS_F05_A_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_PeriodStart_kWh",
+"EPMS_F05_A_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_PeriodThermal_kWh",
+"EPMS_F05_A_Period_kWh": "/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_Period_kWh",
+"EPMS_F05_A_QualityOK": "/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_QualityOK",
+"EPMS_F05_A_ThermalBillable": "/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_ThermalBillable",
+"EPMS_F05_A_Thermal_kW": "/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_Thermal_kW",
+"EPMS_F05_A_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_Thermal_kWh",
+"EPMS_F05_B_AirShare": "/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_AirShare",
+"EPMS_F05_B_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_PeriodStart_kWh",
+"EPMS_F05_B_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_PeriodThermal_kWh",
+"EPMS_F05_B_Period_kWh": "/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_Period_kWh",
+"EPMS_F05_B_QualityOK": "/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_QualityOK",
+"EPMS_F05_B_ThermalBillable": "/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_ThermalBillable",
+"EPMS_F05_B_Thermal_kW": "/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_Thermal_kW",
+"EPMS_F05_B_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_Thermal_kWh",
+"EPMS_F06_A_AirShare": "/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_AirShare",
+"EPMS_F06_A_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_PeriodStart_kWh",
+"EPMS_F06_A_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_PeriodThermal_kWh",
+"EPMS_F06_A_Period_kWh": "/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_Period_kWh",
+"EPMS_F06_A_QualityOK": "/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_QualityOK",
+"EPMS_F06_A_ThermalBillable": "/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_ThermalBillable",
+"EPMS_F06_A_Thermal_kW": "/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_Thermal_kW",
+"EPMS_F06_A_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_Thermal_kWh",
+"EPMS_F06_B_AirShare": "/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_AirShare",
+"EPMS_F06_B_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_PeriodStart_kWh",
+"EPMS_F06_B_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_PeriodThermal_kWh",
+"EPMS_F06_B_Period_kWh": "/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_Period_kWh",
+"EPMS_F06_B_QualityOK": "/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_QualityOK",
+"EPMS_F06_B_ThermalBillable": "/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_ThermalBillable",
+"EPMS_F06_B_Thermal_kW": "/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_Thermal_kW",
+"EPMS_F06_B_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_Thermal_kWh",
+"EPMS_F07_A_AirShare": "/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_AirShare",
+"EPMS_F07_A_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_PeriodStart_kWh",
+"EPMS_F07_A_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_PeriodThermal_kWh",
+"EPMS_F07_A_Period_kWh": "/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_Period_kWh",
+"EPMS_F07_A_QualityOK": "/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_QualityOK",
+"EPMS_F07_A_ThermalBillable": "/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_ThermalBillable",
+"EPMS_F07_A_Thermal_kW": "/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_Thermal_kW",
+"EPMS_F07_A_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_Thermal_kWh",
+"EPMS_F07_B_AirShare": "/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_AirShare",
+"EPMS_F07_B_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_PeriodStart_kWh",
+"EPMS_F07_B_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_PeriodThermal_kWh",
+"EPMS_F07_B_Period_kWh": "/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_Period_kWh",
+"EPMS_F07_B_QualityOK": "/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_QualityOK",
+"EPMS_F07_B_ThermalBillable": "/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_ThermalBillable",
+"EPMS_F07_B_Thermal_kW": "/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_Thermal_kW",
+"EPMS_F07_B_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_Thermal_kWh",
+"EPMS_F08_A_AirShare": "/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_AirShare",
+"EPMS_F08_A_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_PeriodStart_kWh",
+"EPMS_F08_A_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_PeriodThermal_kWh",
+"EPMS_F08_A_Period_kWh": "/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_Period_kWh",
+"EPMS_F08_A_QualityOK": "/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_QualityOK",
+"EPMS_F08_A_ThermalBillable": "/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_ThermalBillable",
+"EPMS_F08_A_Thermal_kW": "/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_Thermal_kW",
+"EPMS_F08_A_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_Thermal_kWh",
+"EPMS_F08_B_AirShare": "/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_AirShare",
+"EPMS_F08_B_PeriodStart_kWh": "/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_PeriodStart_kWh",
+"EPMS_F08_B_PeriodThermal_kWh": "/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_PeriodThermal_kWh",
+"EPMS_F08_B_Period_kWh": "/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_Period_kWh",
+"EPMS_F08_B_QualityOK": "/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_QualityOK",
+"EPMS_F08_B_ThermalBillable": "/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_ThermalBillable",
+"EPMS_F08_B_Thermal_kW": "/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_Thermal_kW",
+"EPMS_F08_B_Thermal_kWh": "/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_Thermal_kWh",
+"EXP_kW": "/ChillerPlant/Energy/EXP_kW",
 "FM_F01_Flow": "/ChillerPlant/Metering/Floors/F01/FM_F01_Flow",
 "FM_F02_Flow": "/ChillerPlant/Metering/Floors/F02/FM_F02_Flow",
 "FM_F03_Flow": "/ChillerPlant/Metering/Floors/F03/FM_F03_Flow",
@@ -14300,28 +15712,138 @@
 "Gfx_VAV_G_LOB_Fwd": "/AirSide/Floors/F01/VAV/VAV_G_LOB/Gfx_VAV_G_LOB_Fwd",
 "Gfx_VAV_G_LOU_Fwd": "/AirSide/Floors/F01/VAV/VAV_G_LOU/Gfx_VAV_G_LOU_Fwd",
 "Gfx_VAV_G_REC_Fwd": "/AirSide/Floors/F01/VAV/VAV_G_REC/Gfx_VAV_G_REC_Fwd",
+"ISO_AHU01_CHR_Cmd": "/ChillerPlant/Metering/Coils/AHU01/ISO_AHU01_CHR_Cmd",
+"ISO_AHU01_CHR_Fb": "/ChillerPlant/Metering/Coils/AHU01/ISO_AHU01_CHR_Fb",
+"ISO_AHU01_CHS_Cmd": "/ChillerPlant/Metering/Coils/AHU01/ISO_AHU01_CHS_Cmd",
+"ISO_AHU01_CHS_Fb": "/ChillerPlant/Metering/Coils/AHU01/ISO_AHU01_CHS_Fb",
+"ISO_AHU02_CHR_Cmd": "/ChillerPlant/Metering/Coils/AHU02/ISO_AHU02_CHR_Cmd",
+"ISO_AHU02_CHR_Fb": "/ChillerPlant/Metering/Coils/AHU02/ISO_AHU02_CHR_Fb",
+"ISO_AHU02_CHS_Cmd": "/ChillerPlant/Metering/Coils/AHU02/ISO_AHU02_CHS_Cmd",
+"ISO_AHU02_CHS_Fb": "/ChillerPlant/Metering/Coils/AHU02/ISO_AHU02_CHS_Fb",
+"ISO_AHU_F02_CHR_Cmd": "/ChillerPlant/Metering/Coils/AHU_F02/ISO_AHU_F02_CHR_Cmd",
+"ISO_AHU_F02_CHR_Fb": "/ChillerPlant/Metering/Coils/AHU_F02/ISO_AHU_F02_CHR_Fb",
+"ISO_AHU_F02_CHS_Cmd": "/ChillerPlant/Metering/Coils/AHU_F02/ISO_AHU_F02_CHS_Cmd",
+"ISO_AHU_F02_CHS_Fb": "/ChillerPlant/Metering/Coils/AHU_F02/ISO_AHU_F02_CHS_Fb",
+"ISO_AHU_F03_CHR_Cmd": "/ChillerPlant/Metering/Coils/AHU_F03/ISO_AHU_F03_CHR_Cmd",
+"ISO_AHU_F03_CHR_Fb": "/ChillerPlant/Metering/Coils/AHU_F03/ISO_AHU_F03_CHR_Fb",
+"ISO_AHU_F03_CHS_Cmd": "/ChillerPlant/Metering/Coils/AHU_F03/ISO_AHU_F03_CHS_Cmd",
+"ISO_AHU_F03_CHS_Fb": "/ChillerPlant/Metering/Coils/AHU_F03/ISO_AHU_F03_CHS_Fb",
+"ISO_AHU_F04_CHR_Cmd": "/ChillerPlant/Metering/Coils/AHU_F04/ISO_AHU_F04_CHR_Cmd",
+"ISO_AHU_F04_CHR_Fb": "/ChillerPlant/Metering/Coils/AHU_F04/ISO_AHU_F04_CHR_Fb",
+"ISO_AHU_F04_CHS_Cmd": "/ChillerPlant/Metering/Coils/AHU_F04/ISO_AHU_F04_CHS_Cmd",
+"ISO_AHU_F04_CHS_Fb": "/ChillerPlant/Metering/Coils/AHU_F04/ISO_AHU_F04_CHS_Fb",
+"ISO_AHU_F05_CHR_Cmd": "/ChillerPlant/Metering/Coils/AHU_F05/ISO_AHU_F05_CHR_Cmd",
+"ISO_AHU_F05_CHR_Fb": "/ChillerPlant/Metering/Coils/AHU_F05/ISO_AHU_F05_CHR_Fb",
+"ISO_AHU_F05_CHS_Cmd": "/ChillerPlant/Metering/Coils/AHU_F05/ISO_AHU_F05_CHS_Cmd",
+"ISO_AHU_F05_CHS_Fb": "/ChillerPlant/Metering/Coils/AHU_F05/ISO_AHU_F05_CHS_Fb",
+"ISO_AHU_F06_CHR_Cmd": "/ChillerPlant/Metering/Coils/AHU_F06/ISO_AHU_F06_CHR_Cmd",
+"ISO_AHU_F06_CHR_Fb": "/ChillerPlant/Metering/Coils/AHU_F06/ISO_AHU_F06_CHR_Fb",
+"ISO_AHU_F06_CHS_Cmd": "/ChillerPlant/Metering/Coils/AHU_F06/ISO_AHU_F06_CHS_Cmd",
+"ISO_AHU_F06_CHS_Fb": "/ChillerPlant/Metering/Coils/AHU_F06/ISO_AHU_F06_CHS_Fb",
+"ISO_AHU_F07_CHR_Cmd": "/ChillerPlant/Metering/Coils/AHU_F07/ISO_AHU_F07_CHR_Cmd",
+"ISO_AHU_F07_CHR_Fb": "/ChillerPlant/Metering/Coils/AHU_F07/ISO_AHU_F07_CHR_Fb",
+"ISO_AHU_F07_CHS_Cmd": "/ChillerPlant/Metering/Coils/AHU_F07/ISO_AHU_F07_CHS_Cmd",
+"ISO_AHU_F07_CHS_Fb": "/ChillerPlant/Metering/Coils/AHU_F07/ISO_AHU_F07_CHS_Fb",
+"ISO_AHU_F08_CHR_Cmd": "/ChillerPlant/Metering/Coils/AHU_F08/ISO_AHU_F08_CHR_Cmd",
+"ISO_AHU_F08_CHR_Fb": "/ChillerPlant/Metering/Coils/AHU_F08/ISO_AHU_F08_CHR_Fb",
+"ISO_AHU_F08_CHS_Cmd": "/ChillerPlant/Metering/Coils/AHU_F08/ISO_AHU_F08_CHS_Cmd",
+"ISO_AHU_F08_CHS_Fb": "/ChillerPlant/Metering/Coils/AHU_F08/ISO_AHU_F08_CHS_Fb",
+"ISO_F01_CHR_Cmd": "/ChillerPlant/Metering/Floors/F01/ISO_F01_CHR_Cmd",
+"ISO_F01_CHR_Fb": "/ChillerPlant/Metering/Floors/F01/ISO_F01_CHR_Fb",
+"ISO_F01_CHS_Cmd": "/ChillerPlant/Metering/Floors/F01/ISO_F01_CHS_Cmd",
+"ISO_F01_CHS_Fb": "/ChillerPlant/Metering/Floors/F01/ISO_F01_CHS_Fb",
+"ISO_F02_CHR_Cmd": "/ChillerPlant/Metering/Floors/F02/ISO_F02_CHR_Cmd",
+"ISO_F02_CHR_Fb": "/ChillerPlant/Metering/Floors/F02/ISO_F02_CHR_Fb",
+"ISO_F02_CHS_Cmd": "/ChillerPlant/Metering/Floors/F02/ISO_F02_CHS_Cmd",
+"ISO_F02_CHS_Fb": "/ChillerPlant/Metering/Floors/F02/ISO_F02_CHS_Fb",
+"ISO_F03_CHR_Cmd": "/ChillerPlant/Metering/Floors/F03/ISO_F03_CHR_Cmd",
+"ISO_F03_CHR_Fb": "/ChillerPlant/Metering/Floors/F03/ISO_F03_CHR_Fb",
+"ISO_F03_CHS_Cmd": "/ChillerPlant/Metering/Floors/F03/ISO_F03_CHS_Cmd",
+"ISO_F03_CHS_Fb": "/ChillerPlant/Metering/Floors/F03/ISO_F03_CHS_Fb",
+"ISO_F04_CHR_Cmd": "/ChillerPlant/Metering/Floors/F04/ISO_F04_CHR_Cmd",
+"ISO_F04_CHR_Fb": "/ChillerPlant/Metering/Floors/F04/ISO_F04_CHR_Fb",
+"ISO_F04_CHS_Cmd": "/ChillerPlant/Metering/Floors/F04/ISO_F04_CHS_Cmd",
+"ISO_F04_CHS_Fb": "/ChillerPlant/Metering/Floors/F04/ISO_F04_CHS_Fb",
+"ISO_F05_CHR_Cmd": "/ChillerPlant/Metering/Floors/F05/ISO_F05_CHR_Cmd",
+"ISO_F05_CHR_Fb": "/ChillerPlant/Metering/Floors/F05/ISO_F05_CHR_Fb",
+"ISO_F05_CHS_Cmd": "/ChillerPlant/Metering/Floors/F05/ISO_F05_CHS_Cmd",
+"ISO_F05_CHS_Fb": "/ChillerPlant/Metering/Floors/F05/ISO_F05_CHS_Fb",
+"ISO_F06_CHR_Cmd": "/ChillerPlant/Metering/Floors/F06/ISO_F06_CHR_Cmd",
+"ISO_F06_CHR_Fb": "/ChillerPlant/Metering/Floors/F06/ISO_F06_CHR_Fb",
+"ISO_F06_CHS_Cmd": "/ChillerPlant/Metering/Floors/F06/ISO_F06_CHS_Cmd",
+"ISO_F06_CHS_Fb": "/ChillerPlant/Metering/Floors/F06/ISO_F06_CHS_Fb",
+"ISO_F07_CHR_Cmd": "/ChillerPlant/Metering/Floors/F07/ISO_F07_CHR_Cmd",
+"ISO_F07_CHR_Fb": "/ChillerPlant/Metering/Floors/F07/ISO_F07_CHR_Fb",
+"ISO_F07_CHS_Cmd": "/ChillerPlant/Metering/Floors/F07/ISO_F07_CHS_Cmd",
+"ISO_F07_CHS_Fb": "/ChillerPlant/Metering/Floors/F07/ISO_F07_CHS_Fb",
+"ISO_F08_CHR_Cmd": "/ChillerPlant/Metering/Floors/F08/ISO_F08_CHR_Cmd",
+"ISO_F08_CHR_Fb": "/ChillerPlant/Metering/Floors/F08/ISO_F08_CHR_Fb",
+"ISO_F08_CHS_Cmd": "/ChillerPlant/Metering/Floors/F08/ISO_F08_CHS_Cmd",
+"ISO_F08_CHS_Fb": "/ChillerPlant/Metering/Floors/F08/ISO_F08_CHS_Fb",
+"ISO_MAU_CHR_Cmd": "/ChillerPlant/Metering/Coils/MAU/ISO_MAU_CHR_Cmd",
+"ISO_MAU_CHR_Fb": "/ChillerPlant/Metering/Coils/MAU/ISO_MAU_CHR_Fb",
+"ISO_MAU_CHS_Cmd": "/ChillerPlant/Metering/Coils/MAU/ISO_MAU_CHS_Cmd",
+"ISO_MAU_CHS_Fb": "/ChillerPlant/Metering/Coils/MAU/ISO_MAU_CHS_Fb",
+"ISO_OAU01_CHR_Cmd": "/ChillerPlant/Metering/Coils/OAU01/ISO_OAU01_CHR_Cmd",
+"ISO_OAU01_CHR_Fb": "/ChillerPlant/Metering/Coils/OAU01/ISO_OAU01_CHR_Fb",
+"ISO_OAU01_CHS_Cmd": "/ChillerPlant/Metering/Coils/OAU01/ISO_OAU01_CHS_Cmd",
+"ISO_OAU01_CHS_Fb": "/ChillerPlant/Metering/Coils/OAU01/ISO_OAU01_CHS_Fb",
+"KEF_StartCmd": "/AirSide/Roof/Kitchen/KEF_StartCmd",
+"KEF_Status": "/AirSide/Roof/Kitchen/KEF_Status",
+"MAU_SAT": "/AirSide/Roof/Kitchen/MAU_SAT",
+"MAU_SpeedCmd": "/AirSide/Roof/Kitchen/MAU_SpeedCmd",
+"MAU_StartCmd": "/AirSide/Roof/Kitchen/MAU_StartCmd",
+"MAU_Status": "/AirSide/Roof/Kitchen/MAU_Status",
+"MAU_ValveCmd": "/AirSide/Roof/Kitchen/MAU_ValveCmd",
+"OAU01_Airflow_SP": "/AirSide/OAU01/Points/OAU01_Airflow_SP",
+"OAU_DemandLs": "/AirSide/OAU01/Ventilation/OAU_DemandLs",
+"PAF_SpeedCmd": "/ChillerPlant/Alarms/PlantRoom/Ventilation/PAF_SpeedCmd",
+"PAF_StartCmd": "/ChillerPlant/Alarms/PlantRoom/Ventilation/PAF_StartCmd",
+"PAF_Status": "/ChillerPlant/Alarms/PlantRoom/Ventilation/PAF_Status",
+"PEF_StartCmd": "/ChillerPlant/Alarms/PlantRoom/Ventilation/PEF_StartCmd",
+"PEF_Status": "/ChillerPlant/Alarms/PlantRoom/Ventilation/PEF_Status",
+"PLANT_TotalCalls": "/ChillerPlant/PlantControl/AirSideDemand/PLANT_TotalCalls",
+"PLANT_TotalReqs": "/ChillerPlant/PlantControl/AirSideDemand/PLANT_TotalReqs",
 "PM_F01_kW": "/ChillerPlant/Metering/Floors/F01/PM_F01_kW",
 "PM_F02_A_kW": "/ChillerPlant/Metering/Floors/F02/PM_F02_A_kW",
+"PM_F02_A_kWh": "/ChillerPlant/Metering/Floors/F02/PM_F02_A_kWh",
 "PM_F02_B_kW": "/ChillerPlant/Metering/Floors/F02/PM_F02_B_kW",
+"PM_F02_B_kWh": "/ChillerPlant/Metering/Floors/F02/PM_F02_B_kWh",
 "PM_F02_kW": "/ChillerPlant/Metering/Floors/F02/PM_F02_kW",
 "PM_F03_A_kW": "/ChillerPlant/Metering/Floors/F03/PM_F03_A_kW",
+"PM_F03_A_kWh": "/ChillerPlant/Metering/Floors/F03/PM_F03_A_kWh",
 "PM_F03_B_kW": "/ChillerPlant/Metering/Floors/F03/PM_F03_B_kW",
+"PM_F03_B_kWh": "/ChillerPlant/Metering/Floors/F03/PM_F03_B_kWh",
 "PM_F03_kW": "/ChillerPlant/Metering/Floors/F03/PM_F03_kW",
 "PM_F04_A_kW": "/ChillerPlant/Metering/Floors/F04/PM_F04_A_kW",
+"PM_F04_A_kWh": "/ChillerPlant/Metering/Floors/F04/PM_F04_A_kWh",
 "PM_F04_B_kW": "/ChillerPlant/Metering/Floors/F04/PM_F04_B_kW",
+"PM_F04_B_kWh": "/ChillerPlant/Metering/Floors/F04/PM_F04_B_kWh",
 "PM_F04_kW": "/ChillerPlant/Metering/Floors/F04/PM_F04_kW",
 "PM_F05_A_kW": "/ChillerPlant/Metering/Floors/F05/PM_F05_A_kW",
+"PM_F05_A_kWh": "/ChillerPlant/Metering/Floors/F05/PM_F05_A_kWh",
 "PM_F05_B_kW": "/ChillerPlant/Metering/Floors/F05/PM_F05_B_kW",
+"PM_F05_B_kWh": "/ChillerPlant/Metering/Floors/F05/PM_F05_B_kWh",
 "PM_F05_kW": "/ChillerPlant/Metering/Floors/F05/PM_F05_kW",
 "PM_F06_A_kW": "/ChillerPlant/Metering/Floors/F06/PM_F06_A_kW",
+"PM_F06_A_kWh": "/ChillerPlant/Metering/Floors/F06/PM_F06_A_kWh",
 "PM_F06_B_kW": "/ChillerPlant/Metering/Floors/F06/PM_F06_B_kW",
+"PM_F06_B_kWh": "/ChillerPlant/Metering/Floors/F06/PM_F06_B_kWh",
 "PM_F06_kW": "/ChillerPlant/Metering/Floors/F06/PM_F06_kW",
 "PM_F07_A_kW": "/ChillerPlant/Metering/Floors/F07/PM_F07_A_kW",
+"PM_F07_A_kWh": "/ChillerPlant/Metering/Floors/F07/PM_F07_A_kWh",
 "PM_F07_B_kW": "/ChillerPlant/Metering/Floors/F07/PM_F07_B_kW",
+"PM_F07_B_kWh": "/ChillerPlant/Metering/Floors/F07/PM_F07_B_kWh",
 "PM_F07_kW": "/ChillerPlant/Metering/Floors/F07/PM_F07_kW",
 "PM_F08_A_kW": "/ChillerPlant/Metering/Floors/F08/PM_F08_A_kW",
+"PM_F08_A_kWh": "/ChillerPlant/Metering/Floors/F08/PM_F08_A_kWh",
 "PM_F08_B_kW": "/ChillerPlant/Metering/Floors/F08/PM_F08_B_kW",
+"PM_F08_B_kWh": "/ChillerPlant/Metering/Floors/F08/PM_F08_B_kWh",
 "PM_F08_kW": "/ChillerPlant/Metering/Floors/F08/PM_F08_kW",
+"PR_Temp": "/ChillerPlant/Alarms/PlantRoom/Ventilation/PR_Temp",
+"RF_SpeedCmd": "/AirSide/Roof/Relief/RF_SpeedCmd",
+"RF_StartCmd": "/AirSide/Roof/Relief/RF_StartCmd",
+"RF_Status": "/AirSide/Roof/Relief/RF_Status",
 "RM_F02_AHU_CO2": "/AirSide/Floors/F02/Rooms/F02_AHU/RM_F02_AHU_CO2",
 "RM_F02_AHU_Occ": "/AirSide/Floors/F02/Rooms/F02_AHU/RM_F02_AHU_Occ",
 "RM_F02_AHU_RH": "/AirSide/Floors/F02/Rooms/F02_AHU/RM_F02_AHU_RH",
@@ -15122,6 +16644,8 @@
 "RM_G_WC_M_Occ": "/AirSide/Floors/F01/Rooms/G_WC_M/RM_G_WC_M_Occ",
 "RM_G_WC_M_RH": "/AirSide/Floors/F01/Rooms/G_WC_M/RM_G_WC_M_RH",
 "RM_G_WC_M_T": "/AirSide/Floors/F01/Rooms/G_WC_M/RM_G_WC_M_T",
+"TEF_StartCmd": "/AirSide/Roof/TEF/TEF_StartCmd",
+"TEF_Status": "/AirSide/Roof/TEF/TEF_Status",
 "TE_F02_A_JAN_DmpCmd": "/AirSide/Floors/F02/Exhaust/TE_F02_A_JAN_DmpCmd",
 "TE_F02_A_JAN_DmpFb": "/AirSide/Floors/F02/Exhaust/TE_F02_A_JAN_DmpFb",
 "TE_F02_A_WCA_DmpCmd": "/AirSide/Floors/F02/Exhaust/TE_F02_A_WCA_DmpCmd",

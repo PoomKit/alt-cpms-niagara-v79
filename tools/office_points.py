@@ -27,6 +27,12 @@ def equip_of(n):
     if m: return [f'{m.group(1)}-{m.group(2)}']
     m = re.match(r'CT(\d\d)_', n)
     if m: return [f'CT-{m.group(1)}/1', f'CT-{m.group(1)}/2']
+    m = re.match(r'EPMS_F(\d\d)_([AB])_', n)
+    if m: return [f'FLOOR-{m.group(1)}']
+    m = re.match(r'(TEF|KEF|MAU|RF)_', n)
+    if m: return [{'TEF': 'TEF-DESIGN', 'KEF': 'KEF-DESIGN', 'MAU': 'MAU-DESIGN', 'RF': 'RF-RELIEF'}[m.group(1)]]
+    m = re.match(r'(AHU0[12])_', n)
+    if m: return [f'AHU-{m.group(1)[3:]}']
     m = re.match(r'(BTU|PM)_F(\d\d)_', n)
     if m: return [f'FLOOR-{m.group(2)}']
     m = re.match(r'Zone_F(\d\d)_', n)
@@ -53,6 +59,22 @@ def build():
     for d in od['motorizedDampers']:                                     # r5: toilet / janitor exhaust dampers
         if not d.get('integralVAV'):
             for x in ('DmpCmd', 'DmpFb'): pts[f"TE_{OF.nm(d['room'])}_{x}"] = None
+    # r6 (v79_r6.py): roof fans / MAU, building pressure, B1 ventilation, ground-floor AHU devices, corridor sensors, EPMS export
+    for u in ('TEF', 'KEF', 'MAU', 'RF', 'PAF', 'PEF'):
+        for x in ('StartCmd', 'Status'): pts[f'{u}_{x}'] = None
+    for x in ('MAU_SAT', 'MAU_ValveCmd', 'MAU_SpeedCmd', 'RF_SpeedCmd', 'BLDG_DP', 'PR_Temp', 'PLANT_TotalCalls', 'PLANT_TotalReqs', 'EXP_kW', 'PAF_SpeedCmd', 'OAU01_Airflow_SP', 'OAU_DemandLs'):
+        pts[x] = None
+    for u in ('AHU01', 'AHU02'):
+        for x in ('OAFlow', 'MAT', 'RADamperCmd', 'RelDamperCmd', 'RADmpFb', 'RelDmpFb'): pts[f'{u}_{x}'] = None
+    for c in od['corridorSensors']:
+        k = 'CS_' + OF.nm(c['id'].replace('CS-', ''))
+        for x in ('T', 'RH', 'CO2'): pts[f'{k}_{x}'] = None
+    for t in od['tenancies']:
+        q = OF.nm(t['id'])
+        for x in ('PeriodStart_kWh', 'Period_kWh', 'QualityOK', 'AirShare', 'Thermal_kW', 'ThermalBillable', 'Thermal_kWh', 'PeriodThermal_kWh'): pts[f'EPMS_{q}_{x}'] = None
+        pts[f'PM_{q}_kWh'] = None
+    for n in S.comp:                                                   # r6: coil instruments, isolation valves, expansion chiller dP
+        if re.match(r'(COIL_.+_(CHS_T|CHR_T|DP|DeltaT)|ISO_.+_(Cmd|Fb)|CH0[3-6]_(EvapDP|CondDP))$', n): pts[n] = None
     missing = [n for n in pts if n not in S.comp]
     if missing: raise SystemExit('points not built by the layer: ' + ', '.join(missing[:10]))
     points = {n: S.path_of(n) for n in pts}

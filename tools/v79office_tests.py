@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""V7.9 r4 tests of the office VAV / metering layer and the slot protections, run on the layer test station (layer_sim.py).
+"""V7.9 r4-r6 tests of the office VAV / metering layer, the r6 sequences and the slot protections, run on the layer test station (layer_sim.py).
 No source station is needed: base plant values are inputs set by the test (offline model, fast-test timing).
 usage: python3 v79office_tests.py [out.csv]        exit code 1 on a finding"""
 import csv, os, sys, tempfile
@@ -120,6 +120,59 @@ row('O15', 'toilet exhaust damper opens on the schedule (end switch proves open)
 tr = sim([(0.5, {'Sch_AHU': True}), (1.0, {E + 'DmpFb': False})], 20.0, [E + 'DmpCmd', E + 'DamperFaultAlarm'], every=1.0)
 row('O16', 'exhaust damper commanded open, end switch stays closed -> damper fault alarm (test 4 s)',
     at(tr, 15, E + 'DmpCmd') and at(tr, 15, E + 'DamperFaultAlarm'), f"cmd {at(tr, 15, E + 'DmpCmd')}, fault {at(tr, 15, E + 'DamperFaultAlarm')}")
+
+# R01-R08: r6 sequences (v79_r6.py)
+K = ['OAU01_Airflow_SP', 'OAU_DemandLs'] + [f'AHU_F{f:02d}_OAFlowSP' for f in range(2, 9)]
+tr = sim([ON, (0.5, {'AHU01_Status': True, 'AHU02_Status': False})], 60.0, K)
+s = dict(tr[-1][1]); dem = sum(s[f'AHU_F{f:02d}_OAFlowSP'] for f in range(2, 9)) + 939.4
+row('R01', 'OAU-01 airflow setpoint = (sum of floor Vot + running ground-floor AHU design OA) x 3.6 x 1.1 (DCV cascade)',
+    abs(s['OAU01_Airflow_SP'] - max(2000.0, dem * 3.6 * 1.1)) < 5.0, f"demand {s['OAU_DemandLs']:.0f} L/s -> OAU setpoint {s['OAU01_Airflow_SP']:.0f} m3/h")
+tr = sim([(0.5, {'AHU01_Status': True, 'AHU01_OADamperCmd': 40.0})], 40.0, ['AHU01_RADamperCmd', 'AHU01_RelDamperCmd', 'AHU01_OAFlow', 'AHU01_VentilationLowAlarm'])
+row('R02', 'AHU-01: RA damper = 100 - OA, relief tracks OA, OA airflow 80 % of design -> ventilation low alarm',
+    at(tr, 35, 'AHU01_RADamperCmd') == 60.0 and at(tr, 35, 'AHU01_RelDamperCmd') == 40.0 and at(tr, 35, 'AHU01_VentilationLowAlarm'),
+    f"RA {at(tr, 35, 'AHU01_RADamperCmd')}, relief {at(tr, 35, 'AHU01_RelDamperCmd')}, OA {at(tr, 35, 'AHU01_OAFlow'):.0f} L/s, alarm {at(tr, 35, 'AHU01_VentilationLowAlarm')}")
+tr = sim([(0.5, {'Sch_AHU': True}), (20.0, {'NotFireAlarm': False})], 30.0, ['TEF_StartCmd', 'TEF_Status', 'TEF_FailAlarm'], every=1.0)
+row('R03', 'toilet exhaust fan runs with the toilet dampers (schedule), proven, stops on fire alarm',
+    at(tr, 10, 'TEF_StartCmd') and at(tr, 10, 'TEF_Status') and not at(tr, 25, 'TEF_StartCmd') and not ever(tr, 'TEF_FailAlarm'),
+    f"run {at(tr, 10, 'TEF_Status')}, after fire cmd {at(tr, 25, 'TEF_StartCmd')}")
+tr = sim([(0.5, {'HOOD1_On': True}), (20.0, {'Hood_SuppressionReleased': True})], 30.0,
+         ['KEF_StartCmd', 'KEF_Status', 'MAU_StartCmd', 'MAU_SpeedCmd', 'Kitchen_GasShutoff', 'Hood_SuppressionAlarm'], every=1.0)
+row('R04', 'hood on -> KEF, MAU only after KEF proof at 85 %; suppression release -> MAU stops, gas shut off, KEF keeps running (strategy)',
+    at(tr, 15, 'KEF_Status') and at(tr, 15, 'MAU_StartCmd') and at(tr, 15, 'MAU_SpeedCmd') == 85.0 and not at(tr, 0.5, 'MAU_StartCmd')
+    and not at(tr, 25, 'MAU_StartCmd') and at(tr, 25, 'KEF_StartCmd') and at(tr, 25, 'Kitchen_GasShutoff') and at(tr, 25, 'Hood_SuppressionAlarm'),
+    f"MAU {at(tr, 15, 'MAU_StartCmd')} {at(tr, 15, 'MAU_SpeedCmd')} %, after release MAU {at(tr, 25, 'MAU_StartCmd')} KEF {at(tr, 25, 'KEF_StartCmd')} gas {at(tr, 25, 'Kitchen_GasShutoff')}")
+tr = sim([ON], 240.0, ['RF_StartCmd', 'RF_SpeedCmd', 'BLDG_DP'])
+row('R05', 'relief fan holds the building static pressure near +12 Pa while the AHUs run (G36 5.16.10)',
+    at(tr, 235, 'RF_StartCmd') and 6.0 <= at(tr, 235, 'BLDG_DP') <= 18.0, f"RF {at(tr, 235, 'RF_SpeedCmd'):.0f} %, building {at(tr, 235, 'BLDG_DP'):.1f} Pa")
+tr = sim([(1.0, {'PlantRoom_EmergencyVentCmd': True}), (20.0, {'PlantRoom_EmergencyVentCmd': False, 'PR_Temp': 35.0}), (40.0, {'PR_Temp': 27.0})], 60.0,
+         ['PAF_StartCmd', 'PEF_SpeedCmd', 'PAF_Status'], every=1.0)
+row('R06', 'B1 emergency ventilation (V7.7 refrigerant detection) -> PAF / PEF at 100 %; room 35 C -> heat ventilation at normal speed; 27 C -> off',
+    at(tr, 15, 'PAF_StartCmd') and at(tr, 15, 'PEF_SpeedCmd') == 100.0 and at(tr, 15, 'PAF_Status') and at(tr, 35, 'PEF_SpeedCmd') == 50.0 and not at(tr, 58, 'PAF_StartCmd'),
+    f"emergency {at(tr, 15, 'PEF_SpeedCmd')} %, heat {at(tr, 35, 'PEF_SpeedCmd')} %, cool room {at(tr, 58, 'PAF_StartCmd')}")
+tr = sim([ON], 200.0, ['PLANT_TotalCalls', 'PLANT_TotalRunning', 'PLANT_TotalReqs', 'AHU_F02_ValveCmd'])
+row('R11', 'floors 2-8 AHUs count in the plant demand / T&R totals (cooling calls, running units)',
+    at(tr, 195, 'PLANT_TotalRunning') >= 7 and at(tr, 195, 'PLANT_TotalCalls') >= 1,
+    f"running {at(tr, 195, 'PLANT_TotalRunning')}, calls {at(tr, 195, 'PLANT_TotalCalls')}, requests {at(tr, 195, 'PLANT_TotalReqs')}")
+E = 'EPMS_F02_A_'
+tr = sim([(0.5, {'PM_F02_A_kWh': 1000.0}), (2.0, {'EPMS_PeriodClose': True}), (4.0, {'EPMS_PeriodClose': False}), (10.0, {'PM_F02_A_kWh': 1250.0}),
+          (20.0, {'PM_F02_A_kWh': 900.0})], 25.0, [E + 'PeriodStart_kWh', E + 'Period_kWh', E + 'QualityOK', E + 'MeterResetAlarm'], every=1.0)
+row('R07', 'EPMS: period close latches the register (1000 kWh), period energy 250 kWh good; register 900 kWh -> reset alarm, billing hold',
+    at(tr, 15, E + 'PeriodStart_kWh') == 1000.0 and abs(at(tr, 15, E + 'Period_kWh') - 250.0) < 1e-6 and at(tr, 15, E + 'QualityOK')
+    and at(tr, 24, E + 'MeterResetAlarm') and not at(tr, 24, E + 'QualityOK'),
+    f"start {at(tr, 15, E + 'PeriodStart_kWh')}, period {at(tr, 15, E + 'Period_kWh')}, after 900: reset {at(tr, 24, E + 'MeterResetAlarm')} quality {at(tr, 24, E + 'QualityOK')}")
+tr = sim([(0.5, {'CS_F02_PUBLIC_T': 60.0})], 15.0, ['CS_F02_PUBLIC_SensorFaultAlarm'], every=1.0)
+row('R08', 'corridor sensor reading 60 C -> sensor fault alarm', at(tr, 14, 'CS_F02_PUBLIC_SensorFaultAlarm'), f"{at(tr, 14, 'CS_F02_PUBLIC_SensorFaultAlarm')}")
+
+tr = sim([(0.5, {'BTU_F02_kW': 120.0, 'VAV_F02_A_M1_Airflow': 300.0})], 40.0, ['EPMS_F02_A_AirShare', 'EPMS_F02_A_Thermal_kW', 'EPMS_F02_A_Thermal_kWh'], every=2.0)
+s = dict(tr[-1][1])
+row('R10', 'tenant thermal allocation = floor BTU x tenant airflow share; register integrates every minute (test 2 s)',
+    s['EPMS_F02_A_AirShare'] > 0 and abs(s['EPMS_F02_A_Thermal_kW'] - 120.0 * s['EPMS_F02_A_AirShare']) < .01 and at(tr, 39, 'EPMS_F02_A_Thermal_kWh') > at(tr, 11, 'EPMS_F02_A_Thermal_kWh') > 0,
+    f"share {s['EPMS_F02_A_AirShare']:.3f}, {s['EPMS_F02_A_Thermal_kW']:.1f} kW_th, register {at(tr, 11, 'EPMS_F02_A_Thermal_kWh'):.2f} -> {at(tr, 39, 'EPMS_F02_A_Thermal_kWh'):.2f} kWh_th")
+C = 'COIL_AHU_F03_'
+tr = sim([ON, (60.0, {C + 'CHR_T': 8.0}), (61.0, {'ISO_AHU_F03_CHS_Fb': False})], 100.0, [C + 'DeltaT', C + 'LowDeltaTAlarm', 'ISO_AHU_F03_CHS_Cmd', 'ISO_AHU_F03_CHS_FailAlarm', 'AHU_F03_ValveCmd'])
+row('R09', 'coil dT from the coil TT pair; dT 1 K with the PICV open -> coil low dT alarm; isolation valve commanded open without end switch -> alarm',
+    at(tr, 55, C + 'DeltaT') > 3.0 and at(tr, 98, C + 'LowDeltaTAlarm') and at(tr, 98, 'ISO_AHU_F03_CHS_Cmd') and at(tr, 98, 'ISO_AHU_F03_CHS_FailAlarm'),
+    f"dT {at(tr, 55, C + 'DeltaT'):.1f} K (valve {at(tr, 55, 'AHU_F03_ValveCmd'):.0f} %) -> low dT {at(tr, 98, C + 'LowDeltaTAlarm')}, valve alarm {at(tr, 98, 'ISO_AHU_F03_CHS_FailAlarm')}")
 
 if len(sys.argv) > 1:
     with open(sys.argv[1], 'w', newline='', encoding='utf-8') as fo:

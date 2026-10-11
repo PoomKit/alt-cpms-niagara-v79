@@ -40,7 +40,8 @@ def ahu_key(eq):
 # AHU air devices: R9 kind / id prefix -> point suffix (floor AHUs of the r4 layer, base AHUs of V7.8)
 AIR_F = {'VSD': 'SpeedFb', 'SAT': 'SAT', 'RAT': 'RAT', 'MAT': 'MAT', 'OA-AF': 'OAFlow', 'FILTER-DP': 'FilterDP', 'DUCT-DP': 'DuctSP',
          'MD-OA': 'OADmpFb', 'MD-RA': 'RADmpFb', 'MD-RELIEF': 'RelDmpFb'}                       # measured feedbacks (r4 layer field AIs)
-AIR_B = {'VSD': 'SpeedFeedbackHz', 'SAT': 'SAT', 'RAT': 'RAT', 'FILTER-DP': 'FilterDP', 'DUCT-DP': 'DuctStatic', 'MD-OA': 'OADamperCmd'}
+AIR_B = {'VSD': 'SpeedFeedbackHz', 'SAT': 'SAT', 'RAT': 'RAT', 'FILTER-DP': 'FilterDP', 'DUCT-DP': 'DuctStatic', 'MD-OA': 'OADamperCmd',
+         'MAT': 'MAT', 'OA-AF': 'OAFlow', 'MD-RA': 'RADmpFb', 'MD-RELIEF': 'RelDmpFb'}                 # r6: ground-floor AHU devices (v79_r6.py)
 
 
 def rule(d, kind):
@@ -68,19 +69,22 @@ def rule(d, kind):
             typ, k = ahu_key(m.group(1))
             if typ == 'F': return [f'{k}_PICVFb', f'{k}_ValveCmd'], ''
             if typ == 'B': return [f'{k}_ValveFeedback', f'{k}_ValveCmd'], ''
-            return [], f'{m.group(1)} is a design unit without station points'
+            return (['MAU_ValveCmd'], '') if m.group(1) == 'MAU-DESIGN' else ([], f'{m.group(1)} is a design unit without station points')
         m = re.match(r'(FM|TT-S|TT-R)-F(\d\d)$', i)
         if m: return [{'FM': f'FM_F{m.group(2)}_Flow', 'TT-S': f'TT_S_F{m.group(2)}', 'TT-R': f'TT_R_F{m.group(2)}'}[m.group(1)]], ''
-        if re.match(r'MBFV-[SR]-F\d\d$', i): return [], 'manual / motorised floor isolation valve: no command / feedback point in the station'
-        m = re.match(r'(TT|PT|MBFV)-(AHU-F\d\d|AHU-\d\d|OAU-\d\d|MAU-DESIGN)', i)
-        if m: return [], {'TT': 'coil water temperature (commissioning / M&V) not in the station', 'PT': 'coil differential pressure not in the station',
-                          'MBFV': 'coil isolation valve: no point in the station'}[m.group(1)]
+        m = re.match(r'MBFV-([SR])-F(\d\d)$', i)
+        if m: return [f"ISO_F{m.group(2)}_{'CHS' if m.group(1) == 'S' else 'CHR'}_Fb"], 'floor isolation valve point not built'
+        m = re.match(r'(TT|PT|MBFV)-(AHU-F\d\d|AHU-\d\d|OAU-\d\d|MAU-DESIGN)(?:-(CHS|CHR))?$', i)
+        if m:                                                        # r6: coil instruments (v79_r6.instruments)
+            k, e, svc = m.groups(); typ, u = ahu_key(e); u = 'MAU' if e == 'MAU-DESIGN' else u
+            return [{'TT': f'COIL_{u}_{svc}_T', 'PT': f'COIL_{u}_DP', 'MBFV': f'ISO_{u}_{svc}_Fb'}[k]], 'coil instrument point not built'
         return [], 'no rule'
     if kind == 'md':
         if d.get('integralVAV'): return [f"VAV_{re.sub(r'[^A-Za-z0-9]+', '_', d['room'])}_DmpFb"], ''
         return [f"TE_{re.sub(r'[^A-Za-z0-9]+', '_', d['room'])}_DmpFb"], 'toilet / janitor exhaust damper: point not built'
     if kind == 'unit':
         return {'ET-01': (['CHW_ExpansionTankPressure'], ''), 'DPB-01': (['CHW_BypassValveFeedback'], ''),
+                'KEF-DESIGN': (['KEF_Status'], ''), 'TEF-DESIGN': (['TEF_Status'], ''), 'MAU-DESIGN': (['MAU_Status'], ''), 'RF-RELIEF': (['RF_Status'], ''),
                 'CP-01': ([], 'control panel (no single point)')}.get(i, ([], 'R9 design unit (roof): not in the station'))
     return [], 'no rule'
 
