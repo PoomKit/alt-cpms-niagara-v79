@@ -7,6 +7,7 @@ import { Sky } from 'three/examples/jsm/objects/Sky.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { buildOffice } from './office79.js';
+import { buildDevices } from './devices79.js';
 
 const M = window.MODEL, AL = window.ALARMS, PTS = window.PTS, EFX = window.EFFECTS;
 const $ = id => document.getElementById(id);
@@ -230,24 +231,25 @@ function coolingTower(e){ const r = equipGroup(e), g = r.g, L = mm(e.L), D = mm(
   for (const [x, z] of [[-L / 2 + .1, -D / 2 + .1], [L / 2 - .1, -D / 2 + .1], [-L / 2 + .1, D / 2 - .1], [L / 2 - .1, D / 2 - .1], [0, -D / 2 + .1], [0, D / 2 - .1]])
     mesh(box(.15, legH, .15), st, g, new THREE.Vector3(x, -legH / 2, z));                                                           // steel support frame
   mesh(box(L, .1, D), st, g, new THREE.Vector3(0, -.05, 0));
-  r.parts.basin = mesh(box(L, .55, D, .02), frp, g, new THREE.Vector3(0, .275, 0));                                                // cold water basin
+  const bd = m => { m.userData.body = 1; return m; };                                                                              // r5: replaced by the Blender body
+  r.parts.basin = bd(mesh(box(L, .55, D, .02), frp, g, new THREE.Vector3(0, .275, 0)));                                            // cold water basin
   const wm = MAT.water.clone(); wm.map = T.water.clone(); wm.map.wrapS = wm.map.wrapT = THREE.RepeatWrapping; wm.map.needsUpdate = true;
   const water = mesh(new THREE.PlaneGeometry(L - .08, D - .08), wm, g, new THREE.Vector3(0, .45, 0), [-Math.PI / 2, 0, 0]); water.castShadow = false; r.parts.water = water;
-  for (const s of [-1, 1]) mesh(box(L, H - .55, .08), frp, g, new THREE.Vector3(0, .55 + (H - .55) / 2, s * D / 2));            // cased faces
+  for (const s of [-1, 1]) bd(mesh(box(L, H - .55, .08), frp, g, new THREE.Vector3(0, .55 + (H - .55) / 2, s * D / 2)));        // cased faces
   const fill = new THREE.MeshStandardMaterial({ color: 0x33413f, roughness: .95 });
-  for (const s of [-1, 1]) mesh(box(.55, H - 1.1, D - .3), fill, g, new THREE.Vector3(s * (L / 2 - .55), .55 + (H - 1.1) / 2 + .05, 0));   // fill packs
+  for (const s of [-1, 1]) bd(mesh(box(.55, H - 1.1, D - .3), fill, g, new THREE.Vector3(s * (L / 2 - .55), .55 + (H - 1.1) / 2 + .05, 0)));   // fill packs
   const curtain = new THREE.MeshBasicMaterial({ map: T.fall.clone(), transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide, color: 0xd6f0ff });
   curtain.map.wrapS = curtain.map.wrapT = THREE.RepeatWrapping; curtain.map.repeat.set(7, 2); curtain.map.needsUpdate = true; r.parts.curtain = curtain;
   for (const s of [-1, 1]) mesh(new THREE.PlaneGeometry(D - .32, H - 1.1), curtain, g, new THREE.Vector3(s * (L / 2 - .24), .55 + (H - 1.1) / 2, 0), [0, Math.PI / 2, 0]).castShadow = false;
   const lv = MAT.ctLouvre.clone(); lv.transparent = true; lv.opacity = .55; lv.depthWrite = false;
-  for (const s of [-1, 1]) mesh(box(.05, H - .95, D - .16), lv, g, new THREE.Vector3(s * (L / 2 - .03), .55 + (H - .95) / 2, 0));   // air-inlet louvres
-  mesh(box(L, .1, D), frp, g, new THREE.Vector3(0, H, 0));                                                                          // fan deck
+  for (const s of [-1, 1]) bd(mesh(box(.05, H - .95, D - .16), lv, g, new THREE.Vector3(s * (L / 2 - .03), .55 + (H - .95) / 2, 0)));   // air-inlet louvres
+  bd(mesh(box(L, .1, D), frp, g, new THREE.Vector3(0, H, 0)));                                                                      // fan deck
   r.parts.hot = []; for (const s of [-1, 1]) { const x = s * L * .3;                                                                 // hot water basins (open)
     for (const [w, d, px, pz] of [[L * .36, .04, x, D * .4], [L * .36, .04, x, -D * .4], [.04, D * .8, x - L * .18, 0], [.04, D * .8, x + L * .18, 0]]) mesh(box(w, .25, d), frp, g, new THREE.Vector3(px, H + .17, pz));
     const hm = wm.clone(); hm.map = T.water.clone(); hm.map.wrapS = hm.map.wrapT = THREE.RepeatWrapping; hm.map.needsUpdate = true; hm.opacity = .9;
     mesh(new THREE.PlaneGeometry(L * .35, D * .79), hm, g, new THREE.Vector3(x, H + .2, 0), [-Math.PI / 2, 0, 0]).castShadow = false; r.parts.hot.push(hm); }
   // fan + discharge elbow hood (white FRP), outlet facing south
-  mesh(new THREE.CylinderGeometry(.86, 1.08, .5, 48, 1, true), frp, g, new THREE.Vector3(0, H + .3, 0)).material.side = THREE.DoubleSide;
+  bd(mesh(new THREE.CylinderGeometry(.86, 1.08, .5, 48, 1, true), frp, g, new THREE.Vector3(0, H + .3, 0))).material.side = THREE.DoubleSide;
   const fan = new THREE.Group(); fan.position.set(0, H + .35, 0); g.add(fan); r.spin.push({ m: fan, axis: 'y', fan: true }); r.parts.fan = fan;
   for (let i = 0; i < 6; i++) { const b = mesh(box(.92, .025, .22), MAT.black, fan, null, [.22, i * Math.PI / 3, 0]); b.position.set(Math.cos(i * Math.PI / 3) * .5, 0, -Math.sin(i * Math.PI / 3) * .5); }
   mesh(cyl(.14, .22, 18), MAT.galv, fan, null);
@@ -256,7 +258,7 @@ function coolingTower(e){ const r = equipGroup(e), g = r.g, L = mm(e.L), D = mm(
   const rim = mesh(new THREE.TorusGeometry(.86, .045, 10, 48), frp, g, new THREE.Vector3(0, H + 1.5, -1.15));
   const scr = mesh(new THREE.CircleGeometry(.84, 40), new THREE.MeshStandardMaterial({ color: 0x9aa3a8, metalness: .6, roughness: .5, transparent: true, opacity: .22, side: THREE.DoubleSide, depthWrite: false }), g, new THREE.Vector3(0, H + 1.5, -1.13));
   scr.castShadow = false; r.parts.outlet = new THREE.Vector3(0, H + 1.5, -1.2);
-  mesh(box(.34, .3, .3), own(r, MAT.motor), g, new THREE.Vector3(.95, H + .25, -.75)); mesh(box(.24, .2, .14), MAT.panel, g, new THREE.Vector3(1.15, H + .25, -.45));   // fan motor + isolator
+  bd(mesh(box(.34, .3, .3), own(r, MAT.motor), g, new THREE.Vector3(.95, H + .25, -.75))); bd(mesh(box(.24, .2, .14), MAT.panel, g, new THREE.Vector3(1.15, H + .25, -.45)));   // fan motor + isolator
   // handrail around the fan deck (posts @ ~0.9 m, top + mid rail, toe board)
   const rail = MAT.yellow; const rh = H + .06;
   for (const z of [-D / 2 + .04, D / 2 - .04]) { mesh(box(L, .04, .04), rail, g, new THREE.Vector3(0, rh + 1.1, z)); mesh(box(L, .03, .03), rail, g, new THREE.Vector3(0, rh + .55, z));
@@ -307,21 +309,32 @@ function glb(name, cb){ const src = (window.GLB || {})[name]; if (!src) return;
   if (GLBS[name]) return cb(GLBS[name]); (GLB_WAIT[name] = GLB_WAIT[name] || []).push(cb); if (GLB_WAIT[name].length > 1) return;
   const bin = Uint8Array.from(atob(src), c => c.charCodeAt(0)).buffer;
   new GLTFLoader().parse(bin, '', g => { const m = g.scene; m.traverse(o => { if (o.isMesh) { o.castShadow = o.receiveShadow = true; } }); GLBS[name] = m; GLB_WAIT[name].forEach(f => f(m)); }, err => console.warn('GLB ' + name, err)); }
-function useModel(rec, model, map){ const L = mm(rec.e.L), W = mm(rec.e.W), H = mm(rec.e.H), ref = { chiller: [3.774, 1.771, 2.033], pump: [1.75, .65, .85], ahu: [3.6, 1.8, 2.1] }[rec.e.type];
-  for (const c of [...rec.g.children]) rec.g.remove(c);
-  const o = model.clone(true); o.scale.set(L / ref[0], H / ref[2], W / ref[1]); rec.g.add(o); rec.mats.clear();
+// reference size of each model [L, W, H] (m); the page scales a model to the R9 size of each unit
+const GLB_REF = { chiller: [3.774, 1.771, 2.033], pump: [1.75, .65, .85], ahu: [3.6, 1.8, 2.1], oau: [4.2, 2.0, 2.2], tower: [2.6, 2.6, 2.7],
+  roof_fan: [1.2, 1.2, 1.1], exptank: [.9, .9, 1.6], bypass: [1.3, .5, 1.04], panel: [2.4, .5, 2.1] };
+function useModel(rec, model, map, name){ const L = mm(rec.e.L), W = mm(rec.e.W), H = mm(rec.e.H), ref = GLB_REF[name || rec.e.type];
+  const live = rec.e.type === 'ct';                       // cooling tower: only the static body is replaced (water, fan, plume, rails stay)
+  for (const c of [...rec.g.children]) if (!live || c.userData.body) rec.g.remove(c);
+  const o = model.clone(true); o.scale.set(L / ref[0], H / ref[2], W / ref[1]); rec.g.add(o); if (!live) rec.mats.clear();
   o.traverse(m => { if (!m.isMesh) return; m.material = m.material.clone(); rec.mats.add(m.material); });
   const node = n => o.getObjectByName(n);
   for (const [part, n] of Object.entries(map)) { const x = node(n); if (x) rec.parts[part] = x; }
   if (rec.parts.screen && rec.parts.lcd) rec.parts.screen.material = rec.parts.lcd.mat;
   if (rec.parts.comp) rec.parts.compY = rec.parts.comp.position.y;
+  if (live) { rec.parts.basin = node('casing') || rec.parts.basin; rec.ghost = undefined; return; }
   rec.spin = []; if (rec.e.type === 'pump') for (const n of ['motorFan', 'shaft']) { const x = node(n); if (x) rec.spin.push({ m: x, axis: 'x' }); }
   if (rec.e.type === 'ahu') { const x = node('fanWheel'); if (x) rec.spin.push({ m: x, axis: 'z', fan: true }); }
+  if (rec.e.type === 'fan') { const x = node('fanWheel'); if (x) rec.spin.push({ m: x, axis: 'y', fan: true }); }
+  if (rec.e.type === 'panel') { const x = node('pilots'); rec.parts.leds = x ? [x] : []; }
+  if (rec.e.type === 'panel' || rec.e.type === 'ahu') { const x = node('screen'); if (x && rec.parts.lcd) x.material = rec.parts.lcd.mat; }
   rec.ghost = undefined; }
 for (const id in EQ) { const r = EQ[id], t = r.e.type;
   if (t === 'chiller') glb('chiller', m => useModel(r, m, { comp: 'comp', evap: 'evap', cond: 'cond', panel: 'panel', screen: 'screen', beacon: 'beacon' }));
   else if (t === 'pump') glb('pump', m => useModel(r, m, { motor: 'motor', volute: 'volute' }));
-  else if (t === 'ahu' && r.e.L === 3600) glb('ahu', m => useModel(r, m, { screen: 'screen' })); }
+  else if (t === 'ahu') { const n = r.e.L > 3600 ? 'oau' : 'ahu'; glb(n, m => useModel(r, m, { screen: 'screen' }, n)); }
+  else if (t === 'ct') glb('tower', m => useModel(r, m, {}, 'tower'));
+  else if (t === 'fan') glb('roof_fan', m => useModel(r, m, {}, 'roof_fan'));
+  else if (t === 'exptank' || t === 'bypass' || t === 'panel') glb(t, m => useModel(r, m, { panel: 'cabinet' }, t)); }
 // roof: steel grillage under the towers + walkway
 mesh(box(mm(M.ct_span[1] - M.ct_span[0]) + 3, .25, 3.2), MAT.steel, plant, P3((M.ct_span[0] + M.ct_span[1]) / 2, 6000, ROOFZ + 900));
 mesh(box(mm(M.ct_span[1] - M.ct_span[0]) + 3, .05, .9), new THREE.MeshStandardMaterial({ color: 0x6b7378, metalness: .6, roughness: .5 }), plant, P3((M.ct_span[0] + M.ct_span[1]) / 2, 4100, ROOFZ + 30));
@@ -652,7 +665,7 @@ document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => { const 
 // ------------------------------------------------------------------ data: BajaScript (station) or DEMO
 // ------------------------------------------------------------------ data: BajaScript (station) or DEMO
 function demoTick(){ const t = Date.now() / 1000, h = new Date().getHours() + new Date().getMinutes() / 60, s = Math.sin, ph = Math.floor(t / 50) % 3;
-  try { if (OFF) OFF.demo(t, h); } catch (e) { /* office layer not built yet */ }
+  try { if (OFF) OFF.demo(t, h); if (DEVS) DEVS.demo(t); } catch (e) { /* office layer not built yet */ }
   const inst = slot => (M.installed[slot] ?? false), chs = Object.keys(M.installed).filter(k => /^CH\d/.test(k) && inst(k));
   const nCh = Math.min(chs.length, [1, 2, 3][ph]), runCh = chs.slice(0, nCh), load = 270 * nCh + 25 * s(t / 30);
   Object.assign(V, { OA_Temperature: 30 + 5 * s(Math.PI * (h - 9) / 12), OA_Humidity: 66 - 14 * s(Math.PI * (h - 9) / 12), OA_WetBulb: 26.5,
@@ -751,7 +764,8 @@ function applyFloor(){ const plantOn = !ISO || FSEL === (BASEMENT ? '0' : '1') |
   for (const id in LBL) LBL[id].dataset.hidden = EQ[id].g.visible && EQ[id].g.parent.visible ? '' : '1'; }
 function initPanels(){ const lay = $('layers'); if (!lay) return;
   const names = { shell: 'อาคาร (โครงสร้าง/กระจก)', plant: 'Chiller plant', piping: 'ท่อ CHW / CDW', air: 'Air side (AHU/FCU/พัดลม)', zones: 'Zone AirPlug เดิม (4 zone/ชั้น)', systems: 'ระบบอื่น (fire / lighting ...)',
-    ...(LAYER.office ? { office: 'ห้อง (สีตาม temp / RH / CO2)', ducts: 'ท่อลม SA / RA / OA / EA', terminals: 'VAV / หัวจ่าย / เซนเซอร์ / มิเตอร์', airflow: 'ลมไหลในท่อ (ตาม airflow จริง)' } : {}) };
+    ...(LAYER.office ? { office: 'ห้อง (สีตาม temp / RH / CO2)', ducts: 'ท่อลม SA / RA / OA / EA', terminals: 'VAV / หัวจ่าย / เซนเซอร์ / มิเตอร์', airflow: 'ลมไหลในท่อ (ตาม airflow จริง)' } : {}),
+    ...(LAYER.devices ? { devices: 'อุปกรณ์วัด / วาล์ว / damper / VSD (R9)', water: 'ท่อน้ำเย็นแยกชั้น → AHU', arch: 'ช่องท่อ / ลิฟต์ / บันไดหนีไฟ / ประตูผู้เช่า' } : {}) };
   lay.innerHTML = Object.entries(names).map(([k, n]) => `<label><input type="checkbox" data-layer="${k}" checked> ${n}</label>`).join('');
   lay.querySelectorAll('[data-layer]').forEach(c => c.onchange = () => { LAYER[c.dataset.layer].visible = c.checked; applyFloor(); });
   $('fsel').innerHTML = '<option value="all">ทุกชั้น</option>' + (BASEMENT ? '<option value="0">B1 ห้องเครื่อง</option>' : '') + [...Array(BLD.floors).keys()].map(i => `<option value="${i + 1}">ชั้น ${i + 1}</option>`).join('') + '<option value="roof">ดาดฟ้า</option>';
@@ -766,19 +780,23 @@ function initPanels(){ const lay = $('layers'); if (!lay) return;
   $('sysl').innerHTML = M.systems.map(sy => `<div><b style="color:${sy.color}">●</b> ${sy.name_th} <i>${sy.devices.length ? sy.devices.length + ' จุด' : 'วางแผน · เพิ่มอุปกรณ์ในทะเบียน sheet Systems'}</i></div>`).join(''); }
 // ------------------------------------------------------------------ V7.9 r4 office layer (R9 design: rooms, VAV, ducts, airflow)
 const OFF = buildOffice({ scene, LAYER, onFloor, V, FAIL, glb });
+// V7.9 r5: R9 field devices, floor CHW branches, building core (devices79.js)
+const DEVS = buildDevices({ scene, LAYER, onFloor, V, FAIL, glb, isDemo: () => DEMO });
 const alarmRooms = () => new Set([...ACTIVE.values()].flatMap(a => a.e).filter(e => e.startsWith('RM:')));
 renderer.domElement.addEventListener('dblclick', ev => { if (!OFF) return; const b = renderer.domElement.getBoundingClientRect();
   mp.set((ev.clientX - b.left) / b.width * 2 - 1, -(ev.clientY - b.top) / b.height * 2 + 1); ray.setFromCamera(mp, camera);
   if (ray.intersectObjects([...plant.children, ...LAYER.air.children], true).some(h => h.object.visible)) return;
+  const dh = DEVS && LAYER.devices.visible ? DEVS.pick(ray) : null; if (dh) { $('info').innerHTML = DEVS.info(dh); $('info').className = 'open'; return; }
   const id = OFF.pick(ray); if (!id) return; const al = AL.filter(a => a.e.includes('RM:' + id)).map(a => ({ t: a.t, on: ACTIVE.has(a.n) }));
   $('info').innerHTML = OFF.roomInfo(id, al); $('info').className = 'open'; });
 initPanels();
 if (OFF) { LAYER.zones.visible = false; const z = document.querySelector('[data-layer="zones"]'); if (z) z.checked = false; }
-window.__V = V; window.__EQ = EQ; window.__ZONE = ZONE; window.__PIPE = PIPE;  // test / diagnostics hooks (read only)
+window.__DEVS = DEVS; window.__V = V; window.__EQ = EQ; window.__ZONE = ZONE; window.__PIPE = PIPE;  // test / diagnostics hooks (read only)
 
 // ------------------------------------------------------------------ loop
 renderer.setAnimationLoop(() => { const dt = Math.min(.05, clock.getDelta()), t = clock.elapsedTime; flyStep(); controls.update();
   if (OFF) OFF.update(t, dt, { metric: METRIC, flow: !!($('flow') && $('flow').checked), showLabels: f => FSEL !== 'all' && FSEL !== 'roof' && +FSEL === f, alarmRooms: alarmRooms() });
+  if (DEVS) DEVS.update(t, dt, { flow: !!($('flow') && $('flow').checked) });
   const W = weather(); applyWeather(W, t);
   if (rain.material.opacity > 0) { rain.position.y -= dt * 24; if (rain.position.y < -20) rain.position.y += 20; }
   updateGhosts(); applyAlarms(t); animate(t, dt); updateZones(dt); updateSystems(t); placeLabels(); renderer.render(scene, camera); });

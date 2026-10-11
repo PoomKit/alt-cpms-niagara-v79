@@ -32,5 +32,8 @@ P02  PASS     CH03 stopped then asked again (rotation off) -> no restart before 
      stopped 71.0 s, restarted 86.0 s
 P03  PASS     B1 plant room flood switch -> emergency alarm and chiller stop signal
      alarm True, stop True
-17/17 PASS
-rc=0
+O15  PASS     toilet exhaust damper opens on the schedule (end switch proves open), closes on fire alarm (TE_CloseOnFire)
+     cmd True fb True -> fire: cmd False, fault False
+O16  PASS     exhaust damper commanded open, end switch stays closed -> damper fault alarm (test 4 s)
+     cmd True, fault True
+19/19 PASS

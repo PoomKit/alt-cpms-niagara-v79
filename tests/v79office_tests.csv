@@ -16,3 +16,5 @@ O14,floor 1 lobby VAV runs with AHU-01 (V7.8 AHU),"airflow SP 2876 L/s, damper 5
 P01,"expansion chiller CH03 leaving water 2 C while running -> freeze trip (latched alarm), compressor stops","running True, trip True, start at 85 s False",PASS
 P02,CH03 stopped then asked again (rotation off) -> no restart before the anti-recycle time (test 15 s),"stopped 71.0 s, restarted 86.0 s",PASS
 P03,B1 plant room flood switch -> emergency alarm and chiller stop signal,"alarm True, stop True",PASS
+O15,"toilet exhaust damper opens on the schedule (end switch proves open), closes on fire alarm (TE_CloseOnFire)","cmd True fb True -> fire: cmd False, fault False",PASS
+O16,"exhaust damper commanded open, end switch stays closed -> damper fault alarm (test 4 s)","cmd True, fault True",PASS

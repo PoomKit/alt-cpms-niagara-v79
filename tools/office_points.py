@@ -11,14 +11,15 @@ import v79_office as OF
 
 OUT = os.path.join(HERE, '..', 'graphics3d', 'data', 'office_points.json')
 AHU_PTS = ('Status', 'StartCmd', 'SAT', 'SAT_SP', 'DuctSP', 'DuctSP_SP', 'FanSpeedCmd', 'ValveCmd', 'OAFlow', 'OAFlowSP', 'OADamperCmd',
-           'RADamperCmd', 'RelDamperCmd', 'RAT', 'MAT', 'RA_RH', 'RA_CO2', 'FilterDP', 'PressureRequests', 'CoolingRequests')
+           'RADamperCmd', 'RelDamperCmd', 'RAT', 'MAT', 'RA_RH', 'RA_CO2', 'FilterDP', 'PressureRequests', 'CoolingRequests',
+           'SpeedFb', 'OADmpFb', 'RADmpFb', 'RelDmpFb', 'PICVFb')                       # r5: field feedbacks (R9 devices on the 3D page)
 VAV_PTS = ('Airflow', 'AirflowSP', 'DmpCmd', 'DmpFb', 'CoolSPActive', 'OOS', 'Vmax')
 EFFECT = [(r'SensorFault|MeterFault', 'sensor'), (r'DamperFault|Mismatch', 'valve'), (r'HighStatic', 'pressure'), (r'Freeze', 'freeze'),
           (r'BasinLowLow', 'lowlevel'), (r'Flood', 'overflow'), (r'LowDeltaT|Reconcile|NotTracking|VentilationLow|LowAirflow|VeryLowAirflow', 'perf')]
 
 
 def equip_of(n):
-    m = re.match(r'(VAV|RM)_(.+?)_[A-Za-z0-9]+Alarm$', n)
+    m = re.match(r'(VAV|RM|TE)_(.+?)_[A-Za-z0-9]+Alarm$', n)
     if m: return [f"RM:{m.group(2).replace('_', '-')}"]                 # room (VAV + sensor) in the office layer
     m = re.match(r'AHU_F(\d\d)_', n)
     if m: return [f'AHU-F{m.group(1)}']
@@ -49,6 +50,9 @@ def build():
         p = f"F{m['floor']:02d}"
         for x in (f'BTU_{p}_kW', f'BTU_{p}_DeltaT', f'FM_{p}_Flow', f'TT_S_{p}', f'TT_R_{p}', f'PM_{p}_kW'): pts[x] = None
     for t in od['tenantMetering']: pts[f"PM_{OF.nm(t['tenantId'])}_kW"] = None
+    for d in od['motorizedDampers']:                                     # r5: toilet / janitor exhaust dampers
+        if not d.get('integralVAV'):
+            for x in ('DmpCmd', 'DmpFb'): pts[f"TE_{OF.nm(d['room'])}_{x}"] = None
     missing = [n for n in pts if n not in S.comp]
     if missing: raise SystemExit('points not built by the layer: ' + ', '.join(missing[:10]))
     points = {n: S.path_of(n) for n in pts}

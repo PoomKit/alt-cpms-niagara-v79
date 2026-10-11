@@ -61,6 +61,15 @@ Niagara components against API stubs (`java/altPlant/logic-test`, `java/altPlant
 
 ## Version
 
+**V7.9 r5** (3D with Blender models for every R9 system + re-check, see `docs/R5_3D_Recheck_TH.md`):
+- Blender models for OAU / MAU, roof fans, expansion tank, DP bypass, control panel and 11 field-device types; every equipment of the
+  3D page now uses a Blender model (cooling tower: static body only, water / fan / plume stay live).
+- 3D page shows the R9 instruments (184), AHU air devices (90), toilet-exhaust dampers, floor CHW branches with water flow, roof design
+  units, shafts / lifts / fire stairs / tenant doors; double-click a device for its station point and live value.
+- `tools/r9_bindings.py`: station point of every R9 device (348 / 449 bound, the rest listed with the reason in
+  `docs/R9_POINT_COVERAGE.csv`); `tools/check_baseline_zip.py`: read-only comparison of the deployed station ZIP with the repository build.
+- New logic: toilet / janitor exhaust dampers (schedule, fire close, end-switch proof), 19 layer tests.
+
 **V7.9 r4** (R9 office design + realistic graphics, see `docs/R4_Office_VAV_TH.md`):
 - R9 package imported: office design data (`graphics3d/data/office79.json`), basement-plant geometry, 15 Px pages, 4 HTML pages, 2D symbols.
 - New logic `tools/v79_office.py`: floors 2-8 VAV AHUs (ASHRAE G36 duct static / SAT Trim & Respond, PICV, dehumidification, measured

@@ -111,6 +111,16 @@ tr = sim([(5.0, {'PlantRoom_FloodSw': True})], 20.0, ['PlantRoom_FloodAlarm', 'P
 row('P03', 'B1 plant room flood switch -> emergency alarm and chiller stop signal', at(tr, 15, 'PlantRoom_FloodAlarm') and at(tr, 15, 'PR_FloodStop'),
     f"alarm {at(tr, 15, 'PlantRoom_FloodAlarm')}, stop {at(tr, 15, 'PR_FloodStop')}")
 
+# O15 / O16 toilet exhaust dampers (r5, R9 MD-EA): schedule, fire close, end-switch proof
+E = 'TE_F02_A_WC_'
+tr = sim([(0.5, {'Sch_AHU': True}), (20.0, {'NotFireAlarm': False})], 30.0, [E + 'DmpCmd', E + 'DmpFb', E + 'DamperFaultAlarm', 'TE_F03_B_JAN_DmpCmd'], every=1.0)
+row('O15', 'toilet exhaust damper opens on the schedule (end switch proves open), closes on fire alarm (TE_CloseOnFire)',
+    at(tr, 15, E + 'DmpCmd') and at(tr, 15, E + 'DmpFb') and at(tr, 15, 'TE_F03_B_JAN_DmpCmd') and not at(tr, 25, E + 'DmpCmd') and not ever(tr, E + 'DamperFaultAlarm'),
+    f"cmd {at(tr, 15, E + 'DmpCmd')} fb {at(tr, 15, E + 'DmpFb')} -> fire: cmd {at(tr, 25, E + 'DmpCmd')}, fault {ever(tr, E + 'DamperFaultAlarm')}")
+tr = sim([(0.5, {'Sch_AHU': True}), (1.0, {E + 'DmpFb': False})], 20.0, [E + 'DmpCmd', E + 'DamperFaultAlarm'], every=1.0)
+row('O16', 'exhaust damper commanded open, end switch stays closed -> damper fault alarm (test 4 s)',
+    at(tr, 15, E + 'DmpCmd') and at(tr, 15, E + 'DamperFaultAlarm'), f"cmd {at(tr, 15, E + 'DmpCmd')}, fault {at(tr, 15, E + 'DamperFaultAlarm')}")
+
 if len(sys.argv) > 1:
     with open(sys.argv[1], 'w', newline='', encoding='utf-8') as fo:
         w = csv.DictWriter(fo, fieldnames=['id', 'title', 'observed', 'result']); w.writeheader(); w.writerows(rows)

@@ -34,6 +34,7 @@ jobs:
         run: |
           cp -r station/shared/px /tmp/pxc && python tools/gen_px79o.py /tmp/pxc && diff -r station/shared/px /tmp/pxc
           python tools/office_points.py --check
+          python tools/r9_bindings.py --check
       - name: Office VAV / metering / plant protection tests on the layer test station (r4)
         working-directory: tools
         run: python v79office_tests.py /tmp/v79office_tests.csv
