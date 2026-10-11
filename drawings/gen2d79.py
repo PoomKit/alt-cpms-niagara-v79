@@ -2,13 +2,18 @@
 """V7.9 2D drawing set (DXF per sheet + one PDF) from model79.py.  Re-uses the drafting helpers of the V7.8 set (lotus/gen2d.py):
 A1 sheet, Thai / English title block, EIT practice symbols.  Slots that are not installed are drawn dashed (layer M-HID)."""
 import math, os, sys
-sys.path.insert(0, '/home/claude/lotus'); sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOTUS = os.environ.get('LOTUS_DIR', os.path.join(ROOT, 'lotus'))       # V7.8 drafting / BIM / alarm-effect helpers (not in this repo)
+if not os.path.isdir(LOTUS): raise SystemExit(f'lotus helpers not found at {LOTUS}: set LOTUS_DIR (see README, "Missing inputs")')
+sys.path.insert(0, LOTUS); sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, 'graphics3d'))
 import model79 as MD
 import gen2d as G
 import prims as PR
 from ezdxf.enums import TextEntityAlignment as TA
 
-OUT = '/home/claude/b79/out/dwg'; os.makedirs(OUT, exist_ok=True)
+OUT_ROOT = os.environ.get('V79_OUT', os.path.join(ROOT, 'out'))
+OUT = os.path.join(OUT_ROOT, 'dwg'); os.makedirs(OUT, exist_ok=True)
 G.OUT = OUT
 G.MD = MD
 B, RM = MD.B, MD.ROOM
@@ -277,7 +282,7 @@ def build():
     from ezdxf.addons.drawing.matplotlib import MatplotlibBackend
     from ezdxf.addons.drawing.config import Configuration, BackgroundPolicy, ColorPolicy
     cfg = Configuration(background_policy=BackgroundPolicy.WHITE, color_policy=ColorPolicy.COLOR, lineweight_scaling=.6)
-    with PdfPages('/home/claude/b79/out/ALT_V79_DrawingSet.pdf') as pdf:
+    with PdfPages(os.path.join(OUT_ROOT, 'ALT_V79_DrawingSet.pdf')) as pdf:
         for S in G.SHEETS:
             fig = plt.figure(figsize=(841 / 25.4, 594 / 25.4)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_axis_off()
             Frontend(RenderContext(S['doc']), MatplotlibBackend(ax), config=cfg).draw_layout(S['doc'].modelspace(), finalize=True)

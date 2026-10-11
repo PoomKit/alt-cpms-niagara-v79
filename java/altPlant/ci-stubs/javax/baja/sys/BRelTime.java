@@ -1,0 +1,1 @@
+package javax.baja.sys; public final class BRelTime extends BSimple { public static BRelTime make(long ms) { return null; } public static BRelTime makeSeconds(int s) { return null; } public static BRelTime makeMinutes(int m) { return null; } public long getMillis() { return 0; } }

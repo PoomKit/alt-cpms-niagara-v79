@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""V7.9 r2 chiller plant schematic (Px_Plant = ALT_V79_Plant.px): V7.8 detail level for 6 slots per type.
+"""V7.9 r2 chiller plant schematic (ALT_V79_Plant_Details.px; Px_Plant = ALT_V79_Plant.px is the R9 overview): V7.8 detail level for 6 slots per type.
  * equipment pictures rendered from the SAME 3-D models as ALT_V79_Building3D.html (chiller, end-suction pump, 2-cell tower)
    grey = stopped, colour = running, tower fans animate
  * shaded pipe layer (CHWS / CHWR / CDWS / CDWR headers, risers, branches, arrows), butterfly valves with position frames,
@@ -222,7 +222,7 @@ def pcard(p, x, y, d, title, head):
 
 # ================================================================ page
 def plant():
-    p = G.Page('ALT_V79_Plant', 'Chiller plant schematic · 6 slots per type (same equipment as 3D)', (PW, PH)); P79.header(p)
+    p = G.Page('ALT_V79_Plant_Details', 'Chiller plant schematic · 6 slots per type (same equipment as 3D)', (PW, PH)); P79.header(p)
     pipes('v79_plant_pipes.png')
     ximg(p, 0, 0, 'v79_plant_pipes.png', PW, PH, bottom=True)
     G7.kpi_strip(p, y=76)
@@ -230,7 +230,7 @@ def plant():
     p.rect(16, 176, X_BLD - 20, Y_CHWR - 150, fill='#18212b', stroke='#5d6d7e', pen=2.0)
     p.label(16, 186, X_BLD - 20, 22, 'BUILDING', 10, True, TXT, None, 'center')
     p.label(20, 210, X_BLD - 28, 20, 'Floors ⊞', 9, True, '#8fd3ff', '#1f2a36', 'center', popup='file:^px/ALT_V79_Building.px', ptitle='Building / zones')
-    p.label(20, 232, X_BLD - 28, 20, '3D ⊞', 9, True, '#8fd3ff', '#1f2a36', 'center', popup='file:^px/ALT_V79_Building3D.px', ptitle='3D Live')
+    p.label(20, 232, X_BLD - 28, 20, '3D ⊞', 9, True, '#8fd3ff', '#1f2a36', 'center', popup='file:^px/ALT_V79_Building3D.px', ptitle='3D Live (Workbench)')
     for i, (t, pt, kw) in enumerate((('Cooling calls', 'AirSide_CoolingCalls', {}), ('CHW requests', 'AirSide_ChwRequests', {}),
                                       ('Units running', 'AirSide_UnitsRunning', {}), ('Reset %', 'PlantResetPct', {}),
                                       ('Fire alarm', 'FireModeActive', {'bool_c': (FLT, GOOD)}), ('CHW ΔP', 'CHWDP', {}), ('ΔP SP', 'CHWDP_Setpoint_ACTIVE', {}),

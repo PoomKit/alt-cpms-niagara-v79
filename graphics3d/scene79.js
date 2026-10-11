@@ -5,6 +5,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Sky } from 'three/examples/jsm/objects/Sky.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { buildOffice } from './office79.js';
 
 const M = window.MODEL, AL = window.ALARMS, PTS = window.PTS, EFX = window.EFFECTS;
 const $ = id => document.getElementById(id);
@@ -121,10 +123,15 @@ const LAYER = { shell: new THREE.Group(), plant: new THREE.Group(), piping: new 
 for (const k in LAYER) scene.add(LAYER[k]);
 const plant = LAYER.plant;
 const XRAY = [], FLOORS = {};                 // floor -> {objs: [...]} (floor filter)
-const zOf = f => f === 1 ? 0 : BLD.f1_h + (f - 2) * BLD.typ_h;
+// V7.9 r4 (R9 design): chiller plant in basement B1 when the model puts the plant equipment below ground
+const BASEMENT = M.equipment.some(e => e.type === 'chiller' && e.z < -1000);
+const B1Z = BASEMENT ? Math.min(...M.equipment.filter(e => e.z < -1000).map(e => e.z)) - 100 : 0;
+const zOf = f => f === 0 ? B1Z : f === 1 ? 0 : BLD.f1_h + (f - 2) * BLD.typ_h;
 function onFloor(f, o){ (FLOORS[f] = FLOORS[f] || []).push(o); o.userData.floor = f; return o; }
-mesh(box(mm(BLD.x) + 2, .3, mm(BLD.y) + 2), MAT.concrete, LAYER.shell, P3(BLD.x / 2, BLD.y / 2, -150));
-const floor = mesh(box(RX, .02, RY), new THREE.MeshStandardMaterial({ map: T.concrete, roughness: .55, metalness: .05, color: 0xb9bcb8 }), LAYER.plant, P3(R.x / 2, R.y / 2, 10));
+const groundSlab = mesh(box(mm(BLD.x) + 2, .3, mm(BLD.y) + 2), MAT.concrete, LAYER.shell, P3(BLD.x / 2, BLD.y / 2, -150)); if (BASEMENT) onFloor(1, groundSlab);
+const floor = BASEMENT ? mesh(box(mm(BLD.x), .3, mm(BLD.y)), new THREE.MeshStandardMaterial({ map: T.concrete, roughness: .55, metalness: .05, color: 0xb9bcb8 }), LAYER.plant, P3(BLD.x / 2, BLD.y / 2, B1Z - 150))
+  : mesh(box(RX, .02, RY), new THREE.MeshStandardMaterial({ map: T.concrete, roughness: .55, metalness: .05, color: 0xb9bcb8 }), LAYER.plant, P3(R.x / 2, R.y / 2, 10));
+if (BASEMENT) onFloor(0, floor);
 function wall(x1, y1, x2, y2, h, holes, parent){ const L = Math.hypot(x2 - x1, y2 - y1), g = new THREE.Group(); g.position.copy(P3(x1, y1, 0)); g.rotation.y = -Math.atan2(y2 - y1, x2 - x1);
   const m = MAT.wall.clone(); m.transparent = true; XRAY.push(m); let segs = [[0, L, 0, h]];
   for (const o of holes || []) segs = segs.flatMap(([a, b, z0, z1]) => o.x >= b || o.x + o.w <= a ? [[a, b, z0, z1]] :
@@ -133,10 +140,18 @@ function wall(x1, y1, x2, y2, h, holes, parent){ const L = Math.hypot(x2 - x1, y
   for (const o of holes || []) if (o.louvre) mesh(box(mm(o.w), mm(o.h), .05), new THREE.MeshStandardMaterial({ map: T.louvre, roughness: .7 }), g, new THREE.Vector3(mm(o.x + o.w / 2), mm(o.z + o.h / 2), 0));
   (parent || LAYER.shell).add(g); return g; }
 const RHm = R.h;
+if (!BASEMENT) {
 onFloor(1, wall(0, 0, R.x, 0, RHm, [{ x: 2000, w: 3000, z: 0, h: 3500 }, { x: 12000, w: 4000, z: 2500, h: 1800, louvre: true }, { x: 24000, w: 4000, z: 2500, h: 1800, louvre: true }]));
 onFloor(1, wall(R.x, 0, R.x, R.y, RHm, [{ x: 4000, w: 2400, z: 2600, h: 1500, louvre: true }]));
 onFloor(1, wall(R.x, R.y, 0, R.y, RHm, [{ x: 30000, w: 1800, z: 0, h: 2400 }]));
 onFloor(1, wall(0, R.y, 0, 0, RHm, []));
+} else {   // B1 plant room: retaining walls (see-through in x-ray), columns, ceiling lights
+  const bw = MAT.wall.clone(); bw.transparent = true; XRAY.push(bw); const bh = -B1Z - 300, g = new THREE.Group(); LAYER.shell.add(g); onFloor(0, g);
+  for (const [x, y, w, d] of [[BLD.x / 2, -150, BLD.x + 300, 300], [BLD.x / 2, BLD.y + 150, BLD.x + 300, 300], [-150, BLD.y / 2, 300, BLD.y], [BLD.x + 150, BLD.y / 2, 300, BLD.y]])
+    mesh(box(mm(w), mm(bh), mm(d)), bw, g, P3(x, y, B1Z + bh / 2));
+  for (const [n, x] of M.grid_x) for (const [m_, y] of M.grid_y) mesh(box(.6, mm(bh), .6), MAT.concrete, g, P3(x, y, B1Z + bh / 2));
+  for (let x = 6000; x < BLD.x; x += 9000) for (let y = 4000; y < BLD.y; y += 8000) { const q = P3(x, y, -500);
+    mesh(box(1.2, .06, .2), new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff4e0, emissiveIntensity: 1.2 }), g, q); } }
 // floors, columns, curtain wall, core
 const glassM = new THREE.MeshStandardMaterial({ color: 0x9db8c2, metalness: .15, roughness: .04, transparent: true, opacity: .26, depthWrite: false, side: THREE.DoubleSide, envMapIntensity: 1.4 });
 const mullM = new THREE.MeshStandardMaterial({ color: 0x3f4448, metalness: .6, roughness: .4 });   // dark anodised aluminium
@@ -145,19 +160,19 @@ for (let f = 2; f <= BLD.floors + 1; f++) { const z = f > BLD.floors ? ROOFZ : z
   onFloor(f, mesh(box(mm(BLD.x), mm(BLD.slab), mm(BLD.y)), slabM, LAYER.shell, P3(BLD.x / 2, BLD.y / 2, z - BLD.slab / 2))); }
 for (let f = 1; f <= BLD.floors; f++) { const z0 = zOf(f), h = (f === 1 ? BLD.f1_h : BLD.typ_h) - BLD.slab, g = new THREE.Group(); LAYER.shell.add(g); onFloor(f, g);
   for (const [x1, y1, x2, y2] of [[0, 0, BLD.x, 0], [BLD.x, 0, BLD.x, BLD.y], [BLD.x, BLD.y, 0, BLD.y], [0, BLD.y, 0, 0]]) {
-    if (f === 1 && y1 === 0 && y2 === 0) { mesh(box(mm(BLD.x - R.x), mm(h), .03), glassM, g, P3((R.x + BLD.x) / 2, 0, z0 + h / 2)); continue; }
-    if (f === 1 && x1 === 0 && x2 === 0) { mesh(box(.03, mm(h), mm(BLD.y - R.y)), glassM, g, P3(0, (R.y + BLD.y) / 2, z0 + h / 2)); continue; }
+    if (f === 1 && !BASEMENT && y1 === 0 && y2 === 0) { mesh(box(mm(BLD.x - R.x), mm(h), .03), glassM, g, P3((R.x + BLD.x) / 2, 0, z0 + h / 2)); continue; }
+    if (f === 1 && !BASEMENT && x1 === 0 && x2 === 0) { mesh(box(.03, mm(h), mm(BLD.y - R.y)), glassM, g, P3(0, (R.y + BLD.y) / 2, z0 + h / 2)); continue; }
     const L = Math.hypot(x2 - x1, y2 - y1), horiz = y1 === y2;
     mesh(box(horiz ? mm(L) : .03, mm(h), horiz ? .03 : mm(L)), glassM, g, P3((x1 + x2) / 2, (y1 + y2) / 2, z0 + h / 2));
     for (let s = 0; s <= L; s += 2000) { const x = horiz ? Math.min(x1, x2) + s : x1, y = horiz ? y1 : Math.min(y1, y2) + s; mesh(box(.06, mm(h), .06), mullM, g, P3(x, y, z0 + h / 2)); }
     mesh(box(horiz ? mm(L) : .3, .7, horiz ? .3 : mm(L)), MAT.concrete, g, P3((x1 + x2) / 2, (y1 + y2) / 2, z0 + h - 350)); }   // concrete spandrel / slab edge
-  for (const [n, x] of M.grid_x) for (const [m_, y] of M.grid_y) { if (f === 1 && x <= R.x && y <= R.y) continue;
+  for (const [n, x] of M.grid_x) for (const [m_, y] of M.grid_y) { if (f === 1 && !BASEMENT && x <= R.x && y <= R.y) continue;
     mesh(box(.6, mm(h), .6), MAT.concrete, g, P3(x, y, z0 + h / 2)); } }
 const coreM = new THREE.MeshStandardMaterial({ map: T.concrete, color: 0xe2ddd3, roughness: .9, transparent: true }); XRAY.push(coreM);
 mesh(box(mm(M.core.x1 - M.core.x0), mm(ROOFZ + 3500), mm(M.core.y1 - M.core.y0)), coreM, LAYER.shell, P3((M.core.x0 + M.core.x1) / 2, (M.core.y0 + M.core.y1) / 2, (ROOFZ + 3500) / 2));
 for (const [x, y, w, d] of [[BLD.x / 2, 0, BLD.x, 300], [BLD.x / 2, BLD.y, BLD.x, 300], [0, BLD.y / 2, 300, BLD.y], [BLD.x, BLD.y / 2, 300, BLD.y]])
   onFloor(9, mesh(box(mm(w), mm(BLD.parapet), mm(d)), MAT.concrete, LAYER.shell, P3(x, y, ROOFZ + BLD.parapet / 2)));
-const roomLights = []; for (let x = 4000; x < R.x; x += 8000) for (const y of [3500, 11500]) {
+const roomLights = []; if (!BASEMENT) for (let x = 4000; x < R.x; x += 8000) for (const y of [3500, 11500]) {
   const p = P3(x, y, R.h - 400); mesh(box(1.2, .06, .2), new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff4e0, emissiveIntensity: 1.2 }), plant, p);
   const L = new THREE.PointLight(0xfff1dc, 9, 14, 1.8); L.position.copy(p).add(new THREE.Vector3(0, -.2, 0)); plant.add(L); roomLights.push(L); }
 function textSprite(txt, size, col, bg){ const c = document.createElement('canvas'), g = c.getContext('2d'); c.width = 256; c.height = 128;
@@ -168,7 +183,7 @@ for (const [n, y] of M.grid_y) { const s = textSprite(n, 46, '#1b2a36', 'rgba(25
 
 // ------------------------------------------------------------------ equipment builders
 const EQ = {};   // id -> {g, parts, mats, data}
-function equipGroup(e){ const g = new THREE.Group(); g.position.copy(P3(e.x, e.y, e.z)); g.rotation.y = THREE.MathUtils.degToRad(e.rot || 0); (e.layer === 'air' ? LAYER.air : plant).add(g); if (e.floor) onFloor(e.floor, g); else if (e.type === 'ct') onFloor(9, g);
+function equipGroup(e){ const g = new THREE.Group(); g.position.copy(P3(e.x, e.y, e.z)); g.rotation.y = THREE.MathUtils.degToRad(e.rot || 0); (e.layer === 'air' ? LAYER.air : plant).add(g); if (e.floor !== undefined && e.floor !== null) onFloor(e.floor, g); else if (e.type === 'ct') onFloor(9, g);
   const rec = { e, g, parts: {}, spin: [], base: g.position.clone(), mats: new Set() }; EQ[e.id] = rec; g.userData.eq = e.id; return rec; }
 function own(rec, m){ const c = m.clone(); rec.mats.add(c); return c; }
 function lcd(w, h){ const c = document.createElement('canvas'); c.width = w; c.height = h; const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
@@ -284,6 +299,29 @@ for (const e of [...M.equipment, ...M.air_equipment]) {
   if (e.type === 'chiller') chiller(e); else if (e.type === 'pump') pump(e); else if (e.type === 'ct') coolingTower(e);
   else if (e.type === 'ahu') ahu(e); else if (e.type === 'fcu') fcu(e); else if (e.type === 'fan') fanUnit(e);
   else if (e.type === 'exptank') genericBox(e, MAT.red, true); else if (e.type === 'panel') genericBox(e, MAT.panel); else genericBox(e, MAT.galv); }
+
+// ------------------------------------------------------------------ V7.9 r4: Blender equipment models (window.GLB, base64 GLB per type)
+// the procedural body is replaced by the model; animated / alarm parts are taken from the model's named nodes
+const GLBS = {}, GLB_WAIT = {};
+function glb(name, cb){ const src = (window.GLB || {})[name]; if (!src) return;
+  if (GLBS[name]) return cb(GLBS[name]); (GLB_WAIT[name] = GLB_WAIT[name] || []).push(cb); if (GLB_WAIT[name].length > 1) return;
+  const bin = Uint8Array.from(atob(src), c => c.charCodeAt(0)).buffer;
+  new GLTFLoader().parse(bin, '', g => { const m = g.scene; m.traverse(o => { if (o.isMesh) { o.castShadow = o.receiveShadow = true; } }); GLBS[name] = m; GLB_WAIT[name].forEach(f => f(m)); }, err => console.warn('GLB ' + name, err)); }
+function useModel(rec, model, map){ const L = mm(rec.e.L), W = mm(rec.e.W), H = mm(rec.e.H), ref = { chiller: [3.774, 1.771, 2.033], pump: [1.75, .65, .85], ahu: [3.6, 1.8, 2.1] }[rec.e.type];
+  for (const c of [...rec.g.children]) rec.g.remove(c);
+  const o = model.clone(true); o.scale.set(L / ref[0], H / ref[2], W / ref[1]); rec.g.add(o); rec.mats.clear();
+  o.traverse(m => { if (!m.isMesh) return; m.material = m.material.clone(); rec.mats.add(m.material); });
+  const node = n => o.getObjectByName(n);
+  for (const [part, n] of Object.entries(map)) { const x = node(n); if (x) rec.parts[part] = x; }
+  if (rec.parts.screen && rec.parts.lcd) rec.parts.screen.material = rec.parts.lcd.mat;
+  if (rec.parts.comp) rec.parts.compY = rec.parts.comp.position.y;
+  rec.spin = []; if (rec.e.type === 'pump') for (const n of ['motorFan', 'shaft']) { const x = node(n); if (x) rec.spin.push({ m: x, axis: 'x' }); }
+  if (rec.e.type === 'ahu') { const x = node('fanWheel'); if (x) rec.spin.push({ m: x, axis: 'z', fan: true }); }
+  rec.ghost = undefined; }
+for (const id in EQ) { const r = EQ[id], t = r.e.type;
+  if (t === 'chiller') glb('chiller', m => useModel(r, m, { comp: 'comp', evap: 'evap', cond: 'cond', panel: 'panel', screen: 'screen', beacon: 'beacon' }));
+  else if (t === 'pump') glb('pump', m => useModel(r, m, { motor: 'motor', volute: 'volute' }));
+  else if (t === 'ahu' && r.e.L === 3600) glb('ahu', m => useModel(r, m, { screen: 'screen' })); }
 // roof: steel grillage under the towers + walkway
 mesh(box(mm(M.ct_span[1] - M.ct_span[0]) + 3, .25, 3.2), MAT.steel, plant, P3((M.ct_span[0] + M.ct_span[1]) / 2, 6000, ROOFZ + 900));
 mesh(box(mm(M.ct_span[1] - M.ct_span[0]) + 3, .05, .9), new THREE.MeshStandardMaterial({ color: 0x6b7378, metalness: .6, roughness: .5 }), plant, P3((M.ct_span[0] + M.ct_span[1]) / 2, 4100, ROOFZ + 30));
@@ -316,7 +354,7 @@ function pathOf(v, rb){ const path = new THREE.CurvePath(); let cur = v[0].clone
     if (b.distanceTo(cur) > 1e-4) path.add(new THREE.LineCurve3(cur, b.clone())); cur = b.clone(); }
   return path; }
 const shellMat = svc => { const [, col, ins] = M.service[svc]; return new THREE.MeshStandardMaterial(ins ? { color: 0xd8dde1, metalness: .78, roughness: .33 } : { color: new THREE.Color(col), metalness: .3, roughness: .42 }); };
-for (const p of M.pipes) { const g = new THREE.Group(); LAYER.piping.add(g); if (p.floor) onFloor(p.floor, g); const ins = insul(p.svc), mat = shellMat(p.svc);
+for (const p of M.pipes) { const g = new THREE.Group(); LAYER.piping.add(g); if (p.floor !== undefined && p.floor !== null) onFloor(p.floor, g); const ins = insul(p.svc), mat = shellMat(p.svc);
   const rec = { p, g, mat, rad: dnR(p.dn) + ins, wm: [], ph: 0, segs: [], waters: [] };
   const v = p.pts.map(q => P3(...q)); const red = M.valves.find(x => x.pipe === p.id && x.kind.startsWith('RED_'));
   let pieces = [[v, p.dn, 0]];
@@ -423,6 +461,7 @@ function eqPipes(id){ return Object.values(PIPE).filter(p => p.p.eq.includes(id)
 
 // ------------------------------------------------------------------ state, weather, alarms
 const V = {}; let DEMO = false; const ACTIVE = new Map();   // alarm name -> alarm
+const FAIL = new Set();   // LIVE: points / alarms whose station ORD did not resolve (shown in the mode badge and Point mapping)
 const OVR = { on: false, temp: 33, rh: 60, hour: 13 };
 function val(k, d){ const v = V[k]; return typeof v === 'number' && !isNaN(v) ? v : (typeof v === 'boolean' ? +v : d); }
 function weather(){ const now = new Date(); const W = { temp: val('OA_Temperature', 33), rh: val('OA_Humidity', 62), wb: val('OA_WetBulb', 27), hour: now.getHours() + now.getMinutes() / 60 };
@@ -528,7 +567,7 @@ function animate(t, dt){
   for (const id in EQ) { const r = EQ[id]; if (r.ghost) continue; const runs = running(id) && !tripped(id);
     const spd = r.e.pt ? val(r.e.pt + 'SpeedCmd', 100) / 100 : 1; r.spin.forEach(s => { s.m.rotation[s.axis] += (runs ? (s.fan ? 9 : 40) * spd : 0) * dt; });
     if (r.e.type === 'pump' && runs) { r.g.position.y = r.base.y + Math.sin(t * 90) * .0012; }
-    if (r.e.type === 'chiller') { r.parts.comp.position.y = 1.72 + (runs ? Math.sin(t * 70) * .0015 : 0); r.parts.beacon.material.emissive.setHex(tripped(id) ? 0xff2020 : 0x22c55e);
+    if (r.e.type === 'chiller') { r.parts.comp.position.y = (r.parts.compY ?? 1.72) + (runs ? Math.sin(t * 70) * .0015 : 0); r.parts.beacon.material.emissive.setHex(tripped(id) ? 0xff2020 : 0x22c55e);
       r.parts.beacon.material.emissiveIntensity = tripped(id) ? (Math.sin(t * 8) > 0 ? 2.5 : 0) : runs ? 2 : 0; }
     if (r.e.type === 'ct') { const tw = r.e.tower, flow = !!V[`Gfx_${tw}_Fwd`] && !tripped(id), W = weather();
       r.parts.curtain.opacity = flow ? .62 : 0; r.parts.curtain.map.offset.y = (r.parts.curtain.map.offset.y + dt * 1.6) % 1;
@@ -604,11 +643,16 @@ for (const k of ['temp', 'rh', 'hour']) $('w_' + k).oninput = e => { OVR[k] = +e
 $('wovr').onchange = e => OVR.on = e.target.checked;
 $('xray').onchange = e => XRAY.forEach(m => { m.opacity = e.target.checked ? .16 : 1; m.depthWrite = !e.target.checked; }); $('xray').onchange({ target: $('xray') });
 const VIEWS = { iso: [[95, 70, 60], [30, 12, -20], 'all'], plant: [[26, 13, 4], [20, 1, -9], '1'], pumps: [[44, 9, 2], [37, 0, -7], '1'], room: [[1.5, 1.7, -13.6], [20, 1.2, -10.5], '1'], roof: [[34, 56, 20], [24, 36, -6], 'all'], floor: [[70, 40, 40], [32, 22, -20], '5'], site: [[150, 110, 120], [32, 10, -20], 'all'] };
+if (BASEMENT) { const pl = M.equipment.filter(e => e.z < -1000), c = pl.reduce((a, e) => [a[0] + e.x / pl.length, a[1] + e.y / pl.length], [0, 0]), t = P3(c[0], c[1], B1Z + 1200);
+  const pu = pl.filter(e => e.type === 'pump'), cp = pu.length ? pu.reduce((a, e) => [a[0] + e.x / pu.length, a[1] + e.y / pu.length], [0, 0]) : c, tp = P3(cp[0], cp[1], B1Z + 800);
+  VIEWS.plant = [[t.x + 14, t.y + 13, t.z + 16], t.toArray(), '0']; VIEWS.pumps = [[tp.x + 7, tp.y + 7, tp.z + 9], tp.toArray(), '0'];
+  VIEWS.room = [[t.x - 12, t.y + 1.2, t.z + 4], t.toArray(), '0']; }
 document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => { const [p, tg, f] = VIEWS[b.dataset.view]; flyTo(p, tg); if (f && typeof applyFloor === 'function') { FSEL = f; $('fsel').value = f; applyFloor(); } });
 
 // ------------------------------------------------------------------ data: BajaScript (station) or DEMO
 // ------------------------------------------------------------------ data: BajaScript (station) or DEMO
 function demoTick(){ const t = Date.now() / 1000, h = new Date().getHours() + new Date().getMinutes() / 60, s = Math.sin, ph = Math.floor(t / 50) % 3;
+  try { if (OFF) OFF.demo(t, h); } catch (e) { /* office layer not built yet */ }
   const inst = slot => (M.installed[slot] ?? false), chs = Object.keys(M.installed).filter(k => /^CH\d/.test(k) && inst(k));
   const nCh = Math.min(chs.length, [1, 2, 3][ph]), runCh = chs.slice(0, nCh), load = 270 * nCh + 25 * s(t / 30);
   Object.assign(V, { OA_Temperature: 30 + 5 * s(Math.PI * (h - 9) / 12), OA_Humidity: 66 - 14 * s(Math.PI * (h - 9) / 12), OA_WetBulb: 26.5,
@@ -628,18 +672,32 @@ function demoTick(){ const t = Date.now() / 1000, h = new Date().getHours() + ne
   for (const z of M.zones) { const k = z.floor * 7 + +z.code.slice(-2); V[z.t] = (occ ? 24 : 27.5) + 1.4 * s(t / 37 + k) + (k % 5 === 0 ? 2.2 : 0); V[z.h] = 58 + 8 * s(t / 45 + k); V[z.c] = (occ ? 720 : 480) + 180 * s(t / 53 + k) + (k % 6 === 0 ? 380 : 0); } }
 let DEMO_ID = 0;
 function startDemo(){ if (DEMO) return; DEMO = true; $('mode').textContent = 'DEMO · 1 → 2 → 3 chillers every 50 s (installed slots only)'; $('mode').className = 'mode demo'; demoTick(); DEMO_ID = setInterval(demoTick, 1000); $('sim').style.display = ''; }
-function startLive(){ if (typeof window.require !== 'function') return startDemo(); let ok = false; setTimeout(() => { if (!ok) startDemo(); }, 7000);
-  window.require(['baja!'], function (baja) { ok = true; if (DEMO) { clearInterval(DEMO_ID); DEMO = false; $('sim').style.display = 'none'; ACTIVE.clear(); }
+function startLive(){ const ready = window.BAJA_READY; if (!ready) return startDemo(); let ok = false; setTimeout(() => { if (!ok) startDemo(); }, 7000);
+  ready.then(() => window.require(['baja!'], function (baja) { ok = true; if (DEMO) { clearInterval(DEMO_ID); DEMO = false; $('sim').style.display = 'none'; ACTIVE.clear(); }
     $('mode').textContent = 'LIVE · ข้อมูลจาก station'; $('mode').className = 'mode live';
-    const sub = new baja.Subscriber(); const KEY = new Map();   // component -> [keys] (one point can be both a value and an alarm source)
+    const sub = new baja.Subscriber(); const KEY = new Map();   // component -> Set of keys (one point can be both a value and an alarm source)
     sub.attach('changed', function (prop) { if (prop.getName() === 'out') read(this); });
     function read(c){ for (const k of KEY.get(c) || []) read1(c, k); }
     function read1(c, k){ try { const o = c.get('out'), v = o.getValue(), st = o.getStatus();
       if (k.alarm) { const a = k.alarm; const on = (st && st.isAlarm && st.isAlarm()) || (typeof v === 'boolean' && v === a.av); if (on) ACTIVE.set(a.n, a); else ACTIVE.delete(a.n); renderAlarmList(); }
       else V[k.v] = v; } catch (e) {} }
     const all = [...Object.entries(PTS).map(([k, s]) => ({ s, v: k })), ...AL.filter(a => a.s).map(a => ({ s: a.s, alarm: a }))];
-    all.forEach(k => baja.Ord.make('station:|slot:' + k.s).get({ subscriber: sub }).then(c => { KEY.set(c, [...(KEY.get(c) || []), k]); read1(c, k); }).catch(() => {}));
-  }, () => { ok = true; startDemo(); }); }
+    const BY = new Map(); for (const k of all) { const o = 'station:|slot:' + k.s; if (!BY.has(o)) BY.set(o, []); BY.get(o).push(k); }
+    const attach = (o, c) => { if (!c) return failed(o); if (!KEY.has(c)) KEY.set(c, new Set()); BY.get(o).forEach(k => { KEY.get(c).add(k); FAIL.delete(k.v || k.alarm.n); }); read(c); };
+    const failed = o => BY.get(o).forEach(k => FAIL.add(k.v || k.alarm.n));
+    const one = o => baja.Ord.make(o).get({ subscriber: sub }).then(c => attach(o, c), () => failed(o));
+    const ords = [...BY.keys()], CHUNK = 200, jobs = [];
+    for (let i = 0; i < ords.length; i += CHUNK) {          // one network call per chunk; any problem -> resolve that chunk one by one
+      const part = ords.slice(i, i + CHUNK);
+      let p;
+      try { const b = new baja.BatchResolve(part);
+        p = Promise.resolve(b.resolve({ subscriber: sub })).then(() => part.forEach((o, j) => (typeof b.isResolved !== 'function' || b.isResolved(j)) ? attach(o, b.get(j)) : failed(o))); }
+      catch (e) { p = Promise.reject(e); }
+      jobs.push(p.catch(() => Promise.all(part.map(one))));
+    }
+    Promise.all(jobs).then(() => { if (!FAIL.size) return; $('mode').textContent = `LIVE · ข้อมูลจาก station · resolve ไม่ได้ ${FAIL.size} จุด (ดู Point mapping)`; $('mode').className = 'mode live warn';
+      console.warn('3D LIVE: ORDs not resolved', [...FAIL]); });
+  }, () => { ok = true; startDemo(); }), () => { ok = true; startDemo(); }); }
 startLive();
 
 // ------------------------------------------------------------------ installed / not installed (ghost), zones, future systems, floor filter, layers
@@ -666,7 +724,7 @@ for (const z of M.zones) { const z0 = zOf(z.floor) + 60, h = 2800, g = new THREE
   sp.position.copy(P3((z.x0 + z.x1) / 2, (z.y0 + z.y1) / 2, z0 + h + 200)); g.add(sp);
   ZONE[z.code] = { z, g, mat, edge, c, tex, sp }; }
 let zoneT = 0;
-function updateZones(dt){ const now = performance.now(); if (now - zoneT < 800) return; zoneT = now; const pulse = Date.now() % 1000 < 500;   // real time: slow GPUs still refresh const pulse = Date.now() % 1000 < 500;
+function updateZones(dt){ const now = performance.now(); if (now - zoneT < 800) return; zoneT = now; const pulse = Date.now() % 1000 < 500;   // real time: slow GPUs still refresh
   for (const k in ZONE) { const Z = ZONE[k], z = Z.z, t = V[z.t], rh = V[z.h], co2 = V[z.c], oos = !!V[z.oos], al = ZALM.has(z.code), mv = V[z[METRIC]];
     Z.sp.visible = al || (FSEL !== 'all' && FSEL !== 'roof' && +FSEL === z.floor);
     Z.mat.color.copy(zoneColor(mv, oos, METRIC)); Z.mat.emissive.setHex(al && pulse ? 0x661111 : 0); Z.mat.opacity = oos ? .07 : .17;
@@ -686,29 +744,41 @@ function updateSystems(t){ for (const o of SYSDEV) { const on = !!V[o.d.pt]; o.m
 let FSEL = 'all';
 let ISO = false;   // true = show only the selected floor (digital twin floor view)
 const LAYCHK = k => { const c = document.querySelector(`[data-layer="${k}"]`); return !c || c.checked; };
-function applyFloor(){ const plantOn = !ISO || FSEL === '1' || FSEL === 'roof' || FSEL === 'all'; LAYER.plant.visible = plantOn && LAYCHK('plant'); LAYER.piping.visible = plantOn && LAYCHK('piping');
+function applyFloor(){ const plantOn = !ISO || FSEL === (BASEMENT ? '0' : '1') || FSEL === 'roof' || FSEL === 'all';
+  const cut = BASEMENT && FSEL === '0'; for (const gm of [ground.material, apron.material]) { gm.transparent = cut; gm.opacity = cut ? .12 : 1; gm.depthWrite = !cut; } LAYER.plant.visible = plantOn && LAYCHK('plant'); LAYER.piping.visible = plantOn && LAYCHK('piping');
   for (const k in ZONE) ZONE[k].sp.scale.set(ISO ? 8.4 : 5.6, ISO ? 2.6 : 1.75, 1);
   for (const f in FLOORS) { const show = FSEL === 'all' || FSEL === 'roof' || (ISO ? +f === +FSEL : +f <= +FSEL); for (const o of FLOORS[f]) o.visible = show; }
   for (const id in LBL) LBL[id].dataset.hidden = EQ[id].g.visible && EQ[id].g.parent.visible ? '' : '1'; }
 function initPanels(){ const lay = $('layers'); if (!lay) return;
-  const names = { shell: 'อาคาร (โครงสร้าง/กระจก)', plant: 'Chiller plant', piping: 'ท่อ CHW / CDW', air: 'Air side (AHU/FCU/พัดลม)', zones: 'Zone temp / RH', systems: 'ระบบอื่น (fire / lighting ...)' };
+  const names = { shell: 'อาคาร (โครงสร้าง/กระจก)', plant: 'Chiller plant', piping: 'ท่อ CHW / CDW', air: 'Air side (AHU/FCU/พัดลม)', zones: 'Zone AirPlug เดิม (4 zone/ชั้น)', systems: 'ระบบอื่น (fire / lighting ...)',
+    ...(LAYER.office ? { office: 'ห้อง (สีตาม temp / RH / CO2)', ducts: 'ท่อลม SA / RA / OA / EA', terminals: 'VAV / หัวจ่าย / เซนเซอร์ / มิเตอร์', airflow: 'ลมไหลในท่อ (ตาม airflow จริง)' } : {}) };
   lay.innerHTML = Object.entries(names).map(([k, n]) => `<label><input type="checkbox" data-layer="${k}" checked> ${n}</label>`).join('');
   lay.querySelectorAll('[data-layer]').forEach(c => c.onchange = () => { LAYER[c.dataset.layer].visible = c.checked; applyFloor(); });
-  $('fsel').innerHTML = '<option value="all">ทุกชั้น</option>' + [...Array(BLD.floors).keys()].map(i => `<option value="${i + 1}">ชั้น ${i + 1}</option>`).join('') + '<option value="roof">ดาดฟ้า</option>';
+  $('fsel').innerHTML = '<option value="all">ทุกชั้น</option>' + (BASEMENT ? '<option value="0">B1 ห้องเครื่อง</option>' : '') + [...Array(BLD.floors).keys()].map(i => `<option value="${i + 1}">ชั้น ${i + 1}</option>`).join('') + '<option value="roof">ดาดฟ้า</option>';
   const goFloor = () => { applyFloor(); if (FSEL === 'all') return flyTo(...VIEWS.iso.slice(0, 2)); const z = FSEL === 'roof' ? ROOFZ : zOf(+FSEL);
     flyTo([62, mm(z) + 34, 22], [32, mm(z) + 1.5, -20]); };
   $('fsel').onchange = e => { FSEL = e.target.value; goFloor(); };
   if ($('fiso')) $('fiso').onchange = e => { ISO = e.target.checked; applyFloor(); };
   if ($('zmetric')) $('zmetric').onchange = e => { METRIC = e.target.value; zoneT = 0; };
-  const step = d => { const opts = ['all', ...[...Array(BLD.floors).keys()].map(i => String(i + 1)), 'roof'], i = Math.max(0, Math.min(opts.length - 1, opts.indexOf(FSEL) + d)); FSEL = opts[i]; $('fsel').value = FSEL; goFloor(); };
+  const step = d => { const opts = ['all', ...(BASEMENT ? ['0'] : []), ...[...Array(BLD.floors).keys()].map(i => String(i + 1)), 'roof'], i = Math.max(0, Math.min(opts.length - 1, opts.indexOf(FSEL) + d)); FSEL = opts[i]; $('fsel').value = FSEL; goFloor(); };
   const nav = { navUp: () => step(1), navDn: () => step(-1), navIn: () => zoomBy(.6), navOut: () => zoomBy(1.6), navHome: () => { FSEL = 'all'; $('fsel').value = 'all'; ISO = false; if ($('fiso')) $('fiso').checked = false; applyFloor(); flyTo(...VIEWS.iso.slice(0, 2)); } };
   for (const k in nav) if ($(k)) $(k).onclick = nav[k];
   $('sysl').innerHTML = M.systems.map(sy => `<div><b style="color:${sy.color}">●</b> ${sy.name_th} <i>${sy.devices.length ? sy.devices.length + ' จุด' : 'วางแผน · เพิ่มอุปกรณ์ในทะเบียน sheet Systems'}</i></div>`).join(''); }
+// ------------------------------------------------------------------ V7.9 r4 office layer (R9 design: rooms, VAV, ducts, airflow)
+const OFF = buildOffice({ scene, LAYER, onFloor, V, FAIL, glb });
+const alarmRooms = () => new Set([...ACTIVE.values()].flatMap(a => a.e).filter(e => e.startsWith('RM:')));
+renderer.domElement.addEventListener('dblclick', ev => { if (!OFF) return; const b = renderer.domElement.getBoundingClientRect();
+  mp.set((ev.clientX - b.left) / b.width * 2 - 1, -(ev.clientY - b.top) / b.height * 2 + 1); ray.setFromCamera(mp, camera);
+  if (ray.intersectObjects([...plant.children, ...LAYER.air.children], true).some(h => h.object.visible)) return;
+  const id = OFF.pick(ray); if (!id) return; const al = AL.filter(a => a.e.includes('RM:' + id)).map(a => ({ t: a.t, on: ACTIVE.has(a.n) }));
+  $('info').innerHTML = OFF.roomInfo(id, al); $('info').className = 'open'; });
 initPanels();
+if (OFF) { LAYER.zones.visible = false; const z = document.querySelector('[data-layer="zones"]'); if (z) z.checked = false; }
 window.__V = V; window.__EQ = EQ; window.__ZONE = ZONE; window.__PIPE = PIPE;  // test / diagnostics hooks (read only)
 
 // ------------------------------------------------------------------ loop
 renderer.setAnimationLoop(() => { const dt = Math.min(.05, clock.getDelta()), t = clock.elapsedTime; flyStep(); controls.update();
+  if (OFF) OFF.update(t, dt, { metric: METRIC, flow: !!($('flow') && $('flow').checked), showLabels: f => FSEL !== 'all' && FSEL !== 'roof' && +FSEL === f, alarmRooms: alarmRooms() });
   const W = weather(); applyWeather(W, t);
   if (rain.material.opacity > 0) { rain.position.y -= dt * 24; if (rain.position.y < -20) rain.position.y += 20; }
   updateGhosts(); applyAlarms(t); animate(t, dt); updateZones(dt); updateSystems(t); placeLabels(); renderer.render(scene, camera); });
@@ -716,6 +786,6 @@ renderAlarmList();
 // point mapping panel: every station point the 3D page reads, its slot ORD and the value received
 $('mapBtn').onclick = () => { const rows = window.MAP || []; const fmt = v => v === undefined ? '—' : typeof v === 'number' ? v.toFixed(2) : String(v);
   $('info').className = 'open wide'; const draw = () => { if (!$('info').classList.contains('wide')) return;
-    const got = rows.filter(r => V[r.p] !== undefined).length;
-    $('info').innerHTML = `<h3>Point mapping · ${DEMO ? 'DEMO (ค่าจำลอง)' : 'LIVE'} · รับค่าแล้ว ${got}/${rows.length} จุด · alarm ${AL.filter(a => a.s).length} จุด</h3><button onclick="document.getElementById('info').className=''">ปิด</button>
-    <table>${rows.map(r => `<tr><td>${r.p}</td><td class="${V[r.p] === undefined ? 'no' : 'ok'}">${fmt(V[r.p])}</td><td>${r.u}</td><td style="color:#9fb0c0">station:|slot:${r.s}</td></tr>`).join('')}</table>`; setTimeout(draw, 1000); }; draw(); };
+    const got = rows.filter(r => V[r.p] !== undefined).length, nf = rows.filter(r => FAIL.has(r.p)).length;
+    $('info').innerHTML = `<h3>Point mapping · ${DEMO ? 'DEMO (ค่าจำลอง)' : 'LIVE'} · รับค่าแล้ว ${got}/${rows.length} จุด${nf ? ` · resolve ไม่ได้ ${nf} จุด` : ''} · alarm ${AL.filter(a => a.s).length} จุด${FAIL.size - nf > 0 ? ` (resolve ไม่ได้ ${FAIL.size - nf})` : ''}</h3><button onclick="document.getElementById('info').className=''">ปิด</button>
+    <table>${rows.map(r => `<tr><td>${r.p}</td><td class="${V[r.p] === undefined ? 'no' : 'ok'}">${FAIL.has(r.p) ? 'resolve ไม่ได้' : fmt(V[r.p])}</td><td>${r.u}</td><td style="color:#9fb0c0">station:|slot:${r.s}</td></tr>`).join('')}</table>`; setTimeout(draw, 1000); }; draw(); };

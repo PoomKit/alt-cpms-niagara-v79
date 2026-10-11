@@ -5,7 +5,8 @@
  * Expansion/Supervisor adds expansion units when the base pair cannot carry the load or a base unit is missing:
      chillers  target = deficit (base units asked for but not available) + step-add (all running, CHWS high or load high)
      pumps/CT  target = chillers that need water - healthy base units  (one pump / tower per chiller, headered)
-   first available slot is used (03 -> 06); a failed / maintenance / not-installed slot is skipped automatically
+   running units keep their place; the next unit to start is the available slot with the fewest run hours
+   (EXP_RotateByRuntime, ties -> lower slot); a failed / maintenance / not-installed slot is skipped automatically
  * equipment register (Excel) -> Installed defaults, descriptions, protocols, sensor ranges; Field IO / point list / 3D map follow
 """
 import json, os
@@ -14,7 +15,7 @@ import make_v6 as M6
 import make_v7 as M7
 import v77_fieldcx as FCX
 import v78_improve as IMP
-from make_v7 import AND, OR, NOT, DLY, SW, MATH, CMP, sealin, const, PULSE, ai, di, simlink
+from make_v7 import AND, OR, NOT, DLY, SW, MATH, CMP, RATE, sealin, const, PULSE, ai, di, simlink
 
 T, F = 'ConstantTrue', 'ConstantFalse'
 tm, alarm = IMP.tm, IMP.alarm
@@ -62,6 +63,13 @@ def add_tree(S, f, name, nums):
         lvl = nxt
     MATH(S, f, name, 'Add', *lvl)
     return name
+
+
+def runtime(S, f, u):
+    """run hours of an expansion unit (same DiscreteTotalizerExt pattern as the base units) - used by the slot rotation."""
+    M6.add_ext(S, f'{u}RunProof', 'Runtime', 'c:DiscreteTotalizerExt')
+    S.kc(f, f'{u}RuntimeHoursCalc', 'Divide', {'inA': f'{u}RunProof:Runtime.elapsedActiveTimeNumeric', 'inB': 'MsPerHour'})
+    S.npoint(f, f'{u}_RuntimeHours', f'{u}RuntimeHoursCalc', 'hr', 1, note='V7.9: run hours (slot rotation)')
 
 
 def common_unit(S, u, f, desc, base):
@@ -112,6 +120,7 @@ def chiller_points(S, n):
     ai(S, f, f'{u}_ChwSupplyTemp', 12.0, 'C', 1, note='FIELD AI: chiller leaving CHW temperature')
     ai(S, f, f'{u}_kW', 0.0, 'kW', 1, note='FIELD AI: chiller power (meter)')
     proof_fail(S, f, u, f'{u}StartCmdLogic', f'{u}RunProof', 180000, 15000, f'{u} did not prove running after the start command')
+    runtime(S, f, u)
     avail(S, f, u)
     AND(S, f, f'{u}_Running', f'{u}RunProof', f'{u}_Installed')
     SW(S, f, f'{u}_RunNum', f'{u}_Running', 'One', 'Zero')
@@ -120,6 +129,8 @@ def chiller_points(S, n):
     S.bpoint(f, f'{u}ValveOpenCmd', F, 'Open', 'Close', kind='do', note='FIELD DO (logic linked in post)')
     S.bpoint(f, f'{u}CdwValveOpenCmd', F, 'Open', 'Close', kind='do', note='FIELD DO (logic linked in post)')
     S.bpoint(f, f'{u}StartCmd', F, 'Start', 'Stop', kind='do', note='FIELD DO (logic linked in post)')
+    S.npoint(f, f'{u}DemandLimitCmd', 'Zero', 'pct', 0, kind='ao', note='FIELD AO: chiller demand limit / soft-load (logic linked in post)')
+    S.npoint(f, f'{u}_CdwHpvCmd', 'Zero', 'pct', 0, kind='ao', note='FIELD AO: condenser head-pressure valve (logic linked in post)')
     sf = 'Simulation/Expansion'
     DLY(S, sf, f'Sim_{u}_RunFb', f'{u}StartCmd', 3000, 1000); simlink(S, f'{u}RunProof', f'Sim_{u}_RunFb')
     DLY(S, sf, f'Sim_{u}_ValveFb', f'{u}ValveOpenCmd', 2000, 2000)
@@ -139,6 +150,7 @@ def pump_points(S, k, n):
     di(S, f, f'{u}Fault', False, 'Fault', 'Normal', note='FIELD DI: VSD fault')
     di(S, f, f'{u}_MVFb', False, 'Open', 'Closed', note='FIELD DI: discharge valve open limit')
     proof_fail(S, f, u, f'{u}StartCmdLogic', f'{u}RunProof', 60000, 10000, f'{u} did not prove running after the start command')
+    runtime(S, f, u)
     avail(S, f, u)
     S.bpoint(f, f'{u}_MVCmd', F, 'Open', 'Close', kind='do', note='FIELD DO (logic linked in post)')
     S.bpoint(f, f'{u}StartCmd', F, 'Start', 'Stop', kind='do', note='FIELD DO (logic linked in post)')
@@ -156,6 +168,7 @@ def tower_points(S, n):
     di(S, f, f'{u}Fault', False, 'Fault', 'Normal', note='FIELD DI: fan VSD fault / vibration')
     di(S, f, f'{u}_ValveFb', False, 'Open', 'Closed', note='FIELD DI: inlet + outlet valves open limits (series)')
     proof_fail(S, f, u, f'{u}StartCmdLogic', f'{u}RunProof', 60000, 10000, f'{u} fan did not prove running after the start command')
+    runtime(S, f, u)
     avail(S, f, u)
     S.bpoint(f, f'{u}_ValveCmd', F, 'Open', 'Close', kind='do', note='FIELD DO (logic linked in post)')
     S.bpoint(f, f'{u}StartCmd', F, 'Start', 'Stop', kind='do', note='FIELD DO (logic linked in post)')
@@ -236,7 +249,18 @@ def chiller_logic(S, n):
     S.rewire(f'{u}ValveOpenCmd', 'in16', f'{u}_ValveLogic', F)
     S.rewire(f'{u}CdwValveOpenCmd', 'in16', f'{u}_ValveLogic', F)
     AND(S, f, f'{u}_ValvesOpen', f'{u}_ChwIsoFb', f'{u}_CdwIsoFb')
-    AND(S, f, f'{u}StartCmdLogic', f'{u}_RunReq', f'{u}_ValvesOpen', f'{u}_ChwFlowSw', f'{u}_CdwFlowSw')
+    # r4 protections (same rules as CH01 / CH02): anti-recycle minimum off time, evaporator freeze trip (latched)
+    NOT(S, f, f'{u}_NotStartCmd', f'{u}StartCmd')
+    DLY(S, f, f'{u}_MinOffDone', f'{u}_NotStartCmd', tm(600000, 15000), note='anti-recycle: compressor minimum off time (OEM start-to-start)')
+    OR(S, f, f'{u}MinOffPermit', f'{u}_MinOffDone', f'{u}StartCmd')
+    CMP(S, f, f'{u}_FreezeLow', 'LessThan', f'{u}_ChwSupplyTemp', 'CH_FreezeTripTemp'); AND(S, f, f'{u}_FreezeRun', f'{u}_FreezeLow', f'{u}RunProof')
+    DLY(S, f, f'{u}_FreezeDly', f'{u}_FreezeRun', tm(10000, 3000))
+    CMP(S, f, f'{u}_FreezeCleared', 'GreaterThan', f'{u}_ChwSupplyTemp', 'CH_FreezeResetTemp'); AND(S, f, f'{u}_FreezeReset', f'{u}_ResetAny', f'{u}_FreezeCleared')
+    sealin(S, f, f'{u}_FreezeLatch', f'{u}_FreezeDly', f'{u}_FreezeReset', note='evaporator LWT low trip, reset above CH_FreezeResetTemp')
+    alarm(S, f, f'{u}_FreezeTripAlarm', f'{u}_FreezeLatch', 'Tripped', 'Normal', 'Critical', f'{u}: evaporator leaving water below the freeze limit - chiller tripped')
+    OR(S, f, f'{u}_TripAny', f'{u}_FailLatch', f'{u}_FreezeLatch'); S.rewire(f'{u}_NotFailed', 'in', f'{u}_TripAny', f'{u}_FailLatch')
+    AND(S, f, f'{u}_StartPermit', f'{u}_RunReq', f'{u}MinOffPermit')
+    AND(S, f, f'{u}StartCmdLogic', f'{u}_StartPermit', f'{u}_ValvesOpen', f'{u}_ChwFlowSw', f'{u}_CdwFlowSw')
     for side in ('Chw', 'Cdw'):
         NOT(S, f, f'{u}_No{side}Flow', f'{u}_{side}FlowSw'); AND(S, f, f'{u}_{side}FlowMissing', f'{u}_ValvesOpen', f'{u}_No{side}Flow', f'{u}_RunReq')
         DLY(S, f, f'{u}_{side}FlowMissingDly', f'{u}_{side}FlowMissing', tm(60000, 10000))
@@ -249,7 +273,16 @@ def chiller_logic(S, n):
     pos(S, f, f'Gfx_{u}_ChwIso_Pos', f'{u}_ChwIsoFb'); pos(S, f, f'Gfx_{u}_CdwIso_Pos', f'{u}_CdwIsoFb')
     AND(S, f, f'Gfx_{u}EvapLogic', f'{u}_ChwIsoFb', 'Gfx_ChwMain_Fwd'); S.bpoint(f, f'Gfx_{u}Evap_Fwd', f'Gfx_{u}EvapLogic', 'Flow', 'No flow')
     AND(S, f, f'Gfx_{u}CondLogic', f'{u}_CdwIsoFb', 'Gfx_CdwTotal_Fwd'); S.bpoint(f, f'Gfx_{u}Cond_Fwd', f'Gfx_{u}CondLogic', 'Flow', 'No flow')
-    # simulation
+    # soft-load: demand limit starts at CHX_SoftLoadStartPct and ramps to 100 % after the compressor proves running
+    SW(S, f, f'{u}_SoftTgt', f'{u}RunProof', 'HundredPct', 'CHX_SoftLoadStartPct')
+    RATE(S, f, f'{u}_SoftRamp', f'{u}_SoftTgt', tm(50.0 / 900.0, 5.0), note='site: 50 -> 100 % in 15 min')
+    SW(S, f, f'{u}_SoftSel', f'{u}RunProof', f'{u}_SoftRamp', 'CHX_SoftLoadStartPct')
+    S.rewire(f'{u}DemandLimitCmd', 'in16', f'{u}_SoftSel', 'Zero')
+    # head pressure: same rule as CH01/CH02 (V7.1 HPV reset on entering CDW temperature, CH_HpvEnable from V7.8 r11)
+    M7.RESET(S, f, f'{u}HpvReset', f'{u}_CdwEnteringTemp', 'CH_HpvTempLow', 'CH_HpvTempHigh', 'CH_HpvMinPos', 'HundredPct')
+    SW(S, f, f'{u}_HpvSel', 'CH_HpvEnable', f'{u}HpvReset', 'HundredPct')
+    SW(S, f, f'{u}HpvGate', f'{u}CdwValveOpenCmd', f'{u}_HpvSel', 'ZeroSpeed')
+    S.rewire(f'{u}_CdwHpvCmd', 'in16', f'{u}HpvGate', 'Zero')
 
 
 def pump_logic(S, k, n):
@@ -270,7 +303,14 @@ def pump_logic(S, k, n):
 
 def tower_logic(S, n):
     u = f'CT{n:02d}'; f = f'{EX}/{u}'; req = f'CTX_Req{n:02d}'
-    AND(S, f, f'{u}_RunReq', req, f'{u}_Avail', 'PlantPermissive')
+    # r4: basin low-low (dry-run) protection, same limits as CT01 / CT02
+    CMP(S, f, f'{u}_LevelLL', 'LessThan', f'{u}_BasinLevel', 'CT_LevelLowLowPct'); DLY(S, f, f'{u}_LevelLLDly', f'{u}_LevelLL', tm(10000, 3000))
+    CMP(S, f, f'{u}_LevelOK', 'GreaterThan', f'{u}_BasinLevel', 'CT_LevelLowLowResetPct')
+    sealin(S, f, f'{u}_LevelLLLatch', f'{u}_LevelLLDly', f'{u}_LevelOK', note='basin low-low until the level recovers')
+    AND(S, f, f'{u}_LevelLLInst', f'{u}_LevelLLLatch', f'{u}_Installed')
+    alarm(S, f, f'{u}_BasinLowLowAlarm', f'{u}_LevelLLInst', 'Low-low', 'Normal', 'Critical', f'{u}: basin level low-low - tower stopped (dry run)')
+    NOT(S, f, f'{u}_LevelNotLL', f'{u}_LevelLLLatch')
+    AND(S, f, f'{u}_RunReq', req, f'{u}_Avail', 'PlantPermissive', f'{u}_LevelNotLL')
     DLY(S, f, f'{u}_ValveLogic', f'{u}_RunReq', 0, tm(300000, 10000))
     S.rewire(f'{u}_ValveCmd', 'in16', f'{u}_ValveLogic', F)
     AND(S, f, f'{u}StartCmdLogic', f'{u}_RunReq', f'{u}_ValveFb')
@@ -312,18 +352,28 @@ def sensor(S, r):
 
 # ------------------------------------------------------------------ supervisor
 def ranks(S, k, target, units):
-    """slot request: available AND (number of available slots up to this one) <= target."""
-    prev = None
+    """slot request: available AND rank <= target.
+    rank = 1 + number of other available slots that come first. Order key (lower first):
+      running units first (-1e6) so a running unit is never displaced by a rotation,
+      then run hours when EXP_RotateByRuntime is on, then the slot number (tie break / fixed order when rotation is off)."""
     for n in SLOTS:
         u = f'{units}{n:02d}'
-        SW(S, SUP, f'{k}X_Av{n:02d}', f'{u}_Avail', 'One', 'Zero')
+        SW(S, SUP, f'{k}X_RunN{n:02d}', f'{u}RunProof', 'One', 'Zero')
+        SW(S, SUP, f'{k}X_Hours{n:02d}', 'EXP_RotateByRuntime', f'{u}RuntimeHoursCalc', 'Zero')
+        MATH(S, SUP, f'{k}X_RunBias{n:02d}', 'Multiply', f'{k}X_RunN{n:02d}', 'EXP_RunningBias')
+        MATH(S, SUP, f'{k}X_KeyA{n:02d}', 'Add', f'{k}X_Hours{n:02d}', f'EXP_SlotBias{n:02d}')
+        MATH(S, SUP, f'{k}X_Key{n:02d}', 'Subtract', f'{k}X_KeyA{n:02d}', f'{k}X_RunBias{n:02d}')
+    for n in SLOTS:
+        before = []
+        for m in SLOTS:
+            if m == n: continue
+            CMP(S, SUP, f'{k}X_{m:02d}Bef{n:02d}', 'LessThan', f'{k}X_Key{m:02d}', f'{k}X_Key{n:02d}')
+            AND(S, SUP, f'{k}X_{m:02d}BefAv{n:02d}', f'{k}X_{m:02d}Bef{n:02d}', f'{units}{m:02d}_Avail')
+            SW(S, SUP, f'{k}X_{m:02d}BefN{n:02d}', f'{k}X_{m:02d}BefAv{n:02d}', 'One', 'Zero'); before.append(f'{k}X_{m:02d}BefN{n:02d}')
         rk = f'{k}X_Rank{n:02d}'
-        if prev: MATH(S, SUP, rk, 'Add', prev, f'{k}X_Av{n:02d}')
-        else: MATH(S, SUP, rk, 'Add', f'{k}X_Av{n:02d}')
+        MATH(S, SUP, rk, 'Add', 'One', *before)
         CMP(S, SUP, f'{k}X_InTarget{n:02d}', 'LessThanEqual', rk, target)
-        AND(S, SUP, f'{k}X_Req{n:02d}', f'{u}_Avail', f'{k}X_InTarget{n:02d}', 'PlantPermissive', 'CHX_Enable')
-        prev = rk
-    return prev
+        AND(S, SUP, f'{k}X_Req{n:02d}', f'{units}{n:02d}_Avail', f'{k}X_InTarget{n:02d}', 'PlantPermissive', 'CHX_Enable')
 
 
 def supervisor(S):
@@ -332,6 +382,11 @@ def supervisor(S):
     S.param('CHX_DownLoadPct', 75.0, 'pct', folder=P, prec=0, note='remove one when the others could carry the load below this average')
     S.param('CDPX_MinSpeed', 60.0, 'pct', folder=P, prec=0, note='expansion CDP speed when no base CDP runs')
     S.bparam('CHX_Enable', True, folder=P, t='Expansion slots in use', f='Off (V7.8 behaviour)', note='V7.9 master switch: off = slots 03-06 never run')
+    S.bparam('EXP_RotateByRuntime', True, folder=P, t='Fewest run hours first', f='Slot order 03 -> 06',
+             note='V7.9 r3: which expansion slot starts next (running units are never swapped)')
+    S.param('CHX_SoftLoadStartPct', 50.0, 'pct', folder=P, prec=0, note='expansion chiller demand limit at start (soft-load)')
+    const(S, 'EXP_RunningBias', 1.0e6, 'none', 0, 'rank key offset: running units first')
+    for n in SLOTS: const(S, f'EXP_SlotBias{n:02d}', n / 1000.0, 'none', 3, 'rank key tie break: lower slot first')
     # ---- chillers
     count(S, SUP, 'CHX_BaseAvail', ['CH01TrainHealthy', 'CH02TrainHealthy'])
     MATH(S, SUP, 'CHX_DeficitRaw', 'Subtract', 'PlantStage', 'CHX_BaseAvail')
@@ -366,7 +421,7 @@ def supervisor(S):
     SW(S, SUP, 'CHX_UpN', 'CHX_UpDly', 'One', 'Zero'); SW(S, SUP, 'CHX_DownN', 'CHX_DownDly', 'One', 'Zero')
     MATH(S, SUP, 'CHX_StepPlus', 'Add', 'CHX_StageAdd', 'CHX_UpN')
     MATH(S, SUP, 'CHX_StepCalc', 'Subtract', 'CHX_StepPlus', 'CHX_DownN')
-    S.kc(SUP, 'CHX_StepLim', 'Limiter', {'inA': 'CHX_StepCalc'}, props=[('inMin', None, '0.0'), ('inMax', None, '4.0')])
+    S.kc(SUP, 'CHX_StepLim', 'Limiter', {'inA': 'CHX_StepCalc'}, props=[('inMin', None, '0.0'), ('inMax', None, repr(float(len(SLOTS))))])
     SW(S, SUP, 'CHX_StepIn', 'CHX_PlantOff', 'Zero', 'CHX_StepLim')
     OR(S, SUP, 'CHX_StepClock', 'CHX_UpDly', 'CHX_DownDly', 'CHX_PlantOff')
     S.rewire('CHX_StepLatch', 'in', 'CHX_StepIn', 'Zero'); S.rewire('CHX_StepLatch', 'clock', 'CHX_StepClock', F)
@@ -383,11 +438,12 @@ def supervisor(S):
     count(S, SUP, 'CHX_ExpReqCount', [f'CHX_Req{n:02d}' for n in SLOTS])
     MATH(S, SUP, 'CHX_BaseAsked', 'Minimum', 'PlantStage', 'CHX_BaseAvail')
     MATH(S, SUP, 'CHX_Asked', 'Add', 'CHX_BaseAsked', 'CHX_ExpReqCount')
-    MATH(S, SUP, 'CHX_TotalNeed', 'Add', 'CHX_NeedNow', 'Zero', note='chillers in post-run / valves open (base pool demand)')
     MATH(S, SUP, 'CHX_WaterDemand', 'Maximum', 'CHX_NeedNow', 'CHX_Asked', note='chillers asked for (water first) or in post-run')
-    S.npoint(SUP, 'CHX_ChillersNeedingWater', 'CHX_TotalNeed', 'none', 0, note='chillers that need CHW / CDW flow now')
-    CMP(S, SUP, 'CHX_Need1', 'GreaterThanEqual', 'CHX_TotalNeed', 'One')
-    CMP(S, SUP, 'CHX_Need2', 'GreaterThanEqual', 'CHX_TotalNeed', 'Two')
+    S.npoint(SUP, 'CHX_ChillersNeedingWater', 'CHX_WaterDemand', 'none', 0,
+             note='V7.9 r3: the number the CHP / CDP / CT targets are built from (asked for or in post-run)')
+    S.npoint(SUP, 'CHX_ChillersValvesOpen', 'CHX_NeedNow', 'none', 0, note='chillers with isolation valves open / in post-run now (base pool demand)')
+    CMP(S, SUP, 'CHX_Need1', 'GreaterThanEqual', 'CHX_NeedNow', 'One')
+    CMP(S, SUP, 'CHX_Need2', 'GreaterThanEqual', 'CHX_NeedNow', 'Two')
     for k, base in (('CHP', ('CHP01Healthy', 'CHP02Healthy')), ('CDP', ('CDP01Healthy', 'CDP02Healthy')), ('CT', ('CT01Healthy', 'CT02Healthy'))):
         count(S, SUP, f'{k}X_BaseAvail', list(base))
         MATH(S, SUP, f'{k}X_TargetRaw', 'Subtract', 'CHX_WaterDemand', f'{k}X_BaseAvail')
@@ -395,6 +451,18 @@ def supervisor(S):
         ranks(S, k, f'{k}X_Target', k)
     MATH(S, SUP, 'CHPX_Speed', 'Maximum', 'CHP01SpeedMinMax', 'CHP02SpeedMinMax')
     MATH(S, SUP, 'CDPX_Speed', 'Maximum', 'CDP01SpeedCmd', 'CDP02SpeedCmd', 'CDPX_MinSpeed')
+
+
+def plant_room_b1(S):
+    """r4: the R9 design moves the chiller plant to basement B1 -> flood protection of the plant room (motors / starters at floor level).
+    Float switch at the sump / floor: alarm, and (project decision, default on) chillers stop through Plant_ChillerInhibit."""
+    f = 'Alarms/PlantRoom'
+    di(S, f, 'PlantRoom_FloodSw', False, 'Water', 'Dry', note='FIELD DI: B1 plant room floor water / sump high-high level switch')
+    S.bparam('CH_StopOnFlood', True, folder=f, t='Stop chillers', f='Alarm only', note='flooded B1 plant room stops the chillers (PROJECT decision)')
+    DLY(S, f, 'PR_FloodDly', 'PlantRoom_FloodSw', tm(10000, 2000))
+    alarm(S, f, 'PlantRoom_FloodAlarm', 'PR_FloodDly', 'Flooding', 'Normal', 'Emergency', 'B1 plant room flooding - check sump pumps, isolate electrical equipment')
+    AND(S, f, 'PR_FloodStop', 'PR_FloodDly', 'CH_StopOnFlood')
+    S.rewire('Plant_ChillerInhibit', 'inD', 'PR_FloodStop', F)
 
 
 def base_installed(S):
@@ -454,6 +522,7 @@ def post(S):
     for n in SLOTS:
         for k in ('CH', 'CHP', 'CDP', 'CT'): S.rewire(f'{k}{n:02d}_ResetAny', 'inB', 'FO_Reset', F)
     supervisor(S)
+    plant_room_b1(S)
     for n in SLOTS:
         chiller_logic(S, n); pump_logic(S, 'CHP', n); pump_logic(S, 'CDP', n); tower_logic(S, n)
     base_installed(S)
@@ -462,19 +531,46 @@ def post(S):
     OR(S, SUP, 'CHX_CTNeed2', 'CT_Need2', 'CHX_Need2'); relink_consumers(S, 'CT_Need2', 'CHX_CTNeed2')
 
 
+# V7.9 r3: Field IO group numbers are pinned (= the V7.9 r2 register) so adding a group never renumbers the others.
+# BACnet device = 7700 + n, Modbus unit = n. New groups take the next free number (sorted by name).
+GROUP_NO = {'AHU01': 1, 'AHU02': 2, 'AirCommon': 3, 'CDP01': 4, 'CDP02': 5, 'CH01': 6, 'CH02': 7, 'CHP01': 8, 'CHP02': 9, 'CPEF01': 10,
+            'CT01': 11, 'CT02': 12, 'CdwLoop': 13, 'ChwLoop': 14, 'EF01': 15, 'EF02': 16, 'EF03': 17, 'FCU01': 18, 'FCU02': 19, 'FCU03': 20,
+            'FCU04': 21, 'LSF01': 22, 'MakeupWater': 23, 'Metering': 24, 'OAU01': 25, 'OutdoorAir': 26, 'PlantCommon': 27, 'SEF01': 28,
+            'Zones': 29, 'CDP03': 30, 'CDP04': 31, 'CDP05': 32, 'CDP06': 33, 'CH03': 34, 'CH04': 35, 'CH05': 36, 'CH06': 37, 'CHP03': 38,
+            'CHP04': 39, 'CHP05': 40, 'CHP06': 41, 'CT03': 42, 'CT04': 43, 'CT05': 44, 'CT06': 45, 'F02': 46, 'F03': 47, 'F04': 48,
+            'F05': 49, 'F06': 50, 'F07': 51, 'F08': 52, 'Sensors': 53}
+
+
+def group_numbers(groups):
+    idx = {g: GROUP_NO[g] for g in groups if g in GROUP_NO}
+    nxt = max(list(GROUP_NO.values()) + [0]) + 1
+    for g in sorted(set(groups) - set(idx)):
+        idx[g] = nxt; nxt += 1
+    return idx
+
+
+def device_of(reg):
+    """BACnet device instance from the register 'Device' column (Excel gives 1234 or 1234.0), None when empty / not a number."""
+    v = (reg or {}).get('Device')
+    try:
+        f = float(str(v).strip())
+    except (TypeError, ValueError):
+        return None
+    return int(f) if f.is_integer() and 0 <= f < 4194303 else None
+
+
 def field_io(S):
     scale(S)                                         # module global: v79_air wraps it
     r = _prev_field_io(S)
     post(S)
-    # keep the base groups' device numbers as in V7.8; expansion groups follow
     io = FCX.REG['io']
-    exp = {f'{k}{n:02d}' for n in SLOTS for k in ('CH', 'CHP', 'CDP', 'CT')} | {'Sensors'} | {f'F{i:02d}' for i in range(2, 9)}
-    base = sorted({x['Group'] for x in io} - exp); extra = sorted(exp & {x['Group'] for x in io})
-    idx = {g: i for i, g in enumerate(base + extra, 1)}
+    idx = group_numbers({x['Group'] for x in io})
     eq = {r['Slot']: r for r in REG.get('Equipment', [])}
     for x in io:
         gi = idx[x['Group']]; x['BACnet_Device'] = 7700 + gi; x['Modbus_Unit'] = gi
         reg = eq.get(x['Group'])
+        dev = device_of(reg)
+        if dev is not None: x['BACnet_Device'] = dev                # register override: device instance of the real controller
         if reg and reg.get('Protocol'):
             x['Protocol'] = int(reg['Protocol']); x['Protocol_Name'] = FCX.PROTO[int(reg['Protocol'])]
     for g, reg in eq.items():

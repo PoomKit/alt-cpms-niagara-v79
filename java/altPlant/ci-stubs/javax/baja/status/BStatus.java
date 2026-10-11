@@ -1,0 +1,1 @@
+package javax.baja.status; public final class BStatus extends javax.baja.sys.BSimple { public static final BStatus ok = null, fault = null, nullStatus = null; public boolean isValid() { return false; } }

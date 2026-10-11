@@ -1,0 +1,13 @@
+# Python 3.10+ packages used by the builders and generators (pip install -r requirements.txt)
+# core: station builder (make_v79.py), equipment register, offline tests, checks
+openpyxl>=3.1
+numpy>=1.24
+# Px generators (gen_px*.py, sprites / gauges)
+Pillow>=10.0
+# Word reports (manual77.py, design77.py, ifmap_doc.py, ai_tag_map.py)
+python-docx>=1.1
+# 2D drawings (drawings/gen2d79.py) - also needs the lotus helpers (LOTUS_DIR)
+ezdxf>=1.2
+matplotlib>=3.8
+# Blender models / Px renders (tools/blender/equipment79.py): Blender 4.x, or `pip install bpy==4.5.0` on Python 3.11 (+ Pillow)
+# Not on PyPI: bpy / mathutils / bpy_extras = Blender 4.x (run assets73/74, plant3d*, floor73, sprites73/74 with `blender -b -P <script>`)

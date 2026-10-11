@@ -1,0 +1,1174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="uxBuilder:UxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="1920.0,1080.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <Rect fill="#12161b" stroke="#12161b" pen="1.0" geom="0.0,0.0,1920.0,1080.0"/>
+
+    <Label layout="0.0,0.0,1920.0,40.0" text="  ALT Reference V7.9 r4 — Office floors · VAV AHUs and energy" font="bold 18.0pt sans-serif" foreground="white" background="#0b0e11" halign="left"/>
+
+    <Label layout="1300.0,8.0,610.0,24.0" text="LIVE STATION POINTS · R9 OFFICE DESIGN · REFERENCE SIMULATION" font="bold 10.0pt sans-serif" foreground="#263238" background="#ffca28" halign="center"/>
+
+    <Label layout="8.0,44.0,132.0,26.0" text="VAV overview" font="bold 9.0pt sans-serif" foreground="white" background="#1e88e5" halign="center"/>
+
+    <Label layout="144.0,44.0,132.0,26.0" text="F02 VAV" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F02_VAV.px" title="F02 VAV"/>
+    </Label>
+
+    <Label layout="280.0,44.0,132.0,26.0" text="F03 VAV" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F03_VAV.px" title="F03 VAV"/>
+    </Label>
+
+    <Label layout="416.0,44.0,132.0,26.0" text="F04 VAV" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F04_VAV.px" title="F04 VAV"/>
+    </Label>
+
+    <Label layout="552.0,44.0,132.0,26.0" text="F05 VAV" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F05_VAV.px" title="F05 VAV"/>
+    </Label>
+
+    <Label layout="688.0,44.0,132.0,26.0" text="F06 VAV" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F06_VAV.px" title="F06 VAV"/>
+    </Label>
+
+    <Label layout="824.0,44.0,132.0,26.0" text="F07 VAV" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F07_VAV.px" title="F07 VAV"/>
+    </Label>
+
+    <Label layout="960.0,44.0,132.0,26.0" text="F08 VAV" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F08_VAV.px" title="F08 VAV"/>
+    </Label>
+
+    <Label layout="1096.0,44.0,132.0,26.0" text="Plant" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_Plant.px" title="Plant"/>
+    </Label>
+
+    <Label layout="1232.0,44.0,132.0,26.0" text="Meters" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_Floor_Meters.px" title="Meters"/>
+    </Label>
+
+    <Label layout="1368.0,44.0,132.0,26.0" text="Alarms" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_CP_AlarmsHistory.px" title="Alarms"/>
+    </Label>
+
+    <Label layout="1504.0,44.0,132.0,26.0" text="3D Live" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <HyperlinkBinding ord="file:^web/ALT_V79_Building3D.html"/>
+    </Label>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,80.0,1904.0,460.0"/>
+
+    <Label layout="8.0,80.0,1904.0,20.0" text="  FLOORS 2-8 · one VAV AHU per floor (click a floor for the VAV page)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="14.0,104.0,90.0,20.0" text="Floor" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="108.0,104.0,70.0,20.0" text="Run" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="182.0,104.0,80.0,20.0" text="SAT °C" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="266.0,104.0,80.0,20.0" text="SAT SP" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="350.0,104.0,80.0,20.0" text="DSP Pa" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="434.0,104.0,80.0,20.0" text="DSP SP" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="518.0,104.0,70.0,20.0" text="Fan %" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="592.0,104.0,70.0,20.0" text="PICV %" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="666.0,104.0,80.0,20.0" text="OA L/s" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="750.0,104.0,80.0,20.0" text="Vot L/s" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="834.0,104.0,60.0,20.0" text="P.req" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="898.0,104.0,60.0,20.0" text="C.req" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="962.0,104.0,80.0,20.0" text="Avg °C" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="1046.0,104.0,80.0,20.0" text="BTU kW" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="1130.0,104.0,90.0,20.0" text="Feeder kW" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="1224.0,104.0,300.0,20.0" text="Alarms" font="bold 9.0pt sans-serif" foreground="#9aa5b1" halign="center"/>
+
+    <Label layout="14.0,130.0,90.0,44.0" text="F08  ⊞" font="bold 12.0pt sans-serif" foreground="white" background="#1e3a52" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F08_VAV.px" title="Floor 8 VAV"/>
+    </Label>
+
+    <BoundLabel layout="108.0,140.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="182.0,140.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_SAT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="266.0,140.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_SAT_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="350.0,140.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_DuctSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="434.0,140.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_DuctSP_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="518.0,140.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_FanSpeedCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="592.0,140.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="666.0,140.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_OAFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="750.0,140.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_OAFlowSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="834.0,140.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_PressureRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="898.0,140.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_CoolingRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="962.0,140.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/Zone_F08_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1046.0,140.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F08/BTU_F08_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1130.0,140.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F08/PM_F08_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1242.0,146.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_FailAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1292.0,146.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_FaultAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1342.0,146.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_HighStaticAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1392.0,146.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_FilterDPAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1442.0,146.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_VentilationLowAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1492.0,146.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_SatNotTrackingAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,190.0,90.0,44.0" text="F07  ⊞" font="bold 12.0pt sans-serif" foreground="white" background="#1e3a52" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F07_VAV.px" title="Floor 7 VAV"/>
+    </Label>
+
+    <BoundLabel layout="108.0,200.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="182.0,200.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_SAT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="266.0,200.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_SAT_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="350.0,200.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_DuctSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="434.0,200.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_DuctSP_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="518.0,200.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_FanSpeedCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="592.0,200.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="666.0,200.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_OAFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="750.0,200.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_OAFlowSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="834.0,200.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_PressureRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="898.0,200.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_CoolingRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="962.0,200.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/Zone_F07_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1046.0,200.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F07/BTU_F07_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1130.0,200.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F07/PM_F07_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1242.0,206.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_FailAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1292.0,206.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_FaultAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1342.0,206.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_HighStaticAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1392.0,206.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_FilterDPAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1442.0,206.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_VentilationLowAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1492.0,206.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_SatNotTrackingAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,250.0,90.0,44.0" text="F06  ⊞" font="bold 12.0pt sans-serif" foreground="white" background="#1e3a52" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F06_VAV.px" title="Floor 6 VAV"/>
+    </Label>
+
+    <BoundLabel layout="108.0,260.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="182.0,260.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_SAT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="266.0,260.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_SAT_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="350.0,260.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_DuctSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="434.0,260.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_DuctSP_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="518.0,260.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_FanSpeedCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="592.0,260.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="666.0,260.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_OAFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="750.0,260.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_OAFlowSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="834.0,260.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_PressureRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="898.0,260.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_CoolingRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="962.0,260.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/Zone_F06_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1046.0,260.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F06/BTU_F06_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1130.0,260.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F06/PM_F06_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1242.0,266.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_FailAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1292.0,266.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_FaultAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1342.0,266.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_HighStaticAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1392.0,266.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_FilterDPAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1442.0,266.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_VentilationLowAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1492.0,266.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_SatNotTrackingAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,310.0,90.0,44.0" text="F05  ⊞" font="bold 12.0pt sans-serif" foreground="white" background="#1e3a52" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F05_VAV.px" title="Floor 5 VAV"/>
+    </Label>
+
+    <BoundLabel layout="108.0,320.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="182.0,320.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_SAT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="266.0,320.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_SAT_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="350.0,320.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_DuctSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="434.0,320.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_DuctSP_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="518.0,320.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_FanSpeedCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="592.0,320.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="666.0,320.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_OAFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="750.0,320.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_OAFlowSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="834.0,320.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_PressureRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="898.0,320.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_CoolingRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="962.0,320.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/Zone_F05_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1046.0,320.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F05/BTU_F05_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1130.0,320.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F05/PM_F05_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1242.0,326.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_FailAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1292.0,326.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_FaultAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1342.0,326.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_HighStaticAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1392.0,326.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_FilterDPAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1442.0,326.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_VentilationLowAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1492.0,326.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_SatNotTrackingAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,370.0,90.0,44.0" text="F04  ⊞" font="bold 12.0pt sans-serif" foreground="white" background="#1e3a52" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F04_VAV.px" title="Floor 4 VAV"/>
+    </Label>
+
+    <BoundLabel layout="108.0,380.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="182.0,380.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_SAT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="266.0,380.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_SAT_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="350.0,380.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_DuctSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="434.0,380.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_DuctSP_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="518.0,380.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_FanSpeedCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="592.0,380.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="666.0,380.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_OAFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="750.0,380.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_OAFlowSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="834.0,380.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_PressureRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="898.0,380.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_CoolingRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="962.0,380.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/Zone_F04_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1046.0,380.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F04/BTU_F04_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1130.0,380.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F04/PM_F04_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1242.0,386.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_FailAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1292.0,386.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_FaultAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1342.0,386.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_HighStaticAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1392.0,386.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_FilterDPAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1442.0,386.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_VentilationLowAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1492.0,386.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_SatNotTrackingAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,430.0,90.0,44.0" text="F03  ⊞" font="bold 12.0pt sans-serif" foreground="white" background="#1e3a52" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F03_VAV.px" title="Floor 3 VAV"/>
+    </Label>
+
+    <BoundLabel layout="108.0,440.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="182.0,440.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_SAT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="266.0,440.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_SAT_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="350.0,440.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_DuctSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="434.0,440.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_DuctSP_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="518.0,440.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_FanSpeedCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="592.0,440.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="666.0,440.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_OAFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="750.0,440.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_OAFlowSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="834.0,440.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_PressureRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="898.0,440.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_CoolingRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="962.0,440.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/Zone_F03_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1046.0,440.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F03/BTU_F03_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1130.0,440.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F03/PM_F03_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1242.0,446.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_FailAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1292.0,446.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_FaultAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1342.0,446.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_HighStaticAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1392.0,446.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_FilterDPAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1442.0,446.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_VentilationLowAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1492.0,446.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_SatNotTrackingAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,490.0,90.0,44.0" text="F02  ⊞" font="bold 12.0pt sans-serif" foreground="white" background="#1e3a52" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_F02_VAV.px" title="Floor 2 VAV"/>
+    </Label>
+
+    <BoundLabel layout="108.0,500.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="182.0,500.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_SAT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="266.0,500.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_SAT_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="350.0,500.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_DuctSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="434.0,500.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_DuctSP_SP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="518.0,500.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_FanSpeedCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="592.0,500.0,70.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="666.0,500.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_OAFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="750.0,500.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_OAFlowSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="834.0,500.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_PressureRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="898.0,500.0,60.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_CoolingRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="962.0,500.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/Zone_F02_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1046.0,500.0,80.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F02/BTU_F02_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1130.0,500.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/Floors/F02/PM_F02_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1242.0,506.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_FailAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1292.0,506.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_FaultAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1342.0,506.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_HighStaticAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1392.0,506.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_FilterDPAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1442.0,506.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_VentilationLowAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1492.0,506.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_SatNotTrackingAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,554.0,1890.0,20.0" text="Alarm columns: fan fail · fan fault · high static · filter · ventilation low · SAT deviation" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>

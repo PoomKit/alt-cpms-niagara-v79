@@ -1,0 +1,799 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<px version="1.0" media="uxBuilder:UxMedia">
+  <import>
+    <module name="baja" />
+    <module name="bajaui" />
+    <module name="converters" />
+    <module name="gx" />
+    <module name="kitPx" />
+  </import>
+  <content>
+    <ScrollPane>
+      <CanvasPane name="content" viewSize="1700.0,1300.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+        <Rect fill="#f3f5f5" stroke="#d1dade" pen="1.0" geom="0.0,0.0,1700.0,1300.0" />
+        <Label layout="28.0,22.0,1400.0,36.0" text="ALT / F07 / COMPANY A LEFT + COMPANY B RIGHT / R9" font="bold 20.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="28.0,64.0,1700.0,24.0" text="R7 / Existing point feedback retained. Amber symbols = proposed, unbound; no LIVE values." font="11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1250.0,22.0,400.0,28.0" text="Interactive rooms / DEMO" font="bold 10.0pt sans-serif" foreground="#1559d6" halign="left" background="#e1ebef">
+          <PopupBinding ord="file:^px/ALT_V79_RentalFloor.px" title="Interactive rooms / DEMO" />
+        </Label>
+        <Label layout="35.0,99.0,1550.0,25.0" text="Native editable room / duct / diffuser / MD objects. T = -- until dedicated room sensor points are commissioned." font="12.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e6e3d8" stroke="#677571" pen="1.0" geom="225.0,145.0,1344.0,840.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="236.0,632.0,1323.0,65.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="236.0,454.0,504.0,55.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="1054.0,454.0,504.0,55.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="236.0,334.0,504.0,48.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="1054.0,334.0,504.0,48.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="698.0,156.0,42.0,477.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="1054.0,156.0,42.0,477.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="740.0,231.0,74.0,466.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="813.0,418.0,168.0,50.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="813.0,605.0,174.0,23.0" />
+        <Rect fill="#efede4" stroke="#677571" pen="1.0" geom="740.0,420.0,357.0,32.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="236.0,702.0,160.0,273.0" />
+        <Label layout="241.0,710.0,152.0,23.0" text="A / Meeting 1" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="241.0,734.0,152.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="241.0,758.0,152.0,23.0" text="1561 CFM / 9 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="304.0,700.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="399.0,702.0,155.0,273.0" />
+        <Label layout="404.0,710.0,147.0,23.0" text="A / Meeting 2" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="404.0,734.0,147.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="404.0,758.0,147.0,23.0" text="1520 CFM / 8 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="465.0,700.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="559.0,702.0,134.0,273.0" />
+        <Label layout="564.0,710.0,126.0,23.0" text="A / Executive" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="564.0,734.0,126.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="564.0,758.0,126.0,23.0" text="1095 CFM / 6 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="615.0,700.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="236.0,512.0,185.0,116.0" />
+        <Label layout="241.0,520.0,177.0,23.0" text="A / Reception + lounge" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="241.0,544.0,177.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="241.0,568.0,177.0,23.0" text="637 CFM / 6 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="316.0,510.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="424.0,512.0,164.0,116.0" />
+        <Label layout="429.0,520.0,156.0,23.0" text="A / Pantry + break room" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="429.0,544.0,156.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="429.0,568.0,156.0,23.0" text="565 CFM / 3 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="495.0,510.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="592.0,512.0,101.0,116.0" />
+        <Label layout="597.0,520.0,93.0,23.0" text="A / Focus / project room" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="597.0,544.0,93.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="597.0,568.0,93.0,23.0" text="348 CFM / 2 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="631.0,510.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="236.0,386.0,160.0,63.0" />
+        <Label layout="241.0,394.0,152.0,23.0" text="A / Toilets" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="241.0,418.0,152.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="241.0,442.0,152.0,23.0" text="EA 57.0 L/s" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="304.0,448.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="399.0,386.0,80.0,63.0" />
+        <Label layout="404.0,394.0,72.0,23.0" text="A / Accessible WC" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="404.0,418.0,72.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="404.0,442.0,72.0,23.0" text="EA 28.5 L/s" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="428.0,448.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="483.0,386.0,84.0,63.0" />
+        <Label layout="488.0,394.0,76.0,23.0" text="A / Housekeeping" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="488.0,418.0,76.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="488.0,442.0,76.0,23.0" text="EA 30.0 L/s" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="514.0,448.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="572.0,386.0,122.0,63.0" />
+        <Label layout="577.0,394.0,114.0,23.0" text="A / IT + copy / archive" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="577.0,418.0,114.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="577.0,442.0,114.0,23.0" text="305 CFM / 2 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="621.0,448.0,23.0,5.0" />
+        <Rect fill="#cdded6" stroke="#677571" pen="1.0" geom="362.0,156.0,332.0,174.0" />
+        <Label layout="367.0,164.0,324.0,23.0" text="A / Open office + collaboration" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="367.0,188.0,324.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="367.0,212.0,324.0,23.0" text="1726 CFM / 10 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="516.0,328.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1399.0,702.0,160.0,273.0" />
+        <Label layout="1404.0,710.0,152.0,23.0" text="B / Meeting 1" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1404.0,734.0,152.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1404.0,758.0,152.0,23.0" text="1561 CFM / 9 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1467.0,700.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1239.0,702.0,155.0,273.0" />
+        <Label layout="1244.0,710.0,147.0,23.0" text="B / Meeting 2" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1244.0,734.0,147.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1244.0,758.0,147.0,23.0" text="1520 CFM / 8 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1305.0,700.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1101.0,702.0,134.0,273.0" />
+        <Label layout="1106.0,710.0,126.0,23.0" text="B / Executive" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1106.0,734.0,126.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1106.0,758.0,126.0,23.0" text="1095 CFM / 6 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1156.0,700.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1374.0,512.0,185.0,116.0" />
+        <Label layout="1379.0,520.0,177.0,23.0" text="B / Reception + lounge" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1379.0,544.0,177.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1379.0,568.0,177.0,23.0" text="637 CFM / 6 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1455.0,510.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1206.0,512.0,164.0,116.0" />
+        <Label layout="1211.0,520.0,156.0,23.0" text="B / Pantry + break room" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1211.0,544.0,156.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1211.0,568.0,156.0,23.0" text="565 CFM / 3 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1276.0,510.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1101.0,512.0,101.0,116.0" />
+        <Label layout="1106.0,520.0,93.0,23.0" text="B / Focus / project room" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1106.0,544.0,93.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1106.0,568.0,93.0,23.0" text="348 CFM / 2 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1140.0,510.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1399.0,386.0,160.0,63.0" />
+        <Label layout="1404.0,394.0,152.0,23.0" text="B / Toilets" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1404.0,418.0,152.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1404.0,442.0,152.0,23.0" text="EA 57.0 L/s" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1467.0,448.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1315.0,386.0,80.0,63.0" />
+        <Label layout="1320.0,394.0,72.0,23.0" text="B / Accessible WC" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1320.0,418.0,72.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1320.0,442.0,72.0,23.0" text="EA 28.5 L/s" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1343.0,448.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1227.0,386.0,84.0,63.0" />
+        <Label layout="1232.0,394.0,76.0,23.0" text="B / Housekeeping" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1232.0,418.0,76.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1232.0,442.0,76.0,23.0" text="EA 30.0 L/s" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1257.0,448.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1101.0,386.0,122.0,63.0" />
+        <Label layout="1106.0,394.0,114.0,23.0" text="B / IT + copy / archive" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1106.0,418.0,114.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1106.0,442.0,114.0,23.0" text="305 CFM / 2 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1150.0,448.0,23.0,5.0" />
+        <Rect fill="#d2dde7" stroke="#677571" pen="1.0" geom="1101.0,156.0,332.0,174.0" />
+        <Label layout="1106.0,164.0,324.0,23.0" text="B / Open office + collaboration" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1106.0,188.0,324.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1106.0,212.0,324.0,23.0" text="1726 CFM / 10 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1255.0,328.0,23.0,5.0" />
+        <Rect fill="#c5cecf" stroke="#677571" pen="1.0" geom="866.0,519.0,122.0,84.0" />
+        <Label layout="871.0,527.0,114.0,23.0" text="AHU service bay" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="915.0,601.0,23.0,5.0" />
+        <Rect fill="#c5cecf" stroke="#677571" pen="1.0" geom="1439.0,156.0,120.0,174.0" />
+        <Label layout="1444.0,164.0,112.0,23.0" text="Common service / reserved" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="1487.0,328.0,23.0,5.0" />
+        <Rect fill="#c5cecf" stroke="#677571" pen="1.0" geom="236.0,156.0,120.0,174.0" />
+        <Label layout="241.0,164.0,112.0,23.0" text="Common service / reserved" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="284.0,328.0,23.0,5.0" />
+        <Rect fill="#c5cecf" stroke="#677571" pen="1.0" geom="744.0,702.0,307.0,273.0" />
+        <Label layout="749.0,710.0,299.0,23.0" text="Common arrival lounge" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="749.0,734.0,299.0,23.0" text="T -- / RH -- / CO2 --" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="749.0,758.0,299.0,23.0" text="2665 CFM / 12 SA" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f0ede4" stroke="#f0ede4" pen="1.0" geom="909.0,700.0,23.0,5.0" />
+        <Rect fill="#bcc9ca" stroke="#677571" pen="1.0" geom="813.0,166.0,168.0,252.0" />
+        <Label layout="823.0,191.0,148.0,24.0" text="LIFT LOBBY" font="bold 10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#9caeb3" stroke="#677571" pen="1.0" geom="821.0,324.0,69.0,65.0" />
+        <Label layout="826.0,336.0,62.0,24.0" text="LIFT-01" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#9caeb3" stroke="#677571" pen="1.0" geom="899.0,324.0,71.0,65.0" />
+        <Label layout="904.0,336.0,62.0,24.0" text="LIFT-02" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#b1c8b6" stroke="#677571" pen="1.0" geom="124.0,523.0,97.0,155.0" />
+        <Label layout="130.0,531.0,86.0,24.0" text="FS-W" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="130.0,556.0,86.0,24.0" text="FIRE EXIT" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#b1c8b6" stroke="#677571" pen="1.0" geom="1573.0,559.0,97.0,155.0" />
+        <Label layout="1579.0,567.0,86.0,24.0" text="FS-E" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1579.0,592.0,86.0,24.0" text="FIRE EXIT" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#4e6570" stroke="#677571" pen="1.0" geom="992.0,492.0,63.0,126.0" />
+        <Rect fill="#4e6570" stroke="#677571" pen="1.0" geom="1443.0,250.0,32.0,48.0" />
+        <Rect fill="#4e6570" stroke="#677571" pen="1.0" geom="1483.0,255.0,29.0,32.0" />
+        <Rect fill="#4e6570" stroke="#677571" pen="1.0" geom="1527.0,258.0,32.0,25.0" />
+        <Rect fill="#4e6570" stroke="#677571" pen="1.0" geom="748.0,168.0,61.0,59.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="219.0,979.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="219.0,811.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="219.0,643.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="219.0,475.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="219.0,307.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="219.0,139.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="236.0,961.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="236.0,615.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="236.0,513.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="236.0,387.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="243.0,430.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="362.0,317.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="362.0,156.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="382.0,387.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="387.0,979.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="387.0,139.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="397.0,523.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="555.0,979.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="555.0,139.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="677.0,313.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="680.0,156.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="723.0,979.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="723.0,139.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="891.0,979.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="891.0,139.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1059.0,979.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1059.0,139.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1101.0,156.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1104.0,313.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1227.0,979.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1227.0,139.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1385.0,523.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1395.0,979.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1395.0,139.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1400.0,387.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1419.0,317.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1419.0,156.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1539.0,430.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1545.0,961.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1545.0,615.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1545.0,513.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1545.0,387.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1563.0,979.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1563.0,811.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1563.0,643.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1563.0,475.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1563.0,307.0,13.0,13.0" />
+        <Rect fill="#888b7e" stroke="#677571" pen="1.0" geom="1563.0,139.0,13.0,13.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="765.0,565.0,201.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="765.0,565.0,2.0,113.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="765.0,366.0,2.0,199.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="786.0,357.0,2.0,326.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="256.0,683.0,530.0,2.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="786.0,683.0,75.0,2.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="861.0,683.0,84.0,2.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="945.0,683.0,133.0,2.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1078.0,683.0,460.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="256.0,678.0,509.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="765.0,678.0,156.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="966.0,678.0,130.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1096.0,678.0,442.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="315.0,719.0,2.0,210.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="315.0,678.0,2.0,41.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="262.0,719.0,53.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="315.0,719.0,53.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="438.0,719.0,39.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="477.0,719.0,39.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="592.0,719.0,34.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="626.0,719.0,34.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="782.0,719.0,77.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="859.0,719.0,62.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="921.0,719.0,14.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="935.0,719.0,77.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1134.0,719.0,34.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1168.0,719.0,34.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1278.0,719.0,39.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1317.0,719.0,39.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1426.0,719.0,53.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1479.0,719.0,53.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="262.0,719.0,2.0,210.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="368.0,719.0,2.0,210.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="329.0,683.0,2.0,53.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="477.0,678.0,2.0,41.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="438.0,719.0,2.0,221.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="516.0,719.0,2.0,221.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="491.0,683.0,2.0,53.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="626.0,678.0,2.0,41.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="592.0,719.0,2.0,210.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="660.0,719.0,2.0,210.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="640.0,683.0,2.0,53.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="256.0,500.0,509.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1096.0,500.0,442.0,2.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="256.0,504.0,530.0,2.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1078.0,504.0,460.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="328.0,530.0,2.0,69.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="328.0,500.0,2.0,30.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="266.0,530.0,62.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="328.0,530.0,61.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="452.0,530.0,54.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="506.0,530.0,55.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="618.0,530.0,25.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="643.0,530.0,25.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1126.0,530.0,25.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1151.0,530.0,25.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1233.0,530.0,55.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1288.0,530.0,54.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1405.0,530.0,61.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1466.0,530.0,62.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="266.0,530.0,2.0,69.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="390.0,530.0,2.0,69.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="342.0,504.0,2.0,43.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="506.0,530.0,2.0,40.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="506.0,500.0,2.0,30.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="452.0,530.0,2.0,40.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="561.0,530.0,2.0,40.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="520.0,504.0,2.0,43.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="643.0,500.0,2.0,30.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="618.0,530.0,2.0,40.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="668.0,530.0,2.0,40.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="657.0,504.0,2.0,43.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="256.0,366.0,509.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1096.0,366.0,442.0,2.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="256.0,370.0,530.0,2.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1078.0,370.0,460.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="632.0,366.0,2.0,66.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="602.0,432.0,30.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="632.0,432.0,31.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1131.0,432.0,31.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1162.0,432.0,30.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="602.0,418.0,2.0,14.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="663.0,418.0,2.0,14.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="646.0,370.0,2.0,45.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="527.0,294.0,2.0,72.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="527.0,199.0,2.0,95.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="395.0,294.0,66.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="461.0,294.0,66.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="527.0,294.0,67.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="594.0,294.0,66.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1134.0,294.0,66.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1200.0,294.0,67.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1267.0,294.0,66.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1333.0,294.0,66.0,2.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="395.0,199.0,2.0,95.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="461.0,199.0,2.0,95.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="594.0,199.0,2.0,95.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="660.0,199.0,2.0,95.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="541.0,277.0,2.0,93.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="966.0,565.0,2.0,113.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1096.0,366.0,2.0,312.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1078.0,357.0,2.0,326.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1479.0,719.0,2.0,210.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1479.0,678.0,2.0,41.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1426.0,719.0,2.0,210.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1532.0,719.0,2.0,210.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1492.0,683.0,2.0,53.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1317.0,678.0,2.0,41.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1278.0,719.0,2.0,221.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1356.0,719.0,2.0,221.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1331.0,683.0,2.0,53.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1168.0,678.0,2.0,41.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1134.0,719.0,2.0,210.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1202.0,719.0,2.0,210.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1182.0,683.0,2.0,53.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1466.0,530.0,2.0,69.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1466.0,500.0,2.0,30.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1404.0,530.0,2.0,69.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1528.0,530.0,2.0,69.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1480.0,504.0,2.0,43.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1288.0,530.0,2.0,40.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1288.0,500.0,2.0,30.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1233.0,530.0,2.0,40.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1342.0,530.0,2.0,40.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1301.0,504.0,2.0,43.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1151.0,500.0,2.0,30.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1126.0,530.0,2.0,40.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1176.0,530.0,2.0,40.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1165.0,504.0,2.0,43.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1162.0,366.0,2.0,66.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1131.0,418.0,2.0,14.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1192.0,418.0,2.0,14.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1175.0,370.0,2.0,45.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1267.0,294.0,2.0,72.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1267.0,199.0,2.0,95.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1134.0,199.0,2.0,95.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1200.0,199.0,2.0,95.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1333.0,199.0,2.0,95.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1399.0,199.0,2.0,95.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="1280.0,277.0,2.0,93.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="921.0,678.0,2.0,41.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="782.0,719.0,2.0,210.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="859.0,719.0,2.0,210.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="935.0,719.0,2.0,210.0" />
+        <Rect fill="#47c7f5" stroke="#47c7f5" pen="1.0" geom="1012.0,719.0,2.0,210.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="934.0,683.0,2.0,53.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="861.0,565.0,2.0,118.0" />
+        <Rect fill="#bb9bea" stroke="#bb9bea" pen="1.0" geom="861.0,565.0,30.0,2.0" />
+        <Rect fill="#43d19b" stroke="#43d19b" pen="1.0" geom="920.0,517.0,103.0,2.0" />
+        <Rect fill="#43d19b" stroke="#43d19b" pen="1.0" geom="920.0,517.0,2.0,72.0" />
+        <Rect fill="#43d19b" stroke="#43d19b" pen="1.0" geom="920.0,589.0,8.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="315.0,418.0,2.0,21.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="315.0,439.0,124.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="439.0,439.0,86.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="525.0,439.0,744.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="1269.0,439.0,86.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="1355.0,439.0,124.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="1479.0,439.0,42.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="1521.0,271.0,2.0,168.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="1521.0,271.0,21.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="439.0,418.0,2.0,21.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="525.0,418.0,2.0,21.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="1479.0,418.0,2.0,21.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="1355.0,418.0,2.0,21.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="1269.0,418.0,2.0,21.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="874.0,498.0,2.0,38.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="834.0,498.0,40.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="799.0,498.0,35.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="799.0,250.0,2.0,248.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="777.0,250.0,22.0,2.0" />
+        <Rect fill="#f28d64" stroke="#f28d64" pen="1.0" geom="777.0,198.0,2.0,52.0" />
+        <Rect fill="#43d19b" stroke="#43d19b" pen="1.0" geom="928.0,584.0,2.0,5.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="257.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="259.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="257.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="259.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="257.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="259.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="310.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="312.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="310.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="312.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="310.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="312.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="363.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="365.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="363.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="365.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="363.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="365.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="324.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="326.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="433.0,935.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="435.0,939.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="433.0,867.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="435.0,871.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="433.0,799.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="435.0,803.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="433.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="435.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="511.0,935.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="513.0,939.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="511.0,867.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="513.0,871.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="511.0,799.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="513.0,803.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="511.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="513.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="486.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="488.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="587.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="589.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="587.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="589.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="587.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="589.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="655.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="657.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="655.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="657.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="655.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="657.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="635.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="637.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="261.0,594.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="263.0,598.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="261.0,536.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="263.0,540.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="323.0,594.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="325.0,598.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="323.0,536.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="325.0,540.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="385.0,594.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="387.0,598.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="385.0,536.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="387.0,540.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="337.0,542.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="339.0,546.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="447.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="449.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="501.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="503.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="556.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="558.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="515.0,542.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="517.0,546.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="613.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="615.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="663.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="665.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="652.0,542.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="654.0,546.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="597.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="599.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="658.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="660.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="641.0,410.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="643.0,414.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="390.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="392.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="390.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="392.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="456.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="458.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="456.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="458.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="522.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="524.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="522.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="524.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="589.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="591.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="589.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="591.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="655.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="657.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="655.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="657.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="536.0,272.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="538.0,276.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1421.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1423.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1421.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1423.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1421.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1423.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1474.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1476.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1474.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1476.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1474.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1476.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1527.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1529.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1527.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1529.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1527.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1529.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1487.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1489.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1273.0,935.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1275.0,939.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1273.0,867.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1275.0,871.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1273.0,799.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1275.0,803.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1273.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1275.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1351.0,935.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1353.0,939.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1351.0,867.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1353.0,871.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1351.0,799.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1353.0,803.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1351.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1353.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1326.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1328.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1129.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1131.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1129.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1131.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1129.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1131.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1197.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1199.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1197.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1199.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1197.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1199.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1177.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1179.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1399.0,594.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1401.0,598.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1399.0,536.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1401.0,540.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1461.0,594.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1463.0,598.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1461.0,536.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1463.0,540.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1523.0,594.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1525.0,598.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1523.0,536.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1525.0,540.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1475.0,542.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1477.0,546.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1228.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1230.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1283.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1285.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1337.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1339.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1296.0,542.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1298.0,546.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1121.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1123.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1171.0,565.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1173.0,569.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1160.0,542.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1162.0,546.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1126.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1128.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1187.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1189.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1170.0,410.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1172.0,414.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1129.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1131.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1129.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1131.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1195.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1197.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1195.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1197.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1262.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1264.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1262.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1264.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1328.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1330.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1328.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1330.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1394.0,281.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1396.0,285.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1394.0,194.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1396.0,198.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1275.0,272.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1277.0,276.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="777.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="779.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="777.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="779.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="777.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="779.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="854.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="856.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="854.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="856.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="854.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="856.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="930.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="932.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="930.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="932.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="930.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="932.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1007.0,924.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1009.0,928.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1007.0,833.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1009.0,837.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1007.0,742.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1009.0,746.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="929.0,731.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="931.0,735.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="310.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="312.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="310.0,437.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="312.0,441.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="434.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="436.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="434.0,437.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="436.0,441.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="520.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="522.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="520.0,437.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="522.0,441.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1474.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1476.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1474.0,437.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1476.0,441.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1350.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1352.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1350.0,437.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1352.0,441.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1264.0,413.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1266.0,417.0,6.0,2.0" />
+        <Rect fill="#f7f8f2" stroke="#456470" pen="1.0" geom="1264.0,437.0,10.0,10.0" />
+        <Rect fill="#81929a" stroke="#81929a" pen="1.0" geom="1266.0,441.0,6.0,2.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="311.0,701.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="313.0,696.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="473.0,701.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="475.0,696.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="622.0,701.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="624.0,696.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="324.0,512.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="326.0,507.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="502.0,512.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="504.0,507.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="639.0,512.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="641.0,507.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="628.0,413.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="630.0,408.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="523.0,305.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="525.0,300.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1475.0,701.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1477.0,696.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1313.0,701.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1315.0,696.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1164.0,701.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1166.0,696.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1462.0,512.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1464.0,507.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1284.0,512.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1286.0,507.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1147.0,512.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1149.0,507.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1158.0,413.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1160.0,408.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1263.0,305.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1265.0,300.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="917.0,701.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="919.0,696.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="311.0,402.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="313.0,397.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="435.0,402.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="437.0,397.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="521.0,402.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="523.0,397.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1475.0,402.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1477.0,397.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1351.0,402.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1353.0,397.0,5.0,4.0" />
+        <Rect fill="#cd8748" stroke="#384e58" pen="1.0" geom="1265.0,402.0,8.0,8.0" />
+        <Rect fill="#cd8748" stroke="#cd8748" pen="1.0" geom="1267.0,397.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="309.0,701.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="313.0,697.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="471.0,701.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="475.0,697.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="620.0,701.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="624.0,697.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="322.0,512.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="326.0,508.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="500.0,512.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="504.0,508.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="637.0,512.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="641.0,508.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="626.0,413.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="630.0,409.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="521.0,305.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="525.0,301.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="1473.0,701.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="1477.0,697.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="1311.0,701.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="1315.0,697.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="1162.0,701.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="1166.0,697.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="1460.0,512.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="1464.0,508.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="1282.0,512.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="1286.0,508.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="1145.0,512.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="1149.0,508.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="1156.0,413.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="1160.0,409.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="1261.0,305.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="1265.0,301.0,5.0,4.0" />
+        <Rect fill="#b8c7ce" stroke="#4e6976" pen="1.0" geom="915.0,701.0,12.0,8.0" />
+        <Rect fill="#cc8844" stroke="#cc8844" pen="1.0" geom="919.0,697.0,5.0,4.0" />
+        <Rect fill="#b7c8cd" stroke="#677571" pen="1.0" geom="891.0,546.0,76.0,38.0" />
+        <Label layout="895.0,550.0,68.0,20.0" text="AHU-F07 / VSD" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="846.0,583.0,6.0,6.0" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="963.0,562.0,6.0,6.0" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="858.0,598.0,6.0,6.0" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="892.0,573.0,6.0,6.0" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="917.0,541.0,6.0,6.0" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="911.0,583.0,6.0,6.0" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="762.0,541.0,6.0,6.0" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="917.0,554.0,6.0,6.0" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="858.0,617.0,6.0,6.0" />
+        <Rect fill="#d6985e" stroke="#365962" pen="1.0" geom="796.0,467.0,6.0,6.0" />
+        <Rect fill="#f6dda0" stroke="#365962" pen="1.0" geom="772.0,697.0,6.0,6.0" />
+        <Label layout="780.0,695.0,95.0,16.0" text="CS-F07-PUBLIC" font="7.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f6dda0" stroke="#365962" pen="1.0" geom="617.0,448.0,6.0,6.0" />
+        <Label layout="625.0,446.0,95.0,16.0" text="CS-F07-A-NORTH" font="7.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f6dda0" stroke="#365962" pen="1.0" geom="1171.0,448.0,6.0,6.0" />
+        <Label layout="1179.0,446.0,95.0,16.0" text="CS-F07-B-NORTH" font="7.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f6dda0" stroke="#365962" pen="1.0" geom="894.0,417.0,6.0,6.0" />
+        <Label layout="902.0,415.0,95.0,16.0" text="CS-F07-LIFT" font="7.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="235.0,836.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="399.0,836.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="559.0,836.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="235.0,568.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="424.0,568.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="592.0,568.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="235.0,416.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="399.0,416.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="483.0,416.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="571.0,416.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="361.0,241.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1399.0,836.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1239.0,836.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1101.0,836.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1374.0,568.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1206.0,568.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1101.0,568.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1399.0,416.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1315.0,416.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1227.0,416.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1101.0,416.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1101.0,241.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="865.0,559.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="1439.0,322.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="235.0,241.0,4.0,4.0" />
+        <Rect fill="#f9f8ef" stroke="#6a8685" pen="1.0" geom="744.0,836.0,4.0,4.0" />
+        <Label layout="60.0,1020.0,1550.0,25.0" text="R9 / All ceiling grilles at 2.70 m AFF. Corridor T / RH / CO2 sensors proposed / unbound." font="11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="60.0,1050.0,1550.0,25.0" text="Airflow values are concept calculations. Sizes require manufacturer throw/NC/pressure selection and TAB." font="bold 12.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="60.0,1084.0,1550.0,25.0" text="General motorized dampers are not rated fire/smoke dampers. Protected fire stairs and exit strategy remain subject to approval." font="11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="60.0,1118.0,1550.0,25.0" text="PM-F07 / BTU-F07 measure A + B together. Company bills need tenant submeters or agreed allocation." font="11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="60.0,1180.0,700.0,28.0" text="AHU / VAV / PICV" font="bold 10.0pt sans-serif" foreground="#1559d6" halign="left" background="#e1ebef">
+          <PopupBinding ord="file:^px/ALT_V79_Airside_Details.px" title="AHU / VAV / PICV" />
+        </Label>
+        <Label layout="830.0,1180.0,700.0,28.0" text="Floor meters / billing" font="bold 10.0pt sans-serif" foreground="#1559d6" halign="left" background="#e1ebef">
+          <PopupBinding ord="file:^px/ALT_V79_Floor_Meters.px" title="Floor meters / billing" />
+        </Label>
+      <Label layout="1470.0,96.0,210.0,30.0" text="VAV LIVE (station points)" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center"><PopupBinding ord="file:^px/ALT_V79_F07_VAV.px" title="Floor 7 VAV live"/></Label>
+</CanvasPane>
+    </ScrollPane>
+  </content>
+</px>

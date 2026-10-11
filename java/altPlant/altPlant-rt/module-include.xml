@@ -1,3 +1,8 @@
-<!-- types are registered from the @NiagaraType annotations at build time -->
+
+<!-- Niagara types are registered through @NiagaraType annotations. -->
 <module>
+  <types>
+    <type name="ExpansionSupervisor" class="com.alt.plant.BExpansionSupervisor"/>
+    <type name="ZoneAggregator" class="com.alt.plant.BZoneAggregator"/>
+  </types>
 </module>

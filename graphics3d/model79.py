@@ -5,10 +5,11 @@ floor AHU on every floor.  The plant is drawn for the MAXIMUM equipment (6 chill
 cells); a slot that is not installed (register / <slot>_Installed) is drawn as a ghost.  Units: mm, x east, y north, z up,
 origin = ground floor level at the south-west corner.  Point names = station ALT_CP_Ref_V7_9."""
 import math, os, sys
-sys.path.insert(0, '/home/claude/v7/tools')
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, 'tools'))
 import eqreg
 
-REGISTER = os.environ.get('V79_REGISTER', '/home/claude/b79/ALT_V79_Equipment_Register.xlsx')
+REGISTER = os.environ.get('V79_REGISTER', os.path.join(ROOT, 'registers', 'ALT_V79_Equipment_Register.xlsx'))
 REG = eqreg.load(REGISTER)
 INST = {r['Slot']: eqreg.installed(r) for r in REG['Equipment']}
 PROJECT = {'name': 'CPMS Reference Building V7.9', 'name_th': 'อาคารอ้างอิง 8 ชั้น - ห้องเครื่องทำน้ำเย็นชั้น 1, cooling tower บนดาดฟ้า',

@@ -11,25 +11,50 @@ jobs:
         run: |
           if git ls-files | grep -iE '\.bog$'; then echo "::error::.bog file committed"; exit 1; fi
           if git grep -nI -E 'pbkdf2-|b:Password' -- . ':!.github'; then echo "::error::password material found"; exit 1; fi
+      - name: No machine-specific absolute paths
+        run: |
+          if git grep -nI -E '/home/claude|C:\\\\Users\\\\' -- tools graphics3d drawings bim; then echo "::error::absolute path"; exit 1; fi
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Python packages
+        run: pip install openpyxl==3.1.5 ruff==0.16.8
       - name: Python sources compile
-        run: python -m py_compile tools/*.py graphics3d/*.py drawings/*.py bim/*.py
-      - name: Px files are well-formed XML
+        run: python -m py_compile tools/*.py tools/studio/*.py graphics3d/*.py drawings/*.py bim/*.py
+      - name: Python lint (syntax / undefined names)
+        run: ruff check --select E9,F63,F7,F82 tools graphics3d drawings bim
+      - name: V7.9 builder references (offline, register defaults and Excel register)
+        working-directory: tools
         run: |
-          python - <<'PY'
-          import glob, xml.etree.ElementTree as ET
-          files = glob.glob('station/shared/px/*.px')
-          for f in files: ET.parse(f)
-          print(len(files), 'Px files OK')
-          PY
+          python check_v79_refs.py
+          python check_v79_refs.py --register ../registers/ALT_V79_Equipment_Register.xlsx
+      - name: Px pages, images, ORDs and 3D point map
+        run: python tools/check_px.py
+      - name: Generated office Px pages and 3D point map are up to date (r4)
+        run: |
+          cp -r station/shared/px /tmp/pxc && python tools/gen_px79o.py /tmp/pxc && diff -r station/shared/px /tmp/pxc
+          python tools/office_points.py --check
+      - name: Office VAV / metering / plant protection tests on the layer test station (r4)
+        working-directory: tools
+        run: python v79office_tests.py /tmp/v79office_tests.csv
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: 3D scene bundles
+      - name: 3D scene bundles and the station page matches its sources
         working-directory: graphics3d
-        run: npm install --no-audit --no-fund && npm run bundle
-      - name: Java syntax (Niagara jars not available in CI)
         run: |
-          javac -d /tmp/jc java/altPlant/altPlant-rt/src/com/alt/plant/*.java 2>&1 | grep 'error:' | grep -vE 'cannot find symbol|does not exist|cannot be applied|does not override|incompatible types' && exit 1 || echo 'Java syntax OK'
+          npm ci --no-audit --no-fund
+          npm run bundle
+          python rebuild_page.py --check
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Java logic unit tests (no Niagara jars needed)
+        working-directory: java/altPlant/logic-test
+        run: |
+          javac -Xlint:all -Werror -d /tmp/lt ../altPlant-rt/src/com/alt/plant/logic/*.java LogicTest.java
+          java -cp /tmp/lt LogicTest
+      - name: Java components type-check against the baja API stubs
+        working-directory: java/altPlant
+        run: javac -Xlint:all -d /tmp/jc $(find ci-stubs -name '*.java') altPlant-rt/src/com/alt/plant/*.java altPlant-rt/src/com/alt/plant/logic/*.java

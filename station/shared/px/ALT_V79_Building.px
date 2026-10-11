@@ -20,7 +20,7 @@
     <Label layout="1450.0,8.0,460.0,24.0" text="SAME DATA AS 3D DIGITAL TWIN · REFERENCE SIMULATION" font="bold 10.0pt sans-serif" foreground="#263238" background="#ffca28" halign="center"/>
 
     <Label layout="8.0,44.0,150.0,26.0" text="Plant schematic" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
-      <PopupBinding ord="file:^px/ALT_V79_Plant.px" title="Plant schematic"/>
+      <PopupBinding ord="file:^px/ALT_V79_Plant_Details.px" title="Plant schematic"/>
     </Label>
 
     <Label layout="162.0,44.0,150.0,26.0" text="Plant cards" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
@@ -30,7 +30,7 @@
     <Label layout="316.0,44.0,150.0,26.0" text="Building / Zones" font="bold 9.0pt sans-serif" foreground="white" background="#1e88e5" halign="center"/>
 
     <Label layout="470.0,44.0,150.0,26.0" text="3D Live" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
-      <PopupBinding ord="file:^px/ALT_V79_Building3D.px" title="3D Live"/>
+      <HyperlinkBinding ord="file:^web/ALT_V79_Building3D.html"/>
     </Label>
 
     <Label layout="624.0,44.0,150.0,26.0" text="Field IO" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">

@@ -9,3 +9,5 @@
 *.xlsx binary
 *.dxf text
 *.ifc text
+*.glb binary
+*.ifc text

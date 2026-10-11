@@ -1,0 +1,1 @@
+package javax.baja.status; public final class BStatusNumeric extends BStatusValue { public BStatusNumeric() { } public BStatusNumeric(double v) { } public BStatusNumeric(double v, BStatus s) { } public double getValue() { return 0; } }

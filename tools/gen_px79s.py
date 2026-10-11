@@ -139,7 +139,7 @@ def schematic(header):
     p.rect(1482, 300, 136, BOT - 270, fill='#1b2631', stroke='#5d6d7e', pen=2.0)
     p.label(1482, 310, 136, 40, 'BUILDING ⊞', 13, True, TXT, None, 'center', popup='file:^px/ALT_V79_Building.px', ptitle='Building / zones')
     lbl(p, 1486, 350, 128, 'Floors 2-8 AHU + zones', 8, LBL, halign='center')
-    p.label(1486, 380, 128, 26, '3D DIGITAL TWIN', 9, True, 'white', '#1e88e5', 'center', popup='file:^px/ALT_V79_Building3D.px', ptitle='3D Live')
+    p.label(1486, 380, 128, 26, '3D DIGITAL TWIN', 9, True, 'white', '#1e88e5', 'center', link='file:^web/ALT_V79_Building3D.html')
 
     pic(p, 1445, 760, 'Valves/valve_2way_elec_left.png'); lbl(p, 1490, 760, 120, 'MIN-FLOW BYPASS %', 8, TXT, True)
     v(p, 1490, 780, 80, first('CHW_BypassValveCmd', 'Gfx_CHW_BypassMV_Pos'), 'Bypass valve', h=18, size=9)

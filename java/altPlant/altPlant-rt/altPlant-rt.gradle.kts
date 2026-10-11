@@ -18,5 +18,4 @@ moduleManifest {
 dependencies {
   nre(":nre")
   api(":baja")
-  api(":control-rt")
 }

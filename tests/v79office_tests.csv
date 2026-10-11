@@ -1,0 +1,18 @@
+id,title,observed,result
+O01,"floor 2 VAV AHU: SAT at its T&R setpoint, duct static at its T&R setpoint, rooms 22.5-25.5 C, OA >= 90 % of Vot (ASHRAE 62.1)","SAT 15.0/14.8 C, DSP 149/162 Pa, fan 87 %, rooms 23.3, 23.4, 22.7 C, OA 1894/1821 L/s",PASS
+O02,"return RH 75 % -> SAT setpoint not above 13 C (dehumidification, hot-humid climate)",SAT setpoint 13.0 C,PASS
+O03,"room vacant (occupancy sensor) -> occupied-standby: setpoint +1 K, Vot drops by Rp x Pz / Ev (DCV)","setpoint 25.0, Vot 1821.1 -> 1746.1 L/s",PASS
+O04,"outside the schedule: AHU off, VAV airflow setpoint 0, OA / RA dampers closed","start False, airflow SP 0.0, OA 0.0, RA 0.0",PASS
+O05,"duct static 450 Pa -> fan stops with a latched alarm, restarts only after the reset","alarm True, start at 40 s False, 48 s False, after reset True",PASS
+O06,"fire alarm -> floor AHU off, OA and relief dampers closed (EIT fire practice)","before True, after False, OA 0.0, relief 0.0",PASS
+O07,"VAV airflow 0 with a setpoint -> very low airflow alarm, 2 extra pressure requests (G36)","alarm True, requests 3.0",PASS
+O08,VAV damper feedback stuck at 0 while commanded open -> damper fault alarm,"alarm True, damper command 84 %",PASS
+O09,"room CO2 1300 ppm -> CO2 alarm; room sensor 80 C -> sensor fault, cooling loop disabled","CO2 True, sensor fault True, loop 0.0",PASS
+O10,floor BTU meter: 20 m3/h x 5 K -> 116.3 kW,116.28 kW,PASS
+O11,CHW dT 1.5 K with flow for the alarm time -> low dT alarm,True,PASS
+O12,"negative dT with flow -> meter fault alarm, energy rate not negative","fault True, kW 0.0",PASS
+O13,tenant sub-meters 70 kW > floor meter 50 kW -> reconciliation alarm,True,PASS
+O14,floor 1 lobby VAV runs with AHU-01 (V7.8 AHU),"airflow SP 2876 L/s, damper 53 %",PASS
+P01,"expansion chiller CH03 leaving water 2 C while running -> freeze trip (latched alarm), compressor stops","running True, trip True, start at 85 s False",PASS
+P02,CH03 stopped then asked again (rotation off) -> no restart before the anti-recycle time (test 15 s),"stopped 71.0 s, restarted 86.0 s",PASS
+P03,B1 plant room flood switch -> emergency alarm and chiller stop signal,"alarm True, stop True",PASS

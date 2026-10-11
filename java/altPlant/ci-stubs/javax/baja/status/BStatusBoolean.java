@@ -1,0 +1,1 @@
+package javax.baja.status; public final class BStatusBoolean extends BStatusValue { public BStatusBoolean() { } public BStatusBoolean(boolean v) { } public BStatusBoolean(boolean v, BStatus s) { } public boolean getValue() { return false; } }

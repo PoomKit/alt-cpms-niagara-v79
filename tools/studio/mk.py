@@ -1,5 +1,6 @@
 import os, sys, json, subprocess
-sys.path.insert(0, '/home/claude/b79'); os.chdir('/home/claude/b79')
+G3D = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'graphics3d')   # scene79.js / page79.html / gen3d79.py
+sys.path.insert(0, G3D); os.chdir(G3D); os.makedirs('studio', exist_ok=True)
 import gen3d79 as G
 s = open('scene79.js', encoding='utf-8').read()
 R = [("for (const z of [.43, -.07]) nozzle(g, own(r, MAT.steel), new THREE.Vector3(-L * .5 - .05, 1.08, z));",

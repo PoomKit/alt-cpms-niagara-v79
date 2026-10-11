@@ -14,3 +14,9 @@ graphics3d/build/
 *.log.tmp
 .DS_Store
 Thumbs.db
+# generated outputs (builders write here by default)
+/out/
+graphics3d/out/
+graphics3d/studio/
+# offline lotus helpers (drawings / BIM / 3D alarm effects) are kept outside the repo, see README
+/lotus/

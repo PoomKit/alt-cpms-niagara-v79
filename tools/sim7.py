@@ -59,6 +59,8 @@ class Model6:
                 self.out[n] = False if t in ('And', 'Or', 'Not', 'BooleanDelay', 'BooleanLatch', 'BooleanSwitch', 'OneShot', 'MultiVibrator',
                                               'GreaterThan', 'GreaterThanEqual', 'LessThan', 'LessThanEqual', 'NotEqual', 'Hysteresis',
                                               'BooleanToStatusBoolean') else 0.0
+            if t == 'NumericDelay' and child(c, 'out') is not None and child(child(c, 'out'), 'value') is not None:
+                self.out[n] = num(child(child(c, 'out'), 'value').get('v'))      # V7.9 r4: saved output = start value
             if t in ('BooleanWritable', 'NumericWritable') and fb is None and n.startswith('IO_'):
                 self.out[n] = None; self.nulls.add(n)      # r2 field-interface points: Niagara default fallback = {null}
         self.order = self.topo()

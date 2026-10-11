@@ -9,6 +9,8 @@ Opened outside a station (file://) the pages run in DEMO mode with simulated val
 (SVG or the project's own V7.3 renders) - no vendor images.
 usage: gen_web78.py <point_list.csv> <history_register.csv> <out_dir>"""
 import sys, csv, json, os
+# Px image folder with the V7.3 anchor / room files (default: this repository)
+IMG = os.environ.get('V78_IMG', os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'station', 'shared', 'px', 'img'))
 
 PL, HR, OUT = sys.argv[1:4]
 os.makedirs(OUT, exist_ok=True)
@@ -289,7 +291,7 @@ function render(){ for (const id in R) { const k = LAYER + id, v = num(k, NaN), 
 
 
 def floor():
-    rooms = json.load(open('/home/claude/v7/gfx78/out/px/img/v73_floor_rooms.json'))['rooms']
+    rooms = json.load(open(os.path.join(IMG, 'v73_floor_rooms.json')))['rooms']
     spec, rr = {}, {}
     for rid, r in rooms.items():
         if rid == 'CORE' or f'ZoneTemperatureAvg_{rid}' not in P: continue
@@ -326,7 +328,7 @@ draw();
 
 
 def explorer():
-    A = {v: json.load(open(f'/home/claude/v7/gfx78/out/px/img/v73_3d_{v}_anchors.json'))['anchors'] for v in ('plant', 'chiller', 'ct')}
+    A = {v: json.load(open(os.path.join(IMG, f'v73_3d_{v}_anchors.json')))['anchors'] for v in ('plant', 'chiller', 'ct')}
     spec = {}
     def add(k, name, prec, demo, b=False): spec[k] = (name, prec, demo, b)
     for c in ('01', '02'):

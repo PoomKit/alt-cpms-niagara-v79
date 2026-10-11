@@ -1,0 +1,1 @@
+package javax.baja.sys; public final class Clock { public static long ticks() { return 0; } public static Ticket schedulePeriodically(BComponent c, BRelTime t, Action a, BValue arg) { return null; } public interface Ticket { void cancel(); } }
