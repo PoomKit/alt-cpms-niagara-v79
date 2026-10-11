@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Types of the altPlant module (merged into META-INF/module.xml by the Niagara gradle plugin).
-     If the 4.15 annotation processor of your installation already registers @NiagaraType classes and the build
-     reports a duplicate type, delete the <types> block below. -->
+
+<!-- Niagara types are registered through @NiagaraType annotations. -->
 <module>
   <types>
     <type name="ExpansionSupervisor" class="com.alt.plant.BExpansionSupervisor"/>
