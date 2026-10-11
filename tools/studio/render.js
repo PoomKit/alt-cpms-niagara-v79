@@ -1,5 +1,7 @@
 const { chromium } = require('playwright'); const fs = require('fs');
-const OUT = '/home/claude/b79/studio/raw'; fs.mkdirSync(OUT, { recursive: true });
+const path = require('path');
+const G3D = path.resolve(__dirname, '..', '..', 'graphics3d');                  // mk.py writes graphics3d/studio/studio.html
+const OUT = process.env.STUDIO_OUT || path.join(G3D, 'studio', 'raw'); fs.mkdirSync(OUT, { recursive: true });
 const JOBS = [
   { name: 'chiller', ids: ['CH-01'], az: -22, el: 22, ppm: 120, frames: 1,
     anc: e => { const L = e.L / 1000; return { chw_in: [-L*.5-.31, .9, .18], chw_out: [-L*.5-.31, 1.26, .18], cdw_in: [L*.5+.56, .46, -.22], cdw_out: [L*.5+.56, .78, -.22] }; } },
@@ -9,9 +11,9 @@ const JOBS = [
     anc: e => { const L = e.L / 1000, H = e.H / 1000, D = e.W / 1000; return { in1: [-L*.3, H+.25, 0], in2: [2.8 + L*.3, H+.25, 0], out: [1.4, .2, D/2], mu: [-L/2, .35, D/2] }; } },
 ];
 (async () => {
-  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+  const b = await chromium.launch({ executablePath: process.env.PW_CHROMIUM || undefined, args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
   const p = await b.newPage({ viewport: { width: 900, height: 700 } }); const errs = []; p.on('pageerror', e => errs.push(String(e)));
-  await p.goto('file:///home/claude/b79/studio/studio.html', { waitUntil: 'load', timeout: 200000 }); await p.waitForTimeout(8000);
+  await p.goto('file://' + path.join(G3D, 'studio', 'studio.html'), { waitUntil: 'load', timeout: 200000 }); await p.waitForTimeout(8000);
   await p.evaluate(() => { const S = __S, T = S.THREE; S.renderer.setAnimationLoop(null); S.renderer.setPixelRatio(1);
     S.scene.background = null; S.scene.fog = null; S.renderer.setClearColor(0x000000, 0);
     S.scene.environment = S.pmrem.fromScene(new S.RoomEnvironment(), .04).texture; S.scene.environmentIntensity = .9; S.renderer.toneMappingExposure = 1.05;

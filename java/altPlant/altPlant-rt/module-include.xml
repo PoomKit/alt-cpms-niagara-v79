@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- types are registered from the @NiagaraType annotations at build time -->
+<!-- Types of the altPlant module (merged into META-INF/module.xml by the Niagara gradle plugin).
+     If the 4.15 annotation processor of your installation already registers @NiagaraType classes and the build
+     reports a duplicate type, delete the <types> block below. -->
 <module>
+  <types>
+    <type name="ExpansionSupervisor" class="com.alt.plant.BExpansionSupervisor"/>
+    <type name="ZoneAggregator" class="com.alt.plant.BZoneAggregator"/>
+  </types>
 </module>

@@ -32,7 +32,7 @@
     </Label>
 
     <Label layout="470.0,44.0,150.0,26.0" text="3D Live" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
-      <PopupBinding ord="file:^px/ALT_V79_Building3D.px" title="3D Live"/>
+      <HyperlinkBinding ord="file:^web/ALT_V79_Building3D.html"/>
     </Label>
 
     <Label layout="624.0,44.0,150.0,26.0" text="Field IO" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
@@ -232,7 +232,7 @@
     </Label>
 
     <Label layout="20.0,232.0,72.0,20.0" text="3D ⊞" font="bold 9.0pt sans-serif" foreground="#8fd3ff" background="#1f2a36" halign="center">
-      <PopupBinding ord="file:^px/ALT_V79_Building3D.px" title="3D Live"/>
+      <PopupBinding ord="file:^px/ALT_V79_Building3D.px" title="3D Live (Workbench)"/>
     </Label>
 
     <Label layout="20.0,262.0,76.0,20.0" text="Cooling calls" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>

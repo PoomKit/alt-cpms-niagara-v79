@@ -1,0 +1,1 @@
+package javax.baja.sys; public abstract class BComplex extends BValue { public final BValue get(Property p) { return null; } public final BValue get(String n) { return null; } public final void set(Property p, BValue v, Context cx) { } protected static Property newProperty(int flags, BValue def, BFacets f) { return null; } }

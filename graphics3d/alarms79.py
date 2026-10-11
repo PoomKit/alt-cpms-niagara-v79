@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 """Station alarm register -> (3D equipment / zone, visual effect) for the V7.9 building.  Effects / rules as V7.8 (lotus/alarms.py)."""
-import csv, re, sys
-sys.path.insert(0, '/home/claude/lotus')
+import csv, os, re, sys
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOTUS = os.environ.get('LOTUS_DIR', os.path.join(ROOT, 'lotus'))       # V7.8 drafting / BIM / alarm-effect helpers (not in this repo)
+if not os.path.isdir(LOTUS): raise SystemExit(f'lotus helpers not found at {LOTUS}: set LOTUS_DIR (see README, "Missing inputs")')
+sys.path.insert(0, LOTUS)
 from alarms import EFFECTS, RULES
 N = 6
 EQUIP = [(r'Zone(TemperatureAvg|HumidityAvg|OutOfService)?_(\d\d_\d{4})', lambda m: ['Z-' + m.group(2)]),

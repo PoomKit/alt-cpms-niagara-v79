@@ -1,2 +1,36 @@
+# type display names (both key forms used by Niagara 4 tools)
+ExpansionSupervisor=Expansion Supervisor
 ExpansionSupervisor.displayName=Expansion Supervisor
+ZoneAggregator=Zone Aggregator
 ZoneAggregator.displayName=Zone Aggregator
+# ExpansionSupervisor slots
+plantRunRequest=Plant Run Request
+stage2Request=Stage 2 Request
+plantStage=Plant Stage
+plantPermissive=Plant Permissive
+base01Healthy=CH01 Healthy
+base02Healthy=CH02 Healthy
+base01PostRun=CH01 Post-run
+base02PostRun=CH02 Post-run
+baseRunCount=Base Chillers Running
+baseLoadSum=Base Load Sum
+chwsHigh=CHWS Above Stage-up Limit
+chwsDownOk=CHWS OK For Stage-down
+upLoadPct=Stage-up Load %
+downLoadPct=Stage-down Load %
+upDelay=Stage-up Delay
+downDelay=Stage-down Delay
+rotateByRuntime=Rotate By Run Hours
+deficit=Missing Base Units
+stageAdd=Added For Load
+targetNum=Expansion Units Wanted
+averageLoad=Average Load
+chillersNeedingWater=Chillers Needing Water
+valvesOpen=Chillers With Valves Open
+fault=Input Fault
+statusText=Status
+# ZoneAggregator slots
+zonesValid=Zones Valid
+tempValid=Temperature Values Valid
+rhValid=RH Values Valid
+co2Valid=CO2 Values Valid

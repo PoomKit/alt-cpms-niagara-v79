@@ -4,7 +4,8 @@ Point mapping is generated: every point the page reads, its slot path in the sta
 import json, csv, subprocess, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import model79 as MD, alarms79 as AM
-REGD = os.environ.get('V79_REGDIR', '/home/claude/v79/b2/reg')
+HERE = os.path.dirname(os.path.abspath(__file__))
+REGD = os.environ.get('V79_REGDIR', os.path.join(HERE, '..', 'registers'))   # registers written by make_v79.py --regdir
 PL = f'{REGD}/V7_POINT_LIST.csv'
 P = {r['Point']: r['Slot_Path'] for r in csv.DictReader(open(PL, encoding='utf-8-sig'))}
 USE = {}
@@ -56,12 +57,12 @@ mdl = {'building': MD.B, 'roof_z': MD.ROOF_Z, 'room': MD.ROOM, 'core': MD.CORE, 
        'ct_span': [min(cts), max(cts)]}
 if __name__ == '__main__':
     subprocess.run(['npx', 'esbuild', 'scene79.js', '--bundle', '--minify', '--format=iife', '--outfile=build/scene79.min.js'], check=True, cwd=os.path.dirname(os.path.abspath(__file__)))
-    js = open('build/scene79.min.js', encoding='utf-8').read()
-    tpl = open('page79.html', encoding='utf-8').read()
+    js = open(os.path.join(HERE, 'build', 'scene79.min.js'), encoding='utf-8').read()
+    tpl = open(os.path.join(HERE, 'page79.html'), encoding='utf-8').read()
     html = (tpl.replace('/*DATA*/', 'window.MODEL=' + json.dumps(mdl, ensure_ascii=False) + ';window.ALARMS=' + json.dumps(A, ensure_ascii=False) +
                         ';window.PTS=' + json.dumps(PTS) + ';window.MAP=' + json.dumps(MAP, ensure_ascii=False) + ';window.EFFECTS=' + json.dumps(AM.EFFECTS, ensure_ascii=False) + ';')
                .replace('/*APP*/', js.replace('</script', '<\\/script')))
-    os.makedirs('out', exist_ok=True)
-    open('out/ALT_V79_Building3D.html', 'w', encoding='utf-8').write(html)
-    json.dump(MAP, open('out/map79.json', 'w'), ensure_ascii=False, indent=0)
+    out = os.environ.get('V79_OUT', os.path.join(HERE, 'out')); os.makedirs(out, exist_ok=True)
+    open(os.path.join(out, 'ALT_V79_Building3D.html'), 'w', encoding='utf-8').write(html)
+    json.dump(MAP, open(os.path.join(out, 'map79.json'), 'w'), ensure_ascii=False, indent=0)
     print('3D page', len(html) // 1024, 'kB; live points', len(PTS), 'of', len(USE), '; alarms', len(A), '; missing', missing[:30])

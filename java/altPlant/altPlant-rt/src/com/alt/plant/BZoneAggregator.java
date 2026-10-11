@@ -1,11 +1,13 @@
 package com.alt.plant;
 
+import com.alt.plant.logic.ZoneStats;
 import javax.baja.nre.annotations.*;
 import javax.baja.status.*;
 import javax.baja.sys.*;
 
 /**
- * Floor zone statistics: average / max / count above limit for temperature, RH and CO2 (up to 16 zones).
+ * Floor zone statistics: average / max / count above limit for temperature, RH and CO2 (up to 16 zones), see {@link ZoneStats}.
+ * zonesValid = zones with any valid value; tempValid / rhValid / co2Valid = valid values per metric.
  * ALT Reference V7.9 - Niagara 4.15 runtime component.
  */
 @NiagaraType
@@ -62,6 +64,9 @@ import javax.baja.sys.*;
 @NiagaraProperty(name = "h16", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0, BStatus.nullStatus)", flags = Flags.SUMMARY)
 @NiagaraProperty(name = "c16", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0, BStatus.nullStatus)", flags = Flags.SUMMARY)
 @NiagaraProperty(name = "zonesValid", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0)", flags = Flags.SUMMARY | Flags.READONLY)
+@NiagaraProperty(name = "tempValid", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0)", flags = Flags.SUMMARY | Flags.READONLY)
+@NiagaraProperty(name = "rhValid", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0)", flags = Flags.SUMMARY | Flags.READONLY)
+@NiagaraProperty(name = "co2Valid", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0)", flags = Flags.SUMMARY | Flags.READONLY)
 @NiagaraProperty(name = "tempAvg", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0)", flags = Flags.SUMMARY | Flags.READONLY)
 @NiagaraProperty(name = "tempMax", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0)", flags = Flags.SUMMARY | Flags.READONLY)
 @NiagaraProperty(name = "rhAvg", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0)", flags = Flags.SUMMARY | Flags.READONLY)
@@ -72,6 +77,7 @@ import javax.baja.sys.*;
 @NiagaraProperty(name = "zonesHumid", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0)", flags = Flags.SUMMARY | Flags.READONLY)
 @NiagaraProperty(name = "zonesCo2High", type = "BStatusNumeric", defaultValue = "new BStatusNumeric(0)", flags = Flags.SUMMARY | Flags.READONLY)
 @NiagaraProperty(name = "anyAlarm", type = "BStatusBoolean", defaultValue = "new BStatusBoolean(false)", flags = Flags.SUMMARY | Flags.READONLY)
+@NiagaraAction(name = "execute", flags = Flags.HIDDEN)
 public class BZoneAggregator extends BComponent
 {
 /*+ ------------ BEGIN BAJA AUTO GENERATED CODE ------------ +*/
@@ -394,6 +400,24 @@ public class BZoneAggregator extends BComponent
   public void setZonesValid(BStatusNumeric v) { set(zonesValid, v, null); }
 //endregion Property "zonesValid"
 
+//region Property "tempValid"
+  public static final Property tempValid = newProperty(Flags.SUMMARY | Flags.READONLY, new BStatusNumeric(0), null);
+  public BStatusNumeric getTempValid() { return (BStatusNumeric)get(tempValid); }
+  public void setTempValid(BStatusNumeric v) { set(tempValid, v, null); }
+//endregion Property "tempValid"
+
+//region Property "rhValid"
+  public static final Property rhValid = newProperty(Flags.SUMMARY | Flags.READONLY, new BStatusNumeric(0), null);
+  public BStatusNumeric getRhValid() { return (BStatusNumeric)get(rhValid); }
+  public void setRhValid(BStatusNumeric v) { set(rhValid, v, null); }
+//endregion Property "rhValid"
+
+//region Property "co2Valid"
+  public static final Property co2Valid = newProperty(Flags.SUMMARY | Flags.READONLY, new BStatusNumeric(0), null);
+  public BStatusNumeric getCo2Valid() { return (BStatusNumeric)get(co2Valid); }
+  public void setCo2Valid(BStatusNumeric v) { set(co2Valid, v, null); }
+//endregion Property "co2Valid"
+
 //region Property "tempAvg"
   public static final Property tempAvg = newProperty(Flags.SUMMARY | Flags.READONLY, new BStatusNumeric(0), null);
   public BStatusNumeric getTempAvg() { return (BStatusNumeric)get(tempAvg); }
@@ -454,6 +478,11 @@ public class BZoneAggregator extends BComponent
   public void setAnyAlarm(BStatusBoolean v) { set(anyAlarm, v, null); }
 //endregion Property "anyAlarm"
 
+//region Action "execute"
+  public static final Action execute = newAction(Flags.HIDDEN, null);
+  public void execute() { invoke(execute, null, null); }
+//endregion Action "execute"
+
   @Override public Type getType() { return TYPE; }
   public static final Type TYPE = Sys.loadType(BZoneAggregator.class);
 /*+ ------------ END BAJA AUTO GENERATED CODE -------------- +*/
@@ -470,34 +499,32 @@ public class BZoneAggregator extends BComponent
     if (ticket != null) ticket.cancel();
     ticket = Clock.schedulePeriodically(this, BRelTime.make(Math.max(1000L, getScanRate().getMillis())), execute, null);
   }
-  public static final Action execute = newAction(Flags.HIDDEN, null);
-  public void execute() { invoke(execute, null, null); }
   public void doExecute() { calculate(); }
 
   public void calculate()
   {
-    double[] s = new double[3], mx = { -1e9, -1e9, -1e9 }; int[] n = new int[3], hi = new int[3];
-    double[] lim = { val(getTempHigh()), val(getRhHigh()), val(getCo2High()) };
+    double[][] v = new double[16][ZoneStats.METRICS]; boolean[][] ok = new boolean[16][ZoneStats.METRICS];
     for (int i = 1; i <= 16; i++)
     {
       String k = (i < 10 ? "0" : "") + i;
       String[] names = { "t" + k, "h" + k, "c" + k };
-      for (int j = 0; j < 3; j++)
+      for (int j = 0; j < ZoneStats.METRICS; j++)
       {
-        BStatusNumeric v = (BStatusNumeric)get(names[j]);
-        if (v == null || !v.getStatus().isValid()) continue;
-        double x = v.getValue(); s[j] += x; n[j]++; mx[j] = Math.max(mx[j], x); if (x > lim[j]) hi[j]++;
+        BStatusNumeric x = (BStatusNumeric)get(names[j]);
+        ok[i - 1][j] = x != null && x.getStatus().isValid();
+        v[i - 1][j] = ok[i - 1][j] ? x.getValue() : 0;
       }
     }
-    setZonesValid(new BStatusNumeric(n[0]));
-    setTempAvg(avg(s[0], n[0])); setRhAvg(avg(s[1], n[1])); setCo2Avg(avg(s[2], n[2]));
-    setTempMax(mx(mx[0], n[0])); setRhMax(mx(mx[1], n[1])); setCo2Max(mx(mx[2], n[2]));
-    setZonesHot(new BStatusNumeric(hi[0])); setZonesHumid(new BStatusNumeric(hi[1])); setZonesCo2High(new BStatusNumeric(hi[2]));
-    setAnyAlarm(new BStatusBoolean(hi[0] + hi[1] + hi[2] > 0));
+    ZoneStats z = ZoneStats.of(v, ok, new double[] { lim(getTempHigh()), lim(getRhHigh()), lim(getCo2High()) });
+    setZonesValid(new BStatusNumeric(z.zonesValid));
+    setTempValid(new BStatusNumeric(z.valid[0])); setRhValid(new BStatusNumeric(z.valid[1])); setCo2Valid(new BStatusNumeric(z.valid[2]));
+    setTempAvg(num(z.avg(0))); setRhAvg(num(z.avg(1))); setCo2Avg(num(z.avg(2)));
+    setTempMax(num(z.maxOf(0))); setRhMax(num(z.maxOf(1))); setCo2Max(num(z.maxOf(2)));
+    setZonesHot(new BStatusNumeric(z.high[0])); setZonesHumid(new BStatusNumeric(z.high[1])); setZonesCo2High(new BStatusNumeric(z.high[2]));
+    setAnyAlarm(new BStatusBoolean(z.anyHigh()));
   }
-  private static double val(BStatusNumeric v) { return v.getStatus().isValid() ? v.getValue() : Double.MAX_VALUE; }
-  private static BStatusNumeric avg(double s, int n) { return n == 0 ? new BStatusNumeric(0, BStatus.nullStatus) : new BStatusNumeric(Math.round(s / n * 10) / 10.0); }
-  private static BStatusNumeric mx(double m, int n) { return n == 0 ? new BStatusNumeric(0, BStatus.nullStatus) : new BStatusNumeric(m); }
+  private static double lim(BStatusNumeric v) { return v.getStatus().isValid() ? v.getValue() : Double.NaN; }
+  private static BStatusNumeric num(double x) { return Double.isNaN(x) ? new BStatusNumeric(0, BStatus.nullStatus) : new BStatusNumeric(x); }
 
   @Override public BIcon getIcon() { return icon; }
   private static final BIcon icon = BIcon.std("control/control.png");

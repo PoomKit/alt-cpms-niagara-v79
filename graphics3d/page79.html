@@ -1,7 +1,11 @@
 <!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CPMS Building 3D</title>
-<script>/* BajaScript: served by the station web server (browser, Workbench web browser view, Niagara Remote) -> LIVE; opened as a local file -> DEMO */
-if(/^https?:$/.test(location.protocol)&&!/[?&]demo\b/.test(location.search)){document.write('<script src="/requirejs/config.js"><\/script><script src="/module/js/com/tridium/js/ext/require/require.min.js"><\/script>')}</script>
+<script>/* BajaScript: served by the station web server (browser, Workbench web browser view, Niagara Remote) -> LIVE; opened as a local file -> DEMO.
+   RequireJS config + loader are added in order as script elements (no document.write); BAJA_READY settles when both are loaded. */
+window.BAJA_READY=new Promise(function(ok,fail){if(!/^https?:$/.test(location.protocol)||/[?&]demo\b/.test(location.search))return fail(new Error('demo'));
+function load(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.async=false;s.onload=res;s.onerror=function(){rej(new Error('cannot load '+src))};document.head.appendChild(s)})}
+load('/requirejs/config.js').then(function(){return load('/module/js/com/tridium/js/ext/require/require.min.js')}).then(ok,fail)});
+window.BAJA_READY.catch(function(){});</script>
 <style>
 :root{--bg:#07101f;--panel:rgba(8,18,38,.86);--line:rgba(255,255,255,.12);--txt:#e8eef4;--muted:#9fb0c0;--acc:#4aa8ff;--alm:#ef4444;--warn:#f59e0b;--ok:#22c55e}
 *{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font:13px/1.45 "Segoe UI",Tahoma,"Leelawadee UI",sans-serif;overflow:hidden}
@@ -16,7 +20,7 @@ if(/^https?:$/.test(location.protocol)&&!/[?&]demo\b/.test(location.search)){doc
 @media (max-width:760px){#kpi{display:none}}
 header{position:fixed;top:0;left:0;right:0;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:linear-gradient(#0b1118ee,#0b111800)}
 header h1{margin:0;font-size:17px;font-weight:600} header .sub{color:var(--muted);font-size:11px}
-.mode{font-size:11px;padding:3px 9px;border-radius:10px;background:#3b2f12;color:#ffcf6b} .mode.live{background:#123b22;color:#7be09b}
+.mode{font-size:11px;padding:3px 9px;border-radius:10px;background:#3b2f12;color:#ffcf6b} .mode.live{background:#123b22;color:#7be09b} .mode.live.warn{background:#4a3410;color:#ffcf6b}
 #wx{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 12px;display:flex;flex-direction:column} #wx span{color:var(--muted);font-size:11px}
 .views{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap} button{background:#16202b;color:var(--txt);border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;font:inherit;font-size:12px}
 button:hover{border-color:var(--acc)}

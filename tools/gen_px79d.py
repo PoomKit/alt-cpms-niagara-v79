@@ -230,7 +230,7 @@ def plant():
     p.rect(16, 176, X_BLD - 20, Y_CHWR - 150, fill='#18212b', stroke='#5d6d7e', pen=2.0)
     p.label(16, 186, X_BLD - 20, 22, 'BUILDING', 10, True, TXT, None, 'center')
     p.label(20, 210, X_BLD - 28, 20, 'Floors ⊞', 9, True, '#8fd3ff', '#1f2a36', 'center', popup='file:^px/ALT_V79_Building.px', ptitle='Building / zones')
-    p.label(20, 232, X_BLD - 28, 20, '3D ⊞', 9, True, '#8fd3ff', '#1f2a36', 'center', popup='file:^px/ALT_V79_Building3D.px', ptitle='3D Live')
+    p.label(20, 232, X_BLD - 28, 20, '3D ⊞', 9, True, '#8fd3ff', '#1f2a36', 'center', popup='file:^px/ALT_V79_Building3D.px', ptitle='3D Live (Workbench)')
     for i, (t, pt, kw) in enumerate((('Cooling calls', 'AirSide_CoolingCalls', {}), ('CHW requests', 'AirSide_ChwRequests', {}),
                                       ('Units running', 'AirSide_UnitsRunning', {}), ('Reset %', 'PlantResetPct', {}),
                                       ('Fire alarm', 'FireModeActive', {'bool_c': (FLT, GOOD)}), ('CHW ΔP', 'CHWDP', {}), ('ΔP SP', 'CHWDP_Setpoint_ACTIVE', {}),

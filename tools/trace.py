@@ -1,4 +1,4 @@
-import sys; sys.path.insert(0,'/home/claude/v6')
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sim6 import Model6
 m=Model6(sys.argv[1], ramps=False)
 def tr(n,d,ind=0,seen=set()):

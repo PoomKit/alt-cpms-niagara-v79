@@ -10,6 +10,8 @@ import gen_px7 as P7
 import gen_px as G
 from gen_px7 import val, lbl, panel, rows, pic_bool, kpi_strip, PANEL, EDGE, LBL, RUN, OFF, FLT, WARN
 
+# pages opened by navigation instead of a popup: the 3D page is HTML (BajaScript) and must work in the HTML5 / browser profile
+LINKS = {'ALT_V79_Building3D': 'file:^web/ALT_V79_Building3D.html'}
 PAGES = [('ALT_V79_Plant', 'Plant schematic'), ('ALT_V79_PlantCards', 'Plant cards'), ('ALT_V79_Building', 'Building / Zones'), 
          ('ALT_V79_Building3D', '3D Live'), ('ALT_V77_FieldIO', 'Field IO'), ('ALT_CP_AlarmsHistory', 'Alarms')]
 IMG = {'CH': ('Chillers/Turbo/Chiller_Turbo_Left/Chiller_Turbo_Left_On.gif', 'Chillers/Turbo/Chiller_Turbo_Left/Chiller_Turbo_Left_Off.png'),
@@ -27,7 +29,7 @@ def header(p):
     for name, title in PAGES:
         cur = name == p.name
         p.label(x, 44, 150, 26, title, 9, True, 'white' if cur else '#cfd8dc', '#1e88e5' if cur else '#2c3440', 'center',
-                popup=None if cur else f'file:^px/{name}.px', ptitle=title)
+                popup=None if cur else f'file:^px/{name}.px', ptitle=title, link=None if cur else LINKS.get(name))
         x += 154
 
 

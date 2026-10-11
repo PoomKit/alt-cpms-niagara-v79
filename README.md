@@ -31,24 +31,46 @@ Reference station for the chiller plant management system (CPMS), version **V7.9
 ## Building the station (config.bog)
 
 ```bash
+pip install -r requirements.txt
+tools/rebuild_v79.sh <source c_v5.bog> <groups c_v5.tsv> [out dir] [register.xlsx]   # both builds + offline tests
+# or step by step:
 cd tools
+python3 check_v79_refs.py --register ../registers/ALT_V79_Equipment_Register.xlsx     # offline reference check, no bog needed
 python3 make_v79.py <source c_v5.bog> <groups c_v5.tsv> <out>/v79.bog \
-    --regdir <out>/reg --timing site --register ../registers/ALT_V79_Equipment_Register.xlsx
-python3 v79tests.py <out>/v79_fpt.bog <out>/v79tests.csv   # add / remove equipment tests (16 cases)
+    --regdir <out>/reg --timing site --register ../registers/ALT_V79_Equipment_Register.xlsx [--cert-alias <alias>]
+python3 v79tests.py <out>/v79_fpt.bog <out>/v79tests.csv   # add / remove equipment + air side tests (22 cases, exit 1 on a finding)
 python3 gen_px79d.py <out>/v79.bog <kitPxGraphics dir> <pxout> <sprites73> <sprites74> <studio raw>
 ```
 
-- `tools/rebuild_v79.sh` is the script used in the original working environment. The paths in it are absolute, so change them before running it.
-- kitPxGraphics images and the input `c_v5.bog` are not included. They belong to the Niagara installation and the original project.
+- kitPxGraphics images, the input `c_v5.bog` and the `lotus/` helpers are not included — see `tools/README.md` ("Inputs that are not in this repository") and the environment variables there.
+- `tools/README.md` lists which scripts belong to the V7.9 build chain and which are earlier versions.
 
 ## 3D page
 
 ```bash
-cd graphics3d && npm install
-V79_REGDIR=<out>/reg python3 gen3d79.py      # -> out/ALT_V79_Building3D.html, map79.json
+cd graphics3d && npm ci
+V79_REGDIR=<out>/reg LOTUS_DIR=<lotus> python3 gen3d79.py   # full rebuild (data + page) -> out/ALT_V79_Building3D.html, map79.json
+python3 rebuild_page.py                                      # page template / scene changed only: rebuild the station page in place
 ```
 
+## Checks (CI, every push)
+
+Secrets / absolute paths, Python compile + lint, V7.9 builder references (`tools/check_v79_refs.py`), Px XML / images / ORDs / 3D map
+(`tools/check_px.py`), 3D page = its sources (`graphics3d/rebuild_page.py --check`), Java logic unit tests and a type-check of the
+Niagara components against API stubs (`java/altPlant/logic-test`, `java/altPlant/ci-stubs`).
+
 ## Version
+
+**V7.9 r3** (review fixes):
+- Expansion slots: run-hour rotation (running units are never swapped), soft-load and head-pressure valve for chillers 03-06.
+- `CHX_ChillersNeedingWater` now shows the value the pump / tower targets use; the old value is `CHX_ChillersValvesOpen`.
+- Floors 2-8: RH average and "all zones out of service" handling, start-failure latch uses `sealin`, CO2 simulation.
+- Field IO device numbers are pinned (register `Device` column overrides the BACnet device).
+- `make_v79.py`: keeps every entry of the .bog, clear errors, `--cert-alias`.
+- Java module: same rules as the wire sheet, fail-safe on invalid inputs, unit tests.
+- 3D page: no `document.write`, batched ORD resolve, unresolved points reported; Px "3D Live" opens the HTML page (HTML5 profile).
+- No absolute paths; `requirements.txt`, `package-lock.json`.
+
 
 **V7.9 r2:**
 - 6-slot schematic at V7.8 detail level.

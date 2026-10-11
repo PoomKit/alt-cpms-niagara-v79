@@ -423,6 +423,7 @@ function eqPipes(id){ return Object.values(PIPE).filter(p => p.p.eq.includes(id)
 
 // ------------------------------------------------------------------ state, weather, alarms
 const V = {}; let DEMO = false; const ACTIVE = new Map();   // alarm name -> alarm
+const FAIL = new Set();   // LIVE: points / alarms whose station ORD did not resolve (shown in the mode badge and Point mapping)
 const OVR = { on: false, temp: 33, rh: 60, hour: 13 };
 function val(k, d){ const v = V[k]; return typeof v === 'number' && !isNaN(v) ? v : (typeof v === 'boolean' ? +v : d); }
 function weather(){ const now = new Date(); const W = { temp: val('OA_Temperature', 33), rh: val('OA_Humidity', 62), wb: val('OA_WetBulb', 27), hour: now.getHours() + now.getMinutes() / 60 };
@@ -628,18 +629,32 @@ function demoTick(){ const t = Date.now() / 1000, h = new Date().getHours() + ne
   for (const z of M.zones) { const k = z.floor * 7 + +z.code.slice(-2); V[z.t] = (occ ? 24 : 27.5) + 1.4 * s(t / 37 + k) + (k % 5 === 0 ? 2.2 : 0); V[z.h] = 58 + 8 * s(t / 45 + k); V[z.c] = (occ ? 720 : 480) + 180 * s(t / 53 + k) + (k % 6 === 0 ? 380 : 0); } }
 let DEMO_ID = 0;
 function startDemo(){ if (DEMO) return; DEMO = true; $('mode').textContent = 'DEMO · 1 → 2 → 3 chillers every 50 s (installed slots only)'; $('mode').className = 'mode demo'; demoTick(); DEMO_ID = setInterval(demoTick, 1000); $('sim').style.display = ''; }
-function startLive(){ if (typeof window.require !== 'function') return startDemo(); let ok = false; setTimeout(() => { if (!ok) startDemo(); }, 7000);
-  window.require(['baja!'], function (baja) { ok = true; if (DEMO) { clearInterval(DEMO_ID); DEMO = false; $('sim').style.display = 'none'; ACTIVE.clear(); }
+function startLive(){ const ready = window.BAJA_READY; if (!ready) return startDemo(); let ok = false; setTimeout(() => { if (!ok) startDemo(); }, 7000);
+  ready.then(() => window.require(['baja!'], function (baja) { ok = true; if (DEMO) { clearInterval(DEMO_ID); DEMO = false; $('sim').style.display = 'none'; ACTIVE.clear(); }
     $('mode').textContent = 'LIVE · ข้อมูลจาก station'; $('mode').className = 'mode live';
-    const sub = new baja.Subscriber(); const KEY = new Map();   // component -> [keys] (one point can be both a value and an alarm source)
+    const sub = new baja.Subscriber(); const KEY = new Map();   // component -> Set of keys (one point can be both a value and an alarm source)
     sub.attach('changed', function (prop) { if (prop.getName() === 'out') read(this); });
     function read(c){ for (const k of KEY.get(c) || []) read1(c, k); }
     function read1(c, k){ try { const o = c.get('out'), v = o.getValue(), st = o.getStatus();
       if (k.alarm) { const a = k.alarm; const on = (st && st.isAlarm && st.isAlarm()) || (typeof v === 'boolean' && v === a.av); if (on) ACTIVE.set(a.n, a); else ACTIVE.delete(a.n); renderAlarmList(); }
       else V[k.v] = v; } catch (e) {} }
     const all = [...Object.entries(PTS).map(([k, s]) => ({ s, v: k })), ...AL.filter(a => a.s).map(a => ({ s: a.s, alarm: a }))];
-    all.forEach(k => baja.Ord.make('station:|slot:' + k.s).get({ subscriber: sub }).then(c => { KEY.set(c, [...(KEY.get(c) || []), k]); read1(c, k); }).catch(() => {}));
-  }, () => { ok = true; startDemo(); }); }
+    const BY = new Map(); for (const k of all) { const o = 'station:|slot:' + k.s; if (!BY.has(o)) BY.set(o, []); BY.get(o).push(k); }
+    const attach = (o, c) => { if (!c) return failed(o); if (!KEY.has(c)) KEY.set(c, new Set()); BY.get(o).forEach(k => { KEY.get(c).add(k); FAIL.delete(k.v || k.alarm.n); }); read(c); };
+    const failed = o => BY.get(o).forEach(k => FAIL.add(k.v || k.alarm.n));
+    const one = o => baja.Ord.make(o).get({ subscriber: sub }).then(c => attach(o, c), () => failed(o));
+    const ords = [...BY.keys()], CHUNK = 200, jobs = [];
+    for (let i = 0; i < ords.length; i += CHUNK) {          // one network call per chunk; any problem -> resolve that chunk one by one
+      const part = ords.slice(i, i + CHUNK);
+      let p;
+      try { const b = new baja.BatchResolve(part);
+        p = Promise.resolve(b.resolve({ subscriber: sub })).then(() => part.forEach((o, j) => (typeof b.isResolved !== 'function' || b.isResolved(j)) ? attach(o, b.get(j)) : failed(o))); }
+      catch (e) { p = Promise.reject(e); }
+      jobs.push(p.catch(() => Promise.all(part.map(one))));
+    }
+    Promise.all(jobs).then(() => { if (!FAIL.size) return; $('mode').textContent = `LIVE · ข้อมูลจาก station · resolve ไม่ได้ ${FAIL.size} จุด (ดู Point mapping)`; $('mode').className = 'mode live warn';
+      console.warn('3D LIVE: ORDs not resolved', [...FAIL]); });
+  }, () => { ok = true; startDemo(); }), () => { ok = true; startDemo(); }); }
 startLive();
 
 // ------------------------------------------------------------------ installed / not installed (ghost), zones, future systems, floor filter, layers
@@ -666,7 +681,7 @@ for (const z of M.zones) { const z0 = zOf(z.floor) + 60, h = 2800, g = new THREE
   sp.position.copy(P3((z.x0 + z.x1) / 2, (z.y0 + z.y1) / 2, z0 + h + 200)); g.add(sp);
   ZONE[z.code] = { z, g, mat, edge, c, tex, sp }; }
 let zoneT = 0;
-function updateZones(dt){ const now = performance.now(); if (now - zoneT < 800) return; zoneT = now; const pulse = Date.now() % 1000 < 500;   // real time: slow GPUs still refresh const pulse = Date.now() % 1000 < 500;
+function updateZones(dt){ const now = performance.now(); if (now - zoneT < 800) return; zoneT = now; const pulse = Date.now() % 1000 < 500;   // real time: slow GPUs still refresh
   for (const k in ZONE) { const Z = ZONE[k], z = Z.z, t = V[z.t], rh = V[z.h], co2 = V[z.c], oos = !!V[z.oos], al = ZALM.has(z.code), mv = V[z[METRIC]];
     Z.sp.visible = al || (FSEL !== 'all' && FSEL !== 'roof' && +FSEL === z.floor);
     Z.mat.color.copy(zoneColor(mv, oos, METRIC)); Z.mat.emissive.setHex(al && pulse ? 0x661111 : 0); Z.mat.opacity = oos ? .07 : .17;
@@ -716,6 +731,6 @@ renderAlarmList();
 // point mapping panel: every station point the 3D page reads, its slot ORD and the value received
 $('mapBtn').onclick = () => { const rows = window.MAP || []; const fmt = v => v === undefined ? '—' : typeof v === 'number' ? v.toFixed(2) : String(v);
   $('info').className = 'open wide'; const draw = () => { if (!$('info').classList.contains('wide')) return;
-    const got = rows.filter(r => V[r.p] !== undefined).length;
-    $('info').innerHTML = `<h3>Point mapping · ${DEMO ? 'DEMO (ค่าจำลอง)' : 'LIVE'} · รับค่าแล้ว ${got}/${rows.length} จุด · alarm ${AL.filter(a => a.s).length} จุด</h3><button onclick="document.getElementById('info').className=''">ปิด</button>
-    <table>${rows.map(r => `<tr><td>${r.p}</td><td class="${V[r.p] === undefined ? 'no' : 'ok'}">${fmt(V[r.p])}</td><td>${r.u}</td><td style="color:#9fb0c0">station:|slot:${r.s}</td></tr>`).join('')}</table>`; setTimeout(draw, 1000); }; draw(); };
+    const got = rows.filter(r => V[r.p] !== undefined).length, nf = rows.filter(r => FAIL.has(r.p)).length;
+    $('info').innerHTML = `<h3>Point mapping · ${DEMO ? 'DEMO (ค่าจำลอง)' : 'LIVE'} · รับค่าแล้ว ${got}/${rows.length} จุด${nf ? ` · resolve ไม่ได้ ${nf} จุด` : ''} · alarm ${AL.filter(a => a.s).length} จุด${FAIL.size - nf > 0 ? ` (resolve ไม่ได้ ${FAIL.size - nf})` : ''}</h3><button onclick="document.getElementById('info').className=''">ปิด</button>
+    <table>${rows.map(r => `<tr><td>${r.p}</td><td class="${V[r.p] === undefined ? 'no' : 'ok'}">${FAIL.has(r.p) ? 'resolve ไม่ได้' : fmt(V[r.p])}</td><td>${r.u}</td><td style="color:#9fb0c0">station:|slot:${r.s}</td></tr>`).join('')}</table>`; setTimeout(draw, 1000); }; draw(); };

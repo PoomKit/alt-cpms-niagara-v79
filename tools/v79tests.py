@@ -12,8 +12,10 @@ def row(cid, title, ok, obs):
     print(f"{cid:4} {'PASS' if ok else 'FINDING':8} {title}\n     {obs}", flush=True)
 
 
-def sim(ev, dur, K, every=1.0):
-    m = faithful(Model6(BOG)); return m.run(dur, BASE + ev, sample=K, every=every)
+def sim(ev, dur, K, every=1.0, setup=None):
+    m = faithful(Model6(BOG))
+    if setup: setup(m)
+    return m.run(dur, BASE + ev, sample=K, every=every)
 
 
 first = lambda tr, k, v, t0=0: next((t for t, s in tr if t >= t0 and s[k] == v), None)
@@ -93,6 +95,32 @@ tr = sim([(0.5, {'IO_DriversInstalled': True, 'IO_CH03_UseField': True, 'IO_CH03
 row('X11', 'expansion unit uses the same Field IO layer: CH03 in FIELD mode reads IO_CH03RunProof', at(tr, 15, 'CH03RunProof') is True,
     f"CH03RunProof {at(tr, 15, 'CH03RunProof')}")
 
+# X12 V7.9 r3 rotation: the expansion slot with the fewest run hours starts first
+def hours(**h):
+    def f(m):
+        for u, v in h.items(): m.extv[(f'{u}RunProof', 'Runtime', 'elapsedActiveTimeNumeric')] = v * 3600 * 1000.0
+    return f
+
+
+K = ['CH03StartCmd', 'CH04StartCmd']
+tr = sim([(0.5, {'CH02_Installed': False, 'CH03_Installed': True, 'CH04_Installed': True, 'Stage2Request': True})], 150.0, K, setup=hours(CH03=500, CH04=100))
+row('X12', 'rotation: CH03 500 h, CH04 100 h, one unit wanted -> CH04 starts, CH03 stays off',
+    ever(tr, 'CH04StartCmd') and not ever(tr, 'CH03StartCmd'), f"CH03 {ever(tr, 'CH03StartCmd')}, CH04 {first(tr, 'CH04StartCmd', True)}")
+
+# X13 base chiller trips at stage 2 -> expansion unit covers it (review finding R1)
+K = ['CH03StartCmd', 'CHX_TargetNum']
+tr = sim([(0.5, {'CH03_Installed': True, 'Stage2Request': True}), (60.0, {'CH01Fault': True})], 200.0, K)
+row('X13', 'CH01 fault at stage 2 -> deficit 1, CH03 starts', ever(tr, 'CH03StartCmd') and at(tr, 195, 'CHX_TargetNum') >= 1,
+    f"CH03 start {first(tr, 'CH03StartCmd', True, 60)}, target {at(tr, 195, 'CHX_TargetNum')}")
+
+# X14 soft-load of an expansion chiller
+K = ['CH03RunProof', 'CH03DemandLimitCmd']
+tr = sim([(0.5, {'CH02_Installed': False, 'CH03_Installed': True, 'Stage2Request': True})], 120.0, K)
+tp = first(tr, 'CH03RunProof', True)
+row('X14', 'CH03 demand limit starts at 50 % and ramps to 100 % after run proof (test 5 %/s)',
+    tp is not None and at(tr, tp, 'CH03DemandLimitCmd') <= 60 and at(tr, tp + 20, 'CH03DemandLimitCmd') >= 99,
+    f"proof {tp}, limit at proof {tp is not None and at(tr, tp, 'CH03DemandLimitCmd')}, 20 s later {tp is not None and at(tr, tp + 20, 'CH03DemandLimitCmd')}")
+
 # ---------------- air side floors 2-8
 if True:
     K = ['AHU_F02_StartCmd', 'AHU_F02_Status', 'AHU_F02_ValveCmd', 'Zone_F02_AvgTemp', 'AHU_F03_StartCmd']
@@ -120,8 +148,24 @@ if True:
     tr = sim([(0.5, {'AirX_ManualOn': True, 'AHU_F02_Status': False})], 40.0, K)
     row('Y05', 'floor AHU without run proof -> start failure alarm, command removed', at(tr, 35, 'AHU_F02_FailAlarm') and not at(tr, 35, 'AHU_F02_StartCmd'),
         f"alarm {at(tr, 35, 'AHU_F02_FailAlarm')}, cmd {at(tr, 35, 'AHU_F02_StartCmd')}")
+    K = ['Zone_F02_AvgTemp', 'Zone_F02_AllOutOfServiceAlarm', 'AHU_F02_ValveCmd']
+    tr = sim([(0.5, {'AirX_ManualOn': True, **{f'ZoneOutOfService_02_020{z}': True for z in range(1, 5)}})], 60.0, K)
+    row('Y06', 'every zone of floor 2 out of service -> floor average = setpoint (not 0 C) + alarm',
+        abs(at(tr, 55, 'Zone_F02_AvgTemp') - 24.0) < .01 and at(tr, 55, 'Zone_F02_AllOutOfServiceAlarm'),
+        f"average {at(tr, 55, 'Zone_F02_AvgTemp')}, alarm {at(tr, 55, 'Zone_F02_AllOutOfServiceAlarm')}, valve {at(tr, 55, 'AHU_F02_ValveCmd')}")
+    K = ['Zone_F02_AvgRH']
+    tr = sim([(0.5, {'ZoneHumidityAvg_02_0201': 60.0, 'ZoneHumidityAvg_02_0202': 60.0, 'ZoneHumidityAvg_02_0203': 60.0,
+                     'ZoneHumidityAvg_02_0204': 90.0, 'ZoneOutOfService_02_0204': True})], 20.0, K)
+    row('Y07', 'floor RH average leaves out the zone out of service', abs(at(tr, 15, 'Zone_F02_AvgRH') - 60.0) < .5,
+        f"RH average {at(tr, 15, 'Zone_F02_AvgRH')}")
+    K = ['AHU_F02_RA_CO2', 'AHU_F02_OADamperCmd']
+    tr = sim([(0.5, {'AirX_ManualOn': True})], 600.0, K, every=5.0)
+    row('Y08', 'simulated CO2: occupied floor settles between 600 and 1000 ppm with the OA damper modulating',
+        600 < at(tr, 595, 'AHU_F02_RA_CO2') < 1000 and 20 < at(tr, 595, 'AHU_F02_OADamperCmd') < 100,
+        f"RA CO2 {at(tr, 595, 'AHU_F02_RA_CO2'):.0f} ppm, OA damper {at(tr, 595, 'AHU_F02_OADamperCmd'):.0f} %")
 
 if len(sys.argv) > 2:
     with open(sys.argv[2], 'w', newline='', encoding='utf-8') as fo:
         w = csv.DictWriter(fo, fieldnames=['id', 'title', 'observed', 'result']); w.writeheader(); w.writerows(rows)
 print(f"{sum(r['result'] == 'PASS' for r in rows)}/{len(rows)} PASS")
+sys.exit(0 if all(r['result'] == 'PASS' for r in rows) else 1)

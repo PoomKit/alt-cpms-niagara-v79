@@ -10,7 +10,7 @@ import make_v6 as M6
 import make_v7 as M7
 import v77_fieldcx as FCX
 import v78_improve as IMP
-from make_v7 import AND, OR, NOT, DLY, SW, MATH, CMP, PULSE, di, ai, simlink, PID, RESET, const
+from make_v7 import AND, OR, NOT, DLY, SW, MATH, CMP, PULSE, RATE, di, ai, simlink, PID, RESET, const, sealin
 import v79_scale as SC
 
 AIR = M7.AIR
@@ -27,8 +27,8 @@ def zcode(fl, z):
 def floor_ahu(S, fl):
     u = f'AHU_F{fl:02d}'; f = f'{AIR}/Floors/F{fl:02d}'
     reg = next((r for r in SC.R().get('AirSide', []) if r.get('Unit') == u), {})
-    S.bparam(f'{u}_Installed', SC.eqreg.installed(reg) if reg else True, folder=f, t='Installed', f='Not installed', note=f'V7.9: floor {fl} air handling unit exists')
     S.param(f'{u}_ZoneSP', 24.0, 'C', folder=f, note='floor zone temperature setpoint')
+    S.bparam(f'{u}_Installed', SC.eqreg.installed(reg) if reg else True, folder=f, t='Installed', f='Not installed', note=f'V7.9: floor {fl} air handling unit exists')
     S.param(f'{u}_DehumRH', 65.0, 'RH', folder=f, prec=0, note='return RH above this -> CHW valve not below AirX_DehumMinValve')
     di(S, f, f'{u}_Status', False, 'Running', 'Stopped', note='FIELD DI: supply fan running')
     di(S, f, f'{u}_Fault', False, 'Fault', 'Normal', note='FIELD DI: VSD / fan fault')
@@ -37,7 +37,7 @@ def floor_ahu(S, fl):
     ai(S, f, f'{u}_RA_RH', 60.0, 'RH', note='FIELD AI: return air humidity')
     ai(S, f, f'{u}_RA_CO2', 700.0, 'none', prec=0, note='FIELD AI: return air CO2 (ppm)')
     # zones
-    zt, zok = [], []
+    zt = []
     for z in range(1, ZPF + 1):
         c = zcode(fl, z); zf = f'{AIR}/Floors/F{fl:02d}/Zones'
         t, h, oos = f'ZoneTemperatureAvg_{c}', f'ZoneHumidityAvg_{c}', f'ZoneOutOfService_{c}'
@@ -46,7 +46,7 @@ def floor_ahu(S, fl):
         S.bparam(oos, False, folder=zf, t='Out of service', f='In service', note='excluded from the floor average / hottest')
         NOT(S, zf, f'Z{c}_InSvc', oos)
         SW(S, zf, f'Z{c}_TUse', f'Z{c}_InSvc', t, 'Zero'); SW(S, zf, f'Z{c}_N', f'Z{c}_InSvc', 'One', 'Zero')
-        SW(S, zf, f'Z{c}_TMaxIn', f'Z{c}_InSvc', t, 'Zero')
+        SW(S, zf, f'Z{c}_TMaxIn', f'Z{c}_InSvc', t, 'Zero'); SW(S, zf, f'Z{c}_HUse', f'Z{c}_InSvc', h, 'Zero')
         CMP(S, zf, f'Z{c}_THigh', 'GreaterThan', t, 'Zone_TempAlarmHigh'); CMP(S, zf, f'Z{c}_RHHigh', 'GreaterThan', h, 'Zone_RHAlarmHigh')
         AND(S, zf, f'Z{c}_THighUse', f'Z{c}_THigh', f'Z{c}_InSvc'); AND(S, zf, f'Z{c}_RHHighUse', f'Z{c}_RHHigh', f'Z{c}_InSvc')
         DLY(S, zf, f'Z{c}_THighDly', f'Z{c}_THighUse', tm(900000, 10000)); DLY(S, zf, f'Z{c}_RHHighDly', f'Z{c}_RHHighUse', tm(900000, 10000))
@@ -57,26 +57,32 @@ def floor_ahu(S, fl):
     MATH(S, fa, f'Zone_F{fl:02d}_TSum', 'Add', *[f'Z{c}_TUse' for c in zt]); MATH(S, fa, f'Zone_F{fl:02d}_NSum', 'Add', *[f'Z{c}_N' for c in zt])
     MATH(S, fa, f'Zone_F{fl:02d}_NDiv', 'Maximum', f'Zone_F{fl:02d}_NSum', 'One')
     MATH(S, fa, f'Zone_F{fl:02d}_TAvgCalc', 'Divide', f'Zone_F{fl:02d}_TSum', f'Zone_F{fl:02d}_NDiv')
-    S.npoint(fa, f'Zone_F{fl:02d}_AvgTemp', f'Zone_F{fl:02d}_TAvgCalc', 'C', 1, note=f'floor {fl}: average of the zones in service')
+    # every zone out of service: no measurement left -> hold the floor at its setpoint (valve PID neutral, no false 0 C) + alarm
+    CMP(S, fa, f'Zone_F{fl:02d}_NoneInSvc', 'LessThan', f'Zone_F{fl:02d}_NSum', 'One')
+    SW(S, fa, f'Zone_F{fl:02d}_TAvgSel', f'Zone_F{fl:02d}_NoneInSvc', f'{u}_ZoneSP', f'Zone_F{fl:02d}_TAvgCalc')
+    S.npoint(fa, f'Zone_F{fl:02d}_AvgTemp', f'Zone_F{fl:02d}_TAvgSel', 'C', 1, note=f'floor {fl}: average of the zones in service (setpoint if none)')
     MATH(S, fa, f'Zone_F{fl:02d}_TMaxCalc', 'Maximum', *[f'Z{c}_TMaxIn' for c in zt])
-    S.npoint(fa, f'Zone_F{fl:02d}_HottestTemp', f'Zone_F{fl:02d}_TMaxCalc', 'C', 1, note=f'floor {fl}: hottest zone in service')
-    MATH(S, fa, f'Zone_F{fl:02d}_RHSum', 'Add', *[f'ZoneHumidityAvg_{c}' for c in zt])
-    MATH(S, fa, f'Zone_F{fl:02d}_RHAvgCalc', 'Divide', f'Zone_F{fl:02d}_RHSum', 'AirX_ZonesPerFloor')
+    SW(S, fa, f'Zone_F{fl:02d}_TMaxSel', f'Zone_F{fl:02d}_NoneInSvc', f'{u}_ZoneSP', f'Zone_F{fl:02d}_TMaxCalc')
+    S.npoint(fa, f'Zone_F{fl:02d}_HottestTemp', f'Zone_F{fl:02d}_TMaxSel', 'C', 1, note=f'floor {fl}: hottest zone in service (setpoint if none)')
+    AND(S, fa, f'Zone_F{fl:02d}_NoneInSvcInst', f'Zone_F{fl:02d}_NoneInSvc', f'{u}_Installed')
+    alarm(S, fa, f'Zone_F{fl:02d}_AllOutOfServiceAlarm', f'Zone_F{fl:02d}_NoneInSvcInst', 'All out of service', 'Normal', 'Warning',
+          f'Floor {fl}: every zone is out of service - floor AHU controls to its setpoint without measurement')
+    MATH(S, fa, f'Zone_F{fl:02d}_RHSum', 'Add', *[f'Z{c}_HUse' for c in zt])
+    MATH(S, fa, f'Zone_F{fl:02d}_RHAvgCalc', 'Divide', f'Zone_F{fl:02d}_RHSum', f'Zone_F{fl:02d}_NDiv')
     S.npoint(fa, f'Zone_F{fl:02d}_AvgRH', f'Zone_F{fl:02d}_RHAvgCalc', 'RH', 0, note=f'floor {fl}: average humidity')
     # start / proof
     OR(S, f, f'{u}_SchOn', 'Sch_AHU', 'AirX_ManualOn')
     NOT(S, f, f'{u}_NotFault', f'{u}_Fault')
-    S.kc(f, f'{u}_FailLatch', 'Or', {'inC': SC.F, 'inD': SC.F}, note='start failure latch')
+    PULSE(S, f, f'{u}_ResetFire', note='reset the start-failure latch')
+    OR(S, f, f'{u}_ResetAny', f'{u}_ResetFire', 'PlantAlarmResetFire')
+    sealin(S, f, f'{u}_FailLatch', SC.F, f'{u}_ResetAny', note='start failure latch (trip = proof timeout, linked below)')
     NOT(S, f, f'{u}_NotFail', f'{u}_FailLatch')
     AND(S, f, f'{u}_ReqLogic', f'{u}_Installed', f'{u}_SchOn', 'NotFireAlarm', f'{u}_NotFault')
     AND(S, f, f'{u}_StartLogic', f'{u}_ReqLogic', f'{u}_NotFail')
     S.bpoint(f, f'{u}_StartCmd', f'{u}_StartLogic', 'ON', 'OFF', kind='do')
     NOT(S, f, f'{u}_NoProof', f'{u}_Status'); AND(S, f, f'{u}_CmdNoProof', f'{u}_StartCmd', f'{u}_NoProof')
     DLY(S, f, f'{u}_ProofTimeout', f'{u}_CmdNoProof', tm(60000, 8000))
-    PULSE(S, f, f'{u}_ResetFire', note='reset the start-failure latch')
-    OR(S, f, f'{u}_ResetAny', f'{u}_ResetFire', 'PlantAlarmResetFire'); NOT(S, f, f'{u}_NotReset', f'{u}_ResetAny')
-    AND(S, f, f'{u}_FailHold', f'{u}_FailLatch', f'{u}_NotReset')
-    S.link(S.comp[f'{u}_FailLatch'], f'{u}_ProofTimeout', 'inA'); S.link(S.comp[f'{u}_FailLatch'], f'{u}_FailHold', 'inB')
+    S.rewire(f'{u}_FailLatch', 'inA', f'{u}_ProofTimeout', SC.F)
     alarm(S, f, f'{u}_FailAlarm', f'{u}_FailLatch', 'Failed', 'Normal', 'Critical', f'{u} (floor {fl}) fan did not prove running')
     AND(S, f, f'{u}_FaultInst', f'{u}_Fault', f'{u}_Installed')
     alarm(S, f, f'{u}_FaultAlarm', f'{u}_FaultInst', 'Fault', 'Normal', 'Critical', f'{u} (floor {fl}) fan / VSD fault')
@@ -125,6 +131,26 @@ def simulation(S, fl, u, zt):
     MATH(S, f, f'Sim_{u}_RH', 'Subtract', 'AirX_SimWetRH', f'Sim_{u}_Dry'); simlink(S, f'{u}_RA_RH', f'Sim_{u}_RH')
 
 
+def simulation_co2(S, fl, u, zt):
+    """V7.9 r3: zone CO2 follows occupancy and the OA damper; return air CO2 = average of the floor zones.
+    OA damper -> CO2 -> damper is a loop: sampled through two latches (same as the valve) and rate limited."""
+    f = f'{AIR}/Simulation/Floors'
+    S.kc(f, f'Sim_{u}_OAA', 'NumericLatch', {'in': f'{u}_OADamperCmd', 'clock': 'AirX_SimClock'})
+    S.kc(f, f'Sim_{u}_OAB', 'NumericLatch', {'in': f'Sim_{u}_OAA', 'clock': 'AirX_SimClockN'}, note='two latches: no loop inside one scan')
+    SW(S, f, f'Sim_{u}_CO2Gen', f'{u}_SchOn', 'AirX_SimCO2Occ', 'AirX_SimCO2Unocc')
+    MATH(S, f, f'Sim_{u}_CO2Purge', 'Multiply', f'Sim_{u}_OAB', 'AirX_SimCO2PerPct')
+    co2 = []
+    for i, c in enumerate(zt):
+        const(S, f'AirX_SimCO2Off{i}', [0.0, 40.0, -30.0, 60.0][i], 'none', 0)
+        MATH(S, f, f'Sim_{c}_CO2Tgt0', 'Subtract', f'Sim_{u}_CO2Gen', f'Sim_{u}_CO2Purge')
+        MATH(S, f, f'Sim_{c}_CO2Tgt1', 'Add', f'Sim_{c}_CO2Tgt0', f'AirX_SimCO2Off{i}')
+        MATH(S, f, f'Sim_{c}_CO2Tgt', 'Maximum', f'Sim_{c}_CO2Tgt1', 'AirX_SimCO2Unocc')
+        RATE(S, f, f'Sim_{c}_CO2', f'Sim_{c}_CO2Tgt', 15.0, 1000)
+        simlink(S, f'ZoneCO2_{c}', f'Sim_{c}_CO2'); co2.append(f'Sim_{c}_CO2')
+    MATH(S, f, f'Sim_{u}_RACO2Sum', 'Add', *co2)
+    MATH(S, f, f'Sim_{u}_RACO2', 'Divide', f'Sim_{u}_RACO2Sum', 'AirX_ZonesPerFloor'); simlink(S, f'{u}_RA_CO2', f'Sim_{u}_RACO2')
+
+
 def build_air(S):
     C = f'{AIR}/Floors/Common'
     S.bparam('AirX_ManualOn', False, folder=C, t='Run (manual)', f='By schedule Sch_AHU', note='floor AHUs run regardless of the schedule')
@@ -137,11 +163,15 @@ def build_air(S):
     const(S, 'AirX_ZonesPerFloor', float(ZPF), 'none', 0)
     const(S, 'AirX_SimWarm', 29.0, 'C', 1); const(S, 'AirX_SimKPerPct', 0.06, 'none', 2)
     const(S, 'AirX_SimWetRH', 72.0, 'RH', 0); const(S, 'AirX_SimRHPerPct', 0.15, 'none', 2); const(S, 'AirX_SimSatPerPct', 0.15, 'none', 2)
+    const(S, 'AirX_SimCO2Occ', 1150.0, 'none', 0, 'simulated zone CO2 (ppm) with occupants and the OA damper closed')
+    const(S, 'AirX_SimCO2Unocc', 450.0, 'none', 0, 'simulated zone CO2 (ppm) outside the AHU schedule')
+    const(S, 'AirX_SimCO2PerPct', 6.0, 'none', 1, 'simulated CO2 drop (ppm) per % OA damper')
     out = []
     for fl in FLOORS:
         u, zt = floor_ahu(S, fl); out.append((fl, u, zt))
     for fl, u, zt in out: simulation(S, fl, u, zt)
     zone_co2(S)
+    for fl, u, zt in out: simulation_co2(S, fl, u, zt)
     S.log.append(('V7.9', 'AirSide/Floors', f'{len(FLOORS)} floor AHUs, {len(FLOORS) * ZPF} zones', 'see v79_air.py', '', ''))
     return out
 
