@@ -1,0 +1,479 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<px version="1.0" media="uxBuilder:UxMedia">
+  <import>
+    <module name="baja" />
+    <module name="bajaui" />
+    <module name="converters" />
+    <module name="gx" />
+    <module name="kitPx" />
+  </import>
+  <content>
+    <ScrollPane>
+      <CanvasPane name="content" viewSize="1920.0,2520.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+        <Rect fill="#f3f5f5" stroke="#d1dade" pen="1.0" geom="0.0,0.0,1920.0,2520.0" />
+        <Label layout="28.0,22.0,1400.0,36.0" text="ALT / ALL-AIR AHU + VSD + VAV + PICV / R9" font="bold 20.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="28.0,64.0,1700.0,24.0" text="R9 / Existing point feedback retained. Amber symbols = proposed, unbound; no LIVE values." font="11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1510.0,20.0,365.0,28.0" text="Plant instrumentation" font="bold 10.0pt sans-serif" foreground="#1559d6" halign="left" background="#e1ebef">
+          <PopupBinding ord="file:^px/ALT_V79_Plant_Instrumentation.px" title="Plant instrumentation" />
+        </Label>
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,114.0,1880.0,172.0" />
+        <Label layout="40.0,132.0,250.0,26.0" text="AHU-01" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,137.0,90.0,24.0" text="RA / OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,132.0,120.0,42.0" />
+        <Label layout="368.0,142.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,132.0,135.0,42.0" />
+        <Label layout="503.0,142.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,132.0,135.0,42.0" />
+        <Label layout="653.0,142.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,132.0,130.0,42.0" />
+        <Label layout="803.0,142.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,134.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/AHU01/Points/AHU01_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,137.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,174.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,217.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,217.0,1035.0,4.0" />
+        <Label layout="1700.0,193.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,174.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,267.0,1050.0,4.0" />
+        <Label layout="1700.0,243.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,196.0,18.0,14.0" />
+        <Label layout="1135.0,207.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,170.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,204.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,246.0,18.0,14.0" />
+        <Label layout="980.0,257.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,220.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,246.0,18.0,14.0" />
+        <Label layout="1210.0,257.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,220.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,254.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,254.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,192.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,230.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,294.0,1880.0,172.0" />
+        <Label layout="40.0,312.0,250.0,26.0" text="AHU-02" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,317.0,90.0,24.0" text="RA / OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,312.0,120.0,42.0" />
+        <Label layout="368.0,322.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,312.0,135.0,42.0" />
+        <Label layout="503.0,322.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,312.0,135.0,42.0" />
+        <Label layout="653.0,322.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,312.0,130.0,42.0" />
+        <Label layout="803.0,322.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,314.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/AHU02/Points/AHU02_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,317.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,354.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,397.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,397.0,1035.0,4.0" />
+        <Label layout="1700.0,373.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,354.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,447.0,1050.0,4.0" />
+        <Label layout="1700.0,423.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,376.0,18.0,14.0" />
+        <Label layout="1135.0,387.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,350.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,384.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,426.0,18.0,14.0" />
+        <Label layout="980.0,437.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,400.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,426.0,18.0,14.0" />
+        <Label layout="1210.0,437.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,400.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,434.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,434.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,372.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,410.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,474.0,1880.0,172.0" />
+        <Label layout="40.0,492.0,250.0,26.0" text="OAU-01" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,497.0,90.0,24.0" text="OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,492.0,120.0,42.0" />
+        <Label layout="368.0,502.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,492.0,135.0,42.0" />
+        <Label layout="503.0,502.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,492.0,135.0,42.0" />
+        <Label layout="653.0,502.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,492.0,130.0,42.0" />
+        <Label layout="803.0,502.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,494.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/OAU01/Points/OAU01_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,497.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,534.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,577.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,577.0,1035.0,4.0" />
+        <Label layout="1700.0,553.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,534.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,627.0,1050.0,4.0" />
+        <Label layout="1700.0,603.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,556.0,18.0,14.0" />
+        <Label layout="1135.0,567.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,530.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,564.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,606.0,18.0,14.0" />
+        <Label layout="980.0,617.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,580.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,606.0,18.0,14.0" />
+        <Label layout="1210.0,617.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,580.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,614.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,614.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,552.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,590.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,654.0,1880.0,172.0" />
+        <Label layout="40.0,672.0,250.0,26.0" text="AHU-F02" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,677.0,90.0,24.0" text="RA / OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,672.0,120.0,42.0" />
+        <Label layout="368.0,682.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,672.0,135.0,42.0" />
+        <Label layout="503.0,682.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,672.0,135.0,42.0" />
+        <Label layout="653.0,682.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,672.0,130.0,42.0" />
+        <Label layout="803.0,682.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,674.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,677.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,714.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,757.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,757.0,1035.0,4.0" />
+        <Label layout="1700.0,733.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,714.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,807.0,1050.0,4.0" />
+        <Label layout="1700.0,783.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,736.0,18.0,14.0" />
+        <Label layout="1135.0,747.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,710.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,744.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,786.0,18.0,14.0" />
+        <Label layout="980.0,797.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,760.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,786.0,18.0,14.0" />
+        <Label layout="1210.0,797.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,760.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,794.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,794.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,732.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,770.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,834.0,1880.0,172.0" />
+        <Label layout="40.0,852.0,250.0,26.0" text="AHU-F03" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,857.0,90.0,24.0" text="RA / OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,852.0,120.0,42.0" />
+        <Label layout="368.0,862.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,852.0,135.0,42.0" />
+        <Label layout="503.0,862.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,852.0,135.0,42.0" />
+        <Label layout="653.0,862.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,852.0,130.0,42.0" />
+        <Label layout="803.0,862.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,854.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,857.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,894.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,937.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,937.0,1035.0,4.0" />
+        <Label layout="1700.0,913.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,894.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,987.0,1050.0,4.0" />
+        <Label layout="1700.0,963.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,916.0,18.0,14.0" />
+        <Label layout="1135.0,927.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,890.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,924.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,966.0,18.0,14.0" />
+        <Label layout="980.0,977.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,940.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,966.0,18.0,14.0" />
+        <Label layout="1210.0,977.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,940.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,974.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,974.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,912.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,950.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,1014.0,1880.0,172.0" />
+        <Label layout="40.0,1032.0,250.0,26.0" text="AHU-F04" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,1037.0,90.0,24.0" text="RA / OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,1032.0,120.0,42.0" />
+        <Label layout="368.0,1042.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,1032.0,135.0,42.0" />
+        <Label layout="503.0,1042.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,1032.0,135.0,42.0" />
+        <Label layout="653.0,1042.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,1032.0,130.0,42.0" />
+        <Label layout="803.0,1042.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,1034.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,1037.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1074.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1117.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,1117.0,1035.0,4.0" />
+        <Label layout="1700.0,1093.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1074.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1167.0,1050.0,4.0" />
+        <Label layout="1700.0,1143.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,1096.0,18.0,14.0" />
+        <Label layout="1135.0,1107.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,1070.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,1104.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,1146.0,18.0,14.0" />
+        <Label layout="980.0,1157.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,1120.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,1146.0,18.0,14.0" />
+        <Label layout="1210.0,1157.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,1120.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,1154.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,1154.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,1092.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,1130.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,1194.0,1880.0,172.0" />
+        <Label layout="40.0,1212.0,250.0,26.0" text="AHU-F05" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,1217.0,90.0,24.0" text="RA / OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,1212.0,120.0,42.0" />
+        <Label layout="368.0,1222.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,1212.0,135.0,42.0" />
+        <Label layout="503.0,1222.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,1212.0,135.0,42.0" />
+        <Label layout="653.0,1222.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,1212.0,130.0,42.0" />
+        <Label layout="803.0,1222.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,1214.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,1217.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1254.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1297.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,1297.0,1035.0,4.0" />
+        <Label layout="1700.0,1273.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1254.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1347.0,1050.0,4.0" />
+        <Label layout="1700.0,1323.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,1276.0,18.0,14.0" />
+        <Label layout="1135.0,1287.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,1250.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,1284.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,1326.0,18.0,14.0" />
+        <Label layout="980.0,1337.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,1300.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,1326.0,18.0,14.0" />
+        <Label layout="1210.0,1337.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,1300.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,1334.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,1334.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,1272.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,1310.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,1374.0,1880.0,172.0" />
+        <Label layout="40.0,1392.0,250.0,26.0" text="AHU-F06" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,1397.0,90.0,24.0" text="RA / OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,1392.0,120.0,42.0" />
+        <Label layout="368.0,1402.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,1392.0,135.0,42.0" />
+        <Label layout="503.0,1402.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,1392.0,135.0,42.0" />
+        <Label layout="653.0,1402.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,1392.0,130.0,42.0" />
+        <Label layout="803.0,1402.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,1394.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,1397.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1434.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1477.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,1477.0,1035.0,4.0" />
+        <Label layout="1700.0,1453.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1434.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1527.0,1050.0,4.0" />
+        <Label layout="1700.0,1503.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,1456.0,18.0,14.0" />
+        <Label layout="1135.0,1467.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,1430.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,1464.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,1506.0,18.0,14.0" />
+        <Label layout="980.0,1517.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,1480.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,1506.0,18.0,14.0" />
+        <Label layout="1210.0,1517.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,1480.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,1514.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,1514.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,1452.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,1490.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,1554.0,1880.0,172.0" />
+        <Label layout="40.0,1572.0,250.0,26.0" text="AHU-F07" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,1577.0,90.0,24.0" text="RA / OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,1572.0,120.0,42.0" />
+        <Label layout="368.0,1582.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,1572.0,135.0,42.0" />
+        <Label layout="503.0,1582.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,1572.0,135.0,42.0" />
+        <Label layout="653.0,1582.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,1572.0,130.0,42.0" />
+        <Label layout="803.0,1582.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,1574.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,1577.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1614.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1657.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,1657.0,1035.0,4.0" />
+        <Label layout="1700.0,1633.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1614.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1707.0,1050.0,4.0" />
+        <Label layout="1700.0,1683.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,1636.0,18.0,14.0" />
+        <Label layout="1135.0,1647.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,1610.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,1644.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,1686.0,18.0,14.0" />
+        <Label layout="980.0,1697.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,1660.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,1686.0,18.0,14.0" />
+        <Label layout="1210.0,1697.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,1660.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,1694.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,1694.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,1632.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,1670.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,1734.0,1880.0,172.0" />
+        <Label layout="40.0,1752.0,250.0,26.0" text="AHU-F08" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,1757.0,90.0,24.0" text="RA / OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,1752.0,120.0,42.0" />
+        <Label layout="368.0,1762.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,1752.0,135.0,42.0" />
+        <Label layout="503.0,1762.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,1752.0,135.0,42.0" />
+        <Label layout="653.0,1762.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,1752.0,130.0,42.0" />
+        <Label layout="803.0,1762.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="868.0,1754.0,50.0,38.0" image="file:^px/img/v79_2d/fan_off.png">
+          <ValueBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_Status">
+            <IBooleanToSimple name="image">
+              <Image name="trueValue" value="file:^px/img/v79_2d/fan_run.gif" />
+              <Image name="falseValue" value="file:^px/img/v79_2d/fan_off.png" />
+            </IBooleanToSimple>
+          </ValueBinding>
+        </Picture>
+        <Label layout="940.0,1757.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1794.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1837.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,1837.0,1035.0,4.0" />
+        <Label layout="1700.0,1813.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1794.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1887.0,1050.0,4.0" />
+        <Label layout="1700.0,1863.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,1816.0,18.0,14.0" />
+        <Label layout="1135.0,1827.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,1790.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,1824.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,1866.0,18.0,14.0" />
+        <Label layout="980.0,1877.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,1840.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,1866.0,18.0,14.0" />
+        <Label layout="1210.0,1877.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,1840.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,1874.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,1874.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,1812.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,1850.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,1914.0,1880.0,172.0" />
+        <Label layout="40.0,1932.0,250.0,26.0" text="MAU-DESIGN" font="bold 13.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="260.0,1937.0,90.0,24.0" text="OA &gt;" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="360.0,1932.0,120.0,42.0" />
+        <Label layout="368.0,1942.0,110.0,24.0" text="PRE FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e5e2d7" stroke="#d1dade" pen="1.0" geom="495.0,1932.0,135.0,42.0" />
+        <Label layout="503.0,1942.0,125.0,24.0" text="BAG FILTER" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#a8c0c9" stroke="#d1dade" pen="1.0" geom="645.0,1932.0,135.0,42.0" />
+        <Label layout="653.0,1942.0,125.0,24.0" text="CHW COIL" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#c3d0d1" stroke="#d1dade" pen="1.0" geom="795.0,1932.0,130.0,42.0" />
+        <Label layout="803.0,1942.0,48.0,24.0" text="FAN" font="bold 9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="940.0,1937.0,160.0,24.0" text="&gt; SA / to VAV" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,1974.0,4.0,43.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="685.0,2017.0,53.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="765.0,2017.0,1035.0,4.0" />
+        <Label layout="1700.0,1993.0,150.0,20.0" text="CHWS &lt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,1974.0,4.0,93.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="750.0,2067.0,1050.0,4.0" />
+        <Label layout="1700.0,2043.0,150.0,20.0" text="CHWR &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1146.0,1996.0,18.0,14.0" />
+        <Label layout="1135.0,2007.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1095.0,1970.0,135.0,22.0" text="MBFV supply" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1360.0,2004.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="991.0,2046.0,18.0,14.0" />
+        <Label layout="980.0,2057.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="940.0,2020.0,135.0,22.0" text="MBFV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1221.0,2046.0,18.0,14.0" />
+        <Label layout="1210.0,2057.0,48.0,24.0" text="◉" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1170.0,2020.0,135.0,22.0" text="PICV return" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1450.0,2054.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1580.0,2054.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="40.0,1992.0,550.0,24.0" text="VSD: duct static pressure / PICV: SAT / unbound" font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Label layout="40.0,2030.0,550.0,26.0" text="P/T test ports at return PICV; balancing/flow setting pending" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,2140.0,1880.0,275.0" />
+        <Label layout="40.0,2156.0,1750.0,28.0" text="TYPICAL ALL-AIR VAV / 123 DESIGN TERMINALS" font="bold 14.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#7c939f" stroke="#7c939f" pen="1.0" geom="65.0,2243.0,1725.0,4.0" />
+        <Rect fill="#d5dfe2" stroke="#d1dade" pen="1.0" geom="190.0,2215.0,185.0,65.0" />
+        <Label layout="206.0,2231.0,160.0,30.0" text="AHU COLD SA" font="bold 11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#d5dfe2" stroke="#d1dade" pen="1.0" geom="490.0,2215.0,245.0,65.0" />
+        <Label layout="506.0,2231.0,220.0,30.0" text="FLOW PICKUP" font="bold 11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#d5dfe2" stroke="#d1dade" pen="1.0" geom="850.0,2215.0,245.0,65.0" />
+        <Label layout="866.0,2231.0,220.0,30.0" text="VAV DAMPER" font="bold 11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#d5dfe2" stroke="#d1dade" pen="1.0" geom="1270.0,2215.0,220.0,65.0" />
+        <Label layout="1286.0,2231.0,195.0,30.0" text="DIFFUSER" font="bold 11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#d1dade" pen="1.0" geom="930.0,2287.0,85.0,40.0" />
+        <Label layout="1030.0,2288.0,520.0,25.0" text="Actuator / controller / room sensor (proposed)" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="45.0,2349.0,1780.0,38.0" text="All-air AHU + VSD fan + PICV coil / no FCU. Preserve required minimum OA; new VAV/sensors/PICV have no fabricated status or values." font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+      </CanvasPane>
+    </ScrollPane>
+  </content>
+</px>

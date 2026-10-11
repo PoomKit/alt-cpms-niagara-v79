@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<px version="1.0" media="uxBuilder:UxMedia">
+  <import>
+    <module name="baja" />
+    <module name="bajaui" />
+    <module name="converters" />
+    <module name="gx" />
+    <module name="kitPx" />
+  </import>
+  <content>
+    <ScrollPane>
+      <CanvasPane name="content" viewSize="1920.0,1860.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+        <Rect fill="#f3f5f5" stroke="#d1dade" pen="1.0" geom="0.0,0.0,1920.0,1860.0" />
+        <Label layout="28.0,22.0,1400.0,36.0" text="ALT / PLANT INSTRUMENTATION / R9" font="bold 20.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="28.0,64.0,1700.0,24.0" text="R9 / Existing point feedback retained. Amber symbols = proposed, unbound; no LIVE values." font="11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1510.0,20.0,365.0,28.0" text="AHU / VAV / PICV details" font="bold 10.0pt sans-serif" foreground="#1559d6" halign="left" background="#e1ebef">
+          <PopupBinding ord="file:^px/ALT_V79_Airside_Details.px" title="AHU / VAV / PICV details" />
+        </Label>
+        <Label layout="1510.0,60.0,365.0,28.0" text="Plant schematic" font="bold 10.0pt sans-serif" foreground="#1559d6" halign="left" background="#e1ebef">
+          <PopupBinding ord="file:^px/ALT_V79_Plant.px" title="Plant schematic" />
+        </Label>
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,132.0,1880.0,196.0" />
+        <Label layout="38.0,145.0,220.0,30.0" text="CH-01" font="bold 16.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,180.0,220.0,22.0" text="CHW / evaporator" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,258.0,220.0,22.0" text="CW / condenser" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e0e7e8" stroke="#d1dade" pen="1.0" geom="820.0,167.0,300.0,128.0" />
+        <Label layout="850.0,200.0,250.0,36.0" text="CHILLER" font="bold 15.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="270.0,185.0,550.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="1120.0,185.0,730.0,4.0" />
+        <Label layout="272.0,193.0,145.0,20.0" text="CHWR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,193.0,150.0,20.0" text="CHWS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="390.0,171.0,40.0,32.0" image="file:^px/img/v79_2d/valve_pos_0.png">
+          <ValueBinding ord="station:|slot:/ChillerPlant/Graphics/Valves/Gfx_CH01_ChwIso_Pos">
+            <INumericToSimple name="image" map="gx:Image -inf:6.25=file:^px/img/v79_2d/valve_pos_0.png;6.25:18.75=file:^px/img/v79_2d/valve_pos_1.png;18.75:31.25=file:^px/img/v79_2d/valve_pos_2.png;31.25:43.75=file:^px/img/v79_2d/valve_pos_3.png;43.75:56.25=file:^px/img/v79_2d/valve_pos_4.png;56.25:68.75=file:^px/img/v79_2d/valve_pos_5.png;68.75:81.25=file:^px/img/v79_2d/valve_pos_6.png;81.25:93.75=file:^px/img/v79_2d/valve_pos_7.png;93.75:+inf=file:^px/img/v79_2d/valve_pos_8.png;default=file:^px/img/v79_2d/valve_pos_0.png;" />
+          </ValueBinding>
+        </Picture>
+        <Label layout="350.0,138.0,135.0,22.0" text="MBFV / feedback" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,172.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,172.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,172.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,172.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,164.0,18.0,14.0" />
+        <Label layout="1420.0,175.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,138.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1540.0,172.0,72.0,24.0" text="FM" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1630.0,172.0,72.0,24.0" text="BTU" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#efc72f" stroke="#efc72f" pen="1.0" geom="270.0,265.0,550.0,4.0" />
+        <Rect fill="#ed781c" stroke="#ed781c" pen="1.0" geom="1120.0,265.0,730.0,4.0" />
+        <Label layout="272.0,273.0,145.0,20.0" text="CDS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,273.0,150.0,20.0" text="CDR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="390.0,251.0,40.0,32.0" image="file:^px/img/v79_2d/valve_pos_0.png">
+          <ValueBinding ord="station:|slot:/ChillerPlant/Graphics/Valves/Gfx_CH01_CdwIso_Pos">
+            <INumericToSimple name="image" map="gx:Image -inf:6.25=file:^px/img/v79_2d/valve_pos_0.png;6.25:18.75=file:^px/img/v79_2d/valve_pos_1.png;18.75:31.25=file:^px/img/v79_2d/valve_pos_2.png;31.25:43.75=file:^px/img/v79_2d/valve_pos_3.png;43.75:56.25=file:^px/img/v79_2d/valve_pos_4.png;56.25:68.75=file:^px/img/v79_2d/valve_pos_5.png;68.75:81.25=file:^px/img/v79_2d/valve_pos_6.png;81.25:93.75=file:^px/img/v79_2d/valve_pos_7.png;93.75:+inf=file:^px/img/v79_2d/valve_pos_8.png;default=file:^px/img/v79_2d/valve_pos_0.png;" />
+          </ValueBinding>
+        </Picture>
+        <Label layout="350.0,218.0,135.0,22.0" text="MBFV / feedback" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,252.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,252.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,252.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,252.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,244.0,18.0,14.0" />
+        <Label layout="1420.0,255.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,218.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1160.0,302.0,700.0,20.0" text="Matched TT pair + FM -&gt; BTU calculator. Meter model / straight run pending." font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,344.0,1880.0,196.0" />
+        <Label layout="38.0,357.0,220.0,30.0" text="CH-02" font="bold 16.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,392.0,220.0,22.0" text="CHW / evaporator" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,470.0,220.0,22.0" text="CW / condenser" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e0e7e8" stroke="#d1dade" pen="1.0" geom="820.0,379.0,300.0,128.0" />
+        <Label layout="850.0,412.0,250.0,36.0" text="CHILLER" font="bold 15.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="270.0,397.0,550.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="1120.0,397.0,730.0,4.0" />
+        <Label layout="272.0,405.0,145.0,20.0" text="CHWR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,405.0,150.0,20.0" text="CHWS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="390.0,383.0,40.0,32.0" image="file:^px/img/v79_2d/valve_pos_0.png">
+          <ValueBinding ord="station:|slot:/ChillerPlant/Graphics/Valves/Gfx_CH02_ChwIso_Pos">
+            <INumericToSimple name="image" map="gx:Image -inf:6.25=file:^px/img/v79_2d/valve_pos_0.png;6.25:18.75=file:^px/img/v79_2d/valve_pos_1.png;18.75:31.25=file:^px/img/v79_2d/valve_pos_2.png;31.25:43.75=file:^px/img/v79_2d/valve_pos_3.png;43.75:56.25=file:^px/img/v79_2d/valve_pos_4.png;56.25:68.75=file:^px/img/v79_2d/valve_pos_5.png;68.75:81.25=file:^px/img/v79_2d/valve_pos_6.png;81.25:93.75=file:^px/img/v79_2d/valve_pos_7.png;93.75:+inf=file:^px/img/v79_2d/valve_pos_8.png;default=file:^px/img/v79_2d/valve_pos_0.png;" />
+          </ValueBinding>
+        </Picture>
+        <Label layout="350.0,350.0,135.0,22.0" text="MBFV / feedback" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,384.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,384.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,384.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,384.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,376.0,18.0,14.0" />
+        <Label layout="1420.0,387.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,350.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1540.0,384.0,72.0,24.0" text="FM" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1630.0,384.0,72.0,24.0" text="BTU" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#efc72f" stroke="#efc72f" pen="1.0" geom="270.0,477.0,550.0,4.0" />
+        <Rect fill="#ed781c" stroke="#ed781c" pen="1.0" geom="1120.0,477.0,730.0,4.0" />
+        <Label layout="272.0,485.0,145.0,20.0" text="CDS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,485.0,150.0,20.0" text="CDR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Picture layout="390.0,463.0,40.0,32.0" image="file:^px/img/v79_2d/valve_pos_0.png">
+          <ValueBinding ord="station:|slot:/ChillerPlant/Graphics/Valves/Gfx_CH02_CdwIso_Pos">
+            <INumericToSimple name="image" map="gx:Image -inf:6.25=file:^px/img/v79_2d/valve_pos_0.png;6.25:18.75=file:^px/img/v79_2d/valve_pos_1.png;18.75:31.25=file:^px/img/v79_2d/valve_pos_2.png;31.25:43.75=file:^px/img/v79_2d/valve_pos_3.png;43.75:56.25=file:^px/img/v79_2d/valve_pos_4.png;56.25:68.75=file:^px/img/v79_2d/valve_pos_5.png;68.75:81.25=file:^px/img/v79_2d/valve_pos_6.png;81.25:93.75=file:^px/img/v79_2d/valve_pos_7.png;93.75:+inf=file:^px/img/v79_2d/valve_pos_8.png;default=file:^px/img/v79_2d/valve_pos_0.png;" />
+          </ValueBinding>
+        </Picture>
+        <Label layout="350.0,430.0,135.0,22.0" text="MBFV / feedback" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,464.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,464.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,464.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,464.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,456.0,18.0,14.0" />
+        <Label layout="1420.0,467.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,430.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1160.0,514.0,700.0,20.0" text="Matched TT pair + FM -&gt; BTU calculator. Meter model / straight run pending." font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,556.0,1880.0,196.0" />
+        <Label layout="38.0,569.0,220.0,30.0" text="CH-03" font="bold 16.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,604.0,220.0,22.0" text="CHW / evaporator" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,682.0,220.0,22.0" text="CW / condenser" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e0e7e8" stroke="#d1dade" pen="1.0" geom="820.0,591.0,300.0,128.0" />
+        <Label layout="850.0,624.0,250.0,36.0" text="CHILLER" font="bold 15.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="270.0,609.0,550.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="1120.0,609.0,730.0,4.0" />
+        <Label layout="272.0,617.0,145.0,20.0" text="CHWR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,617.0,150.0,20.0" text="CHWS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="401.0,588.0,18.0,14.0" />
+        <Label layout="390.0,599.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="350.0,562.0,135.0,22.0" text="MBFV / unbound" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,596.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,596.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,596.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,596.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,588.0,18.0,14.0" />
+        <Label layout="1420.0,599.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,562.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1540.0,596.0,72.0,24.0" text="FM" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1630.0,596.0,72.0,24.0" text="BTU" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#efc72f" stroke="#efc72f" pen="1.0" geom="270.0,689.0,550.0,4.0" />
+        <Rect fill="#ed781c" stroke="#ed781c" pen="1.0" geom="1120.0,689.0,730.0,4.0" />
+        <Label layout="272.0,697.0,145.0,20.0" text="CDS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,697.0,150.0,20.0" text="CDR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="401.0,668.0,18.0,14.0" />
+        <Label layout="390.0,679.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="350.0,642.0,135.0,22.0" text="MBFV / unbound" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,676.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,676.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,676.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,676.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,668.0,18.0,14.0" />
+        <Label layout="1420.0,679.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,642.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1160.0,726.0,700.0,20.0" text="Matched TT pair + FM -&gt; BTU calculator. Meter model / straight run pending." font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,768.0,1880.0,196.0" />
+        <Label layout="38.0,781.0,220.0,30.0" text="CH-04" font="bold 16.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,816.0,220.0,22.0" text="CHW / evaporator" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,894.0,220.0,22.0" text="CW / condenser" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e0e7e8" stroke="#d1dade" pen="1.0" geom="820.0,803.0,300.0,128.0" />
+        <Label layout="850.0,836.0,250.0,36.0" text="CHILLER" font="bold 15.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="270.0,821.0,550.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="1120.0,821.0,730.0,4.0" />
+        <Label layout="272.0,829.0,145.0,20.0" text="CHWR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,829.0,150.0,20.0" text="CHWS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="401.0,800.0,18.0,14.0" />
+        <Label layout="390.0,811.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="350.0,774.0,135.0,22.0" text="MBFV / unbound" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,808.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,808.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,808.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,808.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,800.0,18.0,14.0" />
+        <Label layout="1420.0,811.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,774.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1540.0,808.0,72.0,24.0" text="FM" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1630.0,808.0,72.0,24.0" text="BTU" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#efc72f" stroke="#efc72f" pen="1.0" geom="270.0,901.0,550.0,4.0" />
+        <Rect fill="#ed781c" stroke="#ed781c" pen="1.0" geom="1120.0,901.0,730.0,4.0" />
+        <Label layout="272.0,909.0,145.0,20.0" text="CDS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,909.0,150.0,20.0" text="CDR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="401.0,880.0,18.0,14.0" />
+        <Label layout="390.0,891.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="350.0,854.0,135.0,22.0" text="MBFV / unbound" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,888.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,888.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,888.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,888.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,880.0,18.0,14.0" />
+        <Label layout="1420.0,891.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,854.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1160.0,938.0,700.0,20.0" text="Matched TT pair + FM -&gt; BTU calculator. Meter model / straight run pending." font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,980.0,1880.0,196.0" />
+        <Label layout="38.0,993.0,220.0,30.0" text="CH-05" font="bold 16.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,1028.0,220.0,22.0" text="CHW / evaporator" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,1106.0,220.0,22.0" text="CW / condenser" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e0e7e8" stroke="#d1dade" pen="1.0" geom="820.0,1015.0,300.0,128.0" />
+        <Label layout="850.0,1048.0,250.0,36.0" text="CHILLER" font="bold 15.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="270.0,1033.0,550.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="1120.0,1033.0,730.0,4.0" />
+        <Label layout="272.0,1041.0,145.0,20.0" text="CHWR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,1041.0,150.0,20.0" text="CHWS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="401.0,1012.0,18.0,14.0" />
+        <Label layout="390.0,1023.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="350.0,986.0,135.0,22.0" text="MBFV / unbound" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,1020.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,1020.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,1020.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,1020.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,1012.0,18.0,14.0" />
+        <Label layout="1420.0,1023.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,986.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1540.0,1020.0,72.0,24.0" text="FM" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1630.0,1020.0,72.0,24.0" text="BTU" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#efc72f" stroke="#efc72f" pen="1.0" geom="270.0,1113.0,550.0,4.0" />
+        <Rect fill="#ed781c" stroke="#ed781c" pen="1.0" geom="1120.0,1113.0,730.0,4.0" />
+        <Label layout="272.0,1121.0,145.0,20.0" text="CDS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,1121.0,150.0,20.0" text="CDR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="401.0,1092.0,18.0,14.0" />
+        <Label layout="390.0,1103.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="350.0,1066.0,135.0,22.0" text="MBFV / unbound" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,1100.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,1100.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,1100.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,1100.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,1092.0,18.0,14.0" />
+        <Label layout="1420.0,1103.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,1066.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1160.0,1150.0,700.0,20.0" text="Matched TT pair + FM -&gt; BTU calculator. Meter model / straight run pending." font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,1192.0,1880.0,196.0" />
+        <Label layout="38.0,1205.0,220.0,30.0" text="CH-06" font="bold 16.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,1240.0,220.0,22.0" text="CHW / evaporator" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="38.0,1318.0,220.0,22.0" text="CW / condenser" font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#e0e7e8" stroke="#d1dade" pen="1.0" geom="820.0,1227.0,300.0,128.0" />
+        <Label layout="850.0,1260.0,250.0,36.0" text="CHILLER" font="bold 15.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="270.0,1245.0,550.0,4.0" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="1120.0,1245.0,730.0,4.0" />
+        <Label layout="272.0,1253.0,145.0,20.0" text="CHWR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,1253.0,150.0,20.0" text="CHWS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="401.0,1224.0,18.0,14.0" />
+        <Label layout="390.0,1235.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="350.0,1198.0,135.0,22.0" text="MBFV / unbound" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,1232.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,1232.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,1232.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,1232.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,1224.0,18.0,14.0" />
+        <Label layout="1420.0,1235.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,1198.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1540.0,1232.0,72.0,24.0" text="FM" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1630.0,1232.0,72.0,24.0" text="BTU" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#efc72f" stroke="#efc72f" pen="1.0" geom="270.0,1325.0,550.0,4.0" />
+        <Rect fill="#ed781c" stroke="#ed781c" pen="1.0" geom="1120.0,1325.0,730.0,4.0" />
+        <Label layout="272.0,1333.0,145.0,20.0" text="CDS  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1700.0,1333.0,150.0,20.0" text="CDR  &gt;" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="401.0,1304.0,18.0,14.0" />
+        <Label layout="390.0,1315.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="350.0,1278.0,135.0,22.0" text="MBFV / unbound" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="570.0,1312.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="690.0,1312.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1150.0,1312.0,72.0,24.0" text="TT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1270.0,1312.0,72.0,24.0" text="PT" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Rect fill="#bd743e" stroke="#bd743e" pen="1.0" geom="1431.0,1304.0,18.0,14.0" />
+        <Label layout="1420.0,1315.0,48.0,24.0" text="&gt;&lt;" font="bold 14.0pt sans-serif" foreground="#956636" halign="left" />
+        <Label layout="1380.0,1278.0,135.0,22.0" text="MBFV / proposed" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1160.0,1362.0,700.0,20.0" text="Matched TT pair + FM -&gt; BTU calculator. Meter model / straight run pending." font="9.0pt sans-serif" foreground="#8c6d45" halign="left" />
+        <Rect fill="#ffffff" stroke="#d1dade" pen="1.0" geom="20.0,1470.0,1880.0,350.0" />
+        <Label layout="40.0,1486.0,1400.0,30.0" text="COMMON HEADER / MINIMUM-FLOW BYPASS" font="bold 14.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="80.0,1560.0,1680.0,4.0" />
+        <Rect fill="#57c5f5" stroke="#57c5f5" pen="1.0" geom="80.0,1695.0,1680.0,4.0" />
+        <Label layout="80.0,1522.0,400.0,24.0" text="CHWS to distribution" font="11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="80.0,1707.0,400.0,24.0" text="CHWR from distribution" font="11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Rect fill="#1559d6" stroke="#1559d6" pen="1.0" geom="1196.0,1560.0,4.0,135.0" />
+        <Picture layout="1180.0,1601.0,40.0,32.0" image="file:^px/img/v79_2d/valve_pos_0.png">
+          <ValueBinding ord="station:|slot:/ChillerPlant/Graphics/Valves/Gfx_CHW_BypassMV_Pos">
+            <INumericToSimple name="image" map="gx:Image -inf:6.25=file:^px/img/v79_2d/valve_pos_0.png;6.25:18.75=file:^px/img/v79_2d/valve_pos_1.png;18.75:31.25=file:^px/img/v79_2d/valve_pos_2.png;31.25:43.75=file:^px/img/v79_2d/valve_pos_3.png;43.75:56.25=file:^px/img/v79_2d/valve_pos_4.png;56.25:68.75=file:^px/img/v79_2d/valve_pos_5.png;68.75:81.25=file:^px/img/v79_2d/valve_pos_6.png;81.25:93.75=file:^px/img/v79_2d/valve_pos_7.png;93.75:+inf=file:^px/img/v79_2d/valve_pos_8.png;default=file:^px/img/v79_2d/valve_pos_0.png;" />
+          </ValueBinding>
+        </Picture>
+        <Label layout="1140.0,1568.0,135.0,22.0" text="Bypass MV / feedback" font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="460.0,1547.0,72.0,24.0" text="TT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="630.0,1547.0,72.0,24.0" text="PT-S" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="800.0,1547.0,72.0,24.0" text="FM-MAIN" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="460.0,1682.0,72.0,24.0" text="TT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="630.0,1682.0,72.0,24.0" text="PT-R" font="bold 10.0pt sans-serif" foreground="#566978" halign="left" background="#e0e7e9" />
+        <Label layout="1290.0,1603.0,540.0,42.0" text="CHWS -&gt; CHWR minimum-flow path" font="bold 11.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="1290.0,1646.0,540.0,42.0" text="Existing valve position retained. Flow setpoint requires chiller manufacturer data." font="9.0pt sans-serif" foreground="#35454e" halign="left" />
+        <Label layout="40.0,1765.0,1810.0,32.0" text="Schematic positions only. 3D fittings are registered on connected pipes. New TT/PT/FM/BTU need dedicated points before LIVE use." font="10.0pt sans-serif" foreground="#35454e" halign="left" />
+      </CanvasPane>
+    </ScrollPane>
+  </content>
+</px>

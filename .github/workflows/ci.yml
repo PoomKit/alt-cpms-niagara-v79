@@ -30,6 +30,13 @@ jobs:
           python check_v79_refs.py --register ../registers/ALT_V79_Equipment_Register.xlsx
       - name: Px pages, images, ORDs and 3D point map
         run: python tools/check_px.py
+      - name: Generated office Px pages and 3D point map are up to date (r4)
+        run: |
+          cp -r station/shared/px /tmp/pxc && python tools/gen_px79o.py /tmp/pxc && diff -r station/shared/px /tmp/pxc
+          python tools/office_points.py --check
+      - name: Office VAV / metering / plant protection tests on the layer test station (r4)
+        working-directory: tools
+        run: python v79office_tests.py /tmp/v79office_tests.csv
       - uses: actions/setup-node@v4
         with:
           node-version: '20'

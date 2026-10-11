@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""V7.9 r2 chiller plant schematic (Px_Plant = ALT_V79_Plant.px): V7.8 detail level for 6 slots per type.
+"""V7.9 r2 chiller plant schematic (ALT_V79_Plant_Details.px; Px_Plant = ALT_V79_Plant.px is the R9 overview): V7.8 detail level for 6 slots per type.
  * equipment pictures rendered from the SAME 3-D models as ALT_V79_Building3D.html (chiller, end-suction pump, 2-cell tower)
    grey = stopped, colour = running, tower fans animate
  * shaded pipe layer (CHWS / CHWR / CDWS / CDWR headers, risers, branches, arrows), butterfly valves with position frames,
@@ -222,7 +222,7 @@ def pcard(p, x, y, d, title, head):
 
 # ================================================================ page
 def plant():
-    p = G.Page('ALT_V79_Plant', 'Chiller plant schematic · 6 slots per type (same equipment as 3D)', (PW, PH)); P79.header(p)
+    p = G.Page('ALT_V79_Plant_Details', 'Chiller plant schematic · 6 slots per type (same equipment as 3D)', (PW, PH)); P79.header(p)
     pipes('v79_plant_pipes.png')
     ximg(p, 0, 0, 'v79_plant_pipes.png', PW, PH, bottom=True)
     G7.kpi_strip(p, y=76)

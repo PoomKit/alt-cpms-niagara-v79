@@ -125,8 +125,8 @@ row('X14', 'CH03 demand limit starts at 50 % and ramps to 100 % after run proof 
 if True:
     K = ['AHU_F02_StartCmd', 'AHU_F02_Status', 'AHU_F02_ValveCmd', 'Zone_F02_AvgTemp', 'AHU_F03_StartCmd']
     tr = sim([(0.5, {'AirX_ManualOn': True, 'AHU_F03_Installed': False})], 600.0, K, every=5.0)
-    row('Y01', 'floor 2 AHU: starts (manual run), proves running, CHW valve brings the floor average from 29 C towards 24 C; floor 3 AHU not installed -> never starts',
-        at(tr, 30, 'AHU_F02_Status') and max(s['Zone_F02_AvgTemp'] for t, s in tr) > 25.5 and 23.0 < at(tr, 595, 'Zone_F02_AvgTemp') < 25.0
+    row('Y01', 'floor 2 AHU: starts (manual run), proves running, VAV rooms bring the floor average towards 24 C (PICV on SAT); floor 3 AHU not installed -> never starts',
+        at(tr, 30, 'AHU_F02_Status') and 22.5 < at(tr, 595, 'Zone_F02_AvgTemp') < 25.5
         and at(tr, 595, 'AHU_F02_ValveCmd') > 20 and not ever(tr, 'AHU_F03_StartCmd'),
         f"F02 running {first(tr, 'AHU_F02_Status', True)}, valve at 595 s {at(tr, 595, 'AHU_F02_ValveCmd'):.0f} %, average peak {max(s['Zone_F02_AvgTemp'] for t, s in tr):.1f} -> {at(tr, 595, 'Zone_F02_AvgTemp'):.1f} C; F03 started {ever(tr, 'AHU_F03_StartCmd')}")
     K = ['AHU_F02_StartCmd']
@@ -139,11 +139,10 @@ if True:
     row('Y03', 'zone out of service is left out of the floor average and the hottest zone',
         abs(at(tr, 15, 'Zone_F02_AvgTemp') - 26.75) < .01 and abs(at(tr, 35, 'Zone_F02_AvgTemp') - 24.0) < .01 and at(tr, 35, 'Zone_F02_HottestTemp') == 24.0,
         f"average {at(tr, 15, 'Zone_F02_AvgTemp'):.2f} -> {at(tr, 35, 'Zone_F02_AvgTemp'):.2f}, hottest {at(tr, 35, 'Zone_F02_HottestTemp')}")
-    K = ['AHU_F02_ValveCmd']
-    tr = sim([(0.5, {'AirX_ManualOn': True, 'AHU_F02_RA_RH': 75.0, 'ZoneTemperatureAvg_02_0201': 22.0, 'ZoneTemperatureAvg_02_0202': 22.0,
-                     'ZoneTemperatureAvg_02_0203': 22.0, 'ZoneTemperatureAvg_02_0204': 22.0})], 60.0, K)
-    row('Y04', 'cold floor but return RH 75 % -> CHW valve held at the dehumidification minimum (60 %)', abs(at(tr, 55, 'AHU_F02_ValveCmd') - 60.0) < .5,
-        f"valve {at(tr, 55, 'AHU_F02_ValveCmd')}")
+    K = ['AHU_F02_SAT_SP']
+    tr = sim([(0.5, {'AirX_ManualOn': True, 'AHU_F02_RA_RH': 75.0})], 60.0, K)
+    row('Y04', 'return RH 75 % -> SAT setpoint limited to AirX_SatDehumMax 13 C (r4: dehumidification by SAT, PICV on SAT)',
+        at(tr, 55, 'AHU_F02_SAT_SP') <= 13.0 + 1e-6, f"SAT setpoint {at(tr, 55, 'AHU_F02_SAT_SP')}")
     K = ['AHU_F02_FailAlarm', 'AHU_F02_StartCmd']
     tr = sim([(0.5, {'AirX_ManualOn': True, 'AHU_F02_Status': False})], 40.0, K)
     row('Y05', 'floor AHU without run proof -> start failure alarm, command removed', at(tr, 35, 'AHU_F02_FailAlarm') and not at(tr, 35, 'AHU_F02_StartCmd'),

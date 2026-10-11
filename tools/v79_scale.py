@@ -249,7 +249,18 @@ def chiller_logic(S, n):
     S.rewire(f'{u}ValveOpenCmd', 'in16', f'{u}_ValveLogic', F)
     S.rewire(f'{u}CdwValveOpenCmd', 'in16', f'{u}_ValveLogic', F)
     AND(S, f, f'{u}_ValvesOpen', f'{u}_ChwIsoFb', f'{u}_CdwIsoFb')
-    AND(S, f, f'{u}StartCmdLogic', f'{u}_RunReq', f'{u}_ValvesOpen', f'{u}_ChwFlowSw', f'{u}_CdwFlowSw')
+    # r4 protections (same rules as CH01 / CH02): anti-recycle minimum off time, evaporator freeze trip (latched)
+    NOT(S, f, f'{u}_NotStartCmd', f'{u}StartCmd')
+    DLY(S, f, f'{u}_MinOffDone', f'{u}_NotStartCmd', tm(600000, 15000), note='anti-recycle: compressor minimum off time (OEM start-to-start)')
+    OR(S, f, f'{u}MinOffPermit', f'{u}_MinOffDone', f'{u}StartCmd')
+    CMP(S, f, f'{u}_FreezeLow', 'LessThan', f'{u}_ChwSupplyTemp', 'CH_FreezeTripTemp'); AND(S, f, f'{u}_FreezeRun', f'{u}_FreezeLow', f'{u}RunProof')
+    DLY(S, f, f'{u}_FreezeDly', f'{u}_FreezeRun', tm(10000, 3000))
+    CMP(S, f, f'{u}_FreezeCleared', 'GreaterThan', f'{u}_ChwSupplyTemp', 'CH_FreezeResetTemp'); AND(S, f, f'{u}_FreezeReset', f'{u}_ResetAny', f'{u}_FreezeCleared')
+    sealin(S, f, f'{u}_FreezeLatch', f'{u}_FreezeDly', f'{u}_FreezeReset', note='evaporator LWT low trip, reset above CH_FreezeResetTemp')
+    alarm(S, f, f'{u}_FreezeTripAlarm', f'{u}_FreezeLatch', 'Tripped', 'Normal', 'Critical', f'{u}: evaporator leaving water below the freeze limit - chiller tripped')
+    OR(S, f, f'{u}_TripAny', f'{u}_FailLatch', f'{u}_FreezeLatch'); S.rewire(f'{u}_NotFailed', 'in', f'{u}_TripAny', f'{u}_FailLatch')
+    AND(S, f, f'{u}_StartPermit', f'{u}_RunReq', f'{u}MinOffPermit')
+    AND(S, f, f'{u}StartCmdLogic', f'{u}_StartPermit', f'{u}_ValvesOpen', f'{u}_ChwFlowSw', f'{u}_CdwFlowSw')
     for side in ('Chw', 'Cdw'):
         NOT(S, f, f'{u}_No{side}Flow', f'{u}_{side}FlowSw'); AND(S, f, f'{u}_{side}FlowMissing', f'{u}_ValvesOpen', f'{u}_No{side}Flow', f'{u}_RunReq')
         DLY(S, f, f'{u}_{side}FlowMissingDly', f'{u}_{side}FlowMissing', tm(60000, 10000))
@@ -292,7 +303,14 @@ def pump_logic(S, k, n):
 
 def tower_logic(S, n):
     u = f'CT{n:02d}'; f = f'{EX}/{u}'; req = f'CTX_Req{n:02d}'
-    AND(S, f, f'{u}_RunReq', req, f'{u}_Avail', 'PlantPermissive')
+    # r4: basin low-low (dry-run) protection, same limits as CT01 / CT02
+    CMP(S, f, f'{u}_LevelLL', 'LessThan', f'{u}_BasinLevel', 'CT_LevelLowLowPct'); DLY(S, f, f'{u}_LevelLLDly', f'{u}_LevelLL', tm(10000, 3000))
+    CMP(S, f, f'{u}_LevelOK', 'GreaterThan', f'{u}_BasinLevel', 'CT_LevelLowLowResetPct')
+    sealin(S, f, f'{u}_LevelLLLatch', f'{u}_LevelLLDly', f'{u}_LevelOK', note='basin low-low until the level recovers')
+    AND(S, f, f'{u}_LevelLLInst', f'{u}_LevelLLLatch', f'{u}_Installed')
+    alarm(S, f, f'{u}_BasinLowLowAlarm', f'{u}_LevelLLInst', 'Low-low', 'Normal', 'Critical', f'{u}: basin level low-low - tower stopped (dry run)')
+    NOT(S, f, f'{u}_LevelNotLL', f'{u}_LevelLLLatch')
+    AND(S, f, f'{u}_RunReq', req, f'{u}_Avail', 'PlantPermissive', f'{u}_LevelNotLL')
     DLY(S, f, f'{u}_ValveLogic', f'{u}_RunReq', 0, tm(300000, 10000))
     S.rewire(f'{u}_ValveCmd', 'in16', f'{u}_ValveLogic', F)
     AND(S, f, f'{u}StartCmdLogic', f'{u}_RunReq', f'{u}_ValveFb')
@@ -435,6 +453,18 @@ def supervisor(S):
     MATH(S, SUP, 'CDPX_Speed', 'Maximum', 'CDP01SpeedCmd', 'CDP02SpeedCmd', 'CDPX_MinSpeed')
 
 
+def plant_room_b1(S):
+    """r4: the R9 design moves the chiller plant to basement B1 -> flood protection of the plant room (motors / starters at floor level).
+    Float switch at the sump / floor: alarm, and (project decision, default on) chillers stop through Plant_ChillerInhibit."""
+    f = 'Alarms/PlantRoom'
+    di(S, f, 'PlantRoom_FloodSw', False, 'Water', 'Dry', note='FIELD DI: B1 plant room floor water / sump high-high level switch')
+    S.bparam('CH_StopOnFlood', True, folder=f, t='Stop chillers', f='Alarm only', note='flooded B1 plant room stops the chillers (PROJECT decision)')
+    DLY(S, f, 'PR_FloodDly', 'PlantRoom_FloodSw', tm(10000, 2000))
+    alarm(S, f, 'PlantRoom_FloodAlarm', 'PR_FloodDly', 'Flooding', 'Normal', 'Emergency', 'B1 plant room flooding - check sump pumps, isolate electrical equipment')
+    AND(S, f, 'PR_FloodStop', 'PR_FloodDly', 'CH_StopOnFlood')
+    S.rewire('Plant_ChillerInhibit', 'inD', 'PR_FloodStop', F)
+
+
 def base_installed(S):
     for u in ('CH01', 'CH02', 'CHP01', 'CHP02', 'CDP01', 'CDP02', 'CT01', 'CT02'):
         f = S.folder_of[f'{u}_Maintenance']
@@ -492,6 +522,7 @@ def post(S):
     for n in SLOTS:
         for k in ('CH', 'CHP', 'CDP', 'CT'): S.rewire(f'{k}{n:02d}_ResetAny', 'inB', 'FO_Reset', F)
     supervisor(S)
+    plant_room_b1(S)
     for n in SLOTS:
         chiller_logic(S, n); pump_logic(S, 'CHP', n); pump_logic(S, 'CDP', n); tower_logic(S, n)
     base_installed(S)

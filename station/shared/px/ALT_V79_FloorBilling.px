@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<!-- Workbench view of the V7.9 3D building page (plant + air side + zones).  The WebBrowser widget loads the station file
+     shared/web/ALT_V79_FloorBilling.html.  LIVE data needs the page to be served by the station web server (WebService, HTTPS);
+     in a web browser open:  https://<host>/ord?file:^web/ALT_V79_FloorBilling.html   (log in with a station user). -->
+<px version="1.0" media="workbench:WbPxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="workbench"/>
+</import>
+<content>
+<WebBrowser ord="file:^web/ALT_V79_FloorBilling.html" showProgressIndicator="true" contextMenuEnabled="true"/>
+</content>
+</px>

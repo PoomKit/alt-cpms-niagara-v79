@@ -7,6 +7,7 @@
   * the 3D point map (graphics3d/map79.json) has no unresolved point except the optional *_Rev flows
 usage: python3 check_px.py        exit code 1 on any finding."""
 import csv, glob, json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import xml.etree.ElementTree as ET
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 PX = os.path.join(ROOT, 'station', 'shared', 'px')
@@ -20,7 +21,10 @@ def main():
     comps = list(csv.DictReader(open(os.path.join(REG, 'V7_COMPONENTS.csv'), encoding='utf-8-sig')))
     # same rule as make_v7._path_of: AirSide folders sit at the station root, everything else under /ChillerPlant
     paths |= {(('/' if r['Folder'].startswith('AirSide') else '/ChillerPlant/') + f"{r['Folder']}/{r['Component']}").replace('//', '/') for r in comps}
-    names = {r['Component'] for r in comps}
+    # V7.9 r4 points are not in the r2 registers yet: accept everything the V7.9 layers build (layer test station)
+    import layer_sim
+    S = layer_sim.build('fpt'); paths |= {S.path_of(n) for n in S.comp if n not in S.base}
+    names = {r['Component'] for r in comps} | {n for n in S.comp if n not in S.base}
     prefixes = {p.rsplit('/', i)[0] for p in paths for i in range(1, p.count('/'))}
     files = sorted(glob.glob(os.path.join(PX, '*.px')))
     for f in files:

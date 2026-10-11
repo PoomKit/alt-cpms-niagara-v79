@@ -61,6 +61,17 @@ Niagara components against API stubs (`java/altPlant/logic-test`, `java/altPlant
 
 ## Version
 
+**V7.9 r4** (R9 office design + realistic graphics, see `docs/R4_Office_VAV_TH.md`):
+- R9 package imported: office design data (`graphics3d/data/office79.json`), basement-plant geometry, 15 Px pages, 4 HTML pages, 2D symbols.
+- New logic `tools/v79_office.py`: floors 2-8 VAV AHUs (ASHRAE G36 duct static / SAT Trim & Respond, PICV, dehumidification, measured
+  minimum OA by ASHRAE 62.1 VRP with DCV, high-static safety), 123 VAV boxes, 200 room sensors, floor BTU / power and tenant meters.
+- Plant: expansion chiller freeze trip and anti-recycle, tower basin low-low, B1 plant room flood protection.
+- Blender models (`tools/blender/equipment79.py`): chiller, pump, tower, AHU, VAV, fan -> GLB for the 3D page + Cycles renders for Px.
+- 3D page: B1 plant room, Blender models, office layer (rooms by T / RH / CO2, ducts, VAV, live airflow), room info.
+- Live Px: `ALT_V79_VAV_Overview.px`, `ALT_V79_F02_VAV.px` ... `F08` (`tools/gen_px79o.py`).
+- Executable layer test station (`tools/layer_sim.py`) + 17 tests in CI.
+
+
 **V7.9 r3** (review fixes):
 - Expansion slots: run-hour rotation (running units are never swapped), soft-load and head-pressure valve for chillers 03-06.
 - `CHX_ChillersNeedingWater` now shows the value the pump / tower targets use; the old value is `CHX_ChillersValvesOpen`.

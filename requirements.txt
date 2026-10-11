@@ -9,4 +9,5 @@ python-docx>=1.1
 # 2D drawings (drawings/gen2d79.py) - also needs the lotus helpers (LOTUS_DIR)
 ezdxf>=1.2
 matplotlib>=3.8
+# Blender models / Px renders (tools/blender/equipment79.py): Blender 4.x, or `pip install bpy==4.5.0` on Python 3.11 (+ Pillow)
 # Not on PyPI: bpy / mathutils / bpy_extras = Blender 4.x (run assets73/74, plant3d*, floor73, sprites73/74 with `blender -b -P <script>`)

@@ -12,7 +12,7 @@ from gen_px7 import val, lbl, panel, rows, pic_bool, kpi_strip, PANEL, EDGE, LBL
 
 # pages opened by navigation instead of a popup: the 3D page is HTML (BajaScript) and must work in the HTML5 / browser profile
 LINKS = {'ALT_V79_Building3D': 'file:^web/ALT_V79_Building3D.html'}
-PAGES = [('ALT_V79_Plant', 'Plant schematic'), ('ALT_V79_PlantCards', 'Plant cards'), ('ALT_V79_Building', 'Building / Zones'), 
+PAGES = [('ALT_V79_Plant', 'Plant overview'), ('ALT_V79_Plant_Details', 'Plant schematic'), ('ALT_V79_PlantCards', 'Plant cards'), ('ALT_V79_Building', 'Building / Zones'), 
          ('ALT_V79_Building3D', '3D Live'), ('ALT_V77_FieldIO', 'Field IO'), ('ALT_CP_AlarmsHistory', 'Alarms')]
 IMG = {'CH': ('Chillers/Turbo/Chiller_Turbo_Left/Chiller_Turbo_Left_On.gif', 'Chillers/Turbo/Chiller_Turbo_Left/Chiller_Turbo_Left_Off.png'),
        'P': ('Pumps/Pumps_Base/Pump_Base_Left/Pump_Base_Left_On.gif', 'Pumps/Pumps_Base/Pump_Base_Left/Pump_Base_Left_Off.png'),
