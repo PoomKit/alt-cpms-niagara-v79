@@ -1,3 +1,5 @@
+import com.tridium.gradle.plugins.module.util.ModulePart.RuntimeProfile.*
+
 plugins {
   id("com.tridium.niagara-module")
   id("com.tridium.niagara-signing")
@@ -9,7 +11,7 @@ description = "ALT Reference V7.9 plant components (expansion supervisor, zone a
 
 moduleManifest {
   moduleName.set("altPlant")
-  runtimeProfile.set("rt")
+  runtimeProfile.set(rt)
   vendor.set("ALT")
 }
 
