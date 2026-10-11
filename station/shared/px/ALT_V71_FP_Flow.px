@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="uxBuilder:UxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="900.0,520.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <Rect fill="#12161b" stroke="#12161b" pen="1.0" geom="0.0,0.0,900.0,520.0"/>
+
+    <Label layout="0.0,0.0,900.0,34.0" text="  Flow meters (water: US gpm)" font="bold 14.0pt sans-serif" foreground="white" background="#0b0e11" halign="left"/>
+
+    <Rect fill="#0f1418" stroke="#2c3440" pen="1.0" geom="10.0,44.0,240.0,466.0"/>
+
+    <Picture layout="20.0,54.0,220.0,280.0" image="file:^px/img/v74_fp_fm.png"/>
+
+    <Label layout="18.0,344.0,228.0,20.0" text="ONICON FT-3500 insertion" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="18.0,362.0,228.0,20.0" text="electromagnetic flow meter" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="18.0,380.0,228.0,20.0" text="hot-tap: ball valve + probe" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="18.0,398.0,228.0,20.0" text="BACnet MS/TP or analog 4-20 mA" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="18.0,416.0,228.0,20.0" text="original render - no manufacturer artwork" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="266.0,50.0,316.0,20.0" text="CHW main (FT)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,51.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Points/CHWFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,77.0,316.0,20.0" text="CH01 evaporator" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,78.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller01/Points/CH01_ChwFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,104.0,316.0,20.0" text="CH02 evaporator" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,105.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller02/Points/CH02_ChwFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,131.0,316.0,20.0" text="Evaporator total (bypass PV)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,132.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Monitor/CHW_EvapFlowTotal" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,158.0,316.0,20.0" text="Bypass min-flow SP" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,159.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Monitor/CHW_BypassMinFlowSP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,185.0,316.0,20.0" text="BTU meter flow" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,186.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Metering/BTU/BTU_Flow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,212.0,316.0,20.0" text="CDW header" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,213.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CdwLoop/Points/CDW_Flow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,239.0,316.0,20.0" text="CH01 condenser" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,240.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller01/Points/CH01_CdwFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,266.0,316.0,20.0" text="CH02 condenser" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,267.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller02/Points/CH02_CdwFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,293.0,316.0,20.0" text="Tower make-up" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,294.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CdwLoop/Points/CT_MakeupFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,320.0,316.0,20.0" text="Make-up volume" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,321.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CdwLoop/Monitor/CT_MakeupVolume" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,347.0,316.0,20.0" text="CHW fill (make-up)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,348.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/MakeupWater/Points/CHW_FillFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,374.0,316.0,20.0" text="CHW fill volume" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,375.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/MakeupWater/Monitor/CHW_FillVolume" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,401.0,316.0,20.0" text="CHW low-flow alarm" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,402.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/CHW_FlowLowAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,428.0,316.0,20.0" text="CDW low-flow alarm" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,429.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/CDW_FlowLowAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="266.0,455.0,316.0,20.0" text="CHW flow sensor invalid" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="582.0,456.0,304.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/CHWFlow_SensorInvalidAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>

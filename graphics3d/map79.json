@@ -1,0 +1,2450 @@
+[
+{
+"p": "OA_Temperature",
+"s": "/ChillerPlant/OutdoorAir/OA_Temperature",
+"u": "weather / sky",
+"ok": true
+},
+{
+"p": "OA_Humidity",
+"s": "/ChillerPlant/OutdoorAir/OA_Humidity",
+"u": "weather / sky",
+"ok": true
+},
+{
+"p": "OA_WetBulb",
+"s": "/ChillerPlant/OutdoorAir/OA_WetBulb",
+"u": "weather / sky",
+"ok": true
+},
+{
+"p": "CHWS",
+"s": "/ChillerPlant/ChwLoop/Points/CHWS",
+"u": "KPI card / water speed",
+"ok": true
+},
+{
+"p": "CHWR",
+"s": "/ChillerPlant/ChwLoop/Points/CHWR",
+"u": "KPI card / water speed",
+"ok": true
+},
+{
+"p": "CDS",
+"s": "/ChillerPlant/CdwLoop/Points/CDS",
+"u": "KPI card / water speed",
+"ok": true
+},
+{
+"p": "CDR",
+"s": "/ChillerPlant/CdwLoop/Points/CDR",
+"u": "KPI card / water speed",
+"ok": true
+},
+{
+"p": "CHWFlow",
+"s": "/ChillerPlant/ChwLoop/Points/CHWFlow",
+"u": "KPI card / water speed",
+"ok": true
+},
+{
+"p": "CDW_Flow",
+"s": "/ChillerPlant/CdwLoop/Points/CDW_Flow",
+"u": "KPI card / water speed",
+"ok": true
+},
+{
+"p": "Plant_kW_per_RT",
+"s": "/ChillerPlant/Energy/Plant_kW_per_RT",
+"u": "KPI card / water speed",
+"ok": true
+},
+{
+"p": "CoolingLoad_RT",
+"s": "/ChillerPlant/Energy/CoolingLoad_RT",
+"u": "KPI card / water speed",
+"ok": true
+},
+{
+"p": "Plant_kW",
+"s": "/ChillerPlant/Energy/Plant_kW",
+"u": "KPI card / water speed",
+"ok": true
+},
+{
+"p": "Gfx_CHP01_SuctionMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CHP01_SuctionMV_Pos",
+"u": "MBFV CHP01 suction (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CHP01_DischargeMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CHP01_DischargeMV_Pos",
+"u": "MBFV CHP01 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CHP02_SuctionMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CHP02_SuctionMV_Pos",
+"u": "MBFV CHP02 suction (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CHP02_DischargeMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CHP02_DischargeMV_Pos",
+"u": "MBFV CHP02 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CHP03_MV_Pos",
+"s": "/ChillerPlant/Expansion/CHP03/Gfx_CHP03_MV_Pos",
+"u": "MBFV CHP03 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CHP04_MV_Pos",
+"s": "/ChillerPlant/Expansion/CHP04/Gfx_CHP04_MV_Pos",
+"u": "MBFV CHP04 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CHP05_MV_Pos",
+"s": "/ChillerPlant/Expansion/CHP05/Gfx_CHP05_MV_Pos",
+"u": "MBFV CHP05 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CHP06_MV_Pos",
+"s": "/ChillerPlant/Expansion/CHP06/Gfx_CHP06_MV_Pos",
+"u": "MBFV CHP06 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CDP01_SuctionMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CDP01_SuctionMV_Pos",
+"u": "MBFV CDP01 suction (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CDP01_DischargeMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CDP01_DischargeMV_Pos",
+"u": "MBFV CDP01 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CDP02_SuctionMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CDP02_SuctionMV_Pos",
+"u": "MBFV CDP02 suction (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CDP02_DischargeMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CDP02_DischargeMV_Pos",
+"u": "MBFV CDP02 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CDP03_MV_Pos",
+"s": "/ChillerPlant/Expansion/CDP03/Gfx_CDP03_MV_Pos",
+"u": "MBFV CDP03 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CDP04_MV_Pos",
+"s": "/ChillerPlant/Expansion/CDP04/Gfx_CDP04_MV_Pos",
+"u": "MBFV CDP04 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CDP05_MV_Pos",
+"s": "/ChillerPlant/Expansion/CDP05/Gfx_CDP05_MV_Pos",
+"u": "MBFV CDP05 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CDP06_MV_Pos",
+"s": "/ChillerPlant/Expansion/CDP06/Gfx_CDP06_MV_Pos",
+"u": "MBFV CDP06 discharge MV (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH01_ChwIso_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CH01_ChwIso_Pos",
+"u": "MBFV CH01 CHW isolation (position / value)",
+"ok": true
+},
+{
+"p": "CH01_ChwSupplyTemp",
+"s": "/ChillerPlant/Chiller01/Points/CH01_ChwSupplyTemp",
+"u": "TT CHS-E1 (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH01_ChwFCV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CH01_ChwFCV_Pos",
+"u": "MCV CH01 CHW flow control (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH01_CdwIso_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CH01_CdwIso_Pos",
+"u": "MBFV CH01 CDW isolation (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH01_CdwHPV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CH01_CdwHPV_Pos",
+"u": "MCV CH01 head-pressure valve (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH02_ChwIso_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CH02_ChwIso_Pos",
+"u": "MBFV CH02 CHW isolation (position / value)",
+"ok": true
+},
+{
+"p": "CH02_ChwSupplyTemp",
+"s": "/ChillerPlant/Chiller02/Points/CH02_ChwSupplyTemp",
+"u": "TT CHS-E2 (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH02_ChwFCV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CH02_ChwFCV_Pos",
+"u": "MCV CH02 CHW flow control (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH02_CdwIso_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CH02_CdwIso_Pos",
+"u": "MBFV CH02 CDW isolation (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH02_CdwHPV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CH02_CdwHPV_Pos",
+"u": "MCV CH02 head-pressure valve (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH03_ChwIso_Pos",
+"s": "/ChillerPlant/Expansion/CH03/Gfx_CH03_ChwIso_Pos",
+"u": "MBFV CH03 CHW isolation (position / value)",
+"ok": true
+},
+{
+"p": "CH03_ChwSupplyTemp",
+"s": "/ChillerPlant/Expansion/CH03/CH03_ChwSupplyTemp",
+"u": "TT CHS-E3 (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH03_CdwIso_Pos",
+"s": "/ChillerPlant/Expansion/CH03/Gfx_CH03_CdwIso_Pos",
+"u": "MBFV CH03 CDW isolation (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH04_ChwIso_Pos",
+"s": "/ChillerPlant/Expansion/CH04/Gfx_CH04_ChwIso_Pos",
+"u": "MBFV CH04 CHW isolation (position / value)",
+"ok": true
+},
+{
+"p": "CH04_ChwSupplyTemp",
+"s": "/ChillerPlant/Expansion/CH04/CH04_ChwSupplyTemp",
+"u": "TT CHS-E4 (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH04_CdwIso_Pos",
+"s": "/ChillerPlant/Expansion/CH04/Gfx_CH04_CdwIso_Pos",
+"u": "MBFV CH04 CDW isolation (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH05_ChwIso_Pos",
+"s": "/ChillerPlant/Expansion/CH05/Gfx_CH05_ChwIso_Pos",
+"u": "MBFV CH05 CHW isolation (position / value)",
+"ok": true
+},
+{
+"p": "CH05_ChwSupplyTemp",
+"s": "/ChillerPlant/Expansion/CH05/CH05_ChwSupplyTemp",
+"u": "TT CHS-E5 (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH05_CdwIso_Pos",
+"s": "/ChillerPlant/Expansion/CH05/Gfx_CH05_CdwIso_Pos",
+"u": "MBFV CH05 CDW isolation (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH06_ChwIso_Pos",
+"s": "/ChillerPlant/Expansion/CH06/Gfx_CH06_ChwIso_Pos",
+"u": "MBFV CH06 CHW isolation (position / value)",
+"ok": true
+},
+{
+"p": "CH06_ChwSupplyTemp",
+"s": "/ChillerPlant/Expansion/CH06/CH06_ChwSupplyTemp",
+"u": "TT CHS-E6 (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CH06_CdwIso_Pos",
+"s": "/ChillerPlant/Expansion/CH06/Gfx_CH06_CdwIso_Pos",
+"u": "MBFV CH06 CDW isolation (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CT01_InletMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CT01_InletMV_Pos",
+"u": "MBFV CT01 inlet (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CT01_OutletMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CT01_OutletMV_Pos",
+"u": "MBFV CT01 outlet (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CT02_InletMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CT02_InletMV_Pos",
+"u": "MBFV CT02 inlet (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CT02_OutletMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CT02_OutletMV_Pos",
+"u": "MBFV CT02 outlet (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CT03_Valve_Pos",
+"s": "/ChillerPlant/Expansion/CT03/Gfx_CT03_Valve_Pos",
+"u": "MBFV CT03 inlet (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CT04_Valve_Pos",
+"s": "/ChillerPlant/Expansion/CT04/Gfx_CT04_Valve_Pos",
+"u": "MBFV CT04 inlet (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CT05_Valve_Pos",
+"s": "/ChillerPlant/Expansion/CT05/Gfx_CT05_Valve_Pos",
+"u": "MBFV CT05 inlet (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CT06_Valve_Pos",
+"s": "/ChillerPlant/Expansion/CT06/Gfx_CT06_Valve_Pos",
+"u": "MBFV CT06 inlet (position / value)",
+"ok": true
+},
+{
+"p": "AHU_F02_ValveCmd",
+"s": "/AirSide/Floors/F02/AHU_F02_ValveCmd",
+"u": "MCV AHU_F02 CHW valve (position / value)",
+"ok": true
+},
+{
+"p": "AHU_F03_ValveCmd",
+"s": "/AirSide/Floors/F03/AHU_F03_ValveCmd",
+"u": "MCV AHU_F03 CHW valve (position / value)",
+"ok": true
+},
+{
+"p": "AHU_F04_ValveCmd",
+"s": "/AirSide/Floors/F04/AHU_F04_ValveCmd",
+"u": "MCV AHU_F04 CHW valve (position / value)",
+"ok": true
+},
+{
+"p": "AHU_F05_ValveCmd",
+"s": "/AirSide/Floors/F05/AHU_F05_ValveCmd",
+"u": "MCV AHU_F05 CHW valve (position / value)",
+"ok": true
+},
+{
+"p": "AHU_F06_ValveCmd",
+"s": "/AirSide/Floors/F06/AHU_F06_ValveCmd",
+"u": "MCV AHU_F06 CHW valve (position / value)",
+"ok": true
+},
+{
+"p": "AHU_F07_ValveCmd",
+"s": "/AirSide/Floors/F07/AHU_F07_ValveCmd",
+"u": "MCV AHU_F07 CHW valve (position / value)",
+"ok": true
+},
+{
+"p": "AHU_F08_ValveCmd",
+"s": "/AirSide/Floors/F08/AHU_F08_ValveCmd",
+"u": "MCV AHU_F08 CHW valve (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_CHW_BypassMV_Pos",
+"s": "/ChillerPlant/Graphics/Valves/Gfx_CHW_BypassMV_Pos",
+"u": "MCV CHW bypass valve (position / value)",
+"ok": true
+},
+{
+"p": "Gfx_ChwMain_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_ChwMain_Fwd",
+"u": "water flow CHR-R",
+"ok": true
+},
+{
+"p": "Gfx_ChwMain_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_ChwMain_Rev",
+"u": "reverse flow CHR-R",
+"ok": true
+},
+{
+"p": "Gfx_EvapTotal_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_EvapTotal_Fwd",
+"u": "water flow CHR-DH",
+"ok": true
+},
+{
+"p": "Gfx_EvapTotal_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_EvapTotal_Rev",
+"u": "reverse flow CHR-DH",
+"ok": true
+},
+{
+"p": "Gfx_Bypass_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_Bypass_Fwd",
+"u": "water flow CHW-BP",
+"ok": true
+},
+{
+"p": "Gfx_Bypass_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_Bypass_Rev",
+"u": "reverse flow CHW-BP",
+"ok": true
+},
+{
+"p": "Gfx_CdwTotal_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CdwTotal_Fwd",
+"u": "water flow CDS-RH",
+"ok": true
+},
+{
+"p": "Gfx_CdwTotal_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CdwTotal_Rev",
+"u": "reverse flow CDS-RH",
+"ok": true
+},
+{
+"p": "Gfx_CH01Evap_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CH01Evap_Fwd",
+"u": "water flow CHR-E1",
+"ok": true
+},
+{
+"p": "Gfx_CH01Evap_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CH01Evap_Rev",
+"u": "reverse flow CHR-E1",
+"ok": true
+},
+{
+"p": "Gfx_CH01Cond_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CH01Cond_Fwd",
+"u": "water flow CDS-C1",
+"ok": true
+},
+{
+"p": "Gfx_CH01Cond_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CH01Cond_Rev",
+"u": "reverse flow CDS-C1",
+"ok": true
+},
+{
+"p": "Gfx_CH02Evap_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CH02Evap_Fwd",
+"u": "water flow CHR-E2",
+"ok": true
+},
+{
+"p": "Gfx_CH02Evap_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CH02Evap_Rev",
+"u": "reverse flow CHR-E2",
+"ok": true
+},
+{
+"p": "Gfx_CH02Cond_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CH02Cond_Fwd",
+"u": "water flow CDS-C2",
+"ok": true
+},
+{
+"p": "Gfx_CH02Cond_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CH02Cond_Rev",
+"u": "reverse flow CDS-C2",
+"ok": true
+},
+{
+"p": "Gfx_CH03Evap_Fwd",
+"s": "/ChillerPlant/Expansion/CH03/Gfx_CH03Evap_Fwd",
+"u": "water flow CHR-E3",
+"ok": true
+},
+{
+"p": "Gfx_CH03Evap_Rev",
+"s": "",
+"u": "reverse flow CHR-E3",
+"ok": false
+},
+{
+"p": "Gfx_CH03Cond_Fwd",
+"s": "/ChillerPlant/Expansion/CH03/Gfx_CH03Cond_Fwd",
+"u": "water flow CDS-C3",
+"ok": true
+},
+{
+"p": "Gfx_CH03Cond_Rev",
+"s": "",
+"u": "reverse flow CDS-C3",
+"ok": false
+},
+{
+"p": "Gfx_CH04Evap_Fwd",
+"s": "/ChillerPlant/Expansion/CH04/Gfx_CH04Evap_Fwd",
+"u": "water flow CHR-E4",
+"ok": true
+},
+{
+"p": "Gfx_CH04Evap_Rev",
+"s": "",
+"u": "reverse flow CHR-E4",
+"ok": false
+},
+{
+"p": "Gfx_CH04Cond_Fwd",
+"s": "/ChillerPlant/Expansion/CH04/Gfx_CH04Cond_Fwd",
+"u": "water flow CDS-C4",
+"ok": true
+},
+{
+"p": "Gfx_CH04Cond_Rev",
+"s": "",
+"u": "reverse flow CDS-C4",
+"ok": false
+},
+{
+"p": "Gfx_CH05Evap_Fwd",
+"s": "/ChillerPlant/Expansion/CH05/Gfx_CH05Evap_Fwd",
+"u": "water flow CHR-E5",
+"ok": true
+},
+{
+"p": "Gfx_CH05Evap_Rev",
+"s": "",
+"u": "reverse flow CHR-E5",
+"ok": false
+},
+{
+"p": "Gfx_CH05Cond_Fwd",
+"s": "/ChillerPlant/Expansion/CH05/Gfx_CH05Cond_Fwd",
+"u": "water flow CDS-C5",
+"ok": true
+},
+{
+"p": "Gfx_CH05Cond_Rev",
+"s": "",
+"u": "reverse flow CDS-C5",
+"ok": false
+},
+{
+"p": "Gfx_CH06Evap_Fwd",
+"s": "/ChillerPlant/Expansion/CH06/Gfx_CH06Evap_Fwd",
+"u": "water flow CHR-E6",
+"ok": true
+},
+{
+"p": "Gfx_CH06Evap_Rev",
+"s": "",
+"u": "reverse flow CHR-E6",
+"ok": false
+},
+{
+"p": "Gfx_CH06Cond_Fwd",
+"s": "/ChillerPlant/Expansion/CH06/Gfx_CH06Cond_Fwd",
+"u": "water flow CDS-C6",
+"ok": true
+},
+{
+"p": "Gfx_CH06Cond_Rev",
+"s": "",
+"u": "reverse flow CDS-C6",
+"ok": false
+},
+{
+"p": "Gfx_CHP01_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CHP01_Fwd",
+"u": "water flow CHR-P1",
+"ok": true
+},
+{
+"p": "Gfx_CHP01_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CHP01_Rev",
+"u": "reverse flow CHR-P1",
+"ok": true
+},
+{
+"p": "Gfx_CHP02_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CHP02_Fwd",
+"u": "water flow CHR-P2",
+"ok": true
+},
+{
+"p": "Gfx_CHP02_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CHP02_Rev",
+"u": "reverse flow CHR-P2",
+"ok": true
+},
+{
+"p": "Gfx_CHP03_Fwd",
+"s": "/ChillerPlant/Expansion/CHP03/Gfx_CHP03_Fwd",
+"u": "water flow CHR-P3",
+"ok": true
+},
+{
+"p": "Gfx_CHP03_Rev",
+"s": "",
+"u": "reverse flow CHR-P3",
+"ok": false
+},
+{
+"p": "Gfx_CHP04_Fwd",
+"s": "/ChillerPlant/Expansion/CHP04/Gfx_CHP04_Fwd",
+"u": "water flow CHR-P4",
+"ok": true
+},
+{
+"p": "Gfx_CHP04_Rev",
+"s": "",
+"u": "reverse flow CHR-P4",
+"ok": false
+},
+{
+"p": "Gfx_CHP05_Fwd",
+"s": "/ChillerPlant/Expansion/CHP05/Gfx_CHP05_Fwd",
+"u": "water flow CHR-P5",
+"ok": true
+},
+{
+"p": "Gfx_CHP05_Rev",
+"s": "",
+"u": "reverse flow CHR-P5",
+"ok": false
+},
+{
+"p": "Gfx_CHP06_Fwd",
+"s": "/ChillerPlant/Expansion/CHP06/Gfx_CHP06_Fwd",
+"u": "water flow CHR-P6",
+"ok": true
+},
+{
+"p": "Gfx_CHP06_Rev",
+"s": "",
+"u": "reverse flow CHR-P6",
+"ok": false
+},
+{
+"p": "Gfx_CDP01_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CDP01_Fwd",
+"u": "water flow CDS-P1",
+"ok": true
+},
+{
+"p": "Gfx_CDP01_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CDP01_Rev",
+"u": "reverse flow CDS-P1",
+"ok": true
+},
+{
+"p": "Gfx_CDP02_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CDP02_Fwd",
+"u": "water flow CDS-P2",
+"ok": true
+},
+{
+"p": "Gfx_CDP02_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CDP02_Rev",
+"u": "reverse flow CDS-P2",
+"ok": true
+},
+{
+"p": "Gfx_CDP03_Fwd",
+"s": "/ChillerPlant/Expansion/CDP03/Gfx_CDP03_Fwd",
+"u": "water flow CDS-P3",
+"ok": true
+},
+{
+"p": "Gfx_CDP03_Rev",
+"s": "",
+"u": "reverse flow CDS-P3",
+"ok": false
+},
+{
+"p": "Gfx_CDP04_Fwd",
+"s": "/ChillerPlant/Expansion/CDP04/Gfx_CDP04_Fwd",
+"u": "water flow CDS-P4",
+"ok": true
+},
+{
+"p": "Gfx_CDP04_Rev",
+"s": "",
+"u": "reverse flow CDS-P4",
+"ok": false
+},
+{
+"p": "Gfx_CDP05_Fwd",
+"s": "/ChillerPlant/Expansion/CDP05/Gfx_CDP05_Fwd",
+"u": "water flow CDS-P5",
+"ok": true
+},
+{
+"p": "Gfx_CDP05_Rev",
+"s": "",
+"u": "reverse flow CDS-P5",
+"ok": false
+},
+{
+"p": "Gfx_CDP06_Fwd",
+"s": "/ChillerPlant/Expansion/CDP06/Gfx_CDP06_Fwd",
+"u": "water flow CDS-P6",
+"ok": true
+},
+{
+"p": "Gfx_CDP06_Rev",
+"s": "",
+"u": "reverse flow CDS-P6",
+"ok": false
+},
+{
+"p": "Gfx_CT01_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CT01_Fwd",
+"u": "water flow CDR-T1",
+"ok": true
+},
+{
+"p": "Gfx_CT01_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CT01_Rev",
+"u": "reverse flow CDR-T1",
+"ok": true
+},
+{
+"p": "Gfx_CT02_Fwd",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CT02_Fwd",
+"u": "water flow CDR-T3",
+"ok": true
+},
+{
+"p": "Gfx_CT02_Rev",
+"s": "/ChillerPlant/Graphics/Flow/Gfx_CT02_Rev",
+"u": "reverse flow CDR-T3",
+"ok": true
+},
+{
+"p": "Gfx_CT03_Fwd",
+"s": "/ChillerPlant/Expansion/CT03/Gfx_CT03_Fwd",
+"u": "water flow CDR-T5",
+"ok": true
+},
+{
+"p": "Gfx_CT03_Rev",
+"s": "",
+"u": "reverse flow CDR-T5",
+"ok": false
+},
+{
+"p": "Gfx_CT04_Fwd",
+"s": "/ChillerPlant/Expansion/CT04/Gfx_CT04_Fwd",
+"u": "water flow CDR-T7",
+"ok": true
+},
+{
+"p": "Gfx_CT04_Rev",
+"s": "",
+"u": "reverse flow CDR-T7",
+"ok": false
+},
+{
+"p": "Gfx_CT05_Fwd",
+"s": "/ChillerPlant/Expansion/CT05/Gfx_CT05_Fwd",
+"u": "water flow CDR-T9",
+"ok": true
+},
+{
+"p": "Gfx_CT05_Rev",
+"s": "",
+"u": "reverse flow CDR-T9",
+"ok": false
+},
+{
+"p": "Gfx_CT06_Fwd",
+"s": "/ChillerPlant/Expansion/CT06/Gfx_CT06_Fwd",
+"u": "water flow CDR-T11",
+"ok": true
+},
+{
+"p": "Gfx_CT06_Rev",
+"s": "",
+"u": "reverse flow CDR-T11",
+"ok": false
+},
+{
+"p": "Gfx_AHU_F02_Fwd",
+"s": "/AirSide/Floors/F02/Gfx_AHU_F02_Fwd",
+"u": "water flow CHS-F2",
+"ok": true
+},
+{
+"p": "Gfx_AHU_F02_Rev",
+"s": "",
+"u": "reverse flow CHS-F2",
+"ok": false
+},
+{
+"p": "Gfx_AHU_F03_Fwd",
+"s": "/AirSide/Floors/F03/Gfx_AHU_F03_Fwd",
+"u": "water flow CHS-F3",
+"ok": true
+},
+{
+"p": "Gfx_AHU_F03_Rev",
+"s": "",
+"u": "reverse flow CHS-F3",
+"ok": false
+},
+{
+"p": "Gfx_AHU_F04_Fwd",
+"s": "/AirSide/Floors/F04/Gfx_AHU_F04_Fwd",
+"u": "water flow CHS-F4",
+"ok": true
+},
+{
+"p": "Gfx_AHU_F04_Rev",
+"s": "",
+"u": "reverse flow CHS-F4",
+"ok": false
+},
+{
+"p": "Gfx_AHU_F05_Fwd",
+"s": "/AirSide/Floors/F05/Gfx_AHU_F05_Fwd",
+"u": "water flow CHS-F5",
+"ok": true
+},
+{
+"p": "Gfx_AHU_F05_Rev",
+"s": "",
+"u": "reverse flow CHS-F5",
+"ok": false
+},
+{
+"p": "Gfx_AHU_F06_Fwd",
+"s": "/AirSide/Floors/F06/Gfx_AHU_F06_Fwd",
+"u": "water flow CHS-F6",
+"ok": true
+},
+{
+"p": "Gfx_AHU_F06_Rev",
+"s": "",
+"u": "reverse flow CHS-F6",
+"ok": false
+},
+{
+"p": "Gfx_AHU_F07_Fwd",
+"s": "/AirSide/Floors/F07/Gfx_AHU_F07_Fwd",
+"u": "water flow CHS-F7",
+"ok": true
+},
+{
+"p": "Gfx_AHU_F07_Rev",
+"s": "",
+"u": "reverse flow CHS-F7",
+"ok": false
+},
+{
+"p": "Gfx_AHU_F08_Fwd",
+"s": "/AirSide/Floors/F08/Gfx_AHU_F08_Fwd",
+"u": "water flow CHS-F8",
+"ok": true
+},
+{
+"p": "Gfx_AHU_F08_Rev",
+"s": "",
+"u": "reverse flow CHS-F8",
+"ok": false
+},
+{
+"p": "AHU01_Status",
+"s": "/AirSide/AHU01/Points/AHU01_Status",
+"u": "AHU-01 running",
+"ok": true
+},
+{
+"p": "AHU01_ValveCmd",
+"s": "/AirSide/AHU01/Points/AHU01_ValveCmd",
+"u": "AHU-01 CHW valve",
+"ok": true
+},
+{
+"p": "AHU02_Status",
+"s": "/AirSide/AHU02/Points/AHU02_Status",
+"u": "AHU-02 running",
+"ok": true
+},
+{
+"p": "AHU02_ValveCmd",
+"s": "/AirSide/AHU02/Points/AHU02_ValveCmd",
+"u": "AHU-02 CHW valve",
+"ok": true
+},
+{
+"p": "OAU01_Status",
+"s": "/AirSide/OAU01/Points/OAU01_Status",
+"u": "OAU-01 running",
+"ok": true
+},
+{
+"p": "OAU01_ValveCmd",
+"s": "/AirSide/OAU01/Points/OAU01_ValveCmd",
+"u": "OAU-01 CHW valve",
+"ok": true
+},
+{
+"p": "FCU01_Status",
+"s": "/AirSide/FCU01/Points/FCU01_Status",
+"u": "FCU-01 running",
+"ok": true
+},
+{
+"p": "FCU02_Status",
+"s": "/AirSide/FCU02/Points/FCU02_Status",
+"u": "FCU-02 running",
+"ok": true
+},
+{
+"p": "FCU03_Status",
+"s": "/AirSide/FCU03/Points/FCU03_Status",
+"u": "FCU-03 running",
+"ok": true
+},
+{
+"p": "FCU04_Status",
+"s": "/AirSide/FCU04/Points/FCU04_Status",
+"u": "FCU-04 running",
+"ok": true
+},
+{
+"p": "AHU_F02_Status",
+"s": "/AirSide/Floors/F02/AHU_F02_Status",
+"u": "AHU-F02 running",
+"ok": true
+},
+{
+"p": "AHU_F03_Status",
+"s": "/AirSide/Floors/F03/AHU_F03_Status",
+"u": "AHU-F03 running",
+"ok": true
+},
+{
+"p": "AHU_F04_Status",
+"s": "/AirSide/Floors/F04/AHU_F04_Status",
+"u": "AHU-F04 running",
+"ok": true
+},
+{
+"p": "AHU_F05_Status",
+"s": "/AirSide/Floors/F05/AHU_F05_Status",
+"u": "AHU-F05 running",
+"ok": true
+},
+{
+"p": "AHU_F06_Status",
+"s": "/AirSide/Floors/F06/AHU_F06_Status",
+"u": "AHU-F06 running",
+"ok": true
+},
+{
+"p": "AHU_F07_Status",
+"s": "/AirSide/Floors/F07/AHU_F07_Status",
+"u": "AHU-F07 running",
+"ok": true
+},
+{
+"p": "AHU_F08_Status",
+"s": "/AirSide/Floors/F08/AHU_F08_Status",
+"u": "AHU-F08 running",
+"ok": true
+},
+{
+"p": "EF01_Status",
+"s": "/AirSide/EF01/Points/EF01_Status",
+"u": "EF-01 running",
+"ok": true
+},
+{
+"p": "EF02_Status",
+"s": "/AirSide/EF02/Points/EF02_Status",
+"u": "EF-02 running",
+"ok": true
+},
+{
+"p": "EF03_Status",
+"s": "/AirSide/EF03/Points/EF03_Status",
+"u": "EF-03 running",
+"ok": true
+},
+{
+"p": "CPEF01_Status",
+"s": "/AirSide/CPEF01/Points/CPEF01_Status",
+"u": "CPEF-01 running",
+"ok": true
+},
+{
+"p": "LSF01_Status",
+"s": "/AirSide/LSF01/Points/LSF01_Status",
+"u": "LSF-01 running",
+"ok": true
+},
+{
+"p": "SEF01_Status",
+"s": "/AirSide/SEF01/Points/SEF01_Status",
+"u": "SEF-01 running",
+"ok": true
+},
+{
+"p": "CH01RunProof",
+"s": "/ChillerPlant/Chiller01/Points/CH01RunProof",
+"u": "CH-01 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CH01LoadPct",
+"s": "/ChillerPlant/Chiller01/Points/CH01LoadPct",
+"u": "CH-01 load",
+"ok": true
+},
+{
+"p": "CH01_Installed",
+"s": "/ChillerPlant/Chiller01/Permissive/CH01_Installed",
+"u": "CH01 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CH02RunProof",
+"s": "/ChillerPlant/Chiller02/Points/CH02RunProof",
+"u": "CH-02 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CH02LoadPct",
+"s": "/ChillerPlant/Chiller02/Points/CH02LoadPct",
+"u": "CH-02 load",
+"ok": true
+},
+{
+"p": "CH02_Installed",
+"s": "/ChillerPlant/Chiller02/Permissive/CH02_Installed",
+"u": "CH02 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CH03RunProof",
+"s": "/ChillerPlant/Expansion/CH03/CH03RunProof",
+"u": "CH-03 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CH03LoadPct",
+"s": "/ChillerPlant/Expansion/CH03/CH03LoadPct",
+"u": "CH-03 load",
+"ok": true
+},
+{
+"p": "CH03_Installed",
+"s": "/ChillerPlant/Expansion/CH03/CH03_Installed",
+"u": "CH03 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CH04RunProof",
+"s": "/ChillerPlant/Expansion/CH04/CH04RunProof",
+"u": "CH-04 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CH04LoadPct",
+"s": "/ChillerPlant/Expansion/CH04/CH04LoadPct",
+"u": "CH-04 load",
+"ok": true
+},
+{
+"p": "CH04_Installed",
+"s": "/ChillerPlant/Expansion/CH04/CH04_Installed",
+"u": "CH04 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CH05RunProof",
+"s": "/ChillerPlant/Expansion/CH05/CH05RunProof",
+"u": "CH-05 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CH05LoadPct",
+"s": "/ChillerPlant/Expansion/CH05/CH05LoadPct",
+"u": "CH-05 load",
+"ok": true
+},
+{
+"p": "CH05_Installed",
+"s": "/ChillerPlant/Expansion/CH05/CH05_Installed",
+"u": "CH05 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CH06RunProof",
+"s": "/ChillerPlant/Expansion/CH06/CH06RunProof",
+"u": "CH-06 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CH06LoadPct",
+"s": "/ChillerPlant/Expansion/CH06/CH06LoadPct",
+"u": "CH-06 load",
+"ok": true
+},
+{
+"p": "CH06_Installed",
+"s": "/ChillerPlant/Expansion/CH06/CH06_Installed",
+"u": "CH06 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CHP01RunProof",
+"s": "/ChillerPlant/CHP01/Points/CHP01RunProof",
+"u": "CHP-01 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CHP01SpeedCmd",
+"s": "/ChillerPlant/CHP01/Points/CHP01SpeedCmd",
+"u": "CHP-01 speed",
+"ok": true
+},
+{
+"p": "CHP01_Installed",
+"s": "/ChillerPlant/CHP01/Logic/CHP01_Installed",
+"u": "CHP01 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CHP02RunProof",
+"s": "/ChillerPlant/CHP02/Points/CHP02RunProof",
+"u": "CHP-02 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CHP02SpeedCmd",
+"s": "/ChillerPlant/CHP02/Points/CHP02SpeedCmd",
+"u": "CHP-02 speed",
+"ok": true
+},
+{
+"p": "CHP02_Installed",
+"s": "/ChillerPlant/CHP02/Logic/CHP02_Installed",
+"u": "CHP02 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CHP03RunProof",
+"s": "/ChillerPlant/Expansion/CHP03/CHP03RunProof",
+"u": "CHP-03 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CHP03SpeedCmd",
+"s": "/ChillerPlant/Expansion/CHP03/CHP03SpeedCmd",
+"u": "CHP-03 speed",
+"ok": true
+},
+{
+"p": "CHP03_Installed",
+"s": "/ChillerPlant/Expansion/CHP03/CHP03_Installed",
+"u": "CHP03 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CHP04RunProof",
+"s": "/ChillerPlant/Expansion/CHP04/CHP04RunProof",
+"u": "CHP-04 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CHP04SpeedCmd",
+"s": "/ChillerPlant/Expansion/CHP04/CHP04SpeedCmd",
+"u": "CHP-04 speed",
+"ok": true
+},
+{
+"p": "CHP04_Installed",
+"s": "/ChillerPlant/Expansion/CHP04/CHP04_Installed",
+"u": "CHP04 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CHP05RunProof",
+"s": "/ChillerPlant/Expansion/CHP05/CHP05RunProof",
+"u": "CHP-05 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CHP05SpeedCmd",
+"s": "/ChillerPlant/Expansion/CHP05/CHP05SpeedCmd",
+"u": "CHP-05 speed",
+"ok": true
+},
+{
+"p": "CHP05_Installed",
+"s": "/ChillerPlant/Expansion/CHP05/CHP05_Installed",
+"u": "CHP05 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CHP06RunProof",
+"s": "/ChillerPlant/Expansion/CHP06/CHP06RunProof",
+"u": "CHP-06 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CHP06SpeedCmd",
+"s": "/ChillerPlant/Expansion/CHP06/CHP06SpeedCmd",
+"u": "CHP-06 speed",
+"ok": true
+},
+{
+"p": "CHP06_Installed",
+"s": "/ChillerPlant/Expansion/CHP06/CHP06_Installed",
+"u": "CHP06 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CDP01RunProof",
+"s": "/ChillerPlant/CDP01/Points/CDP01RunProof",
+"u": "CDP-01 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CDP01SpeedCmd",
+"s": "/ChillerPlant/CDP01/Points/CDP01SpeedCmd",
+"u": "CDP-01 speed",
+"ok": true
+},
+{
+"p": "CDP01_Installed",
+"s": "/ChillerPlant/CDP01/Logic/CDP01_Installed",
+"u": "CDP01 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CDP02RunProof",
+"s": "/ChillerPlant/CDP02/Points/CDP02RunProof",
+"u": "CDP-02 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CDP02SpeedCmd",
+"s": "/ChillerPlant/CDP02/Points/CDP02SpeedCmd",
+"u": "CDP-02 speed",
+"ok": true
+},
+{
+"p": "CDP02_Installed",
+"s": "/ChillerPlant/CDP02/Logic/CDP02_Installed",
+"u": "CDP02 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CDP03RunProof",
+"s": "/ChillerPlant/Expansion/CDP03/CDP03RunProof",
+"u": "CDP-03 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CDP03SpeedCmd",
+"s": "/ChillerPlant/Expansion/CDP03/CDP03SpeedCmd",
+"u": "CDP-03 speed",
+"ok": true
+},
+{
+"p": "CDP03_Installed",
+"s": "/ChillerPlant/Expansion/CDP03/CDP03_Installed",
+"u": "CDP03 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CDP04RunProof",
+"s": "/ChillerPlant/Expansion/CDP04/CDP04RunProof",
+"u": "CDP-04 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CDP04SpeedCmd",
+"s": "/ChillerPlant/Expansion/CDP04/CDP04SpeedCmd",
+"u": "CDP-04 speed",
+"ok": true
+},
+{
+"p": "CDP04_Installed",
+"s": "/ChillerPlant/Expansion/CDP04/CDP04_Installed",
+"u": "CDP04 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CDP05RunProof",
+"s": "/ChillerPlant/Expansion/CDP05/CDP05RunProof",
+"u": "CDP-05 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CDP05SpeedCmd",
+"s": "/ChillerPlant/Expansion/CDP05/CDP05SpeedCmd",
+"u": "CDP-05 speed",
+"ok": true
+},
+{
+"p": "CDP05_Installed",
+"s": "/ChillerPlant/Expansion/CDP05/CDP05_Installed",
+"u": "CDP05 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CDP06RunProof",
+"s": "/ChillerPlant/Expansion/CDP06/CDP06RunProof",
+"u": "CDP-06 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CDP06SpeedCmd",
+"s": "/ChillerPlant/Expansion/CDP06/CDP06SpeedCmd",
+"u": "CDP-06 speed",
+"ok": true
+},
+{
+"p": "CDP06_Installed",
+"s": "/ChillerPlant/Expansion/CDP06/CDP06_Installed",
+"u": "CDP06 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CT01_01RunProof",
+"s": "/ChillerPlant/CT01/Cell01/Points/CT01_01RunProof",
+"u": "CT-01/1 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CT01_01SpeedCmd",
+"s": "/ChillerPlant/CT01/Cell01/Points/CT01_01SpeedCmd",
+"u": "CT-01/1 speed",
+"ok": true
+},
+{
+"p": "CT01_Installed",
+"s": "/ChillerPlant/CT01/Logic/CT01_Installed",
+"u": "CT01 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CT01_02RunProof",
+"s": "/ChillerPlant/CT01/Cell02/Points/CT01_02RunProof",
+"u": "CT-01/2 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CT01_02SpeedCmd",
+"s": "/ChillerPlant/CT01/Cell02/Points/CT01_02SpeedCmd",
+"u": "CT-01/2 speed",
+"ok": true
+},
+{
+"p": "CT02_01RunProof",
+"s": "/ChillerPlant/CT02/Cell01/Points/CT02_01RunProof",
+"u": "CT-02/1 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CT02_01SpeedCmd",
+"s": "/ChillerPlant/CT02/Cell01/Points/CT02_01SpeedCmd",
+"u": "CT-02/1 speed",
+"ok": true
+},
+{
+"p": "CT02_Installed",
+"s": "/ChillerPlant/CT02/Logic/CT02_Installed",
+"u": "CT02 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CT02_02RunProof",
+"s": "/ChillerPlant/CT02/Cell02/Points/CT02_02RunProof",
+"u": "CT-02/2 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CT02_02SpeedCmd",
+"s": "/ChillerPlant/CT02/Cell02/Points/CT02_02SpeedCmd",
+"u": "CT-02/2 speed",
+"ok": true
+},
+{
+"p": "CT03RunProof",
+"s": "/ChillerPlant/Expansion/CT03/CT03RunProof",
+"u": "CT-03/1 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CT03SpeedCmd",
+"s": "/ChillerPlant/Expansion/CT03/CT03SpeedCmd",
+"u": "CT-03/1 speed",
+"ok": true
+},
+{
+"p": "CT03_Installed",
+"s": "/ChillerPlant/Expansion/CT03/CT03_Installed",
+"u": "CT03 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CT04RunProof",
+"s": "/ChillerPlant/Expansion/CT04/CT04RunProof",
+"u": "CT-04/1 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CT04SpeedCmd",
+"s": "/ChillerPlant/Expansion/CT04/CT04SpeedCmd",
+"u": "CT-04/1 speed",
+"ok": true
+},
+{
+"p": "CT04_Installed",
+"s": "/ChillerPlant/Expansion/CT04/CT04_Installed",
+"u": "CT04 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CT05RunProof",
+"s": "/ChillerPlant/Expansion/CT05/CT05RunProof",
+"u": "CT-05/1 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CT05SpeedCmd",
+"s": "/ChillerPlant/Expansion/CT05/CT05SpeedCmd",
+"u": "CT-05/1 speed",
+"ok": true
+},
+{
+"p": "CT05_Installed",
+"s": "/ChillerPlant/Expansion/CT05/CT05_Installed",
+"u": "CT05 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "CT06RunProof",
+"s": "/ChillerPlant/Expansion/CT06/CT06RunProof",
+"u": "CT-06/1 running (rotation, label)",
+"ok": true
+},
+{
+"p": "CT06SpeedCmd",
+"s": "/ChillerPlant/Expansion/CT06/CT06SpeedCmd",
+"u": "CT-06/1 speed",
+"ok": true
+},
+{
+"p": "CT06_Installed",
+"s": "/ChillerPlant/Expansion/CT06/CT06_Installed",
+"u": "CT06 installed (ghost when off)",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0101",
+"s": "/AirSide/Zones/Z01_0101/ZoneTemperatureAvg_01_0101",
+"u": "zone 01_0101 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0101",
+"s": "/AirSide/Zones/Z01_0101/ZoneHumidityAvg_01_0101",
+"u": "zone 01_0101 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0101",
+"s": "/AirSide/Zones/Z01_0101/ZoneCO2_01_0101",
+"u": "zone 01_0101 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0101",
+"s": "/AirSide/Zones/Z01_0101/ZoneOutOfService_01_0101",
+"u": "zone 01_0101 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0102",
+"s": "/AirSide/Zones/Z01_0102/ZoneTemperatureAvg_01_0102",
+"u": "zone 01_0102 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0102",
+"s": "/AirSide/Zones/Z01_0102/ZoneHumidityAvg_01_0102",
+"u": "zone 01_0102 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0102",
+"s": "/AirSide/Zones/Z01_0102/ZoneCO2_01_0102",
+"u": "zone 01_0102 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0102",
+"s": "/AirSide/Zones/Z01_0102/ZoneOutOfService_01_0102",
+"u": "zone 01_0102 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0103",
+"s": "/AirSide/Zones/Z01_0103/ZoneTemperatureAvg_01_0103",
+"u": "zone 01_0103 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0103",
+"s": "/AirSide/Zones/Z01_0103/ZoneHumidityAvg_01_0103",
+"u": "zone 01_0103 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0103",
+"s": "/AirSide/Zones/Z01_0103/ZoneCO2_01_0103",
+"u": "zone 01_0103 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0103",
+"s": "/AirSide/Zones/Z01_0103/ZoneOutOfService_01_0103",
+"u": "zone 01_0103 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0104",
+"s": "/AirSide/Zones/Z01_0104/ZoneTemperatureAvg_01_0104",
+"u": "zone 01_0104 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0104",
+"s": "/AirSide/Zones/Z01_0104/ZoneHumidityAvg_01_0104",
+"u": "zone 01_0104 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0104",
+"s": "/AirSide/Zones/Z01_0104/ZoneCO2_01_0104",
+"u": "zone 01_0104 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0104",
+"s": "/AirSide/Zones/Z01_0104/ZoneOutOfService_01_0104",
+"u": "zone 01_0104 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0105",
+"s": "/AirSide/Zones/Z01_0105/ZoneTemperatureAvg_01_0105",
+"u": "zone 01_0105 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0105",
+"s": "/AirSide/Zones/Z01_0105/ZoneHumidityAvg_01_0105",
+"u": "zone 01_0105 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0105",
+"s": "/AirSide/Zones/Z01_0105/ZoneCO2_01_0105",
+"u": "zone 01_0105 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0105",
+"s": "/AirSide/Zones/Z01_0105/ZoneOutOfService_01_0105",
+"u": "zone 01_0105 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0106",
+"s": "/AirSide/Zones/Z01_0106/ZoneTemperatureAvg_01_0106",
+"u": "zone 01_0106 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0106",
+"s": "/AirSide/Zones/Z01_0106/ZoneHumidityAvg_01_0106",
+"u": "zone 01_0106 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0106",
+"s": "/AirSide/Zones/Z01_0106/ZoneCO2_01_0106",
+"u": "zone 01_0106 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0106",
+"s": "/AirSide/Zones/Z01_0106/ZoneOutOfService_01_0106",
+"u": "zone 01_0106 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0107",
+"s": "/AirSide/Zones/Z01_0107/ZoneTemperatureAvg_01_0107",
+"u": "zone 01_0107 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0107",
+"s": "/AirSide/Zones/Z01_0107/ZoneHumidityAvg_01_0107",
+"u": "zone 01_0107 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0107",
+"s": "/AirSide/Zones/Z01_0107/ZoneCO2_01_0107",
+"u": "zone 01_0107 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0107",
+"s": "/AirSide/Zones/Z01_0107/ZoneOutOfService_01_0107",
+"u": "zone 01_0107 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0108",
+"s": "/AirSide/Zones/Z01_0108/ZoneTemperatureAvg_01_0108",
+"u": "zone 01_0108 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0108",
+"s": "/AirSide/Zones/Z01_0108/ZoneHumidityAvg_01_0108",
+"u": "zone 01_0108 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0108",
+"s": "/AirSide/Zones/Z01_0108/ZoneCO2_01_0108",
+"u": "zone 01_0108 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0108",
+"s": "/AirSide/Zones/Z01_0108/ZoneOutOfService_01_0108",
+"u": "zone 01_0108 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0109",
+"s": "/AirSide/Zones/Z01_0109/ZoneTemperatureAvg_01_0109",
+"u": "zone 01_0109 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0109",
+"s": "/AirSide/Zones/Z01_0109/ZoneHumidityAvg_01_0109",
+"u": "zone 01_0109 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0109",
+"s": "/AirSide/Zones/Z01_0109/ZoneCO2_01_0109",
+"u": "zone 01_0109 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0109",
+"s": "/AirSide/Zones/Z01_0109/ZoneOutOfService_01_0109",
+"u": "zone 01_0109 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0110",
+"s": "/AirSide/Zones/Z01_0110/ZoneTemperatureAvg_01_0110",
+"u": "zone 01_0110 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0110",
+"s": "/AirSide/Zones/Z01_0110/ZoneHumidityAvg_01_0110",
+"u": "zone 01_0110 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0110",
+"s": "/AirSide/Zones/Z01_0110/ZoneCO2_01_0110",
+"u": "zone 01_0110 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0110",
+"s": "/AirSide/Zones/Z01_0110/ZoneOutOfService_01_0110",
+"u": "zone 01_0110 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0111",
+"s": "/AirSide/Zones/Z01_0111/ZoneTemperatureAvg_01_0111",
+"u": "zone 01_0111 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0111",
+"s": "/AirSide/Zones/Z01_0111/ZoneHumidityAvg_01_0111",
+"u": "zone 01_0111 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0111",
+"s": "/AirSide/Zones/Z01_0111/ZoneCO2_01_0111",
+"u": "zone 01_0111 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0111",
+"s": "/AirSide/Zones/Z01_0111/ZoneOutOfService_01_0111",
+"u": "zone 01_0111 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_01_0112",
+"s": "/AirSide/Zones/Z01_0112/ZoneTemperatureAvg_01_0112",
+"u": "zone 01_0112 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_01_0112",
+"s": "/AirSide/Zones/Z01_0112/ZoneHumidityAvg_01_0112",
+"u": "zone 01_0112 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_01_0112",
+"s": "/AirSide/Zones/Z01_0112/ZoneCO2_01_0112",
+"u": "zone 01_0112 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_01_0112",
+"s": "/AirSide/Zones/Z01_0112/ZoneOutOfService_01_0112",
+"u": "zone 01_0112 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_02_0201",
+"s": "/AirSide/Floors/F02/Zones/ZoneTemperatureAvg_02_0201",
+"u": "zone 02_0201 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_02_0201",
+"s": "/AirSide/Floors/F02/Zones/ZoneHumidityAvg_02_0201",
+"u": "zone 02_0201 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_02_0201",
+"s": "/AirSide/Floors/F02/Zones/ZoneCO2_02_0201",
+"u": "zone 02_0201 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_02_0201",
+"s": "/AirSide/Floors/F02/Zones/ZoneOutOfService_02_0201",
+"u": "zone 02_0201 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_02_0202",
+"s": "/AirSide/Floors/F02/Zones/ZoneTemperatureAvg_02_0202",
+"u": "zone 02_0202 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_02_0202",
+"s": "/AirSide/Floors/F02/Zones/ZoneHumidityAvg_02_0202",
+"u": "zone 02_0202 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_02_0202",
+"s": "/AirSide/Floors/F02/Zones/ZoneCO2_02_0202",
+"u": "zone 02_0202 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_02_0202",
+"s": "/AirSide/Floors/F02/Zones/ZoneOutOfService_02_0202",
+"u": "zone 02_0202 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_02_0203",
+"s": "/AirSide/Floors/F02/Zones/ZoneTemperatureAvg_02_0203",
+"u": "zone 02_0203 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_02_0203",
+"s": "/AirSide/Floors/F02/Zones/ZoneHumidityAvg_02_0203",
+"u": "zone 02_0203 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_02_0203",
+"s": "/AirSide/Floors/F02/Zones/ZoneCO2_02_0203",
+"u": "zone 02_0203 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_02_0203",
+"s": "/AirSide/Floors/F02/Zones/ZoneOutOfService_02_0203",
+"u": "zone 02_0203 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_02_0204",
+"s": "/AirSide/Floors/F02/Zones/ZoneTemperatureAvg_02_0204",
+"u": "zone 02_0204 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_02_0204",
+"s": "/AirSide/Floors/F02/Zones/ZoneHumidityAvg_02_0204",
+"u": "zone 02_0204 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_02_0204",
+"s": "/AirSide/Floors/F02/Zones/ZoneCO2_02_0204",
+"u": "zone 02_0204 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_02_0204",
+"s": "/AirSide/Floors/F02/Zones/ZoneOutOfService_02_0204",
+"u": "zone 02_0204 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_03_0301",
+"s": "/AirSide/Floors/F03/Zones/ZoneTemperatureAvg_03_0301",
+"u": "zone 03_0301 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_03_0301",
+"s": "/AirSide/Floors/F03/Zones/ZoneHumidityAvg_03_0301",
+"u": "zone 03_0301 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_03_0301",
+"s": "/AirSide/Floors/F03/Zones/ZoneCO2_03_0301",
+"u": "zone 03_0301 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_03_0301",
+"s": "/AirSide/Floors/F03/Zones/ZoneOutOfService_03_0301",
+"u": "zone 03_0301 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_03_0302",
+"s": "/AirSide/Floors/F03/Zones/ZoneTemperatureAvg_03_0302",
+"u": "zone 03_0302 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_03_0302",
+"s": "/AirSide/Floors/F03/Zones/ZoneHumidityAvg_03_0302",
+"u": "zone 03_0302 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_03_0302",
+"s": "/AirSide/Floors/F03/Zones/ZoneCO2_03_0302",
+"u": "zone 03_0302 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_03_0302",
+"s": "/AirSide/Floors/F03/Zones/ZoneOutOfService_03_0302",
+"u": "zone 03_0302 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_03_0303",
+"s": "/AirSide/Floors/F03/Zones/ZoneTemperatureAvg_03_0303",
+"u": "zone 03_0303 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_03_0303",
+"s": "/AirSide/Floors/F03/Zones/ZoneHumidityAvg_03_0303",
+"u": "zone 03_0303 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_03_0303",
+"s": "/AirSide/Floors/F03/Zones/ZoneCO2_03_0303",
+"u": "zone 03_0303 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_03_0303",
+"s": "/AirSide/Floors/F03/Zones/ZoneOutOfService_03_0303",
+"u": "zone 03_0303 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_03_0304",
+"s": "/AirSide/Floors/F03/Zones/ZoneTemperatureAvg_03_0304",
+"u": "zone 03_0304 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_03_0304",
+"s": "/AirSide/Floors/F03/Zones/ZoneHumidityAvg_03_0304",
+"u": "zone 03_0304 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_03_0304",
+"s": "/AirSide/Floors/F03/Zones/ZoneCO2_03_0304",
+"u": "zone 03_0304 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_03_0304",
+"s": "/AirSide/Floors/F03/Zones/ZoneOutOfService_03_0304",
+"u": "zone 03_0304 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_04_0401",
+"s": "/AirSide/Floors/F04/Zones/ZoneTemperatureAvg_04_0401",
+"u": "zone 04_0401 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_04_0401",
+"s": "/AirSide/Floors/F04/Zones/ZoneHumidityAvg_04_0401",
+"u": "zone 04_0401 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_04_0401",
+"s": "/AirSide/Floors/F04/Zones/ZoneCO2_04_0401",
+"u": "zone 04_0401 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_04_0401",
+"s": "/AirSide/Floors/F04/Zones/ZoneOutOfService_04_0401",
+"u": "zone 04_0401 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_04_0402",
+"s": "/AirSide/Floors/F04/Zones/ZoneTemperatureAvg_04_0402",
+"u": "zone 04_0402 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_04_0402",
+"s": "/AirSide/Floors/F04/Zones/ZoneHumidityAvg_04_0402",
+"u": "zone 04_0402 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_04_0402",
+"s": "/AirSide/Floors/F04/Zones/ZoneCO2_04_0402",
+"u": "zone 04_0402 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_04_0402",
+"s": "/AirSide/Floors/F04/Zones/ZoneOutOfService_04_0402",
+"u": "zone 04_0402 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_04_0403",
+"s": "/AirSide/Floors/F04/Zones/ZoneTemperatureAvg_04_0403",
+"u": "zone 04_0403 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_04_0403",
+"s": "/AirSide/Floors/F04/Zones/ZoneHumidityAvg_04_0403",
+"u": "zone 04_0403 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_04_0403",
+"s": "/AirSide/Floors/F04/Zones/ZoneCO2_04_0403",
+"u": "zone 04_0403 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_04_0403",
+"s": "/AirSide/Floors/F04/Zones/ZoneOutOfService_04_0403",
+"u": "zone 04_0403 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_04_0404",
+"s": "/AirSide/Floors/F04/Zones/ZoneTemperatureAvg_04_0404",
+"u": "zone 04_0404 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_04_0404",
+"s": "/AirSide/Floors/F04/Zones/ZoneHumidityAvg_04_0404",
+"u": "zone 04_0404 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_04_0404",
+"s": "/AirSide/Floors/F04/Zones/ZoneCO2_04_0404",
+"u": "zone 04_0404 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_04_0404",
+"s": "/AirSide/Floors/F04/Zones/ZoneOutOfService_04_0404",
+"u": "zone 04_0404 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_05_0501",
+"s": "/AirSide/Floors/F05/Zones/ZoneTemperatureAvg_05_0501",
+"u": "zone 05_0501 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_05_0501",
+"s": "/AirSide/Floors/F05/Zones/ZoneHumidityAvg_05_0501",
+"u": "zone 05_0501 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_05_0501",
+"s": "/AirSide/Floors/F05/Zones/ZoneCO2_05_0501",
+"u": "zone 05_0501 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_05_0501",
+"s": "/AirSide/Floors/F05/Zones/ZoneOutOfService_05_0501",
+"u": "zone 05_0501 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_05_0502",
+"s": "/AirSide/Floors/F05/Zones/ZoneTemperatureAvg_05_0502",
+"u": "zone 05_0502 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_05_0502",
+"s": "/AirSide/Floors/F05/Zones/ZoneHumidityAvg_05_0502",
+"u": "zone 05_0502 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_05_0502",
+"s": "/AirSide/Floors/F05/Zones/ZoneCO2_05_0502",
+"u": "zone 05_0502 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_05_0502",
+"s": "/AirSide/Floors/F05/Zones/ZoneOutOfService_05_0502",
+"u": "zone 05_0502 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_05_0503",
+"s": "/AirSide/Floors/F05/Zones/ZoneTemperatureAvg_05_0503",
+"u": "zone 05_0503 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_05_0503",
+"s": "/AirSide/Floors/F05/Zones/ZoneHumidityAvg_05_0503",
+"u": "zone 05_0503 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_05_0503",
+"s": "/AirSide/Floors/F05/Zones/ZoneCO2_05_0503",
+"u": "zone 05_0503 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_05_0503",
+"s": "/AirSide/Floors/F05/Zones/ZoneOutOfService_05_0503",
+"u": "zone 05_0503 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_05_0504",
+"s": "/AirSide/Floors/F05/Zones/ZoneTemperatureAvg_05_0504",
+"u": "zone 05_0504 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_05_0504",
+"s": "/AirSide/Floors/F05/Zones/ZoneHumidityAvg_05_0504",
+"u": "zone 05_0504 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_05_0504",
+"s": "/AirSide/Floors/F05/Zones/ZoneCO2_05_0504",
+"u": "zone 05_0504 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_05_0504",
+"s": "/AirSide/Floors/F05/Zones/ZoneOutOfService_05_0504",
+"u": "zone 05_0504 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_06_0601",
+"s": "/AirSide/Floors/F06/Zones/ZoneTemperatureAvg_06_0601",
+"u": "zone 06_0601 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_06_0601",
+"s": "/AirSide/Floors/F06/Zones/ZoneHumidityAvg_06_0601",
+"u": "zone 06_0601 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_06_0601",
+"s": "/AirSide/Floors/F06/Zones/ZoneCO2_06_0601",
+"u": "zone 06_0601 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_06_0601",
+"s": "/AirSide/Floors/F06/Zones/ZoneOutOfService_06_0601",
+"u": "zone 06_0601 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_06_0602",
+"s": "/AirSide/Floors/F06/Zones/ZoneTemperatureAvg_06_0602",
+"u": "zone 06_0602 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_06_0602",
+"s": "/AirSide/Floors/F06/Zones/ZoneHumidityAvg_06_0602",
+"u": "zone 06_0602 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_06_0602",
+"s": "/AirSide/Floors/F06/Zones/ZoneCO2_06_0602",
+"u": "zone 06_0602 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_06_0602",
+"s": "/AirSide/Floors/F06/Zones/ZoneOutOfService_06_0602",
+"u": "zone 06_0602 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_06_0603",
+"s": "/AirSide/Floors/F06/Zones/ZoneTemperatureAvg_06_0603",
+"u": "zone 06_0603 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_06_0603",
+"s": "/AirSide/Floors/F06/Zones/ZoneHumidityAvg_06_0603",
+"u": "zone 06_0603 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_06_0603",
+"s": "/AirSide/Floors/F06/Zones/ZoneCO2_06_0603",
+"u": "zone 06_0603 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_06_0603",
+"s": "/AirSide/Floors/F06/Zones/ZoneOutOfService_06_0603",
+"u": "zone 06_0603 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_06_0604",
+"s": "/AirSide/Floors/F06/Zones/ZoneTemperatureAvg_06_0604",
+"u": "zone 06_0604 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_06_0604",
+"s": "/AirSide/Floors/F06/Zones/ZoneHumidityAvg_06_0604",
+"u": "zone 06_0604 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_06_0604",
+"s": "/AirSide/Floors/F06/Zones/ZoneCO2_06_0604",
+"u": "zone 06_0604 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_06_0604",
+"s": "/AirSide/Floors/F06/Zones/ZoneOutOfService_06_0604",
+"u": "zone 06_0604 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_07_0701",
+"s": "/AirSide/Floors/F07/Zones/ZoneTemperatureAvg_07_0701",
+"u": "zone 07_0701 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_07_0701",
+"s": "/AirSide/Floors/F07/Zones/ZoneHumidityAvg_07_0701",
+"u": "zone 07_0701 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_07_0701",
+"s": "/AirSide/Floors/F07/Zones/ZoneCO2_07_0701",
+"u": "zone 07_0701 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_07_0701",
+"s": "/AirSide/Floors/F07/Zones/ZoneOutOfService_07_0701",
+"u": "zone 07_0701 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_07_0702",
+"s": "/AirSide/Floors/F07/Zones/ZoneTemperatureAvg_07_0702",
+"u": "zone 07_0702 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_07_0702",
+"s": "/AirSide/Floors/F07/Zones/ZoneHumidityAvg_07_0702",
+"u": "zone 07_0702 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_07_0702",
+"s": "/AirSide/Floors/F07/Zones/ZoneCO2_07_0702",
+"u": "zone 07_0702 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_07_0702",
+"s": "/AirSide/Floors/F07/Zones/ZoneOutOfService_07_0702",
+"u": "zone 07_0702 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_07_0703",
+"s": "/AirSide/Floors/F07/Zones/ZoneTemperatureAvg_07_0703",
+"u": "zone 07_0703 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_07_0703",
+"s": "/AirSide/Floors/F07/Zones/ZoneHumidityAvg_07_0703",
+"u": "zone 07_0703 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_07_0703",
+"s": "/AirSide/Floors/F07/Zones/ZoneCO2_07_0703",
+"u": "zone 07_0703 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_07_0703",
+"s": "/AirSide/Floors/F07/Zones/ZoneOutOfService_07_0703",
+"u": "zone 07_0703 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_07_0704",
+"s": "/AirSide/Floors/F07/Zones/ZoneTemperatureAvg_07_0704",
+"u": "zone 07_0704 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_07_0704",
+"s": "/AirSide/Floors/F07/Zones/ZoneHumidityAvg_07_0704",
+"u": "zone 07_0704 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_07_0704",
+"s": "/AirSide/Floors/F07/Zones/ZoneCO2_07_0704",
+"u": "zone 07_0704 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_07_0704",
+"s": "/AirSide/Floors/F07/Zones/ZoneOutOfService_07_0704",
+"u": "zone 07_0704 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_08_0801",
+"s": "/AirSide/Floors/F08/Zones/ZoneTemperatureAvg_08_0801",
+"u": "zone 08_0801 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_08_0801",
+"s": "/AirSide/Floors/F08/Zones/ZoneHumidityAvg_08_0801",
+"u": "zone 08_0801 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_08_0801",
+"s": "/AirSide/Floors/F08/Zones/ZoneCO2_08_0801",
+"u": "zone 08_0801 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_08_0801",
+"s": "/AirSide/Floors/F08/Zones/ZoneOutOfService_08_0801",
+"u": "zone 08_0801 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_08_0802",
+"s": "/AirSide/Floors/F08/Zones/ZoneTemperatureAvg_08_0802",
+"u": "zone 08_0802 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_08_0802",
+"s": "/AirSide/Floors/F08/Zones/ZoneHumidityAvg_08_0802",
+"u": "zone 08_0802 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_08_0802",
+"s": "/AirSide/Floors/F08/Zones/ZoneCO2_08_0802",
+"u": "zone 08_0802 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_08_0802",
+"s": "/AirSide/Floors/F08/Zones/ZoneOutOfService_08_0802",
+"u": "zone 08_0802 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_08_0803",
+"s": "/AirSide/Floors/F08/Zones/ZoneTemperatureAvg_08_0803",
+"u": "zone 08_0803 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_08_0803",
+"s": "/AirSide/Floors/F08/Zones/ZoneHumidityAvg_08_0803",
+"u": "zone 08_0803 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_08_0803",
+"s": "/AirSide/Floors/F08/Zones/ZoneCO2_08_0803",
+"u": "zone 08_0803 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_08_0803",
+"s": "/AirSide/Floors/F08/Zones/ZoneOutOfService_08_0803",
+"u": "zone 08_0803 out of service",
+"ok": true
+},
+{
+"p": "ZoneTemperatureAvg_08_0804",
+"s": "/AirSide/Floors/F08/Zones/ZoneTemperatureAvg_08_0804",
+"u": "zone 08_0804 colour / label",
+"ok": true
+},
+{
+"p": "ZoneHumidityAvg_08_0804",
+"s": "/AirSide/Floors/F08/Zones/ZoneHumidityAvg_08_0804",
+"u": "zone 08_0804 humidity",
+"ok": true
+},
+{
+"p": "ZoneCO2_08_0804",
+"s": "/AirSide/Floors/F08/Zones/ZoneCO2_08_0804",
+"u": "zone 08_0804 CO2",
+"ok": true
+},
+{
+"p": "ZoneOutOfService_08_0804",
+"s": "/AirSide/Floors/F08/Zones/ZoneOutOfService_08_0804",
+"u": "zone 08_0804 out of service",
+"ok": true
+},
+{
+"p": "FireAlarmSignal",
+"s": "/AirSide/Common/FireAlarmSignal",
+"u": "Fire alarm FACP-01",
+"ok": true
+}
+]

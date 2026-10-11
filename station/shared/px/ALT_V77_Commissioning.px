@@ -1,0 +1,1705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="uxBuilder:UxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="1920.0,1080.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <Rect fill="#12161b" stroke="#12161b" pen="1.0" geom="0.0,0.0,1920.0,1080.0"/>
+
+    <Label layout="0.0,0.0,1920.0,40.0" text="  ALT Reference V7.7 — Commissioning: point-to-point · functional tests · report" font="bold 18.0pt sans-serif" foreground="white" background="#0b0e11" halign="left"/>
+
+    <BoundLabel layout="1254.0,8.0,190.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#2e7d32" halign="center">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/Common/IO_AnyFieldSts" popupEnabled="false" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#2e7d32"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1450.0,8.0,460.0,24.0" text="REFERENCE SIMULATION – NOT PROJECT APPROVED" font="bold 10.0pt sans-serif" foreground="#263238" background="#ffca28" halign="center"/>
+
+    <Label layout="4.0,44.0,65.3,26.0" text="Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Plant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="72.3,44.0,65.3,26.0" text="Chiller Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_ChillerPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="140.6,44.0,65.3,26.0" text="CT Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_CTPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="208.9,44.0,65.3,26.0" text="Plant 3D" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Plant3D.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="277.1,44.0,65.3,26.0" text="Chillers" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Chillers.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="345.4,44.0,65.3,26.0" text="Pools" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_PlantDetail.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="413.7,44.0,65.3,26.0" text="Drives" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Drives.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="482.0,44.0,65.3,26.0" text="Valves" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Valves.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="550.3,44.0,65.3,26.0" text="Meters" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Meters.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="618.6,44.0,65.3,26.0" text="Schedules" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Schedules.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="686.9,44.0,65.3,26.0" text="Optimise" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Optimization.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="755.1,44.0,65.3,26.0" text="AI &amp; ΔT" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V75_AiDtGuard.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="823.4,44.0,65.3,26.0" text="Design" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V76_Design.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="891.7,44.0,65.3,26.0" text="Safety" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Safety.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="960.0,44.0,65.3,26.0" text="Health" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Health.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1028.3,44.0,65.3,26.0" text="CX Tests" font="bold 8.5pt sans-serif" foreground="white" background="#1e88e5" halign="center"/>
+
+    <Label layout="1096.6,44.0,65.3,26.0" text="Field IO" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_FieldIO.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1164.9,44.0,65.3,26.0" text="Energy" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_EnergyDashboard.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1233.1,44.0,65.3,26.0" text="KPI" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Energy.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1301.4,44.0,65.3,26.0" text="Alarms" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_AlarmsHistory.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1369.7,44.0,65.3,26.0" text="Sim" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Simulation.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1438.0,44.0,65.3,26.0" text="Air Side" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AirSide.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1506.3,44.0,65.3,26.0" text="Zones" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_Zones.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1574.6,44.0,65.3,26.0" text="AHU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1642.9,44.0,65.3,26.0" text="AHU-02" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU02.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1711.1,44.0,65.3,26.0" text="OAU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_OAU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1779.4,44.0,65.3,26.0" text="FCU" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_FCU.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1847.7,44.0,65.3,26.0" text="Ventilation" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Ventilation.px" popupEnabled="false"/>
+    </Label>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,80.0,470.0,330.0"/>
+
+    <Label layout="10.0,80.0,470.0,20.0" text="  COMMISSIONING CONTROL" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="14.0,104.0,226.0,20.0" text="Test mode" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="240.0,105.0,236.0,23.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_TestModeSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#f39c12"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,130.0,226.0,20.0" text="Test mode (set)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="240.0,131.0,236.0,23.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_TestMode/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_TestMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,156.0,226.0,20.0" text="Fault injection" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="240.0,157.0,236.0,23.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_SoftInject/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_SoftInject" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,182.0,226.0,20.0" text="Reset after each test" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="240.0,183.0,236.0,23.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_AutoResetAfterTest/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_AutoResetAfterTest" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,208.0,226.0,20.0" text="Run-all sequence" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="240.0,209.0,236.0,23.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/RunAll/CX_AutoSeqSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,234.0,226.0,20.0" text="Test mode left on &gt; 8 h" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="240.0,235.0,236.0,23.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_TestModeLeftOnAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#f39c12"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,260.0,226.0,20.0" text="AO stroke value %" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="240.0,261.0,236.0,23.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_StrokeValue" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,286.0,226.0,20.0" text="AO stroke source" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="240.0,287.0,236.0,23.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_StrokeUseManual/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_StrokeUseManual" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,312.0,226.0,20.0" text="AO stroke manual %" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="240.0,313.0,236.0,23.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_StrokeManualPct/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_StrokeManualPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="20.0,352.0,140.0,26.0" text="RUN ALL TESTS" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_RunAllFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <Button layout="170.0,352.0,120.0,26.0" text="ABORT" font="bold 10.0pt sans-serif" foreground="white" background="#c62828">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/Common/CX_AbortFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <Button layout="300.0,352.0,170.0,26.0" text="PLANT RESET" font="bold 10.0pt sans-serif" foreground="white" background="#c62828">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/PlantAlarmResetFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <Label layout="16.0,384.0,460.0,18.0" text="START / RUN ALL work directly (no TEST MODE). TEST MODE is for P2P isolate / stroke." font="8.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="16.0,400.0,460.0,18.0" text="Ready = precondition true now (e.g. CHP-01 running). Plant must run in SIMULATION or FIELD." font="8.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="490.0,80.0,1420.0,470.0"/>
+
+    <Label layout="490.0,80.0,1420.0,20.0" text="  FUNCTIONAL TESTS (automatic: inject -&gt; wait -&gt; check expected result)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="496.0,102.0,330.0,20.0" text="Test" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="830.0,102.0,86.0,20.0" text="Ready" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="920.0,102.0,90.0,20.0" text="Start" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1016.0,102.0,110.0,20.0" text="Status" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1132.0,102.0,90.0,20.0" text="PASS" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1228.0,102.0,90.0,20.0" text="FAIL" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1324.0,102.0,110.0,20.0" text="Result code" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="496.0,126.0,330.0,26.0" text="FT01  CHP-01 fault -&gt; CHP-02 standby starts" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,126.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT01/CX_FT01_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,126.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT01/CX_FT01_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,126.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT01/CX_FT01_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,126.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT01/CX_FT01_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,126.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT01/CX_FT01_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,126.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT01/CX_FT01_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="496.0,166.0,330.0,26.0" text="FT02  CDP-01 fault -&gt; CDP-02 standby starts" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,166.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT02/CX_FT02_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,166.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT02/CX_FT02_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,166.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT02/CX_FT02_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,166.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT02/CX_FT02_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,166.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT02/CX_FT02_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,166.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT02/CX_FT02_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="496.0,206.0,330.0,26.0" text="FT03  CT-01 fault -&gt; CT-02 takes over" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,206.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT03/CX_FT03_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,206.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT03/CX_FT03_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,206.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT03/CX_FT03_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,206.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT03/CX_FT03_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,206.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT03/CX_FT03_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,206.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT03/CX_FT03_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="496.0,246.0,330.0,26.0" text="FT04  CH-01 fault -&gt; CH-02 starts" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,246.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT04/CX_FT04_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,246.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT04/CX_FT04_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,246.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT04/CX_FT04_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,246.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT04/CX_FT04_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,246.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT04/CX_FT04_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,246.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT04/CX_FT04_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="496.0,286.0,330.0,26.0" text="FT05  CHWS sensor failure -&gt; fail-safe" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,286.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT05/CX_FT05_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,286.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT05/CX_FT05_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,286.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT05/CX_FT05_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,286.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT05/CX_FT05_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,286.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT05/CX_FT05_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,286.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT05/CX_FT05_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="496.0,326.0,330.0,26.0" text="FT06  Emergency stop -&gt; chillers stop" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,326.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT06/CX_FT06_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,326.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT06/CX_FT06_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,326.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT06/CX_FT06_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,326.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT06/CX_FT06_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,326.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT06/CX_FT06_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,326.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT06/CX_FT06_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="496.0,366.0,330.0,26.0" text="FT07  Refrigerant 1 200 ppm -&gt; vent ON, chillers OFF" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,366.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT07/CX_FT07_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,366.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT07/CX_FT07_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,366.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT07/CX_FT07_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,366.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT07/CX_FT07_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,366.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT07/CX_FT07_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,366.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT07/CX_FT07_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="496.0,406.0,330.0,26.0" text="FT08  Fire alarm -&gt; AHU / OAU stop" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,406.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT08/CX_FT08_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,406.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT08/CX_FT08_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,406.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT08/CX_FT08_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,406.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT08/CX_FT08_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,406.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT08/CX_FT08_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,406.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT08/CX_FT08_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="496.0,446.0,330.0,26.0" text="FT09  Phase failure 30 s -&gt; auto restart" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,446.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT09/CX_FT09_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,446.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT09/CX_FT09_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,446.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT09/CX_FT09_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,446.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT09/CX_FT09_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,446.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT09/CX_FT09_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,446.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT09/CX_FT09_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="496.0,486.0,330.0,26.0" text="FT10  CH-01 evap flow switch lost -&gt; trip" font="10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="830.0,486.0,86.0,26.0" font="bold 8.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT10/CX_FT10_ReadySts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="920.0,486.0,90.0,26.0" text="START" font="bold 10.0pt sans-serif" foreground="white" background="#1565c0">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT10/CX_FT10_StartFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+    <BoundLabel layout="1016.0,486.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT10/CX_FT10_RunningSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1565c0"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1132.0,486.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT10/CX_FT10_PassSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2e7d32"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1228.0,486.0,90.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT10/CX_FT10_FailSts" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1324.0,486.0,110.0,26.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/FunctionalTest/FT10/CX_FT10_Result" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1450.0,126.0,450.0,20.0" text="Result code" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <Label layout="1450.0,150.0,450.0,20.0" text="0  not run / cleared" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1450.0,172.0,450.0,20.0" text="1  running" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1450.0,194.0,450.0,20.0" text="2  PASS" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1450.0,216.0,450.0,20.0" text="3  FAIL (expected result not met)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1450.0,238.0,450.0,20.0" text="4  not ready (precondition false at start)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1450.0,260.0,450.0,20.0" text="5  aborted (ABORT or test mode off)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1450.0,300.0,450.0,18.0" text="Software injection writes the fault at priority 9 of the" font="8.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1450.0,318.0,450.0,18.0" text="logic point; Physical trigger waits for the real device." font="8.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1450.0,336.0,450.0,18.0" text="Report: tools/cx_report.py (P2P checklist + test results" font="8.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1450.0,354.0,450.0,18.0" text="from history export) -&gt; HTML / XLSX." font="8.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,560.0,1900.0,510.0"/>
+
+    <Label layout="10.0,560.0,1900.0,20.0" text="  POINT-TO-POINT (status 0 not started · 1 in progress · 2 passed · 3 failed — isolate releases outputs to manual override)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="16.0,610.0,150.0,24.0" text="AHU01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,610.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,610.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,610.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU01_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU01_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,610.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/AHU01/IO_AHU01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,639.0,150.0,24.0" text="AHU02" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,639.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU02_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU02_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,639.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU02_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU02_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,639.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU02_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AHU02_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,639.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/AHU02/IO_AHU02_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,668.0,150.0,24.0" text="AirCommon" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,668.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AirCommon_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AirCommon_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,668.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AirCommon_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_AirCommon_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,668.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/AirCommon/IO_AirCommon_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,697.0,150.0,24.0" text="CDP01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,697.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,697.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,697.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP01_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP01_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,697.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/CDP01/IO_CDP01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,726.0,150.0,24.0" text="CDP02" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,726.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP02_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP02_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,726.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP02_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP02_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,726.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP02_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CDP02_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,726.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/CDP02/IO_CDP02_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,755.0,150.0,24.0" text="CH01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,755.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,755.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,755.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH01_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH01_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,755.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/CH01/IO_CH01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,784.0,150.0,24.0" text="CH02" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,784.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH02_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH02_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,784.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH02_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH02_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,784.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH02_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CH02_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,784.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/CH02/IO_CH02_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,813.0,150.0,24.0" text="CHP01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,813.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,813.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,813.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP01_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP01_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,813.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/CHP01/IO_CHP01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,842.0,150.0,24.0" text="CHP02" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,842.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP02_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP02_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,842.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP02_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP02_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,842.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP02_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CHP02_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,842.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/CHP02/IO_CHP02_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,871.0,150.0,24.0" text="CPEF01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,871.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CPEF01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CPEF01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,871.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CPEF01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CPEF01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,871.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CPEF01_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CPEF01_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,871.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/CPEF01/IO_CPEF01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,900.0,150.0,24.0" text="CT01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,900.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,900.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,900.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT01_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT01_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,900.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/CT01/IO_CT01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,929.0,150.0,24.0" text="CT02" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,929.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT02_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT02_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,929.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT02_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT02_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,929.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT02_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CT02_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,929.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/CT02/IO_CT02_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,958.0,150.0,24.0" text="CdwLoop" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,958.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CdwLoop_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CdwLoop_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,958.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CdwLoop_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_CdwLoop_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,958.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/CdwLoop/IO_CdwLoop_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,987.0,150.0,24.0" text="ChwLoop" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,987.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_ChwLoop_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_ChwLoop_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,987.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_ChwLoop_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_ChwLoop_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,987.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_ChwLoop_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_ChwLoop_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,987.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/ChwLoop/IO_ChwLoop_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,1016.0,150.0,24.0" text="EF01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="170.0,1016.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="300.0,1016.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="630.0,1016.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/EF01/IO_EF01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,610.0,150.0,24.0" text="EF02" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,610.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF02_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF02_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,610.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF02_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF02_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1430.0,610.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF02_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF02_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,610.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/EF02/IO_EF02_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,639.0,150.0,24.0" text="EF03" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,639.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF03_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF03_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,639.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF03_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF03_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1430.0,639.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF03_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_EF03_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,639.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/EF03/IO_EF03_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,668.0,150.0,24.0" text="FCU01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,668.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,668.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,668.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/FCU01/IO_FCU01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,697.0,150.0,24.0" text="FCU02" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,697.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU02_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU02_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,697.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU02_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU02_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,697.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/FCU02/IO_FCU02_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,726.0,150.0,24.0" text="FCU03" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,726.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU03_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU03_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,726.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU03_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU03_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,726.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/FCU03/IO_FCU03_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,755.0,150.0,24.0" text="FCU04" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,755.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU04_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU04_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,755.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU04_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_FCU04_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,755.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/FCU04/IO_FCU04_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,784.0,150.0,24.0" text="LSF01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,784.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_LSF01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_LSF01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,784.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_LSF01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_LSF01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1430.0,784.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_LSF01_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_LSF01_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,784.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/LSF01/IO_LSF01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,813.0,150.0,24.0" text="MakeupWater" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,813.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_MakeupWater_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_MakeupWater_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,813.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_MakeupWater_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_MakeupWater_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,813.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/MakeupWater/IO_MakeupWater_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,842.0,150.0,24.0" text="Metering" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,842.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_Metering_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_Metering_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,842.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_Metering_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_Metering_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,842.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/Metering/IO_Metering_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,871.0,150.0,24.0" text="OAU01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,871.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OAU01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OAU01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,871.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OAU01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OAU01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1430.0,871.0,140.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OAU01_Stroke/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OAU01_Stroke" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,871.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/OAU01/IO_OAU01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,900.0,150.0,24.0" text="OutdoorAir" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,900.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OutdoorAir_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OutdoorAir_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,900.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OutdoorAir_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_OutdoorAir_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,900.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/OutdoorAir/IO_OutdoorAir_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,929.0,150.0,24.0" text="PlantCommon" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,929.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_PlantCommon_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_PlantCommon_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,929.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_PlantCommon_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_PlantCommon_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,929.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/PlantCommon/IO_PlantCommon_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,958.0,150.0,24.0" text="SEF01" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,958.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_SEF01_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_SEF01_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,958.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_SEF01_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_SEF01_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,958.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/SEF01/IO_SEF01_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="966.0,987.0,150.0,24.0" text="Zones" font="bold 10.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <BoundLabel layout="1120.0,987.0,120.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_Zones_Status/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_Zones_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1250.0,987.0,170.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_Zones_Isolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Commissioning/PointToPoint/CX_P2P_Zones_Isolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1580.0,987.0,150.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/FieldIO/Zones/IO_Zones_FieldMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,584.0,150.0,20.0" text="Group" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="170.0,584.0,150.0,20.0" text="P2P status" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="300.0,584.0,150.0,20.0" text="Outputs" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="480.0,584.0,150.0,20.0" text="AO stroke" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="630.0,584.0,150.0,20.0" text="Source" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="966.0,584.0,150.0,20.0" text="Group" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1120.0,584.0,150.0,20.0" text="P2P status" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1250.0,584.0,150.0,20.0" text="Outputs" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1430.0,584.0,150.0,20.0" text="AO stroke" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1580.0,584.0,150.0,20.0" text="Source" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>

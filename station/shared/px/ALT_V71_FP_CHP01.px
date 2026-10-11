@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="uxBuilder:UxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="620.0,950.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <Rect fill="#12161b" stroke="#12161b" pen="1.0" geom="0.0,0.0,620.0,950.0"/>
+
+    <Label layout="0.0,0.0,620.0,34.0" text="  CHP01 — pump, VSD, isolation valves, PT" font="bold 14.0pt sans-serif" foreground="white" background="#0b0e11" halign="left"/>
+
+    <Picture layout="20.0,50.0,110.0,80.0" image="module://kitPxGraphics/Pumps/Pumps_Base/Pump_Base_Left/Pump_Base_Left_Off.png">
+      <ValueBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01RunProof">
+        <IBooleanToSimple name="image">
+          <Image name="trueValue" value="module://kitPxGraphics/Pumps/Pumps_Base/Pump_Base_Left/Pump_Base_Left_On.gif"/>
+          <Image name="falseValue" value="module://kitPxGraphics/Pumps/Pumps_Base/Pump_Base_Left/Pump_Base_Left_Off.png"/>
+        </IBooleanToSimple>
+      </ValueBinding>
+    </Picture>
+
+    <Picture layout="150.0,40.0,50.0,106.0" image="file:^px/img/vsd_drive.png"/>
+
+    <Label layout="224.0,44.0,196.0,20.0" text="Start command" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="420.0,45.0,186.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01StartCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="224.0,66.0,196.0,20.0" text="HOA in AUTO" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="420.0,67.0,186.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01InAuto" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#f39c12"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="224.0,88.0,196.0,20.0" text="Failed (latched)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="420.0,89.0,186.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Logic/CHP01FailLatch" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="224.0,110.0,196.0,20.0" text="Runtime h" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="420.0,111.0,186.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Monitor/CHP01_RuntimeHours" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,150.0,600.0,358.0"/>
+
+    <Label layout="10.0,150.0,600.0,20.0" text="  VARIABLE SPEED DRIVE" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="14.0,172.0,326.0,20.0" text="Run feedback" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,173.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01RunProof" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,194.0,326.0,20.0" text="Speed command" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,195.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01SpeedCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,216.0,326.0,20.0" text="Output frequency" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,217.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_SpeedFeedbackHz" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,238.0,326.0,20.0" text="Output voltage" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,239.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_VfdOutputV" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,260.0,326.0,20.0" text="Output current" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,261.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_Amps" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,282.0,326.0,20.0" text="Power" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,283.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,304.0,326.0,20.0" text="Energy" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,305.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Monitor/CHP01_kWh" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,326.0,326.0,20.0" text="DC bus voltage" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,327.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_VfdDcBusV" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,348.0,326.0,20.0" text="Heatsink temp" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,349.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_VfdTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,370.0,326.0,20.0" text="Fault code" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,371.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_VfdFaultCode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,392.0,326.0,20.0" text="VFD fault (DI)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,393.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01VfdFault" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,414.0,326.0,20.0" text="Over-temperature" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,415.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Monitor/CHP01_VfdOverTempAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#f39c12"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,436.0,326.0,20.0" text="Fault code active" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,437.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Monitor/CHP01_VfdFaultCodeActive" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#f39c12"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,458.0,326.0,20.0" text="MIN speed % (set)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,459.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_MinSpeed/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_MinSpeed" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,480.0,326.0,20.0" text="MAX speed % (set)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,481.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_MaxSpeed/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_MaxSpeed" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,516.0,600.0,116.0"/>
+
+    <Label layout="10.0,516.0,600.0,20.0" text="  PRESSURE (PT before / after pump)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="14.0,538.0,326.0,20.0" text="Suction PT (before)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,539.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_SuctionPressure" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,560.0,326.0,20.0" text="Discharge PT (after)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,561.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_DischargePressure" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,582.0,326.0,20.0" text="Pump differential" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,583.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Monitor/CHP01_DiffPressure" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,604.0,326.0,20.0" text="No-dP / low suction" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,605.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/CHP01/CHP01NoDeltaPAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,640.0,600.0,182.0"/>
+
+    <Label layout="10.0,640.0,600.0,20.0" text="  MOTORISED ISOLATION VALVES (on/off, normally open)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="14.0,662.0,326.0,20.0" text="Suction MV command / feedback" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,663.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_SuctionMVCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,684.0,326.0,20.0" text="" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,685.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_SuctionMVFb" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,706.0,326.0,20.0" text="Discharge MV command / feedback" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,707.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_DischargeMVCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,728.0,326.0,20.0" text="" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,729.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_DischargeMVFb" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,750.0,326.0,20.0" text="Suction MV command failure" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,751.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/CHP01/CHP01_SuctionMVFailAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,772.0,326.0,20.0" text="Discharge MV command failure" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,773.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/CHP01/CHP01_DischargeMVFailAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,794.0,326.0,20.0" text="Service isolation (click)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="340.0,795.0,266.0,19.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_ServiceIsolate/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_ServiceIsolate" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button layout="10.0,914.0,140.0,26.0" text="RESET CHP01" font="bold 10.0pt sans-serif" foreground="white" background="#c62828">
+      <ActionBinding ord="station:|slot:/ChillerPlant/CHP01/Logic/CHP01ResetFire/fire" widgetEvent="actionPerformed"/>
+    </Button>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>

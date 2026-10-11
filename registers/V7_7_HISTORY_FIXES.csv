@@ -1,0 +1,15 @@
+﻿Point,Path,Change,Reason
+Obs_BootOscillator,,BooleanCov removed,boot debug observer toggles continuously (filled 4 000 records within minutes)
+Obs_BootFreshEdgeDelay,,BooleanCov removed,boot debug observer toggles continuously (filled 4 000 records within minutes)
+Obs_BootPulse,,BooleanCov removed,boot debug observer toggles continuously (filled 4 000 records within minutes)
+Obs_BootPulseDone,,BooleanCov removed,boot debug observer toggles continuously (filled 4 000 records within minutes)
+HeartbeatTimestampSetpoint,/ChillerPlant/AI_Heartbeat/HeartbeatTimestampSetpoint,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"
+CHW_LeavingTemperatureSetpoint_AI,/ChillerPlant/ModeControl/CHW_LeavingTemperatureSetpoint_AI,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"
+CHWDP_Setpoint_AI,/ChillerPlant/ModeControl/CHWDP_Setpoint_AI,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"
+CDS_Setpoint_AI,/ChillerPlant/ModeControl/CDS_Setpoint_AI,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"
+CHW_MinFlowSetpoint,/ChillerPlant/ChwLoop/MinFlowBypass/CHW_MinFlowSetpoint,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"
+AHU01_SAT_SP,/AirSide/AHU01/Points/AHU01_SAT_SP,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"
+AHU02_SAT_SP,/AirSide/AHU02/Points/AHU02_SAT_SP,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"
+CH01_ChwSetpointCmd,/ChillerPlant/Chiller01/Points/CH01_ChwSetpointCmd,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"
+CH02_ChwSetpointCmd,/ChillerPlant/Chiller02/Points/CH02_ChwSetpointCmd,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"
+CHWDP_Setpoint_EFFECTIVE,/ChillerPlant/ChwLoop/DeltaTGuard/CHWDP_Setpoint_EFFECTIVE,NumericCov tol 0 -> NumericInterval 1 min,"value driven by logic, changes every scan"

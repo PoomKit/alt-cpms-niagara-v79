@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="uxBuilder:UxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="1920.0,1080.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <Rect fill="#12161b" stroke="#12161b" pen="1.0" geom="0.0,0.0,1920.0,1080.0"/>
+
+    <Label layout="0.0,0.0,1920.0,40.0" text="  ALT Reference V7.7 — Schedules, operating set and rotation" font="bold 18.0pt sans-serif" foreground="white" background="#0b0e11" halign="left"/>
+
+    <BoundLabel layout="1254.0,8.0,190.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#2e7d32" halign="center">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/Common/IO_AnyFieldSts" popupEnabled="false" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#2e7d32"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1450.0,8.0,460.0,24.0" text="REFERENCE SIMULATION – NOT PROJECT APPROVED" font="bold 10.0pt sans-serif" foreground="#263238" background="#ffca28" halign="center"/>
+
+    <Label layout="4.0,44.0,65.3,26.0" text="Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Plant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="72.3,44.0,65.3,26.0" text="Chiller Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_ChillerPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="140.6,44.0,65.3,26.0" text="CT Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_CTPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="208.9,44.0,65.3,26.0" text="Plant 3D" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Plant3D.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="277.1,44.0,65.3,26.0" text="Chillers" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Chillers.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="345.4,44.0,65.3,26.0" text="Pools" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_PlantDetail.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="413.7,44.0,65.3,26.0" text="Drives" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Drives.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="482.0,44.0,65.3,26.0" text="Valves" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Valves.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="550.3,44.0,65.3,26.0" text="Meters" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Meters.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="618.6,44.0,65.3,26.0" text="Schedules" font="bold 8.5pt sans-serif" foreground="white" background="#1e88e5" halign="center"/>
+
+    <Label layout="686.9,44.0,65.3,26.0" text="Optimise" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Optimization.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="755.1,44.0,65.3,26.0" text="AI &amp; ΔT" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V75_AiDtGuard.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="823.4,44.0,65.3,26.0" text="Design" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V76_Design.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="891.7,44.0,65.3,26.0" text="Safety" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Safety.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="960.0,44.0,65.3,26.0" text="Health" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Health.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1028.3,44.0,65.3,26.0" text="CX Tests" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Commissioning.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1096.6,44.0,65.3,26.0" text="Field IO" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_FieldIO.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1164.9,44.0,65.3,26.0" text="Energy" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_EnergyDashboard.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1233.1,44.0,65.3,26.0" text="KPI" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Energy.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1301.4,44.0,65.3,26.0" text="Alarms" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_AlarmsHistory.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1369.7,44.0,65.3,26.0" text="Sim" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Simulation.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1438.0,44.0,65.3,26.0" text="Air Side" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AirSide.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1506.3,44.0,65.3,26.0" text="Zones" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_Zones.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1574.6,44.0,65.3,26.0" text="AHU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1642.9,44.0,65.3,26.0" text="AHU-02" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU02.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1711.1,44.0,65.3,26.0" text="OAU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_OAU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1779.4,44.0,65.3,26.0" text="FCU" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_FCU.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1847.7,44.0,65.3,26.0" text="Ventilation" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Ventilation.px" popupEnabled="false"/>
+    </Label>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,80.0,1180.0,280.0"/>
+
+    <Label layout="10.0,80.0,1180.0,20.0" text="  WEEKLY SCHEDULES (click EDIT → native Niagara scheduler: days, times, special events, holidays)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="20.0,106.0,196.0,24.0" text="Schedule" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="220.0,106.0,326.0,24.0" text="Serves" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="550.0,106.0,126.0,24.0" text="Output now" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="680.0,106.0,246.0,24.0" text="Next change" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="930.0,106.0,116.0,24.0" text="Next value" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="1050.0,106.0,126.0,24.0" text="Edit" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="20.0,136.0,196.0,36.0" text="  Chiller plant" font="bold 11.0pt sans-serif" foreground="white" background="#1b2631" halign="left">
+      <PopupBinding ord="station:|slot:/ChillerPlant/PlantControl/Enable/PlantSchedule" title="Chiller plant schedule"/>
+    </Label>
+
+    <Label layout="222.0,144.0,326.0,20.0" text="PlantEnableEffective / ScheduleOk (when schedule mode = Scheduled)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="550.0,140.0,126.0,28.0" font="bold 11.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Enable/PlantSchedule" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="680.0,140.0,246.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Enable/PlantSchedule" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextTime%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="930.0,140.0,116.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Enable/PlantSchedule" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextValue%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1050.0,140.0,126.0,28.0" text="EDIT ▸" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="station:|slot:/ChillerPlant/PlantControl/Enable/PlantSchedule" title="Chiller plant schedule"/>
+    </Label>
+
+    <Label layout="20.0,180.0,196.0,36.0" text="  AHU / OAU" font="bold 11.0pt sans-serif" foreground="white" background="#1b2631" halign="left">
+      <PopupBinding ord="station:|slot:/AirSide/Schedules/Sch_AHU" title="AHU / OAU schedule"/>
+    </Label>
+
+    <Label layout="222.0,188.0,326.0,20.0" text="AHU01, AHU02, OAU01" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="550.0,184.0,126.0,28.0" font="bold 11.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_AHU" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="680.0,184.0,246.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_AHU" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextTime%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="930.0,184.0,116.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_AHU" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextValue%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1050.0,184.0,126.0,28.0" text="EDIT ▸" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="station:|slot:/AirSide/Schedules/Sch_AHU" title="AHU / OAU schedule"/>
+    </Label>
+
+    <Label layout="20.0,224.0,196.0,36.0" text="  FCU" font="bold 11.0pt sans-serif" foreground="white" background="#1b2631" halign="left">
+      <PopupBinding ord="station:|slot:/AirSide/Schedules/Sch_FCU" title="FCU schedule"/>
+    </Label>
+
+    <Label layout="222.0,232.0,326.0,20.0" text="FCU01-FCU04" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="550.0,228.0,126.0,28.0" font="bold 11.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_FCU" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="680.0,228.0,246.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_FCU" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextTime%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="930.0,228.0,116.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_FCU" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextValue%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1050.0,228.0,126.0,28.0" text="EDIT ▸" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="station:|slot:/AirSide/Schedules/Sch_FCU" title="FCU schedule"/>
+    </Label>
+
+    <Label layout="20.0,268.0,196.0,36.0" text="  Exhaust / ventilation" font="bold 11.0pt sans-serif" foreground="white" background="#1b2631" halign="left">
+      <PopupBinding ord="station:|slot:/AirSide/Schedules/Sch_EF" title="Exhaust / ventilation schedule"/>
+    </Label>
+
+    <Label layout="222.0,276.0,326.0,20.0" text="EF01, EF02, EF03" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="550.0,272.0,126.0,28.0" font="bold 11.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_EF" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="680.0,272.0,246.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_EF" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextTime%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="930.0,272.0,116.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_EF" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextValue%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1050.0,272.0,126.0,28.0" text="EDIT ▸" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="station:|slot:/AirSide/Schedules/Sch_EF" title="Exhaust / ventilation schedule"/>
+    </Label>
+
+    <Label layout="20.0,312.0,196.0,36.0" text="  Car park" font="bold 11.0pt sans-serif" foreground="white" background="#1b2631" halign="left">
+      <PopupBinding ord="station:|slot:/AirSide/Schedules/Sch_CarPark" title="Car park schedule"/>
+    </Label>
+
+    <Label layout="222.0,320.0,326.0,20.0" text="CPEF01 (CO control inside schedule)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="550.0,316.0,126.0,28.0" font="bold 11.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_CarPark" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="680.0,316.0,246.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_CarPark" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextTime%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="930.0,316.0,116.0,28.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Schedules/Sch_CarPark" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%nextValue%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1050.0,316.0,126.0,28.0" text="EDIT ▸" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="station:|slot:/AirSide/Schedules/Sch_CarPark" title="Car park schedule"/>
+    </Label>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,370.0,1180.0,120.0"/>
+
+    <Label layout="10.0,370.0,1180.0,20.0" text="  SCHEDULE USE" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="14.0,394.0,296.0,20.0" text="Plant schedule mode" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="310.0,395.0,286.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/PlantScheduleMode/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/PlantScheduleMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,422.0,296.0,20.0" text="Plant enable (operator)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="310.0,423.0,286.0,25.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/PlantEnable/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/PlantEnable" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,450.0,296.0,20.0" text="Plant enable effective" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="310.0,451.0,286.0,25.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/PlantRunRequest" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="604.0,394.0,296.0,20.0" text="Plant demand mode" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="900.0,395.0,286.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/PlantDemandMode/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/PlantDemandMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="604.0,422.0,296.0,20.0" text="Air-side cooling calls" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="900.0,423.0,286.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Common/AirSide_CoolingCalls" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="604.0,450.0,296.0,20.0" text="Air-side units running" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="900.0,451.0,286.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Common/AirSide_UnitsRunning" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="1200.0,80.0,710.0,560.0"/>
+
+    <Label layout="1200.0,80.0,710.0,20.0" text="  OPERATING SET &amp; ROTATION" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="1214.0,106.0,690.0,20.0" text="SET 1 = CH01 + CHP01 + CDP01 + CT01      SET 2 = CH02 + CHP02 + CDP02 + CT02" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Rect fill="#18212b" stroke="#2471a3" pen="2.0" geom="1214.0,132.0,336.0,120.0"/>
+
+    <Label layout="1214.0,136.0,336.0,24.0" text="SET 1" font="bold 14.0pt sans-serif" foreground="white" halign="center"/>
+
+    <BoundLabel layout="1222.0,170.0,78.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller01/Proof/CH01RunProofSelected" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="CH01"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1304.0,170.0,78.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01RunProof" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="CHP01"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1386.0,170.0,78.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CDP01/Points/CDP01RunProof" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="CDP01"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1468.0,170.0,78.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CT01/Points/CT01RunProof" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="CT01"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button foreground="white" layout="1222.0,208.0,320.0,34.0" text="SELECT SET 1 AS LEAD" font="bold 11.0pt sans-serif">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/LeadCH01/set" widgetEvent="actionPerformed">
+        <Boolean name="actionArg" value="true"/>
+      </ActionBinding>
+      <ValueBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/LeadCH01" popupEnabled="false">
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1e8449"/>
+          <Brush name="falseValue" value="#2c3440"/>
+        </IBooleanToSimple>
+      </ValueBinding>
+    </Button>
+
+    <Rect fill="#18212b" stroke="#7d3c98" pen="2.0" geom="1562.0,132.0,336.0,120.0"/>
+
+    <Label layout="1562.0,136.0,336.0,24.0" text="SET 2" font="bold 14.0pt sans-serif" foreground="white" halign="center"/>
+
+    <BoundLabel layout="1570.0,170.0,78.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller02/Proof/CH02RunProofSelected" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="CH02"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1652.0,170.0,78.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP02/Points/CHP02RunProof" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="CHP02"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1734.0,170.0,78.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CDP02/Points/CDP02RunProof" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="CDP02"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1816.0,170.0,78.0,26.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CT02/Points/CT02RunProof" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="CT02"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Button foreground="white" layout="1570.0,208.0,320.0,34.0" text="SELECT SET 2 AS LEAD" font="bold 11.0pt sans-serif">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/LeadCH01/set" widgetEvent="actionPerformed">
+        <Boolean name="actionArg" value="false"/>
+      </ActionBinding>
+      <ValueBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/LeadCH01" popupEnabled="false">
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2c3440"/>
+          <Brush name="falseValue" value="#7b241c"/>
+        </IBooleanToSimple>
+      </ValueBinding>
+    </Button>
+
+    <Label layout="1204.0,262.0,376.0,20.0" text="Effective lead set" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,263.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Monitor/LeadSet" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2471a3"/>
+          <Brush name="falseValue" value="#7d3c98"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1204.0,290.0,376.0,20.0" text="Pumps / towers follow set" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,291.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/Set_LinkPools/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/Set_LinkPools" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1204.0,318.0,376.0,20.0" text="Rotation: runtime (24 h hysteresis)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,319.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/RotationMode_Runtime/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/RotationMode_Runtime" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1204.0,346.0,376.0,20.0" text="Rotation: daily" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,347.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/RotationMode_Daily/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/RotationMode_Daily" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1204.0,374.0,376.0,20.0" text="Rotation: weekly" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,375.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/RotationMode_Weekly/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/RotationMode_Weekly" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1204.0,402.0,376.0,20.0" text="Days counted (rotation trigger)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,403.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Monitor/RotationDayCount" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1204.0,430.0,376.0,20.0" text="Manual rotate request" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,431.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/RotationRequest/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/PlantControl/Points/RotationRequest" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1204.0,458.0,376.0,20.0" text="Runtime CH01 / CH02 h" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,459.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller01/Monitor/CH01_RuntimeHours" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1204.0,486.0,376.0,20.0" text="" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,487.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller02/Monitor/CH02_RuntimeHours" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1204.0,514.0,376.0,20.0" text="Runtime imbalance limit h" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1580.0,515.0,326.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Plant/RuntimeRotationHours/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Plant/RuntimeRotationHours" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1214.0,548.0,330.0,30.0" text="CHANGE-OVER TIME (00:00) ▸" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="station:|slot:/ChillerPlant/PlantControl/LeadLag/RotationTrigger" title="Rotation trigger time"/>
+    </Label>
+
+    <Label layout="1214.0,584.0,690.0,20.0" text="Daily: lead set swaps every day at the trigger time. Weekly: every 7 days. Runtime mode has priority." font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1214.0,604.0,690.0,20.0" text="Change-over is make-before-break (standby started and proven before the old lead stops)." font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,510.0,1180.0,560.0"/>
+
+    <Label layout="10.0,510.0,1180.0,20.0" text="  NOTES" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="24.0,540.0,1160.0,20.0" text="EDIT opens the BooleanSchedule in its default Workbench / web view (Scheduler): drag weekly blocks per day, add special events" font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="24.0,566.0,1160.0,20.0" text="(date, date range, week-and-day, custom) and link holiday calendars. Output now / next change / next value are live." font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="24.0,592.0,1160.0,20.0" text="Schedules live in /AirSide/Schedules and /ChillerPlant/PlantControl; every unit links its schedule output into &lt;unit&gt;/Logic." font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="24.0,618.0,1160.0,20.0" text="Plant: schedule mode = Scheduled -&gt; plant enable follows PlantSchedule AND operator enable; demand mode -&gt; plant follows air-side calls." font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="24.0,644.0,1160.0,20.0" text='Set selection = lead chiller; with "Pumps / towers follow set" each pool leads with the same unit number; a failed unit is still' font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="24.0,670.0,1160.0,20.0" text="replaced by the standby of its pool (cross-set operation CHP01 + CDP02 remains possible)." font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>

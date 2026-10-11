@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="uxBuilder:UxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="1920.0,1080.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <Rect fill="#12161b" stroke="#12161b" pen="1.0" geom="0.0,0.0,1920.0,1080.0"/>
+
+    <Label layout="0.0,0.0,1920.0,40.0" text="  ALT Reference V7.7 — Equipment design schedule (reference sizing)" font="bold 18.0pt sans-serif" foreground="white" background="#0b0e11" halign="left"/>
+
+    <BoundLabel layout="1254.0,8.0,190.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#2e7d32" halign="center">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/Common/IO_AnyFieldSts" popupEnabled="false" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#2e7d32"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1450.0,8.0,460.0,24.0" text="REFERENCE SIMULATION – NOT PROJECT APPROVED" font="bold 10.0pt sans-serif" foreground="#263238" background="#ffca28" halign="center"/>
+
+    <Label layout="4.0,44.0,65.3,26.0" text="Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Plant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="72.3,44.0,65.3,26.0" text="Chiller Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_ChillerPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="140.6,44.0,65.3,26.0" text="CT Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_CTPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="208.9,44.0,65.3,26.0" text="Plant 3D" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Plant3D.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="277.1,44.0,65.3,26.0" text="Chillers" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Chillers.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="345.4,44.0,65.3,26.0" text="Pools" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_PlantDetail.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="413.7,44.0,65.3,26.0" text="Drives" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Drives.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="482.0,44.0,65.3,26.0" text="Valves" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Valves.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="550.3,44.0,65.3,26.0" text="Meters" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Meters.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="618.6,44.0,65.3,26.0" text="Schedules" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Schedules.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="686.9,44.0,65.3,26.0" text="Optimise" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Optimization.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="755.1,44.0,65.3,26.0" text="AI &amp; ΔT" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V75_AiDtGuard.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="823.4,44.0,65.3,26.0" text="Design" font="bold 8.5pt sans-serif" foreground="white" background="#1e88e5" halign="center"/>
+
+    <Label layout="891.7,44.0,65.3,26.0" text="Safety" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Safety.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="960.0,44.0,65.3,26.0" text="Health" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Health.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1028.3,44.0,65.3,26.0" text="CX Tests" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Commissioning.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1096.6,44.0,65.3,26.0" text="Field IO" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_FieldIO.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1164.9,44.0,65.3,26.0" text="Energy" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_EnergyDashboard.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1233.1,44.0,65.3,26.0" text="KPI" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Energy.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1301.4,44.0,65.3,26.0" text="Alarms" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_AlarmsHistory.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1369.7,44.0,65.3,26.0" text="Sim" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Simulation.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1438.0,44.0,65.3,26.0" text="Air Side" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AirSide.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1506.3,44.0,65.3,26.0" text="Zones" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_Zones.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1574.6,44.0,65.3,26.0" text="AHU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1642.9,44.0,65.3,26.0" text="AHU-02" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU02.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1711.1,44.0,65.3,26.0" text="OAU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_OAU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1779.4,44.0,65.3,26.0" text="FCU" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_FCU.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1847.7,44.0,65.3,26.0" text="Ventilation" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Ventilation.px" popupEnabled="false"/>
+    </Label>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,80.0,1900.0,330.0"/>
+
+    <Label layout="10.0,80.0,1900.0,20.0" text="  EQUIPMENT SCHEDULE — 2 × 300 RT, variable primary flow" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="18.0,108.0,150.0,20.0" text="Tag" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="170.0,108.0,330.0,20.0" text="Type" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="502.0,108.0,300.0,20.0" text="Duty" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="804.0,108.0,280.0,20.0" text="Flow" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="1086.0,108.0,330.0,20.0" text="Head / pressure drop" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="1418.0,108.0,220.0,20.0" text="Motor" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="1640.0,108.0,262.0,20.0" text="Drive / comms" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Rect fill="#161c22" stroke="#2c3440" pen="1.0" geom="14.0,132.0,1892.0,60.0"/>
+
+    <Label layout="18.0,136.0,144.0,50.0" text="CH-01 / CH-02" font="bold 9.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <Label layout="170.0,136.0,324.0,15.3" text="Magnetic-bearing oil-free centrifugal, variable primary" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="170.0,151.3,324.0,15.3" text="flow" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="502.0,136.0,294.0,50.0" text="300 RT (1,055 kW) · 170 kW · 0.567 kW/RT" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="804.0,136.0,274.0,15.3" text="Evap 720 gpm max / 216 gpm min (30 %) · Cond 900" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="804.0,151.3,274.0,15.3" text="gpm" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1086.0,136.0,324.0,50.0" text="Evap 20 ft · Cond 25 ft" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1418.0,136.0,214.0,50.0" text="Integral VFD compressor" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1640.0,136.0,256.0,50.0" text="BACnet (chiller controller)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Rect fill="#161c22" stroke="#2c3440" pen="1.0" geom="14.0,198.0,1892.0,60.0"/>
+
+    <Label layout="18.0,202.0,144.0,50.0" text="CHP-01 / CHP-02" font="bold 9.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <Label layout="170.0,202.0,324.0,50.0" text="End-suction, variable speed, 1 per chiller + header" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="502.0,202.0,294.0,50.0" text="720 gpm @ 110 ft (33.5 m)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="804.0,202.0,274.0,50.0" text="720 gpm (2.4 gpm/RT)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1086.0,202.0,324.0,15.3" text="110 ft: evap 20 + plant 18 + mains 30 + index coil/valve" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1086.0,217.3,324.0,15.3" text="33, +10 %" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1418.0,202.0,214.0,50.0" text="22 kW (30 hp) · ~19 kW shaft @ 78 %" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1640.0,202.0,256.0,50.0" text="ABB ACH580-01-045A-4 (22 kW, 45 A)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Rect fill="#161c22" stroke="#2c3440" pen="1.0" geom="14.0,264.0,1892.0,60.0"/>
+
+    <Label layout="18.0,268.0,144.0,50.0" text="CDP-01 / CDP-02" font="bold 9.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <Label layout="170.0,268.0,324.0,50.0" text="End-suction, variable speed (min 40 %), 1 per chiller" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="502.0,268.0,294.0,50.0" text="900 gpm @ 80 ft (24.4 m)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="804.0,268.0,274.0,50.0" text="900 gpm (3 gpm/RT)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1086.0,268.0,324.0,15.3" text="80 ft: cond 25 + tower static 14 + piping 25 + strainer 5," font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1086.0,283.3,324.0,15.3" text="+10 %" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1418.0,268.0,214.0,50.0" text="22 kW (30 hp) · ~17 kW shaft @ 80 %" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1640.0,268.0,256.0,50.0" text="ABB ACH580-01-045A-4 (22 kW, 45 A)" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Rect fill="#161c22" stroke="#2c3440" pen="1.0" geom="14.0,330.0,1892.0,60.0"/>
+
+    <Label layout="18.0,334.0,144.0,50.0" text="CT-01 / CT-02" font="bold 9.0pt sans-serif" foreground="#ffe066" halign="left"/>
+
+    <Label layout="170.0,334.0,324.0,50.0" text="Crossflow induced draft, 2 cells per tower" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="502.0,334.0,294.0,50.0" text="900 gpm · range 5.3 K · approach 3.0 K @ 27 °C WB" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="804.0,334.0,274.0,50.0" text="900 gpm (450 per cell) · min 40 %" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1086.0,334.0,324.0,50.0" text="CWS 30.0 °C / CWR 35.3 °C" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1418.0,334.0,214.0,50.0" text="2 × 5.5 kW (7.5 hp) fans" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1640.0,334.0,256.0,50.0" text="ABB ACH580-01-012A-4 (5.5 kW) per cell" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,420.0,940.0,650.0"/>
+
+    <Label layout="10.0,420.0,940.0,20.0" text="  LIVE DESIGN PARAMETERS (station values - change here, not in the logic)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="14.0,446.0,516.0,20.0" text="Chiller rated capacity (RT)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,447.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH_RatedRT/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH_RatedRT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,484.0,516.0,20.0" text="CH01 rated kW" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,485.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH01_RatedKW/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH01_RatedKW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,522.0,516.0,20.0" text="Evaporator max flow per chiller" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,523.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH_ChwFlowLimit/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH_ChwFlowLimit" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,560.0,516.0,20.0" text="CH01 evaporator min flow" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,561.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH01_MinFlow/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH01_MinFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,598.0,516.0,20.0" text="CH02 evaporator min flow" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,599.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH02_MinFlow/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH02_MinFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,636.0,516.0,20.0" text="Condenser min flow" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,637.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH_CdwMinFlow/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Chillers/CH_CdwMinFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,674.0,516.0,20.0" text="CHP design head" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,675.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CHP_DesignHead/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CHP_DesignHead" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,712.0,516.0,20.0" text="CHP motor kW" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,713.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CHP_RatedKW/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CHP_RatedKW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,750.0,516.0,20.0" text="CDP design flow" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,751.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CDP_DesignFlow/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CDP_DesignFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,788.0,516.0,20.0" text="CDP design head" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,789.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CDP_DesignHead/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CDP_DesignHead" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,826.0,516.0,20.0" text="CDP motor kW" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,827.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CDP_RatedKW/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Pumps/CDP_RatedKW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,864.0,516.0,20.0" text="Tower cell fan kW" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,865.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/CoolingTowers/CT_CellRatedKW/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/CoolingTowers/CT_CellRatedKW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,902.0,516.0,20.0" text="Tower min flow" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,903.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/CdwLoop/TowerStaging/CT_CdwMinFlow/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CdwLoop/TowerStaging/CT_CdwMinFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,940.0,516.0,20.0" text="Tower approach (K)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,941.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/CoolingTowers/CT_Approach/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/CoolingTowers/CT_Approach" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,978.0,516.0,20.0" text="Bypass min-flow margin" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,979.0,416.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/ChwLoop/Bypass/Byp_MinFlowMargin/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Bypass/Byp_MinFlowMargin" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="14.0,1016.0,500.0,20.0" text="DP setpoint min / max (end of loop)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="530.0,1017.0,200.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/ChwLoop_AI/DP_MinSetpoint/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/ChwLoop_AI/DP_MinSetpoint" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="740.0,1017.0,200.0,35.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/ChwLoop_AI/DP_MaxSetpoint/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/ChwLoop_AI/DP_MaxSetpoint" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="960.0,420.0,950.0,650.0"/>
+
+    <Label layout="960.0,420.0,950.0,20.0" text="  DESIGN NOTES" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="976.0,450.0,920.0,26.0" text="Chilled water: 300 RT × 2.4 gpm/RT = 720 gpm per chiller (ΔT ≈ 5.6 K / 10 °F)." font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,482.0,920.0,26.0" text="Variable primary flow: min evaporator flow 216 gpm (30 %) held by the min-flow bypass valve" font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,514.0,920.0,26.0" text="   (setpoint = sum of running chillers' min flow × margin). Keeps the evaporator in turbulent flow;" font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,546.0,920.0,26.0" text="   compressor surge at low lift / low load is handled by the magnetic-bearing chiller controller." font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,578.0,920.0,26.0" text="CHP head 110 ft: evaporator 20 + plant piping / valves / strainer 18 + mains 30 + index AHU coil 15" font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,610.0,920.0,26.0" text="   + control valve 18 = 101 ft, +10 % margin. End-of-loop DP setpoint range 0.6 – 1.5 bar." font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,642.0,920.0,26.0" text="Condenser water: 300 RT × 3 gpm/RT = 900 gpm. Heat rejection ≈ 1.2 × 300 RT → range 5.3 K." font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,674.0,920.0,26.0" text="CDP head 80 ft: condenser 25 + crossflow tower static lift 14 (gravity hot-water basin," font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,706.0,920.0,26.0" text="   no nozzle pressure) + piping / fittings 25 + strainer 5 = 69 ft, +10 % → 76, rounded up to 80 ft." font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,738.0,920.0,26.0" text="Tower: crossflow 900 gpm, 27 °C design WB, approach 3.0 K → CWS 30.0 °C (CDS SP clamp 24 – 32 °C)." font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,770.0,920.0,26.0" text="Drives: ABB ACH580 (HVAC) sized on motor kW and current (normal duty): 22 kW pumps → 045A-4," font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,802.0,920.0,26.0" text="   5.5 kW tower fans → 012A-4. Pump drives min 30 % (CHP) / 40 % (CDP), fans min 20 %." font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,834.0,920.0,26.0" text="VPF staging: 2nd chiller starts when the running chiller's FCV throttles &lt; 90 % (flow &gt; 720 gpm) for 5 min;" font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,866.0,920.0,26.0" text="   held while plant flow &gt; 80 % of one chiller max. Flow follows pump speed on the pump curve." font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="976.0,898.0,920.0,26.0" text="Values are a reference design for the simulation; confirm with the selected equipment data." font="9.5pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>

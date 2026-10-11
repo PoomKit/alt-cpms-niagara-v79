@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bajaObjectGraph version="4.0">
+<p m="b=baja" t="b:UnrestrictedFolder">
+  <p n="ExpansionSupervisor" m="ap=altPlant" t="ap:ExpansionSupervisor"/>
+  <p n="ZoneAggregator" t="ap:ZoneAggregator"/>
+</p>
+</bajaObjectGraph>

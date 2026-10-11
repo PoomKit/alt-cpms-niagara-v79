@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="uxBuilder:UxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="1920.0,1080.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <Rect fill="#12161b" stroke="#12161b" pen="1.0" geom="0.0,0.0,1920.0,1080.0"/>
+
+    <Label layout="0.0,0.0,1920.0,40.0" text="  ALT Reference V7.7 — Energy Dashboard" font="bold 18.0pt sans-serif" foreground="white" background="#0b0e11" halign="left"/>
+
+    <BoundLabel layout="1254.0,8.0,190.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#2e7d32" halign="center">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/Common/IO_AnyFieldSts" popupEnabled="false" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#2e7d32"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1450.0,8.0,460.0,24.0" text="REFERENCE SIMULATION – NOT PROJECT APPROVED" font="bold 10.0pt sans-serif" foreground="#e8edf2" background="#ffca28" halign="center"/>
+
+    <Label layout="4.0,44.0,65.3,26.0" text="Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Plant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="72.3,44.0,65.3,26.0" text="Chiller Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_ChillerPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="140.6,44.0,65.3,26.0" text="CT Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_CTPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="208.9,44.0,65.3,26.0" text="Plant 3D" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Plant3D.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="277.1,44.0,65.3,26.0" text="Chillers" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Chillers.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="345.4,44.0,65.3,26.0" text="Pools" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_PlantDetail.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="413.7,44.0,65.3,26.0" text="Drives" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Drives.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="482.0,44.0,65.3,26.0" text="Valves" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Valves.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="550.3,44.0,65.3,26.0" text="Meters" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Meters.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="618.6,44.0,65.3,26.0" text="Schedules" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Schedules.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="686.9,44.0,65.3,26.0" text="Optimise" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Optimization.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="755.1,44.0,65.3,26.0" text="AI &amp; ΔT" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V75_AiDtGuard.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="823.4,44.0,65.3,26.0" text="Design" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V76_Design.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="891.7,44.0,65.3,26.0" text="Safety" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Safety.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="960.0,44.0,65.3,26.0" text="Health" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Health.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1028.3,44.0,65.3,26.0" text="CX Tests" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Commissioning.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1096.6,44.0,65.3,26.0" text="Field IO" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_FieldIO.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1164.9,44.0,65.3,26.0" text="Energy" font="bold 8.5pt sans-serif" foreground="white" background="#1e88e5" halign="center"/>
+
+    <Label layout="1233.1,44.0,65.3,26.0" text="KPI" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Energy.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1301.4,44.0,65.3,26.0" text="Alarms" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_AlarmsHistory.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1369.7,44.0,65.3,26.0" text="Sim" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Simulation.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1438.0,44.0,65.3,26.0" text="Air Side" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AirSide.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1506.3,44.0,65.3,26.0" text="Zones" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_Zones.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1574.6,44.0,65.3,26.0" text="AHU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1642.9,44.0,65.3,26.0" text="AHU-02" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU02.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1711.1,44.0,65.3,26.0" text="OAU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_OAU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1779.4,44.0,65.3,26.0" text="FCU" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_FCU.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1847.7,44.0,65.3,26.0" text="Ventilation" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Ventilation.px" popupEnabled="false"/>
+    </Label>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="10.0,80.0,256.0,118.0"/>
+
+    <Label layout="16.0,86.0,244.0,22.0" text="Plant COP" font="bold 11.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="18.0,116.0,240.0,64.0" font="bold 24.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_COP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="272.0,80.0,256.0,118.0"/>
+
+    <Label layout="278.0,86.0,244.0,22.0" text="Plant power" font="bold 11.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="280.0,116.0,240.0,64.0" font="bold 22.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="534.0,80.0,256.0,118.0"/>
+
+    <Label layout="540.0,86.0,244.0,22.0" text="Cooling load" font="bold 11.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="542.0,116.0,240.0,64.0" font="bold 22.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/CoolingLoad_RT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="796.0,80.0,256.0,118.0"/>
+
+    <Label layout="802.0,86.0,244.0,22.0" text="Chiller power" font="bold 11.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Label layout="804.0,116.0,44.0,26.0" text="CH01" font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="848.0,114.0,192.0,30.0" font="bold 16.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller01/Points/CH01_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="804.0,152.0,44.0,26.0" text="CH02" font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="848.0,150.0,192.0,30.0" font="bold 16.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller02/Points/CH02_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="1058.0,80.0,256.0,118.0"/>
+
+    <Label layout="1064.0,86.0,244.0,22.0" text="Auxiliary power" font="bold 11.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="1066.0,116.0,240.0,64.0" font="bold 22.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Aux_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="1320.0,80.0,256.0,118.0"/>
+
+    <Label layout="1326.0,86.0,244.0,22.0" text="OA wet bulb" font="bold 11.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="1328.0,116.0,240.0,64.0" font="bold 22.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/OutdoorAir/OA_WetBulb" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="10.0,210.0,930.0,360.0"/>
+
+    <Label layout="10.0,210.0,930.0,24.0" text="  ENERGY BY PERIOD (resets: day 00:00, month day-1 00:02)" font="bold 12.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="250.0,242.0,164.0,26.0" text="Today" font="bold 11.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="420.0,242.0,164.0,26.0" text="Yesterday" font="bold 11.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="590.0,242.0,164.0,26.0" text="This month" font="bold 11.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="760.0,242.0,164.0,26.0" text="Last month" font="bold 11.0pt sans-serif" foreground="white" background="#2c3e50" halign="center"/>
+
+    <Label layout="24.0,274.0,220.0,30.0" text="Plant energy" font="bold 12.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="250.0,274.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_Today" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="420.0,274.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_Yesterday" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="590.0,274.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="760.0,274.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_LastMonth" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,310.0,220.0,30.0" text="Auxiliary energy" font="bold 12.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="250.0,310.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Aux_kWh_Today" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="420.0,310.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Aux_kWh_Yesterday" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="590.0,310.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Aux_kWh_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="760.0,310.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Aux_kWh_LastMonth" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,346.0,220.0,30.0" text="Cooling delivered (RT-h)" font="bold 12.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="250.0,346.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Cooling_RTh_Today" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="420.0,346.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Cooling_RTh_Yesterday" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="590.0,346.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Cooling_RTh_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="760.0,346.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Cooling_RTh_LastMonth" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,382.0,220.0,30.0" text="Plant kW/RT" font="bold 12.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="250.0,382.0,164.0,30.0" font="bold 13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Today" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="420.0,382.0,164.0,30.0" font="bold 13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Yesterday" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="590.0,382.0,164.0,30.0" font="bold 13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="760.0,382.0,164.0,30.0" font="bold 13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_LastMonth" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,418.0,220.0,30.0" text="Energy cost (THB)" font="bold 12.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="250.0,418.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Energy_Cost_THB_Today" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="420.0,418.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Energy_Cost_THB_Yesterday" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="590.0,418.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Energy_Cost_THB_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="760.0,418.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Energy_Cost_THB_LastMonth" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,454.0,220.0,30.0" text="CO2 (kg)" font="bold 12.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="250.0,454.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/CO2_kg_Today" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="420.0,454.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/CO2_kg_Yesterday" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="590.0,454.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/CO2_kg_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel background="#0b0e11" layout="760.0,454.0,164.0,30.0" font="13.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/CO2_kg_LastMonth" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,498.0,900.0,17.0" text="Today/yesterday: TimeTrigger 00:00 resets EnergyToday totalisers, 23:59 latches yesterday. Month: schedule day 1 00:02 latches last month, reset" font="10.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Label layout="24.0,515.0,900.0,17.0" text="30 s later. kW/RT = kWh / RT-h. All values are trended (1 min)." font="10.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="950.0,210.0,640.0,360.0"/>
+
+    <Label layout="950.0,210.0,640.0,24.0" text="  COMPARISON" font="bold 12.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="970.0,240.0,300.0,20.0" text="Plant kWh (day scale 9 MWh, month 270 MWh)" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Label layout="970.0,262.0,70.0,20.0" text="Today" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="980.0,284.0,50.0,220.0" max="9000.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_Today">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:90000.0=#1e88e5;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <BoundLabel background="#0b0e11" layout="966.0,510.0,78.0,22.0" font="9.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_Today" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1050.0,262.0,70.0,20.0" text="Yesterday" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1060.0,284.0,50.0,220.0" max="9000.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_Yesterday">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:90000.0=#90caf9;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <BoundLabel background="#0b0e11" layout="1046.0,510.0,78.0,22.0" font="9.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_Yesterday" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1130.0,262.0,70.0,20.0" text="Month" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1140.0,284.0,50.0,220.0" max="270000.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_Month">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:2700000.0=#43a047;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <BoundLabel background="#0b0e11" layout="1126.0,510.0,78.0,22.0" font="9.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1210.0,262.0,70.0,20.0" text="Last month" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1220.0,284.0,50.0,220.0" max="270000.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_LastMonth">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:2700000.0=#a5d6a7;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <BoundLabel background="#0b0e11" layout="1206.0,510.0,78.0,22.0" font="9.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kWh_LastMonth" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1300.0,240.0,290.0,20.0" text="kW/RT vs baseline (scale 1.5)" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Label layout="1300.0,262.0,70.0,20.0" text="Today" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1312.0,284.0,46.0,220.0" max="1.5" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Today">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:15.0=#7e57c2;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <BoundLabel background="#0b0e11" layout="1298.0,510.0,74.0,22.0" font="9.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Today" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1372.0,262.0,70.0,20.0" text="Yesterday" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1384.0,284.0,46.0,220.0" max="1.5" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Yesterday">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:15.0=#7e57c2;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <BoundLabel background="#0b0e11" layout="1370.0,510.0,74.0,22.0" font="9.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Yesterday" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1444.0,262.0,70.0,20.0" text="Month" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1456.0,284.0,46.0,220.0" max="1.5" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Month">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:15.0=#7e57c2;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <BoundLabel background="#0b0e11" layout="1442.0,510.0,74.0,22.0" font="9.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1516.0,262.0,70.0,20.0" text="Baseline" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1528.0,284.0,46.0,220.0" max="1.5" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Parameters/Energy/Baseline_kW_per_RT">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:15.0=#ffb300;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <BoundLabel background="#0b0e11" layout="1514.0,510.0,74.0,22.0" font="9.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Energy/Baseline_kW_per_RT/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Energy/Baseline_kW_per_RT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="10.0,580.0,620.0,310.0"/>
+
+    <Label layout="10.0,580.0,620.0,24.0" text="  SAVINGS vs BASELINE (M&amp;V reference)" font="bold 12.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="24.0,612.0,260.0,22.0" text="Baseline plant kW/RT" font="11.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="284.0,612.0,180.0,22.0" font="12.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Energy/Baseline_kW_per_RT/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Energy/Baseline_kW_per_RT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,644.0,260.0,22.0" text="Saving this month (kWh)" font="11.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="284.0,644.0,180.0,22.0" font="12.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Saving_kWh_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,676.0,260.0,22.0" text="Saving this month (THB)" font="11.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="284.0,676.0,180.0,22.0" font="12.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Saving_THB_Month" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,708.0,260.0,22.0" text="Saving last month (kWh)" font="11.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="284.0,708.0,180.0,22.0" font="12.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Saving_kWh_LastMonth" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,740.0,260.0,22.0" text="Saving last month (THB)" font="11.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="284.0,740.0,180.0,22.0" font="12.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Saving_THB_LastMonth" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,772.0,260.0,22.0" text="Tariff (THB/kWh)" font="11.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="284.0,772.0,180.0,22.0" font="12.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Energy/Tariff_THB_per_kWh/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Energy/Tariff_THB_per_kWh" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,804.0,260.0,22.0" text="Grid factor (kgCO2/kWh)" font="11.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel background="#0b0e11" layout="284.0,804.0,180.0,22.0" font="12.0pt sans-serif" foreground="#ffe066" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Energy/CO2_kg_per_kWh/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Energy/CO2_kg_per_kWh" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="24.0,842.0,590.0,17.0" text="Saving = RT-h x baseline kW/RT - measured kWh. Baseline, tariff and grid factor are PROJECT" font="10.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Label layout="24.0,859.0,590.0,17.0" text="values (click to edit)." font="10.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="2.0" geom="640.0,580.0,950.0,310.0"/>
+
+    <Label layout="640.0,580.0,950.0,24.0" text="  TRENDS (click to open history) &amp; LIVE BREAKDOWN" font="bold 12.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="656.0,614.0,142.0,32.0" text="Plant kW  ↗" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="history:/ALT_CP_Ref_V7_8/Plant_kW" title="Plant kW"/>
+    </Label>
+
+    <Label layout="806.0,614.0,142.0,32.0" text="Plant kW/RT  ↗" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="history:/ALT_CP_Ref_V7_8/Plant_kW_per_RT" title="Plant kW/RT"/>
+    </Label>
+
+    <Label layout="956.0,614.0,142.0,32.0" text="Cooling load RT  ↗" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="history:/ALT_CP_Ref_V7_8/CoolingLoad_RT" title="Cooling load RT"/>
+    </Label>
+
+    <Label layout="1106.0,614.0,142.0,32.0" text="Plant kWh today  ↗" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="history:/ALT_CP_Ref_V7_8/Plant_kWh_Today" title="Plant kWh today"/>
+    </Label>
+
+    <Label layout="656.0,654.0,142.0,32.0" text="kW/RT today  ↗" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="history:/ALT_CP_Ref_V7_8/Plant_kW_per_RT_Today" title="kW/RT today"/>
+    </Label>
+
+    <Label layout="806.0,654.0,142.0,32.0" text="CHW supply temp  ↗" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="history:/ALT_CP_Ref_V7_8/CHWS" title="CHW supply temp"/>
+    </Label>
+
+    <Label layout="956.0,654.0,142.0,32.0" text="CDW supply temp  ↗" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="history:/ALT_CP_Ref_V7_8/CDS" title="CDW supply temp"/>
+    </Label>
+
+    <Label layout="1106.0,654.0,142.0,32.0" text="OA wet bulb  ↗" font="bold 10.0pt sans-serif" foreground="white" background="#1e88e5" halign="center">
+      <PopupBinding ord="history:/ALT_CP_Ref_V7_8/OA_WetBulb" title="OA wet bulb"/>
+    </Label>
+
+    <Label layout="656.0,704.0,590.0,20.0" text="Live power split" font="bold 11.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Label layout="656.0,728.0,100.0,18.0" text="CH01" font="bold 9.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="686.0,748.0,40.0,110.0" max="200.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Chiller01/Points/CH01_kW">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:2000.0=#1e88e5;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <Label layout="766.0,728.0,100.0,18.0" text="CH02" font="bold 9.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="796.0,748.0,40.0,110.0" max="200.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Chiller02/Points/CH02_kW">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:2000.0=#1e88e5;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <Label layout="876.0,728.0,100.0,18.0" text="CHP01" font="bold 9.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="906.0,748.0,40.0,110.0" max="20.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_kW">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:200.0=#43a047;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <Label layout="986.0,728.0,100.0,18.0" text="CHP02" font="bold 9.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1016.0,748.0,40.0,110.0" max="20.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/CHP02/Points/CHP02_kW">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:200.0=#43a047;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <Label layout="1096.0,728.0,100.0,18.0" text="CDP01" font="bold 9.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1126.0,748.0,40.0,110.0" max="20.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/CDP01/Points/CDP01_kW">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:200.0=#43a047;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <Label layout="1206.0,728.0,100.0,18.0" text="CDP02" font="bold 9.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1236.0,748.0,40.0,110.0" max="20.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/CDP02/Points/CDP02_kW">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:200.0=#43a047;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <Label layout="1316.0,728.0,100.0,18.0" text="CT01" font="bold 9.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1346.0,748.0,40.0,110.0" max="12.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/CT01/Points/CT01_kW">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:120.0=#43a047;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <Label layout="1426.0,728.0,100.0,18.0" text="CT02" font="bold 9.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Bargraph text=" " background="#0b0e11" foreground="#e8edf2" layout="1456.0,748.0,40.0,110.0" max="12.0" valueFont="11.0pt SansSerif" scaleFont="10.0pt SansSerif" scaleVisible="false">
+      <ValueBinding ord="station:|slot:/ChillerPlant/CT02/Points/CT02_kW">
+        <INumericToNumber name="value"/>
+        <INumericToSimple name="fill" map="gx:Brush 0.0:120.0=#43a047;default=#2c3440;"/>
+      </ValueBinding>
+    </Bargraph>
+
+    <Label layout="1540.0,728.0,50.0,18.0" text="" font="9.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="1600.0,80.0,310.0,190.0"/>
+
+    <Label layout="1600.0,80.0,310.0,20.0" text="  PLANT kW/RT — GAUGE" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Picture layout="1606.0,103.0,164.0,164.0" image="file:^px/img/v73_gauge_164.png"/>
+
+    <AnalogMeter layout="1606.0,103.0,164.0,164.0" min="0.4" max="1.4" startAngle="225" arcAngle="270" numDivisions="10" numSubDivisions="2" showSubDivisions="true" scaleVisible="false" valueVisible="false" fillCircle="false" foreground="#c9d3dd" background="rgba(0,0,0,0.0)" needleBrush="#ffffff" needlePen="3.0">
+      <ValueBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT">
+        <INumericToNumber name="value"/>
+      </ValueBinding>
+    </AnalogMeter>
+
+    <BoundLabel layout="1780.0,110.0,122.0,40.0" font="bold 17.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT" popupEnabled="true" statusEffect="none">
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1e8449" stroke="#1e8449" pen="1.0" geom="1780.0,161.0,14.0,16.0"/>
+
+    <Label layout="1798.0,158.0,104.0,22.0" text="EXCELLENT  &lt; 0.75" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Rect fill="#7dcea0" stroke="#7dcea0" pen="1.0" geom="1780.0,183.0,14.0,16.0"/>
+
+    <Label layout="1798.0,180.0,104.0,22.0" text="GOOD  0.75–0.90" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Rect fill="#f4d03f" stroke="#f4d03f" pen="1.0" geom="1780.0,205.0,14.0,16.0"/>
+
+    <Label layout="1798.0,202.0,104.0,22.0" text="FAIR  0.90–1.00" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Rect fill="#e74c3c" stroke="#e74c3c" pen="1.0" geom="1780.0,227.0,14.0,16.0"/>
+
+    <Label layout="1798.0,224.0,104.0,22.0" text="NEEDS IMPROV.  &gt; 1.00" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1604.0,290.0,300.0,20.0" text="Today" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1604.0,308.0,300.0,36.0" font="bold 14.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Today" popupEnabled="true" statusEffect="none">
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+        <ObjectToString name="text" format="%out.value% kW/RT"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1604.0,350.0,300.0,20.0" text="Yesterday" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1604.0,368.0,300.0,36.0" font="bold 14.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Yesterday" popupEnabled="true" statusEffect="none">
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+        <ObjectToString name="text" format="%out.value% kW/RT"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1604.0,410.0,300.0,20.0" text="This month" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1604.0,428.0,300.0,36.0" font="bold 14.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_Month" popupEnabled="true" statusEffect="none">
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+        <ObjectToString name="text" format="%out.value% kW/RT"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1604.0,470.0,300.0,20.0" text="Last month" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1604.0,488.0,300.0,36.0" font="bold 14.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Energy/Plant_kW_per_RT_LastMonth" popupEnabled="true" statusEffect="none">
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+        <ObjectToString name="text" format="%out.value% kW/RT"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1604.0,540.0,300.0,20.0" text="CH01 (chiller only)" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1604.0,560.0,300.0,36.0" font="bold 16.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller01/Monitor/CH01_kW_per_RT" popupEnabled="true" statusEffect="none">
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+        <ObjectToString name="text" format="%out.value% kW/RT"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1e8449" stroke="#1e8449" pen="1.0" geom="1604.0,600.0,73.0,12.0"/>
+
+    <Label layout="1604.0,614.0,73.0,14.0" text="&lt;0.75" font="7.0pt sans-serif" foreground="#1e8449" halign="center"/>
+
+    <Rect fill="#7dcea0" stroke="#7dcea0" pen="1.0" geom="1679.0,600.0,73.0,12.0"/>
+
+    <Label layout="1679.0,614.0,73.0,14.0" text="0.75-0.90" font="7.0pt sans-serif" foreground="#7dcea0" halign="center"/>
+
+    <Rect fill="#f4d03f" stroke="#f4d03f" pen="1.0" geom="1754.0,600.0,73.0,12.0"/>
+
+    <Label layout="1754.0,614.0,73.0,14.0" text="0.90-1.00" font="7.0pt sans-serif" foreground="#f4d03f" halign="center"/>
+
+    <Rect fill="#e74c3c" stroke="#e74c3c" pen="1.0" geom="1829.0,600.0,73.0,12.0"/>
+
+    <Label layout="1829.0,614.0,73.0,14.0" text="&gt;1.00" font="7.0pt sans-serif" foreground="#e74c3c" halign="center"/>
+
+    <Label layout="1604.0,640.0,300.0,20.0" text="CH02 (chiller only)" font="bold 9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1604.0,660.0,300.0,36.0" font="bold 16.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller02/Monitor/CH02_kW_per_RT" popupEnabled="true" statusEffect="none">
+        <INumericToSimple name="background" map="gx:Brush 0.0:0.01=#2c3440;0.01:0.75=#1e8449;0.75:0.9=#7dcea0;0.9:1.0=#f4d03f;1.0:99.0=#e74c3c;default=#2c3440;"/>
+        <ObjectToString name="text" format="%out.value% kW/RT"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1e8449" stroke="#1e8449" pen="1.0" geom="1604.0,700.0,73.0,12.0"/>
+
+    <Label layout="1604.0,714.0,73.0,14.0" text="&lt;0.75" font="7.0pt sans-serif" foreground="#1e8449" halign="center"/>
+
+    <Rect fill="#7dcea0" stroke="#7dcea0" pen="1.0" geom="1679.0,700.0,73.0,12.0"/>
+
+    <Label layout="1679.0,714.0,73.0,14.0" text="0.75-0.90" font="7.0pt sans-serif" foreground="#7dcea0" halign="center"/>
+
+    <Rect fill="#f4d03f" stroke="#f4d03f" pen="1.0" geom="1754.0,700.0,73.0,12.0"/>
+
+    <Label layout="1754.0,714.0,73.0,14.0" text="0.90-1.00" font="7.0pt sans-serif" foreground="#f4d03f" halign="center"/>
+
+    <Rect fill="#e74c3c" stroke="#e74c3c" pen="1.0" geom="1829.0,700.0,73.0,12.0"/>
+
+    <Label layout="1829.0,714.0,73.0,14.0" text="&gt;1.00" font="7.0pt sans-serif" foreground="#e74c3c" halign="center"/>
+
+    <BoundLabel layout="668.0,862.0,76.0,18.0" font="bold 8.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller01/Points/CH01_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="778.0,862.0,76.0,18.0" font="bold 8.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller02/Points/CH02_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="888.0,862.0,76.0,18.0" font="bold 8.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="998.0,862.0,76.0,18.0" font="bold 8.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP02/Points/CHP02_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1108.0,862.0,76.0,18.0" font="bold 8.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CDP01/Points/CDP01_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1218.0,862.0,76.0,18.0" font="bold 8.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CDP02/Points/CDP02_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1328.0,862.0,76.0,18.0" font="bold 8.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CT01/Points/CT01_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1438.0,862.0,76.0,18.0" font="bold 8.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CT02/Points/CT02_kW" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>

@@ -1,0 +1,9 @@
+﻿id,title,observed,result
+S01,PM hours accumulate; due (90 %) and overdue (100 %) alarms,hours 0.247 used 247 % due True over True,PASS
+S02,starts per day counted,starts 1.0,PASS
+S03,chiller efficiency drift vs baseline -> advisory,filt 0.710 dev 77 % alarm True,PASS
+S04,pump kW above affinity-law expectation -> advisory,dev 250 % alarm True,PASS
+S05,tower approach high at full fan -> advisory,alarm True,PASS
+S06,frozen sensor detected; moving sensor not flagged,CHWR True OA False,PASS
+S07,health score falls with PM / predictive penalties; advisory on,CH01 45 CHP01 75 advisory True,PASS
+S08,"TOU peak demand limit raises CHWST by DL_MaxOffsetK, releases when disabled",t390 active True offset 2.00 CHWST 10.80 (t60 9.30) t690 offset 0.00,PASS

@@ -1,0 +1,35 @@
+name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No station databases or password hashes
+        run: |
+          if git ls-files | grep -iE '\.bog$'; then echo "::error::.bog file committed"; exit 1; fi
+          if git grep -nI -E 'pbkdf2-|b:Password' -- . ':!.github'; then echo "::error::password material found"; exit 1; fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python sources compile
+        run: python -m py_compile tools/*.py graphics3d/*.py drawings/*.py bim/*.py
+      - name: Px files are well-formed XML
+        run: |
+          python - <<'PY'
+          import glob, xml.etree.ElementTree as ET
+          files = glob.glob('station/shared/px/*.px')
+          for f in files: ET.parse(f)
+          print(len(files), 'Px files OK')
+          PY
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 3D scene bundles
+        working-directory: graphics3d
+        run: npm install --no-audit --no-fund && npm run bundle
+      - name: Java syntax (Niagara jars not available in CI)
+        run: |
+          javac -d /tmp/jc java/altPlant/altPlant-rt/src/com/alt/plant/*.java 2>&1 | grep 'error:' | grep -vE 'cannot find symbol|does not exist|cannot be applied|does not override|incompatible types' && exit 1 || echo 'Java syntax OK'

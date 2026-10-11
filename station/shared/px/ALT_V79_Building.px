@@ -1,0 +1,1268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="uxBuilder:UxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="1920.0,1080.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <Rect fill="#12161b" stroke="#12161b" pen="1.0" geom="0.0,0.0,1920.0,1080.0"/>
+
+    <Label layout="0.0,0.0,1920.0,40.0" text="  ALT Reference V7.9 — Building · floors / zones (temp · RH · CO2)" font="bold 18.0pt sans-serif" foreground="white" background="#0b0e11" halign="left"/>
+
+    <Label layout="1450.0,8.0,460.0,24.0" text="SAME DATA AS 3D DIGITAL TWIN · REFERENCE SIMULATION" font="bold 10.0pt sans-serif" foreground="#263238" background="#ffca28" halign="center"/>
+
+    <Label layout="8.0,44.0,150.0,26.0" text="Plant schematic" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_Plant.px" title="Plant schematic"/>
+    </Label>
+
+    <Label layout="162.0,44.0,150.0,26.0" text="Plant cards" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_PlantCards.px" title="Plant cards"/>
+    </Label>
+
+    <Label layout="316.0,44.0,150.0,26.0" text="Building / Zones" font="bold 9.0pt sans-serif" foreground="white" background="#1e88e5" halign="center"/>
+
+    <Label layout="470.0,44.0,150.0,26.0" text="3D Live" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V79_Building3D.px" title="3D Live"/>
+    </Label>
+
+    <Label layout="624.0,44.0,150.0,26.0" text="Field IO" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_V77_FieldIO.px" title="Field IO"/>
+    </Label>
+
+    <Label layout="778.0,44.0,150.0,26.0" text="Alarms" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <PopupBinding ord="file:^px/ALT_CP_AlarmsHistory.px" title="Alarms"/>
+    </Label>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,80.0,1904.0,112.0"/>
+
+    <Label layout="8.0,80.0,1904.0,20.0" text="  FLOOR 8" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="16.0,104.0,115.0,20.0" text="AHU run" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,105.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,125.0,115.0,20.0" text="CHW valve %" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,126.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,146.0,115.0,20.0" text="Floor avg °C" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,147.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/Zone_F08_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,167.0,115.0,20.0" text="Return CO2" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,168.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_RA_CO2" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="250.0,104.0,270.0,82.0"/>
+
+    <Label layout="254.0,106.0,262.0,16.0" text="Zone 08_0801" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="254.0,124.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneTemperatureAvg_08_0801" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="254.0,144.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneHumidityAvg_08_0801" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="387.0,144.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneCO2_08_0801" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="254.0,164.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="524.0,104.0,270.0,82.0"/>
+
+    <Label layout="528.0,106.0,262.0,16.0" text="Zone 08_0802" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="528.0,124.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneTemperatureAvg_08_0802" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="528.0,144.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneHumidityAvg_08_0802" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="661.0,144.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneCO2_08_0802" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="528.0,164.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="798.0,104.0,270.0,82.0"/>
+
+    <Label layout="802.0,106.0,262.0,16.0" text="Zone 08_0803" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="802.0,124.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneTemperatureAvg_08_0803" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="802.0,144.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneHumidityAvg_08_0803" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="935.0,144.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneCO2_08_0803" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="802.0,164.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1072.0,104.0,270.0,82.0"/>
+
+    <Label layout="1076.0,106.0,262.0,16.0" text="Zone 08_0804" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1076.0,124.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneTemperatureAvg_08_0804" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1076.0,144.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneHumidityAvg_08_0804" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1209.0,144.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F08/Zones/ZoneCO2_08_0804" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1076.0,164.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,200.0,1904.0,112.0"/>
+
+    <Label layout="8.0,200.0,1904.0,20.0" text="  FLOOR 7" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="16.0,224.0,115.0,20.0" text="AHU run" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,225.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,245.0,115.0,20.0" text="CHW valve %" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,246.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,266.0,115.0,20.0" text="Floor avg °C" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,267.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/Zone_F07_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,287.0,115.0,20.0" text="Return CO2" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,288.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/AHU_F07_RA_CO2" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="250.0,224.0,270.0,82.0"/>
+
+    <Label layout="254.0,226.0,262.0,16.0" text="Zone 07_0701" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="254.0,244.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneTemperatureAvg_07_0701" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="254.0,264.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneHumidityAvg_07_0701" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="387.0,264.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneCO2_07_0701" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="254.0,284.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="524.0,224.0,270.0,82.0"/>
+
+    <Label layout="528.0,226.0,262.0,16.0" text="Zone 07_0702" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="528.0,244.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneTemperatureAvg_07_0702" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="528.0,264.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneHumidityAvg_07_0702" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="661.0,264.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneCO2_07_0702" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="528.0,284.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="798.0,224.0,270.0,82.0"/>
+
+    <Label layout="802.0,226.0,262.0,16.0" text="Zone 07_0703" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="802.0,244.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneTemperatureAvg_07_0703" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="802.0,264.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneHumidityAvg_07_0703" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="935.0,264.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneCO2_07_0703" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="802.0,284.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1072.0,224.0,270.0,82.0"/>
+
+    <Label layout="1076.0,226.0,262.0,16.0" text="Zone 07_0704" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1076.0,244.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneTemperatureAvg_07_0704" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1076.0,264.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneHumidityAvg_07_0704" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1209.0,264.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F07/Zones/ZoneCO2_07_0704" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1076.0,284.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,320.0,1904.0,112.0"/>
+
+    <Label layout="8.0,320.0,1904.0,20.0" text="  FLOOR 6" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="16.0,344.0,115.0,20.0" text="AHU run" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,345.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,365.0,115.0,20.0" text="CHW valve %" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,366.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,386.0,115.0,20.0" text="Floor avg °C" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,387.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/Zone_F06_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,407.0,115.0,20.0" text="Return CO2" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,408.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/AHU_F06_RA_CO2" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="250.0,344.0,270.0,82.0"/>
+
+    <Label layout="254.0,346.0,262.0,16.0" text="Zone 06_0601" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="254.0,364.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneTemperatureAvg_06_0601" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="254.0,384.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneHumidityAvg_06_0601" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="387.0,384.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneCO2_06_0601" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="254.0,404.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="524.0,344.0,270.0,82.0"/>
+
+    <Label layout="528.0,346.0,262.0,16.0" text="Zone 06_0602" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="528.0,364.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneTemperatureAvg_06_0602" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="528.0,384.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneHumidityAvg_06_0602" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="661.0,384.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneCO2_06_0602" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="528.0,404.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="798.0,344.0,270.0,82.0"/>
+
+    <Label layout="802.0,346.0,262.0,16.0" text="Zone 06_0603" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="802.0,364.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneTemperatureAvg_06_0603" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="802.0,384.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneHumidityAvg_06_0603" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="935.0,384.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneCO2_06_0603" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="802.0,404.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1072.0,344.0,270.0,82.0"/>
+
+    <Label layout="1076.0,346.0,262.0,16.0" text="Zone 06_0604" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1076.0,364.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneTemperatureAvg_06_0604" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1076.0,384.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneHumidityAvg_06_0604" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1209.0,384.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F06/Zones/ZoneCO2_06_0604" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1076.0,404.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,440.0,1904.0,112.0"/>
+
+    <Label layout="8.0,440.0,1904.0,20.0" text="  FLOOR 5" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="16.0,464.0,115.0,20.0" text="AHU run" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,465.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,485.0,115.0,20.0" text="CHW valve %" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,486.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,506.0,115.0,20.0" text="Floor avg °C" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,507.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/Zone_F05_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,527.0,115.0,20.0" text="Return CO2" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,528.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/AHU_F05_RA_CO2" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="250.0,464.0,270.0,82.0"/>
+
+    <Label layout="254.0,466.0,262.0,16.0" text="Zone 05_0501" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="254.0,484.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneTemperatureAvg_05_0501" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="254.0,504.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneHumidityAvg_05_0501" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="387.0,504.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneCO2_05_0501" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="254.0,524.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="524.0,464.0,270.0,82.0"/>
+
+    <Label layout="528.0,466.0,262.0,16.0" text="Zone 05_0502" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="528.0,484.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneTemperatureAvg_05_0502" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="528.0,504.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneHumidityAvg_05_0502" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="661.0,504.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneCO2_05_0502" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="528.0,524.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="798.0,464.0,270.0,82.0"/>
+
+    <Label layout="802.0,466.0,262.0,16.0" text="Zone 05_0503" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="802.0,484.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneTemperatureAvg_05_0503" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="802.0,504.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneHumidityAvg_05_0503" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="935.0,504.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneCO2_05_0503" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="802.0,524.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1072.0,464.0,270.0,82.0"/>
+
+    <Label layout="1076.0,466.0,262.0,16.0" text="Zone 05_0504" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1076.0,484.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneTemperatureAvg_05_0504" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1076.0,504.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneHumidityAvg_05_0504" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1209.0,504.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F05/Zones/ZoneCO2_05_0504" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1076.0,524.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,560.0,1904.0,112.0"/>
+
+    <Label layout="8.0,560.0,1904.0,20.0" text="  FLOOR 4" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="16.0,584.0,115.0,20.0" text="AHU run" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,585.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,605.0,115.0,20.0" text="CHW valve %" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,606.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,626.0,115.0,20.0" text="Floor avg °C" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,627.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/Zone_F04_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,647.0,115.0,20.0" text="Return CO2" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,648.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/AHU_F04_RA_CO2" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="250.0,584.0,270.0,82.0"/>
+
+    <Label layout="254.0,586.0,262.0,16.0" text="Zone 04_0401" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="254.0,604.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneTemperatureAvg_04_0401" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="254.0,624.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneHumidityAvg_04_0401" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="387.0,624.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneCO2_04_0401" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="254.0,644.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="524.0,584.0,270.0,82.0"/>
+
+    <Label layout="528.0,586.0,262.0,16.0" text="Zone 04_0402" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="528.0,604.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneTemperatureAvg_04_0402" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="528.0,624.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneHumidityAvg_04_0402" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="661.0,624.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneCO2_04_0402" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="528.0,644.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="798.0,584.0,270.0,82.0"/>
+
+    <Label layout="802.0,586.0,262.0,16.0" text="Zone 04_0403" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="802.0,604.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneTemperatureAvg_04_0403" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="802.0,624.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneHumidityAvg_04_0403" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="935.0,624.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneCO2_04_0403" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="802.0,644.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1072.0,584.0,270.0,82.0"/>
+
+    <Label layout="1076.0,586.0,262.0,16.0" text="Zone 04_0404" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1076.0,604.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneTemperatureAvg_04_0404" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1076.0,624.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneHumidityAvg_04_0404" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1209.0,624.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F04/Zones/ZoneCO2_04_0404" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1076.0,644.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,680.0,1904.0,112.0"/>
+
+    <Label layout="8.0,680.0,1904.0,20.0" text="  FLOOR 3" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="16.0,704.0,115.0,20.0" text="AHU run" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,705.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,725.0,115.0,20.0" text="CHW valve %" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,726.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,746.0,115.0,20.0" text="Floor avg °C" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,747.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/Zone_F03_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,767.0,115.0,20.0" text="Return CO2" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,768.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/AHU_F03_RA_CO2" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="250.0,704.0,270.0,82.0"/>
+
+    <Label layout="254.0,706.0,262.0,16.0" text="Zone 03_0301" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="254.0,724.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneTemperatureAvg_03_0301" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="254.0,744.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneHumidityAvg_03_0301" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="387.0,744.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneCO2_03_0301" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="254.0,764.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="524.0,704.0,270.0,82.0"/>
+
+    <Label layout="528.0,706.0,262.0,16.0" text="Zone 03_0302" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="528.0,724.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneTemperatureAvg_03_0302" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="528.0,744.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneHumidityAvg_03_0302" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="661.0,744.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneCO2_03_0302" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="528.0,764.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="798.0,704.0,270.0,82.0"/>
+
+    <Label layout="802.0,706.0,262.0,16.0" text="Zone 03_0303" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="802.0,724.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneTemperatureAvg_03_0303" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="802.0,744.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneHumidityAvg_03_0303" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="935.0,744.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneCO2_03_0303" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="802.0,764.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1072.0,704.0,270.0,82.0"/>
+
+    <Label layout="1076.0,706.0,262.0,16.0" text="Zone 03_0304" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1076.0,724.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneTemperatureAvg_03_0304" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1076.0,744.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneHumidityAvg_03_0304" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1209.0,744.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F03/Zones/ZoneCO2_03_0304" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1076.0,764.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,800.0,1904.0,112.0"/>
+
+    <Label layout="8.0,800.0,1904.0,20.0" text="  FLOOR 2" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="16.0,824.0,115.0,20.0" text="AHU run" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,825.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_Status" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,845.0,115.0,20.0" text="CHW valve %" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,846.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_ValveCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,866.0,115.0,20.0" text="Floor avg °C" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,867.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/Zone_F02_AvgTemp" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="16.0,887.0,115.0,20.0" text="Return CO2" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <BoundLabel layout="131.0,888.0,107.0,18.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/AHU_F02_RA_CO2" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="250.0,824.0,270.0,82.0"/>
+
+    <Label layout="254.0,826.0,262.0,16.0" text="Zone 02_0201" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="254.0,844.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneTemperatureAvg_02_0201" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="254.0,864.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneHumidityAvg_02_0201" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="387.0,864.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneCO2_02_0201" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="254.0,884.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="524.0,824.0,270.0,82.0"/>
+
+    <Label layout="528.0,826.0,262.0,16.0" text="Zone 02_0202" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="528.0,844.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneTemperatureAvg_02_0202" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="528.0,864.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneHumidityAvg_02_0202" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="661.0,864.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneCO2_02_0202" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="528.0,884.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="798.0,824.0,270.0,82.0"/>
+
+    <Label layout="802.0,826.0,262.0,16.0" text="Zone 02_0203" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="802.0,844.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneTemperatureAvg_02_0203" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="802.0,864.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneHumidityAvg_02_0203" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="935.0,864.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneCO2_02_0203" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="802.0,884.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1072.0,824.0,270.0,82.0"/>
+
+    <Label layout="1076.0,826.0,262.0,16.0" text="Zone 02_0204" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1076.0,844.0,262.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneTemperatureAvg_02_0204" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1076.0,864.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneHumidityAvg_02_0204" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1209.0,864.0,129.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Floors/F02/Zones/ZoneCO2_02_0204" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1076.0,884.0,262.0,16.0" text="°C  ·  %RH  ·  CO2 ppm" font="8.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,920.0,1904.0,112.0"/>
+
+    <Label layout="8.0,920.0,1904.0,20.0" text="  FLOOR 1  · plant room + retail (12 zones)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="250.0,944.0,133.0,82.0"/>
+
+    <Label layout="254.0,946.0,125.0,16.0" text="Zone 01_0101" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="254.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0101/ZoneTemperatureAvg_01_0101" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="254.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0101/ZoneHumidityAvg_01_0101" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="318.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0101/ZoneCO2_01_0101" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="387.0,944.0,133.0,82.0"/>
+
+    <Label layout="391.0,946.0,125.0,16.0" text="Zone 01_0102" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="391.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0102/ZoneTemperatureAvg_01_0102" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="391.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0102/ZoneHumidityAvg_01_0102" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="455.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0102/ZoneCO2_01_0102" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="524.0,944.0,133.0,82.0"/>
+
+    <Label layout="528.0,946.0,125.0,16.0" text="Zone 01_0103" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="528.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0103/ZoneTemperatureAvg_01_0103" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="528.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0103/ZoneHumidityAvg_01_0103" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="592.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0103/ZoneCO2_01_0103" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="661.0,944.0,133.0,82.0"/>
+
+    <Label layout="665.0,946.0,125.0,16.0" text="Zone 01_0104" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="665.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0104/ZoneTemperatureAvg_01_0104" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="665.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0104/ZoneHumidityAvg_01_0104" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="729.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0104/ZoneCO2_01_0104" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="798.0,944.0,133.0,82.0"/>
+
+    <Label layout="802.0,946.0,125.0,16.0" text="Zone 01_0105" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="802.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0105/ZoneTemperatureAvg_01_0105" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="802.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0105/ZoneHumidityAvg_01_0105" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="866.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0105/ZoneCO2_01_0105" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="935.0,944.0,133.0,82.0"/>
+
+    <Label layout="939.0,946.0,125.0,16.0" text="Zone 01_0106" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="939.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0106/ZoneTemperatureAvg_01_0106" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="939.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0106/ZoneHumidityAvg_01_0106" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1003.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0106/ZoneCO2_01_0106" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1072.0,944.0,133.0,82.0"/>
+
+    <Label layout="1076.0,946.0,125.0,16.0" text="Zone 01_0107" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1076.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0107/ZoneTemperatureAvg_01_0107" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1076.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0107/ZoneHumidityAvg_01_0107" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1140.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0107/ZoneCO2_01_0107" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1209.0,944.0,133.0,82.0"/>
+
+    <Label layout="1213.0,946.0,125.0,16.0" text="Zone 01_0108" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1213.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0108/ZoneTemperatureAvg_01_0108" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1213.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0108/ZoneHumidityAvg_01_0108" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1277.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0108/ZoneCO2_01_0108" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1346.0,944.0,133.0,82.0"/>
+
+    <Label layout="1350.0,946.0,125.0,16.0" text="Zone 01_0109" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1350.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0109/ZoneTemperatureAvg_01_0109" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1350.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0109/ZoneHumidityAvg_01_0109" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1414.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0109/ZoneCO2_01_0109" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1483.0,944.0,133.0,82.0"/>
+
+    <Label layout="1487.0,946.0,125.0,16.0" text="Zone 01_0110" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1487.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0110/ZoneTemperatureAvg_01_0110" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1487.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0110/ZoneHumidityAvg_01_0110" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1551.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0110/ZoneCO2_01_0110" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1620.0,944.0,133.0,82.0"/>
+
+    <Label layout="1624.0,946.0,125.0,16.0" text="Zone 01_0111" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1624.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0111/ZoneTemperatureAvg_01_0111" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1624.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0111/ZoneHumidityAvg_01_0111" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1688.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0111/ZoneCO2_01_0111" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#171c22" stroke="#3b4652" pen="1.0" geom="1757.0,944.0,133.0,82.0"/>
+
+    <Label layout="1761.0,946.0,125.0,16.0" text="Zone 01_0112" font="bold 9.0pt sans-serif" foreground="white" halign="left"/>
+
+    <BoundLabel layout="1761.0,964.0,125.0,20.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0112/ZoneTemperatureAvg_01_0112" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1761.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0112/ZoneHumidityAvg_01_0112" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1825.0,984.0,60.0,18.0" font="bold 9.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Zones/Z01_0112/ZoneCO2_01_0112" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>

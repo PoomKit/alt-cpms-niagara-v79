@@ -1,0 +1,6 @@
+C01  PASS     CLOUD mode: AI heartbeat + setpoint written by cloud -> AI mode, CHWST active = AI value
+     t1400 mode True link 0.0 CHWST_AI 8.5 active 8.50
+C02  PASS     heartbeat stops at 1470 s -> disconnect (12 min) -> LOCAL path (LOCAL SP + reset) drives CHWST
+     t2370 mode False link 2.0 active 8.80 local path 8.80 (LOCAL SP 7.00)
+C03  PASS     CLOUD mode, nothing written by cloud: simulation ramps / beats released, no AI mode
+     t890 AI_Available False HB 0.0 CHWST_AI 7.0

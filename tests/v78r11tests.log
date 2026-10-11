@@ -1,0 +1,26 @@
+F01  PASS     after a freeze trip the water keeps flowing for the run-on time (test 20 s) after the trip signal ends
+     trip 35.0, trip signal ended 36.0; run-on 10 s later True, 35 s later False
+F02  PASS     pump running without a command -> alarm
+     CHP01 cmd False, alarm True
+F03  PASS     AI message number: going backwards = old payload rejected; not changing 60 s (test) = stale
+     old after 10 -> 5: True; ok after 11: True; stale 85 s later: True
+F04  PASS     CH01 in maintenance is never started; CH02 runs instead
+     CH01 started False, CH02 started at 10.0
+F05  PASS     condenser-first option: CHW valve opens only after condenser flow is proven, chiller still starts
+     CDW valve 2.0, CDW flow proven 7.0, CHW valve 7.0, run 14.5
+F06  PASS     start failure (no run proof) is remembered as cause 10 = compressor did not start
+     CH01_StartFailCause 10.0
+F07  PASS     HPV switched off -> valve 100 % while the condenser valve is open
+     HPV 100 %
+F08  PASS     requests ignored only when 3 or more air-side units run
+     units running 0, ignore used 0 (setting 1)
+F09  PASS     fill water totaliser adds gpm x 1 min every minute (60 m3/h = 264 gpm) and alarms above 500 gal
+     total after ~3 min 798 gal, alarm True
+F10  PASS     option on: plant stays inhibited after E-stop release until reset; option off: restarts
+     option on True, option off False
+F11  PASS     FCU fan relays never two at once; valid room sensors counted
+     overlap times [], valid sensors 12
+F12  PASS     CHW pump drive speed not following the command -> alarm (none in normal running)
+     normal: cmd 64 % fb 32.2 Hz alarm False; fb forced 10 Hz -> True
+F13  PASS     data source switched while the plant runs -> alarm (stays until reset)
+     before False, after True

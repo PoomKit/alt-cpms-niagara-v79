@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="uxBuilder:UxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="1920.0,1080.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <Rect fill="#12161b" stroke="#12161b" pen="1.0" geom="0.0,0.0,1920.0,1080.0"/>
+
+    <Label layout="0.0,0.0,1920.0,40.0" text="  ALT Reference V7.7 — AI link (heartbeat stopwatch) &amp; low ΔT syndrome guard" font="bold 18.0pt sans-serif" foreground="white" background="#0b0e11" halign="left"/>
+
+    <BoundLabel layout="1254.0,8.0,190.0,24.0" font="bold 10.0pt sans-serif" foreground="white" background="#2e7d32" halign="center">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/FieldIO/Common/IO_AnyFieldSts" popupEnabled="false" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c62828"/>
+          <Brush name="falseValue" value="#2e7d32"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1450.0,8.0,460.0,24.0" text="REFERENCE SIMULATION – NOT PROJECT APPROVED" font="bold 10.0pt sans-serif" foreground="#263238" background="#ffca28" halign="center"/>
+
+    <Label layout="4.0,44.0,65.3,26.0" text="Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Plant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="72.3,44.0,65.3,26.0" text="Chiller Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_ChillerPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="140.6,44.0,65.3,26.0" text="CT Plant" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_CTPlant.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="208.9,44.0,65.3,26.0" text="Plant 3D" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Plant3D.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="277.1,44.0,65.3,26.0" text="Chillers" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Chillers.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="345.4,44.0,65.3,26.0" text="Pools" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_PlantDetail.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="413.7,44.0,65.3,26.0" text="Drives" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Drives.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="482.0,44.0,65.3,26.0" text="Valves" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Valves.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="550.3,44.0,65.3,26.0" text="Meters" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Meters.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="618.6,44.0,65.3,26.0" text="Schedules" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V71_Schedules.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="686.9,44.0,65.3,26.0" text="Optimise" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Optimization.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="755.1,44.0,65.3,26.0" text="AI &amp; ΔT" font="bold 8.5pt sans-serif" foreground="white" background="#1e88e5" halign="center"/>
+
+    <Label layout="823.4,44.0,65.3,26.0" text="Design" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V76_Design.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="891.7,44.0,65.3,26.0" text="Safety" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Safety.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="960.0,44.0,65.3,26.0" text="Health" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Health.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1028.3,44.0,65.3,26.0" text="CX Tests" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_Commissioning.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1096.6,44.0,65.3,26.0" text="Field IO" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V77_FieldIO.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1164.9,44.0,65.3,26.0" text="Energy" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_EnergyDashboard.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1233.1,44.0,65.3,26.0" text="KPI" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Energy.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1301.4,44.0,65.3,26.0" text="Alarms" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_AlarmsHistory.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1369.7,44.0,65.3,26.0" text="Sim" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_CP_Simulation.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1438.0,44.0,65.3,26.0" text="Air Side" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AirSide.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1506.3,44.0,65.3,26.0" text="Zones" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V73_Zones.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1574.6,44.0,65.3,26.0" text="AHU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1642.9,44.0,65.3,26.0" text="AHU-02" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_AHU02.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1711.1,44.0,65.3,26.0" text="OAU-01" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_OAU01.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1779.4,44.0,65.3,26.0" text="FCU" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_FCU.px" popupEnabled="false"/>
+    </Label>
+
+    <Label layout="1847.7,44.0,65.3,26.0" text="Ventilation" font="bold 8.5pt sans-serif" foreground="#cfd8dc" background="#233a33" halign="center">
+      <ValueBinding ord="station:|slot:/" hyperlink="file:^px/ALT_V7_Ventilation.px" popupEnabled="false"/>
+    </Label>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="10.0,80.0,940.0,990.0"/>
+
+    <Label layout="10.0,80.0,940.0,20.0" text="  AI HEARTBEAT — a stopwatch that restarts at every API from the AI (3rd party)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="24.0,108.0,600.0,20.0" text="LINK STATE (one lit at a time)" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <BoundLabel layout="24.0,132.0,196.0,46.0" font="bold 13.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_Link_Connected" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="CONNECTED"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1e8449"/>
+          <Brush name="falseValue" value="#263039"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="256.0,132.0,196.0,46.0" font="bold 13.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_Link_PreDisconnect" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="PRE-DISCONNECT"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#b9770e"/>
+          <Brush name="falseValue" value="#263039"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="488.0,132.0,196.0,46.0" font="bold 13.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_Link_Disconnected" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="DISCONNECTED"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c0392b"/>
+          <Brush name="falseValue" value="#263039"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="720.0,132.0,196.0,46.0" font="bold 13.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_Link_Reconnecting" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="RECONNECTING"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2471a3"/>
+          <Brush name="falseValue" value="#263039"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Polygon fill="#8fa3b5" geom="228.0,148.0 240.0,155.0 228.0,162.0 "/>
+
+    <Polygon fill="#8fa3b5" geom="460.0,148.0 472.0,155.0 460.0,162.0 "/>
+
+    <Polygon fill="#8fa3b5" geom="692.0,148.0 704.0,155.0 692.0,162.0 "/>
+
+    <Label layout="24.0,182.0,214.0,16.0" text="API received on time · AI in control" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="256.0,182.0,214.0,16.0" text="no API ≥ Step 1 · AI kept (last SPs)" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="488.0,182.0,214.0,16.0" text="no API ≥ Step 2 · plant runs LOCAL" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="720.0,182.0,214.0,16.0" text="APIs again · waiting for enough APIs" font="8.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="24.0,200.0,912.0,16.0" text="↻  CONNECTED ← RECONNECTING after the required number of new APIs (default 2)" font="8.0pt sans-serif" foreground="#8fa3b5" halign="left"/>
+
+    <Label layout="24.0,232.0,300.0,20.0" text="STOPWATCH — minutes since the last API" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <BoundLabel layout="24.0,256.0,170.0,52.0" font="bold 22.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatAgeMin" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="200.0,272.0,60.0,20.0" text="min" font="bold 12.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="271.0,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:2.08=#263039;2.08:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="298.1,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:6.25=#263039;6.25:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="325.2,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:10.42=#263039;10.42:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="352.2,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:14.58=#263039;14.58:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="379.3,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:18.75=#263039;18.75:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="406.4,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:22.92=#263039;22.92:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="433.5,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:27.08=#263039;27.08:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="460.6,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:31.25=#263039;31.25:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="487.7,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:35.42=#263039;35.42:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="514.8,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:39.58=#263039;39.58:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="541.8,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:43.75=#263039;43.75:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="568.9,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:47.92=#263039;47.92:+inf=#2ecc71;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="596.0,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:52.08=#263039;52.08:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="623.1,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:56.25=#263039;56.25:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="650.2,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:60.42=#263039;60.42:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="677.2,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:64.58=#263039;64.58:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="704.3,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:68.75=#263039;68.75:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="731.4,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:72.92=#263039;72.92:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="758.5,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:77.08=#263039;77.08:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="785.6,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:81.25=#263039;81.25:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="812.7,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:85.42=#263039;85.42:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="839.8,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:89.58=#263039;89.58:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="866.8,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:93.75=#263039;93.75:+inf=#f39c12;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="893.9,256.0,25.1,30.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatTimerPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <INumericToSimple name="background" map="gx:Brush -inf:97.92=#263039;97.92:+inf=#e74c3c;default=#263039;"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#ffffff" stroke="#ffffff" pen="0.5" geom="269.0,250.0,3.0,42.0"/>
+
+    <Label layout="270.0,292.0,90.0,16.0" text="API" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Rect fill="#ffffff" stroke="#ffffff" pen="0.5" geom="594.0,250.0,3.0,42.0"/>
+
+    <Label layout="550.0,292.0,90.0,16.0" text="STEP 1" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <Rect fill="#ffffff" stroke="#ffffff" pen="0.5" geom="919.0,250.0,3.0,42.0"/>
+
+    <Label layout="830.0,292.0,90.0,16.0" text="STEP 2" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="right"/>
+
+    <Label layout="372.5,234.0,120.0,16.0" text="connected" font="bold 8.0pt sans-serif" foreground="#7dcea0" halign="center"/>
+
+    <Label layout="697.5,234.0,120.0,16.0" text="pre-disconnect" font="bold 8.0pt sans-serif" foreground="#f5cba7" halign="center"/>
+
+    <Label layout="445.0,312.0,110.0,20.0" text="Step 1 (min)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="right"/>
+
+    <BoundLabel layout="559.0,310.0,72.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/HB_Step1_PreDisconnectMin/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/HB_Step1_PreDisconnectMin" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="670.0,312.0,110.0,20.0" text="Step 2 (min)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="right"/>
+
+    <BoundLabel layout="784.0,310.0,72.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/HB_Step2_DisconnectMin/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/HB_Step2_DisconnectMin" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="24.0,350.0,450.0,250.0"/>
+
+    <Label layout="24.0,350.0,450.0,20.0" text="  MEASURED" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="28.0,374.0,276.0,20.0" text="API period (last two APIs, min)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="304.0,375.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatIntervalMin" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="28.0,398.0,276.0,20.0" text="APIs since last disconnect" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="304.0,399.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_HeartbeatBeats" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="28.0,422.0,276.0,20.0" text="APIs needed to (re)connect" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="304.0,423.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/ChwLoop_AI/HB_RequiredBeats/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/ChwLoop_AI/HB_RequiredBeats" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="28.0,446.0,276.0,20.0" text="Link drops (since 24 h stable)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="304.0,447.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_LinkDrops" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="28.0,470.0,276.0,20.0" text="Heartbeat value written by AI" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="304.0,471.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/HeartbeatTimestampSetpoint" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="28.0,494.0,276.0,20.0" text="Heartbeat detector" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="304.0,495.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/HeartbeatDetectorStatus" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#e74c3c"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="28.0,518.0,276.0,20.0" text="AI available (link + values)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="304.0,519.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/AI_Available" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#f39c12"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="28.0,542.0,276.0,20.0" text="Operation mode" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="304.0,543.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/OperationMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#8e44ad"/>
+          <Brush name="falseValue" value="#34495e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="28.0,566.0,276.0,20.0" text="Link state number" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="304.0,567.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/AI_LinkState" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="486.0,350.0,450.0,250.0"/>
+
+    <Label layout="486.0,350.0,450.0,20.0" text="  SMART CHECKS / ALARMS" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <BoundLabel layout="500.0,380.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/AI_HeartbeatPreDisconnectAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#f39c12"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="522.0,377.0,300.0,20.0" text="API late (Step 1 reached)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="500.0,408.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/HeartbeatDetectorStatus" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2ecc71"/>
+          <Brush name="falseValue" value="#5d6d7e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="522.0,405.0,300.0,20.0" text="Heartbeat OK (Critical alarm when lost)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="500.0,436.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/AI_HeartbeatStep1TooShortAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#f39c12"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="522.0,433.0,300.0,20.0" text="Step 1 shorter than 1.2 × API period" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="500.0,464.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/AI_LinkUnstableAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#f39c12"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="522.0,461.0,300.0,20.0" text="Link unstable (≥ 3 drops, no 24 h stable)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="500.0,492.0,14.0,14.0" border="1.0 solid #0b0e11">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/AiRequestedButLocalAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format=""/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#f39c12"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="522.0,489.0,300.0,20.0" text="AI requested but running Local" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="490.0,520.0,276.0,20.0" text="Unstable after drops" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="766.0,521.0,166.0,21.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/HB_UnstableDrops/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/AI_Heartbeat/HB_UnstableDrops" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="500.0,552.0,430.0,20.0" text="Step 2 is never shorter than Step 1 + 1 min." font="8.0pt sans-serif" foreground="#8fa3b5" halign="left"/>
+
+    <Label layout="500.0,570.0,430.0,20.0" text="Measured period tells you how often the 3rd party really sends." font="8.0pt sans-serif" foreground="#8fa3b5" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="24.0,612.0,912.0,250.0"/>
+
+    <Label layout="24.0,612.0,912.0,20.0" text="  MODE + BUMPLESS SETPOINTS (the selected setpoint glides; no step to the chillers / pumps / towers)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="38.0,642.0,120.0,20.0" text="User request" font="bold 10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Button foreground="white" layout="160.0,638.0,90.0,26.0" text="LOCAL" font="bold 11.0pt sans-serif">
+      <ActionBinding ord="station:|slot:/ChillerPlant/ModeControl/ModeCmd_UI/set" widgetEvent="actionPerformed">
+        <Boolean name="actionArg" value="false"/>
+      </ActionBinding>
+      <ValueBinding ord="station:|slot:/ChillerPlant/ModeControl/ModeCmd_UI" popupEnabled="false">
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2c3440"/>
+          <Brush name="falseValue" value="#7b241c"/>
+        </IBooleanToSimple>
+      </ValueBinding>
+    </Button>
+
+    <Button foreground="white" layout="256.0,638.0,90.0,26.0" text="AI" font="bold 11.0pt sans-serif">
+      <ActionBinding ord="station:|slot:/ChillerPlant/ModeControl/ModeCmd_UI/set" widgetEvent="actionPerformed">
+        <Boolean name="actionArg" value="true"/>
+      </ActionBinding>
+      <ValueBinding ord="station:|slot:/ChillerPlant/ModeControl/ModeCmd_UI" popupEnabled="false">
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#1e8449"/>
+          <Brush name="falseValue" value="#2c3440"/>
+        </IBooleanToSimple>
+      </ValueBinding>
+    </Button>
+
+    <BoundLabel layout="370.0,640.0,150.0,24.0" font="bold 11.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/OperationMode" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#8e44ad"/>
+          <Brush name="falseValue" value="#34495e"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="38.0,680.0,210.0,20.0" text="" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="260.0,680.0,210.0,20.0" text="from AI" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="480.0,680.0,210.0,20.0" text="LOCAL (optimiser)" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="700.0,680.0,210.0,20.0" text="ACTIVE (to plant)" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="38.0,704.0,210.0,20.0" text="CHW supply temp SP" font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="260.0,704.0,180.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/CHW_LeavingTemperatureSetpoint_AI" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,704.0,180.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Optimization/Opt_ChwstSetpoint" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="700.0,704.0,180.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/CHW_LeavingTemperatureSetpoint_ACTIVE" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="38.0,734.0,210.0,20.0" text="CHW DP SP" font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="260.0,734.0,180.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/CHWDP_Setpoint_AI" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,734.0,180.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Optimization/Opt_DpSetpoint" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="700.0,734.0,180.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/CHWDP_Setpoint_ACTIVE" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="38.0,764.0,210.0,20.0" text="CDW supply temp SP" font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="260.0,764.0,180.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/CDS_Setpoint_AI" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="480.0,764.0,180.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Optimization/Opt_CdwSetpoint" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="700.0,764.0,180.0,24.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/CDS_Setpoint_ACTIVE" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="38.0,800.0,880.0,20.0" text="Slew limit: CHWST 0.3 K/min · DP 0.15 bar/min · CDS 0.5 K/min on EVERY change of the ACTIVE setpoint (AI ⇄ LOCAL, AI steps, optimiser)." font="8.5pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="38.0,820.0,880.0,20.0" text="User LOCAL wins at once (mode). After a restart the setpoints start at the safe maximum and glide down." font="8.5pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="24.0,874.0,912.0,186.0"/>
+
+    <Label layout="24.0,874.0,912.0,20.0" text="  HOW IT WORKS" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="38.0,898.0,890.0,22.0" text="1. The AI writes a new heartbeat value every few minutes. Any new value = one API received → the stopwatch restarts from 0." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="38.0,925.0,890.0,22.0" text="2. Stopwatch ≥ Step 1 → PRE-DISCONNECT: warning only, the AI stays in control with its last setpoints." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="38.0,952.0,890.0,22.0" text="3. Stopwatch ≥ Step 2 → DISCONNECTED: plant to LOCAL (setpoints glide), the API count starts again from 0." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="38.0,979.0,890.0,22.0" text="4. APIs come back → RECONNECTING until the required number of APIs → CONNECTED → AI (if the user selected AI)." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="38.0,1006.0,890.0,22.0" text="5. The time between the last two APIs is shown, so Step 1 / Step 2 can be set from the real period (e.g. period 5 min → 6 / 12 min)." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="38.0,1033.0,890.0,22.0" text="6. Station restart: AI only after 2 fresh APIs. The AI must write a NEW value each time (same value twice = no API)." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="962.0,80.0,948.0,990.0"/>
+
+    <Label layout="962.0,80.0,948.0,20.0" text="  LOW ΔT SYNDROME GUARD — 2nd layer on the end-of-loop DP control of the CHW pumps" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="976.0,108.0,900.0,20.0" text="DP SETPOINT CHAIN  (layer 1: water must reach the end of the loop · layer 2: do not over-pump when ΔT is low)" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <Label layout="976.0,132.0,118.0,18.0" text="AHU CHW requests" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <BoundLabel layout="976.0,152.0,118.0,30.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/Common/AirSide_ChwRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Polygon fill="#8fa3b5" geom="1096.0,160.0 1108.0,167.0 1096.0,174.0 "/>
+
+    <Label layout="1109.0,132.0,118.0,18.0" text="T&amp;R reset %" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <BoundLabel layout="1109.0,152.0,118.0,30.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Optimization/PlantResetPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Polygon fill="#8fa3b5" geom="1229.0,160.0 1241.0,167.0 1229.0,174.0 "/>
+
+    <Label layout="1242.0,132.0,118.0,18.0" text="DP SP ACTIVE" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <BoundLabel layout="1242.0,152.0,118.0,30.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ModeControl/CHWDP_Setpoint_ACTIVE" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Polygon fill="#8fa3b5" geom="1362.0,160.0 1374.0,167.0 1362.0,174.0 "/>
+
+    <Label layout="1375.0,132.0,118.0,18.0" text="− ΔT guard cut %" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <BoundLabel layout="1375.0,152.0,118.0,30.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/CHW_DtGuardCutPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Polygon fill="#8fa3b5" geom="1495.0,160.0 1507.0,167.0 1495.0,174.0 "/>
+
+    <Label layout="1508.0,132.0,118.0,18.0" text="DP SP EFFECTIVE" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <BoundLabel layout="1508.0,152.0,118.0,30.0" font="bold 11.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/CHWDP_Setpoint_EFFECTIVE" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Polygon fill="#8fa3b5" geom="1628.0,160.0 1640.0,167.0 1628.0,174.0 "/>
+
+    <Label layout="1641.0,132.0,118.0,18.0" text="DP end of loop" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <BoundLabel layout="1641.0,152.0,118.0,30.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Points/CHWDP" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Polygon fill="#8fa3b5" geom="1761.0,160.0 1773.0,167.0 1761.0,174.0 "/>
+
+    <Label layout="1774.0,132.0,118.0,18.0" text="CHP speed" font="bold 8.0pt sans-serif" foreground="#e8edf2" halign="center"/>
+
+    <BoundLabel layout="1774.0,152.0,118.0,30.0" font="bold 11.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/CHP01/Points/CHP01SpeedCmd" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="976.0,200.0,300.0,20.0" text="PLANT ΔT (CHWR − CHWS)" font="bold 9.0pt sans-serif" foreground="#8fd3ff" halign="left"/>
+
+    <BoundLabel layout="976.0,222.0,170.0,52.0" font="bold 22.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/CHW_PlantDeltaT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1152.0,238.0,40.0,20.0" text="K" font="bold 12.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <Label layout="1202.0,226.0,120.0,20.0" text="guard below" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1202.0,246.0,90.0,26.0" font="bold 11.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_LowDeltaT/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_LowDeltaT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1298.0,250.0,30.0,20.0" text="K" font="10.0pt sans-serif" foreground="#e8edf2" halign="left"/>
+
+    <BoundLabel layout="1362.0,222.0,170.0,52.0" font="bold 8.5pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/CHW_DtGuardActive" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="REDUCING DP"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#b9770e"/>
+          <Brush name="falseValue" value="#263039"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1542.0,222.0,170.0,52.0" font="bold 8.5pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/CHW_DtGuardHeld" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="HELD: AHU NEEDS WATER"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#2471a3"/>
+          <Brush name="falseValue" value="#263039"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1722.0,222.0,170.0,52.0" font="bold 8.5pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/CHW_LowDtPersistAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="LOW ΔT PERSISTS (alarm)"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#c0392b"/>
+          <Brush name="falseValue" value="#263039"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="976.0,292.0,450.0,262.0"/>
+
+    <Label layout="976.0,292.0,450.0,20.0" text="  SETTINGS" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="980.0,316.0,286.0,20.0" text="Guard enable (1 = on)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1266.0,317.0,156.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_Enable/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_Enable" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,341.0,286.0,20.0" text="Act below plant ΔT (K)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1266.0,342.0,156.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_LowDeltaT/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_LowDeltaT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,366.0,286.0,20.0" text="Largest DP cut (%)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1266.0,367.0,156.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_MaxReductionPct/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_MaxReductionPct" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,391.0,286.0,20.0" text="Never below DP (plant min)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1266.0,392.0,156.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/ChwLoop_AI/DP_MinSetpoint/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/ChwLoop_AI/DP_MinSetpoint" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,416.0,286.0,20.0" text="AHU starving: requests more than" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1266.0,417.0,156.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_StarveRequests/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_StarveRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,441.0,286.0,20.0" text="T&amp;R ignores requests" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1266.0,442.0,156.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Optimization/TR_IgnoreRequests/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Optimization/TR_IgnoreRequests" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,466.0,286.0,20.0" text="Also in AI mode (1 = yes)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1266.0,467.0,156.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_ApplyInAI/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/DeltaTGuard/DTG_ApplyInAI" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,491.0,286.0,20.0" text="Stage-2 blocked below ΔT (layer 0)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1266.0,492.0,156.0,22.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Parameters/Equipment/MinDeltaTStage2/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Parameters/Equipment/MinDeltaTStage2" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,516.0,286.0,20.0" text="Low ΔT alarm (15 min)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1266.0,517.0,156.0,22.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/LowDeltaTAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#f39c12"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="1438.0,292.0,458.0,262.0"/>
+
+    <Label layout="1438.0,292.0,458.0,20.0" text="  WHAT THE PLANT SEES" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="1442.0,316.0,276.0,20.0" text="CHWS" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1718.0,317.0,174.0,22.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Points/CHWS" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1442.0,341.0,276.0,20.0" text="CHWR" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1718.0,342.0,174.0,22.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Points/CHWR" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1442.0,366.0,276.0,20.0" text="CHW flow (building)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1718.0,367.0,174.0,22.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Points/CHWFlow" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1442.0,391.0,276.0,20.0" text="Evaporator flow total" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1718.0,392.0,174.0,22.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Monitor/CHW_EvapFlowTotal" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1442.0,416.0,276.0,20.0" text="Min-flow bypass feedback" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1718.0,417.0,174.0,22.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/ChwLoop/Points/CHW_BypassValveFeedback" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1442.0,441.0,276.0,20.0" text="AHU-01 valve" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1718.0,442.0,174.0,22.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/AHU01/Points/AHU01_ValveFeedback" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1442.0,466.0,276.0,20.0" text="AHU-02 valve" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1718.0,467.0,174.0,22.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/AirSide/AHU02/Points/AHU02_ValveFeedback" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1442.0,491.0,276.0,20.0" text="CHWR sensor" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1718.0,492.0,174.0,22.0" font="bold 10.0pt sans-serif" foreground="white" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Alarms/Plant/CHWR_SensorInvalidAlarm" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="#e74c3c"/>
+          <Brush name="falseValue" value="#1f6f43"/>
+        </IBooleanToSimple>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1442.0,516.0,180.0,20.0" text="CH01 ΔT  /  CH02 ΔT" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1718.0,517.0,84.0,22.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller01/Monitor/CH01_DeltaT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="1808.0,517.0,84.0,22.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Chiller02/Monitor/CH02_DeltaT" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="976.0,566.0,920.0,120.0"/>
+
+    <Label layout="976.0,566.0,920.0,20.0" text="  SIMULATION ONLY — try it (reference station)" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="980.0,590.0,316.0,20.0" text="Coil ΔT factor (0.6 = dirty coils / 3-way)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1296.0,591.0,136.0,25.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Simulation/Hydraulic/Sim_LowDtFactor/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Simulation/Hydraulic/Sim_LowDtFactor" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,618.0,316.0,20.0" text="Coil flow / demand (&gt;1 over-flow)" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1296.0,619.0,136.0,25.0" font="bold 10.0pt sans-serif" foreground="#ffe066" background="#0b0e11" halign="center" border="1.0 solid #3b4652">
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Simulation/Hydraulic/Sim_CoilFlowRatio" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="980.0,646.0,316.0,20.0" text="AI heartbeat emulation" font="9.0pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <BoundLabel layout="1296.0,647.0,136.0,25.0" font="bold 10.0pt sans-serif" foreground="#7dcea0" background="#0b0e11" halign="center" border="1.0 solid #3b4652" mouseOver="outline">
+      <ActionBinding ord="station:|slot:/ChillerPlant/Simulation/Ramps/Sim_AiHeartbeatEnable/set" widgetEvent="actionPerformed"/>
+      <BoundLabelBinding ord="station:|slot:/ChillerPlant/Simulation/Ramps/Sim_AiHeartbeatEnable" popupEnabled="true" statusEffect="none">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <Label layout="1452.0,592.0,430.0,20.0" text="DP = pump curve vs system curve (speed², pumps, demand)." font="8.5pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1452.0,614.0,430.0,20.0" text="Coil flow = demand × √(DP / 1.0 bar): high DP over-flows the coils" font="8.5pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Label layout="1452.0,636.0,430.0,20.0" text="→ low ΔT. Set the factor to 0.6 to see the guard work." font="8.5pt sans-serif" foreground="#c9d3dd" halign="left"/>
+
+    <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="976.0,698.0,920.0,362.0"/>
+
+    <Label layout="976.0,698.0,920.0,20.0" text="  HOW IT WORKS" font="bold 10.0pt sans-serif" foreground="white" background="#2c3e50" halign="left"/>
+
+    <Label layout="990.0,724.0,900.0,22.0" text="Layer 1 (unchanged): CHW pumps hold the DP at the END of the loop → every AHU gets its water. The DP setpoint" font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,754.0,900.0,22.0" text="   comes from Trim &amp; Respond on the AHU valve requests (or the AI in AI mode)." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,784.0,900.0,22.0" text="Layer 2 (new): plant ΔT below the limit = low ΔT syndrome (over-flow, valves hunting, dirty coils, 3-way valves)." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,814.0,900.0,22.0" text="   → the guard takes up to 30 % off the DP setpoint, slowly (PI, then rate-limited) → less flow, higher ΔT," font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,844.0,900.0,22.0" text="   less pump kW, and the chiller is not forced to stage up on flow instead of load." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,874.0,900.0,22.0" text="Priority to the end of the loop: when any AHU asks for more water (CHW request) the whole cut is removed" font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,904.0,900.0,22.0" text="   at once and the guard is HELD for 15 min. The guard never goes below the plant DP minimum." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,934.0,900.0,22.0" text="If ΔT stays low with the cut at its limit for 30 min → alarm: look for the cause on the water side" font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,964.0,900.0,22.0" text="   (coil valves wide open, 3-way / bypass valves, fouled coils, AHU setpoints too low)." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,994.0,900.0,22.0" text="Layer 0 (V7.3): a 2nd chiller is not started on low ΔT alone (staging uses load; Low ΔT alarm after 15 min)." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+    <Label layout="990.0,1024.0,900.0,22.0" text="Needs valid CHWS / CHWR / flow sensors. DP sensor judged only while a CHW pump is proven (no false alarm)." font="9.0pt sans-serif" foreground="#dde3ea" halign="left"/>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>

@@ -1,0 +1,12 @@
+﻿id,title,observed,result
+N01,"plant reason: switched off = 1, running = 0, emergency stop = 2","off 1.0, running 0.0 (permissive True), E-stop 2.0",PASS
+N02,"AI reason: LOCAL selected = 1, AI selected without heartbeat = 2","LOCAL 1.0, AI requested 2.0, AI in use False",PASS
+N03,CH01 waiting-for code steps through the start sequence and returns to 0 when running,"codes seen in order [0.0, 2.0, 10.0]; run proof at 13.0",PASS
+N04,second chiller released only when CHW supply is on target (switch off = V7.7 behaviour),low load + CHWS ok -> release True; CHWS 12 C -> release False; check switched off -> release True,PASS
+N05,CH01 evaporator below its own minimum flow -> bypass valve driven open,"bypass before 34.8 %, after 72.7 %, boost active True",PASS
+N06,condenser flow measured below minimum -> CDP to fixed (design) speed,"CDP loop from 253.0; speed before 87.0 %, after 100.0 %, boost True",PASS
+N07,CHW setpoint 9 C is limited to 7 C while an AHU dehumidifies,"setpoint before 9.00 C, during dehumidification 7.00 C (hold True)",PASS
+N08,low-low switch made while the level transmitter reads normal -> disagreement alarm,"level 76 %, alarm True",PASS
+N09,manual CHW dose stops by itself after the time limit (test timing 20 s),"pump 10 s after manual True, after 50 s False, alarm True",PASS
+N10,first-out keeps the first trip (CH01 freeze = 4) when an emergency stop follows,"after freeze 4.0, after E-stop 4.0",PASS
+N11,hottest zone temperature is shown and is not below the average,"hottest 25.81 C, average 25.10 C",PASS

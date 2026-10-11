@@ -1,0 +1,32 @@
+X01   PASS     simulation mode: field landing point is {null}, logic point keeps the emulated value
+      t40 IO_CHWS=None CHWS=11.50
+X02   PASS     field mode: CHWS follows IO_CHWS; driver null -> fallback; manual DI follows field, back to manual in sim mode
+      t70 9.5 t90 7.0 CH01Fault t120 True t140 False
+X03   PASS     outputs: {null} in simulation, = logic command in field mode, released when isolated (P2P), operator override wins
+      t50 None t90 False/False t110 None t130 False
+X04   PASS     AO stroke (test mode) drives IO_AHU01_ValveCmd at priority 9
+      t150 37.0
+X07   PASS     FIELD selected without IO_DriversInstalled: plant keeps running on simulation, blocked indication on
+      blocked True anyField False CH01 True CHWS 10.0
+X0501 PASS     functional test FT01 (run-all)
+      result 2.0 started t=310.0 (1010s wall)
+X0502 PASS     functional test FT02 (run-all)
+      result 2.0 started t=430.0 (1010s wall)
+X0503 PASS     functional test FT03 (run-all)
+      result 2.0 started t=550.0 (1010s wall)
+X0504 PASS     functional test FT04 (run-all)
+      result 2.0 started t=700.0 (1010s wall)
+X0505 PASS     functional test FT05 (run-all)
+      result 2.0 started t=940.0 (1010s wall)
+X0506 PASS     functional test FT06 (run-all)
+      result 2.0 started t=1020.0 (1010s wall)
+X0507 PASS     functional test FT07 (run-all)
+      result 2.0 started t=1090.0 (1010s wall)
+X0508 PASS     functional test FT08 (run-all)
+      result 2.0 started t=1190.0 (1010s wall)
+X0509 PASS     functional test FT09 (run-all)
+      result 2.0 started t=1260.0 (1010s wall)
+X0510 PASS     functional test FT10 (run-all)
+      result 2.0 started t=1560.0 (1010s wall)
+X06   PASS     run-all sequence finished
+      AutoSeq False

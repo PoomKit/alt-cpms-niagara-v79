@@ -1,0 +1,16 @@
+# Niagara station databases: contain users and password hashes, never commit
+*.bog
+*.bog.bak
+config*.bog
+# Tridium / vendor graphics (licensed, installed with Niagara)
+kit/
+kitPxGraphics*/
+# build / tooling
+__pycache__/
+*.pyc
+node_modules/
+graphics3d/build/
+*.bak
+*.log.tmp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+﻿Test,Title,Injection point (in9),Injection value,Precondition,Expected,Check after s
+FT01,CHP-01 fault -> CHP-02 standby starts,CHP01Fault,True,CHP01RunProof,CHP02RunProof,240
+FT02,CDP-01 fault -> CDP-02 standby starts,CDP01Fault,True,CDP01RunProof,CDP02RunProof,240
+FT03,CT-01 fault -> CT-02 takes over,CT01Fault,True,CT01RunProof,CT02RunProof,300
+FT04,CH-01 fault -> CH-02 starts,CH01Fault,True,CH01RunProof,CH02RunProof,900
+FT05,CHWS sensor failure -> sensor fail-safe,CHWS,-20.0,ConstantTrue,!CHWSValid,60
+FT06,"Emergency stop -> chillers stop, plant interlocked",Plant_EmergencyStop,True,CX_AnyChillerRun,CX_NoChillerCmd AND Plant_InterlockActive,30
+FT07,Refrigerant 1 200 ppm -> vent ON + chillers OFF,PlantRoom_RefrigerantPPM,1200.0,ConstantTrue,PlantRoom_EmergencyVentCmd AND PlantRoom_RefLeakHighAlarm AND CX_NoChillerCmd,90
+FT08,Fire alarm -> AHU / OAU stop,FireAlarmSignal,True,ConstantTrue,CX_NoAirFan AND FireModeActive,30
+FT09,Phase failure 30 s -> automatic plant restart,Plant_PhaseFailRelay,True,CX_AnyChillerRun,CX_AnyChillerRun AND !Plant_InterlockActive,900
+FT10,CH-01 evaporator flow switch lost -> trip,CH01CHWFlowProof,False,CH01RunProof,CH01_EvapFlowSwTripAlarm,60

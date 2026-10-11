@@ -1,0 +1,33 @@
+X01  PASS     slots 03-06 not installed (register default): no expansion unit is ever asked to run, CH01 runs as before
+     expansion commands [], target 0.0, CH01 started 10.0
+X02  PASS     CH02 removed (Installed off) + stage 2 asked -> CH02 never starts, CH03 starts in its place
+     CH02 started False; CH03 valves 3.0, start 9.0, running 12.0; target 1.0
+X03  PASS     both base chillers at 95 % load -> after the stage-up delay (test 15 s) CH03 is added (only one); load drops to 40 % -> CH03 removed
+     CH03 start 79.0, stage at 150 s 1.0, CH04 started False, CH03 stop 191.0, stage at 255 s 0.0
+X04  PASS     3 chillers need water -> third CHW pump, condenser pump and tower (expansion slot 03) start too, and stop after
+     CHP03 78.0, CDP03 78.0, CT03 78.0; CHP03 at 255 s False
+X05  PASS     CH03 does not prove running -> latched out with alarm, CH04 (next slot) starts instead
+     CH03 fail latch 24.0, alarm True, CH04 running 30.0
+X06  PASS     CH03 in maintenance -> skipped, CH04 runs
+     CH03 False, CH04 9.0
+X07  PASS     CHP02 removed, two chillers need water -> CHP03 runs as the second chilled water pump
+     CHP02 False, CHP03 4.0, target 1.0
+X08  PASS     CHX_Enable off -> expansion units never run (V7.8 behaviour)
+     CH03 False
+X09  PASS     CH01 removed -> never started, CH02 runs
+     CH01 False, CH02 10.0
+X10  PASS     sensor slot SNS01 (temperature): 40 C -> high alarm; 80 C (out of the believable range) -> sensor fault, high alarm cleared
+     high at 55 s True, fault at 105 s True, high at 105 s False
+X11  PASS     expansion unit uses the same Field IO layer: CH03 in FIELD mode reads IO_CH03RunProof
+     CH03RunProof True
+Y01  PASS     floor 2 AHU: starts (manual run), proves running, CHW valve brings the floor average from 29 C towards 24 C; floor 3 AHU not installed -> never starts
+     F02 running 5.0, valve at 595 s 84 %, average peak 26.3 -> 24.3 C; F03 started False
+Y02  PASS     fire alarm stops the floor AHU
+     before True, after fire False
+Y03  PASS     zone out of service is left out of the floor average and the hottest zone
+     average 26.75 -> 24.00, hottest 24.0
+Y04  PASS     cold floor but return RH 75 % -> CHW valve held at the dehumidification minimum (60 %)
+     valve 60.0
+Y05  PASS     floor AHU without run proof -> start failure alarm, command removed
+     alarm True, cmd False
+16/16 PASS

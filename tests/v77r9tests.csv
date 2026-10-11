@@ -1,0 +1,7 @@
+﻿id,title,observed,result
+R01,post-run counts from the last of request / start command / run proof,"request off 401.0, start cmd off 401.0, run proof off 402.0, post-run off 407.0 (post-run after last = 5.0 s)",PASS
+R05,freeze trip removes the chiller command at once (does not wait for 15 min min-run),"run proof 13.0, trip 35.0, start cmd off 35.0",PASS
+R02,"safety-trip reset refused at 4 C, accepted at 6 C (CH_FreezeResetTemp 5 C)",after reset at 4 C trip=True; after reset at 6 C trip=False,PASS
+R03,CHW pump does not start until a condenser pump is proven,CHP cmd before CDP proven: False; CHP start after CDP released at 379.0,PASS
+R04,CDP-first gate stays open for a running CHW pump when the condenser pump proof drops (start-only gate),CHP01 run 9.0; gate closed while CHP running at []; CHP running with gate open after CDP loss for 10 s (the CHP then stops because the chiller trips on condenser flow - expected),PASS
+R06,biocide B waits while the A cycle is running,"A cycle True, B cycle during A False",PASS

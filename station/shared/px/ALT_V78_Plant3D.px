@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<!-- Workbench view of the 3D plant page: the WebBrowser widget (JxBrowser) loads the station file shared/web/ALT_V78_Plant3D.html
+     through the station web server, so the page finds BajaScript and runs LIVE.  In a web browser open the HTML directly:
+     https://<host>/ord?file:^web/ALT_V78_Plant3D.html -->
+<px version="1.0" media="workbench:WbPxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="workbench"/>
+</import>
+<content>
+<WebBrowser ord="file:^web/ALT_V78_Plant3D.html" showProgressIndicator="true" contextMenuEnabled="true"/>
+</content>
+</px>

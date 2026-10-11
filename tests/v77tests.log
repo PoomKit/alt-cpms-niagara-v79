@@ -1,0 +1,59 @@
+I01   PASS     Chiller freeze trip (LWT < 3 C), latched until reset
+      run@79 True; trip@95 True cmd False; latched@125 True; after reset False, CH02 cmd False
+I02   PASS     Condenser leaving water > 41 C -> chiller trip
+      trip True warn False CH01 cmd False
+I03   PASS     Evaporator flow switch opens while running
+      alarm@90 True held@140 True; CH01 cmd@95 False @140 True
+I04   PASS     Flow-switch lock-out option
+      CH01 cmd @140 False CH02 cmd False
+I05   PASS     Flow switch = FLOW but meter reads 0
+      alarm True (@100 False)
+I06   PASS     Normal run: no false flow-switch alarms
+      mismatch False trip False
+I07   PASS     Plant emergency stop
+      CH01 False CH02 False PlantRunRequest False
+I08   PASS     Phase-fail relay, auto restart after power healthy + delay
+      cmd@95 False; inhibit@103 True @110 False; cmd@200 True
+I09   PASS     Refrigerant leak stage 1 / 2
+      vent@95 True CH01@95 True; stage2 True CH01 False
+I11   PASS     CHP01 discharge > 6.5 bar -> pump trip, standby runs
+      alarm True CHP01 False CHP02 True CH01 True
+C01   PASS     Inhibitor pump paced by make-up flow, stops on tank low
+      pump@110 True rate 50 %; tank low -> False
+C02   PASS     Biocide A cycle: pre-bleed -> dose (bleed closed) -> contact lock-out -> normal bleed
+      t90: bleed True pump False lock False t110: bleed False pump True lock True t130: bleed False pump False lock True t190: bleed True pump False lock False
+C03   PASS     Conductivity above max overrides the lock-out
+      bleed True lock True
+C04   PASS     Biocide B pump runs without flow
+      fail alarm @95 True
+C05   PASS     Cycles of concentration + low CoC alarm
+      CoC 1.43 alarm True
+W01   PASS     CHW chemical feed paced by loop fill, stops on tank low
+      pump@80 True rate 50 %; tank low -> False
+W02   PASS     Manual dose (test-kit result)
+      pump True rate 50 %
+A01   PASS     AHU dehumidification (RA RH 70 %)
+      dehum True SAT SP 13.0
+A02   PASS     High duct static cut-out (latched)
+      run@58 True; @90 False alarm True; after reset True
+A03   PASS     Unoccupied high-limit (night cooling)
+      night True AHU01 True AHU02 False
+A04   PASS     Return-air CO2 1,400 ppm
+      alarm True OAD 100 %
+A05   PASS     OAU leaving dew point high
+      dew point 17.3 dehum True LAT SP 15.0
+A06   PASS     OAU duct smoke detector
+      OAU01 cmd False
+R01   PASS     CHWS-high stage-up held, released by low chiller load
+      hold@650 True stage2@650 True; hold@800 False
+R02   PASS     CDP variable speed (dT + min flow)
+      CDP01 44.0 % flow 396 gpm target 396 dT 3.62 K
+R03   PASS     CDP variable speed disabled
+      CDP01 100.0 %
+R04   PASS     Emergency vent fan commanded but not running
+      alarm True
+R05   PASS     Night high-limit: OA damper closed
+      AHU01 True OAD 0.0 %
+R06   PASS     Zone average used in control
+      AHU01 ctrl 24.50 zone 24.50; FCU04 ctrl 24.50 zone 24.50
+29 / 29 PASS

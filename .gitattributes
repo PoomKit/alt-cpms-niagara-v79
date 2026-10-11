@@ -1,0 +1,11 @@
+* text=auto
+*.py text eol=lf
+*.sh text eol=lf
+*.js text eol=lf
+*.px text eol=lf
+*.png binary
+*.gif binary
+*.pdf binary
+*.xlsx binary
+*.dxf text
+*.ifc text

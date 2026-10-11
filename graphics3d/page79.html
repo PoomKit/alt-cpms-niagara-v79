@@ -1,0 +1,68 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CPMS Building 3D</title>
+<script>/* BajaScript: served by the station web server (browser, Workbench web browser view, Niagara Remote) -> LIVE; opened as a local file -> DEMO */
+if(/^https?:$/.test(location.protocol)&&!/[?&]demo\b/.test(location.search)){document.write('<script src="/requirejs/config.js"><\/script><script src="/module/js/com/tridium/js/ext/require/require.min.js"><\/script>')}</script>
+<style>
+:root{--bg:#07101f;--panel:rgba(8,18,38,.86);--line:rgba(255,255,255,.12);--txt:#e8eef4;--muted:#9fb0c0;--acc:#4aa8ff;--alm:#ef4444;--warn:#f59e0b;--ok:#22c55e}
+*{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font:13px/1.45 "Segoe UI",Tahoma,"Leelawadee UI",sans-serif;overflow:hidden}
+#view{position:fixed;inset:0} #labels{position:fixed;inset:0;pointer-events:none}
+.lbl{position:absolute;left:0;top:0;pointer-events:auto;cursor:pointer;background:rgba(7,17,36,.88);border:1px solid rgba(110,160,230,.35);border-left:3px solid #64748b;border-radius:8px;padding:4px 10px;box-shadow:0 4px 14px rgba(0,0,0,.35);white-space:nowrap;font-size:12px}
+.lbl b{display:block;font-size:12px} .lbl.ghost{opacity:.55;border-style:dashed} .lbl span{color:var(--muted);font-size:11px} .lbl.run{border-left-color:var(--ok)} .lbl.warn{border-left-color:var(--warn)} .lbl.alm{border-left-color:var(--alm);background:rgba(80,10,10,.85);animation:bl 1s infinite}
+@keyframes bl{50%{box-shadow:0 0 14px rgba(239,68,68,.9)}}
+#kpi{position:fixed;left:12px;top:74px;display:flex;flex-direction:column;gap:6px;pointer-events:none}
+#kpi div{background:var(--panel);border:1px solid rgba(110,160,230,.3);border-radius:10px;padding:6px 12px;min-width:170px}
+#kpi span{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)} #kpi b{font-size:17px} #kpi i{font-style:normal;color:var(--muted);font-size:11px;margin-left:4px}
+#kpi .big b{font-size:30px;color:#5fd38d} #kpi .big{border-color:rgba(95,211,141,.5)}
+@media (max-width:760px){#kpi{display:none}}
+header{position:fixed;top:0;left:0;right:0;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:linear-gradient(#0b1118ee,#0b111800)}
+header h1{margin:0;font-size:17px;font-weight:600} header .sub{color:var(--muted);font-size:11px}
+.mode{font-size:11px;padding:3px 9px;border-radius:10px;background:#3b2f12;color:#ffcf6b} .mode.live{background:#123b22;color:#7be09b}
+#wx{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 12px;display:flex;flex-direction:column} #wx span{color:var(--muted);font-size:11px}
+.views{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap} button{background:#16202b;color:var(--txt);border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;font:inherit;font-size:12px}
+button:hover{border-color:var(--acc)}
+aside{position:fixed;right:12px;top:78px;bottom:12px;width:330px;display:flex;flex-direction:column;gap:10px;pointer-events:none;overflow:auto}
+aside>section{pointer-events:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;backdrop-filter:blur(6px)}
+aside h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;display:flex;align-items:center;gap:8px}
+.n{background:#334155;border-radius:9px;padding:0 7px;color:#fff} .n.on{background:var(--alm)}
+#alist{max-height:30vh;overflow:auto;display:flex;flex-direction:column;gap:5px} #alist div{border-left:3px solid var(--warn);padding:3px 7px;background:rgba(255,255,255,.04);border-radius:4px}
+#alist div.Critical,#alist div.Emergency{border-left-color:var(--alm)} #alist i{display:block;color:var(--muted);font-style:normal;font-size:11px} #alist .none{border:0;color:var(--muted)}
+#gallery{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0} #gallery button{font-size:11px;padding:3px 7px}
+select,input[type=range]{width:100%} select{background:#0f161e;color:var(--txt);border:1px solid var(--line);border-radius:6px;padding:5px}
+.row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)} .row label{min-width:62px}
+#info{position:fixed;left:12px;bottom:12px;width:360px;max-height:56vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:none}
+#info.open{display:block} #info h3{margin:0 0 6px} #info td{padding:2px 6px;border-bottom:1px solid var(--line);font-size:12px} #info td:first-child{color:var(--muted)}
+#info.wide{width:620px} #info .ok{color:#7be09b} #info .no{color:#ff8a80}
+#info h4{margin:10px 0 4px;font-size:12px} .alist div{padding:3px 6px;border-radius:4px;cursor:pointer;font-size:12px} .alist div.on{background:rgba(239,68,68,.25)} .alist i{color:var(--muted);font-style:normal;margin-right:6px}
+.chk{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.hint{color:var(--muted);font-size:11px}
+@media (max-width:760px){aside{top:auto;height:44vh;width:auto;left:12px}#info{width:auto;right:12px}}
+</style></head><body>
+<div id="view"></div><div id="labels"></div><div id="kpi"></div>
+<header><div><h1>CPMS Reference Building · 8 ชั้น</h1><div class="sub">Chiller plant ชั้น 1 (สูงสุด 6 ชุด/ชนิด) · Cooling tower บนดาดฟ้า · Air side ทุกชั้น · ALT_CP_Ref_V7_9</div></div>
+<span class="mode" id="mode">…</span><div id="wx"></div>
+<div class="views"><button data-view="iso">ทั้งอาคาร</button><button data-view="plant">Chiller plant</button><button data-view="pumps">ปั๊ม/วาล์ว</button><button data-view="room">ในห้องเครื่อง</button><button data-view="roof">ดาดฟ้า</button><button data-view="floor">ชั้นใช้งาน</button><button data-view="site">ทั้งพื้นที่</button></div></header>
+<aside>
+<section><h2>ชั้นและ layer</h2><select id="fsel"></select>
+<label class="chk1"><input type="checkbox" id="fiso"> แสดงเฉพาะชั้นที่เลือก (digital twin)</label>
+<div class="zrow">สี zone ตาม <select id="zmetric"><option value="t">อุณหภูมิ</option><option value="h">ความชื้น</option><option value="c">CO2</option></select><div id="zlegend"></div></div><div class="chk" id="layers" style="margin-top:6px;flex-direction:column;gap:2px"></div>
+<div class="hint" style="margin-top:6px">อุปกรณ์ที่ยังไม่ติดตั้ง (Installed = ปิด) แสดงเป็นเงาจาง · สี zone: น้ำเงิน = เย็น → เขียว 24 °C → แดง = ร้อน</div>
+<h2 style="margin-top:8px">ระบบในอนาคต</h2><div id="sysl" class="hint"></div></section>
+<section><h2>Alarm ที่เกิดอยู่ <span class="n" id="acount">0</span></h2><div id="alist"></div></section>
+<section id="sim" style="display:none"><h2>จำลอง alarm (DEMO)</h2><div class="hint">กดเพื่อดูภาพอาการแต่ละแบบ หรือเลือก alarm ใดก็ได้จากทะเบียน</div>
+<div id="gallery"></div><select id="asel"></select><div style="margin-top:6px"><button id="aclear">ล้างทั้งหมด</button></div></section>
+<section><h2>สภาพอากาศ</h2><div class="chk"><label><input type="checkbox" id="wovr"> ใช้ค่าทดลองแทนเซนเซอร์</label></div>
+<div class="row"><label>อุณหภูมิ</label><input type="range" id="w_temp" min="18" max="42" step=".5" value="33"></div>
+<div class="row"><label>ความชื้น</label><input type="range" id="w_rh" min="30" max="100" value="60"></div>
+<div class="row"><label>เวลา</label><input type="range" id="w_hour" min="0" max="23.9" step=".1" value="13"></div>
+<div class="hint">ฝนตก: RH ≥ 92% และ ≤ 30 °C · หมอก: RH ≥ 95% ช่วงเช้า/กลางคืน · ร้อนจัด: ≥ 36 °C · เมฆ: ตาม RH</div></section>
+<section><div class="chk"><label><input type="checkbox" id="xray" checked> มองทะลุผนัง/หลังคา</label><label><input type="checkbox" id="labelsOn" checked> ป้ายชื่อ</label><label><input type="checkbox" id="flow" checked> ท่อโปร่ง เห็นน้ำไหล</label></div><div style="margin-top:6px"><button id="mapBtn">Point mapping (สถานะการเชื่อมจุด)</button></div>
+<div class="hint">ลากเพื่อหมุน · scroll ซูม · ดับเบิลคลิกอุปกรณ์เพื่อดูข้อมูล</div></section>
+</aside><div id="info"></div>
+<script>/*DATA*/</script>
+<script>/*APP*/</script>
+<div id="nav"><button id="navUp" title="ชั้นถัดไป">▲</button><button id="navDn" title="ชั้นก่อนหน้า">▼</button><button id="navIn" title="ซูมเข้า">＋</button><button id="navOut" title="ซูมออก">－</button><button id="navHome" title="มุมมองเริ่มต้น">⌂</button>
+<span>ลากซ้าย = หมุน · ลากขวา/Shift = เลื่อน · ล้อ = ซูมที่ตำแหน่งเมาส์ · ดับเบิลคลิก = ไปที่จุดนั้น · ปุ่มลูกศร = เลื่อน</span></div>
+<style>#nav{position:absolute;right:12px;bottom:14px;display:flex;gap:6px;align-items:center;z-index:5}#nav button{width:38px;height:38px;border-radius:8px;border:1px solid #2b3a4d;background:rgba(10,20,34,.88);color:#e8eef4;font-size:18px;cursor:pointer}
+#nav span{font-size:11px;color:#cbd5df;background:rgba(10,20,34,.7);padding:6px 8px;border-radius:6px;max-width:420px}.chk1{display:block;margin:6px 0;font-size:12px}.zrow{font-size:12px;margin:4px 0 8px}
+#zlegend{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:11px}#zlegend i{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,hsl(223,75%,50%),hsl(120,75%,45%),hsl(0,75%,50%))}</style>
+</body></html>

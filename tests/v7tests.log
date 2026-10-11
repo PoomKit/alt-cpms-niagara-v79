@@ -1,0 +1,38 @@
+H01   PASS     CDP01 + CHP02 failed (different "sets")
+      CH01 proven=True CHP01=True CDP02=True CDP01=False CHP02=False CHP pool degraded alarm=True
+H02   PASS     CDP01 + CHP02 fail while plant runs
+      longest gap without proven chiller 6 s; CDP02=True
+H03   PASS     CHP01 never proves
+      CHP01 latched @10.0s CHP02 cmd @13.0s; after RESET @110 s latch=False
+H04   PASS     CHP01 runs but dP = 2 kPa (broken coupling)
+      CHP01 failed @61.0s; CHP02=True alarm=False
+H05   PASS     VFD fault CHP01, CDP01 HOA off-auto, CT01 vibration trip
+      CHP02=True CDP02=True CT02=True CT01=False NotInAuto alarm=True
+H06   PASS     CT01 isolation valve does not open
+      CT01 failed=True CT02=True chiller proven=True
+H07   PASS     Stage 2 requested with one CHW pump available
+      CH02 cmd=False blocked alarm=True
+H08   PASS     Stage 2 with healthy pools
+      CH02StartSuccess=1 CHP02StartCmd=1 CDP02StartCmd=1 CT02StartCmd=1
+H09   PASS     CHP01 30 h ahead in runtime
+      lead=CHP02; samples without any proven CHP after 60 s: 0
+H10   PASS     Both CHW pumps fail to prove, repaired at 100 s
+      pool unavailable @16.0s; chiller proven again @208.0s (no operator)
+P01   PASS     Site timers: lead CHW pump VFD fault while running
+      gap 0 s; CHP02=True
+P02   PASS     Site timers: lead CHW pump loses dP (coupling)
+      gap 0 s; CHP01 failed=True
+P03   PASS     Site timers: tower lead rotation with "match chillers"
+      gap 0 s; samples with no tower fan: 0
+P04   PASS     Site timers: both tower fans trip (vibration)
+      gap 0 s; valves True/True alarm=True
+P05   PASS     Pumps start only after a flow path is proven
+      valve open @31.0s, CHP01 cmd @37.0s
+I01   PASS     Cooling load source: BTU meter, fail-safe to flow x dT
+      BTU 248.0 RT (source BTU=True); comm lost -> 248.0 RT source BTU=False alarm=True
+I02   PASS     Per-equipment instruments populated
+      CH01 flow 150 m3/h dT 2.6 K 129 RT 123 A kW/RT 0.595; CHP01 dP 131 kPa 31.5 Hz; evap dP 50.3 kPa; make-up 2.23 m3/h
+I03   PASS     Tower basin level low / high
+      low=True high=True
+A01   PASS     AHU start, SAT reset, valve PID, static PID, CO2 DCV
+      SAT 14.42/14.25 valve 84 %; static 242 Pa @ 71 %; OAD 60 %

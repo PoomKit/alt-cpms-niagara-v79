@@ -1,0 +1,13 @@
+{
+  "name": "alt-v79-graphics3d",
+  "version": "7.9.2",
+  "private": true,
+  "description": "3D digital twin page (three.js) for ALT_CP_Ref_V7_9",
+  "scripts": {
+    "bundle": "esbuild scene79.js --bundle --minify --format=iife --outfile=build/scene79.min.js"
+  },
+  "dependencies": {
+    "esbuild": "0.28.2",
+    "three": "0.186.1"
+  }
+}
