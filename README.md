@@ -61,7 +61,7 @@ Niagara components against API stubs (`java/altPlant/logic-test`, `java/altPlant
 
 ## Version
 
-**V7.9 r7** (3D clean-up): pipes no longer run through each other (B1 CDW headers / CHW risers, chiller branches, roof coil
+**V7.9 r7** (3D clean-up; r7.1: label flicker fixed, site context - streets, car parks, trees, neighbouring buildings; coil pipes enter the AHU / OAU / MAU flanges straight along the stub): pipes no longer run through each other (B1 CDW headers / CHW risers, chiller branches, roof coil
 pipes, AHU-02 coil return; CHW pumps 600 mm east for room on the suction pipe), every valve / instrument spaced on its pipe axis with
 its stem clear of other pipes (`tools/r9_clash.py`, CI); calmer airflow (small chevrons, one down-arrow per supply diffuser on a single
 floor); white room / corridor cards with the value in the zone condition colour; overlapping labels hidden.

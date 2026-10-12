@@ -692,15 +692,19 @@ r9PaintLabels=function(){var U={t:' °C',h:' %RH',c:' ppm'},D={t:1,h:0,c:0};
   v.tex.needsUpdate=true;v.r9color='#'+col.getHexString();});};
 // Overlap culling: nearest card first, a card that would cover one already shown is hidden; cards beyond 45 m are hidden
 var x7R7Cull=0,x7R7V=new THREE.Vector3();
+var x7Sig='';
 function x7R7Declutter(){var now=performance.now();if(now-x7R7Cull<180)return;x7R7Cull=now;var cam=S.camera,el=S.renderer.domElement,Wd=el.clientWidth,Hd=el.clientHeight,k=Hd/(2*Math.tan(cam.fov*Math.PI/360));
+ // re-cull only when the view changed (camera moved > 5 cm / turned, floor, size, readings toggle): a still view never flickers
+ var sig=[cam.position.x,cam.position.y,cam.position.z].map(function(v){return Math.round(v*20);}).join(',')+'|'+[cam.quaternion.x,cam.quaternion.y,cam.quaternion.z].map(function(v){return Math.round(v*400);}).join(',')+'|'+S.FSEL+'|'+S.ISO+'|'+Wd+'x'+Hd+'|'+S.$('roomReadingsR6').checked+'|'+S.LAYER.zones.visible+'|'+S.LAYER.air.visible;
+ if(sig===x7Sig)return;x7Sig=sig;
  var shown=function(o){for(var p=o.parent;p;p=p.parent)if(!p.visible)return false;return true;};
  var roomOK=S.$('roomReadingsR6').checked&&S.ISO&&S.LAYER.zones.visible;   // same rule as the R6 floor filter
  var all=r6Labels.map(function(l){return {sp:l.sp,ok:roomOK&&visibleFloor(l.cell.room.floor)};}).concat(Object.values(r8SensorValues).map(function(v){var sp=v.sp||v.unit.children.find(function(o){return o.isSprite;});return sp?{sp:sp,ok:true}:null;}).filter(Boolean));
  var list=[];all.forEach(function(a){var sp=a.sp;if(!a.ok||!shown(sp)){sp.visible=false;return;}sp.getWorldPosition(x7R7V);var d=x7R7V.distanceTo(cam.position);x7R7V.project(cam);
   if(x7R7V.z>1||d>45||Math.abs(x7R7V.x)>1.2||Math.abs(x7R7V.y)>1.2){sp.visible=false;return;}var w=sp.scale.x*k/d,h=sp.scale.y*k/d;list.push({sp:sp,d:d,x:(x7R7V.x+1)/2*Wd,y:(1-x7R7V.y)/2*Hd,w:w,h:h});});
- list.sort(function(a,b){return a.d-b.d;});var placed=[];list.forEach(function(r){var hit=placed.some(function(q){return Math.abs(r.x-q.x)*2<r.w+q.w+6&&Math.abs(r.y-q.y)*2<r.h+q.h+4;});r.sp.visible=!hit&&r.h>9;if(r.sp.visible)placed.push(r);});}
+ list.forEach(function(r){r.p=r.d-(r.sp.userData.x7On?4:0);});list.sort(function(a,b){return a.p-b.p||a.sp.id-b.sp.id;});   /* shown cards keep their place (hysteresis) */var placed=[];list.forEach(function(r){var hit=placed.some(function(q){return Math.abs(r.x-q.x)*2<r.w+q.w+6&&Math.abs(r.y-q.y)*2<r.h+q.h+4;});r.sp.visible=!hit&&r.h>9;r.sp.userData.x7On=r.sp.visible;if(r.sp.visible)placed.push(r);});}
 var x7PrevR7Bv=S.updateZones;S.updateZones=function(t){x7PrevR7Bv(t);x7R7Declutter();};
-window.__R9.declutter=function(){x7R7Cull=0;x7R7Declutter();return {cards:r6Labels.length,shown:r6Labels.filter(function(l){return l.sp.visible;}).length};};
+window.__R9.declutter=function(){x7R7Cull=0;x7Sig='';x7R7Declutter();return {cards:r6Labels.length,shown:r6Labels.filter(function(l){return l.sp.visible;}).length};};
 // ------------------------------------------------------------------ r6: LIVE adapter (station points -> R9 rooms / dampers / meters / services)
 // The R9 layer shows nothing as LIVE unless it is measured: room T / RH / CO2 / occupancy from the room sensor points, VAV damper position
 // AND measured airflow (R9 motion proof), floor power / BTU meters, OA ducts from the measured OA airflow + OA damper feedback.

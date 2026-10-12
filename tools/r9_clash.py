@@ -13,6 +13,7 @@
             * pipe against pipe (outside radius incl. insulation; coaxial continuations and perpendicular tees are connections)
             * valve / instrument bodies overlapping on a pipe, inside a bend or at a pipe end, off the pipe axis
             * stems / heads running into another pipe
+            * AHU / OAU / MAU coil pipes that do not enter the coil flange straight along the stub
 usage: python3 r9_clash.py [--apply]"""
 import json, math, os, sys
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
@@ -252,6 +253,42 @@ def roof_routes(D):
             out[p['id']] = q[:3] + [[39.3, 28.2, 1.95], [39.3, 19.75, 1.95], [37.65, 19.75, 1.95], [37.65, 19.35, 1.95], [37.65, 19.35, 2.2]]
     return out
 
+APPROACH = {'CHS': .75, 'CHR': .35}   # m: straight run into an AHU / OAU / MAU coil flange along the stub axis (CHS longer: clears the CHR run)
+def coil_approach(M, D):
+    """coil pipes end in the flange of the coil stub with a straight run along the stub axis (they rose / dropped onto the
+    flange face); the run, its height and the stub follow tools/r9_connections.py (ports of the Blender AHU model)"""
+    import r9_connections as RC
+    units = RC.ahu_units(M); out = {}
+    ports = []
+    for u in units.values():
+        for svc in ('CHS', 'CHR'):
+            pt = RC.PORTS['ahu'][svc][0]; a = RC.to_world(u, pt); b = RC.to_world(u, (pt[0], pt[1], pt[2] - 1))
+            ports.append((svc, [c / 1000 for c in a], unit(sub([c / 1000 for c in b], [c / 1000 for c in a]))))
+    def fix(q, svc):
+        q = [list(x) for x in q]
+        for end in (0, -1):
+            e = q[end]
+            for s2, pp, n in ports:
+                if s2 != svc or dist(e, pp) > .025: continue
+                nb = q[1] if end == 0 else q[-2]
+                if abs(dot(unit(sub(nb, e)), n)) > .99 and dist(nb, e) >= APPROACH[svc] - 1e-3: continue      # already straight in
+                off = add(e, mul(n, APPROACH[svc])); r = q if end == -1 else q[::-1]       # r: route ending at the port
+                body = r[:-1]; col = []
+                while body and abs(body[-1][0] - e[0]) < 1e-6 and abs(body[-1][1] - e[1]) < 1e-6: col.insert(0, body.pop())   # rise / drop at the flange
+                col = [[off[0], off[1], c[2]] for c in col]
+                if body and not col and abs(body[-1][0] - off[0]) > 1e-6 and abs(body[-1][1] - off[1]) > 1e-6: col = [[off[0], body[-1][1], body[-1][2]]]
+                r = unbacktrack(body + col + [[round(c, 6) for c in off], e]); q = r if end == -1 else r[::-1]
+        return q
+    for p in M['pipes']:
+        if p['svc'] in ('CHS', 'CHR'):
+            n = fix([[c / 1000 for c in x] for x in p['pts']], p['svc'])
+            if n != [[c / 1000 for c in x] for x in p['pts']]: out[('M', p['id'])] = [[round(c * 1000, 1) for c in x] for x in n]
+    for p in D['waterPipes']:
+        if p['id'].endswith('-COIL'):
+            n = fix(p['points'], p['service'])
+            if n != p['points']: out[('W', p['id'])] = [[round(c, 4) for c in x] for x in n]
+    return out
+
 def unbacktrack(q):
     """remove vertices where the route doubles back on itself (dead stub)"""
     q = [list(x) for x in q]; ch = True
@@ -333,6 +370,12 @@ def apply(M, D):
             changed.add(p['id']); log.append(f'route {p["id"]}')
     for e in M['equipment']:
         if e['type'] == 'pump' and e['id'].startswith('CHP-') and e['x'] == 53000: e['x'] = 53000 + CHP_SHIFT; log.append(f'move {e["id"]}')
+    for (src, pid), q in coil_approach(M, D).items():
+        if src == 'M':
+            p = next(p for p in M['pipes'] if p['id'] == pid); L0 = cum([[c / 1000 for c in x] for x in p['pts']])[-1] * 1000; p['pts'] = q
+            if p.get('span') and abs(p['span'][1] - L0) < 2: p['span'] = [p['span'][0], round(cum([[c / 1000 for c in x] for x in q])[-1] * 1000, 1)]
+        else: next(p for p in D['waterPipes'] if p['id'] == pid)['points'] = q
+        changed.add(pid); log.append(f'route {pid} (coil approach)')
     rr = roof_routes(D)
     for p in D['waterPipes']:
         new = unbacktrack(rr.get(p['id'], p['points']))
@@ -395,6 +438,7 @@ def main():
               'items spaced and stems set')
     P = pipes_of(M, D); items = items_of(M, D, P)
     f = pipe_clashes(P) + item_checks(P, items)
+    f += [f'{pid}: coil pipe does not enter the flange straight along the stub' for (_, pid) in coil_approach(M, D)]
     for x in f: print('FINDING', x)
     print(f'{len(P)} pipes, {len(items)} valves / instruments checked, {len(f)} findings')
     sys.exit(1 if f else 0)

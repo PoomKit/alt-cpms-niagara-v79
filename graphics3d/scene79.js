@@ -119,6 +119,57 @@ for (let i = 0; i < 70; i++) { const a = Math.random() * Math.PI * 2, r = 62 + M
   mesh(trunkG, trunkM, g, new THREE.Vector3(0, 1.5, 0));
   for (let k = 0; k < 5; k++) { const c = mesh(crownG, leafM[(i + k) % leafM.length], g, new THREE.Vector3((Math.random() - .5) * 1.8, 3.4 + Math.random() * 1.4, (Math.random() - .5) * 1.8)); c.scale.setScalar(.55 + Math.random() * .4); }
   trees.push(g); }
+// ------------------------------------------------------------------ r7: site around the building - street grid with lanes and kerbs,
+// sidewalks, car parks with cars, street trees and neighbouring buildings (reference context only, not survey data)
+const SITE = new THREE.Group(); scene.add(SITE);
+{ const ROADS = [{ x: 35, z: 40, w: 380, d: 12 }, { x: 35, z: -85, w: 380, d: 12 }, { x: 110, z: -22, w: 12, d: 330 }, { x: -50, z: -22, w: 12, d: 330 }];
+  const onRoad = (x, z, m = 0) => ROADS.some(r => Math.abs(x - r.x) < r.w / 2 + m && Math.abs(z - r.z) < r.d / 2 + m);
+  const asph = new THREE.MeshStandardMaterial({ map: T.asphalt, color: 0x9a9a9a, roughness: .9 }), walk = new THREE.MeshStandardMaterial({ color: 0xc9c5bb, roughness: .95 });
+  const kerb = new THREE.MeshStandardMaterial({ color: 0xe2ded5, roughness: .8 }), paint = new THREE.MeshStandardMaterial({ color: 0xf2f2ea, roughness: .7 }), yel = new THREE.MeshStandardMaterial({ color: 0xe8c234, roughness: .7 });
+  for (const r of ROADS) { mesh(box(r.w, .04, r.d), asph, SITE, new THREE.Vector3(r.x, -0.3, r.z));
+    const along = r.w > r.d, L = along ? r.w : r.d;
+    for (const sd of [-1, 1]) { const o = (along ? r.d : r.w) / 2 + 1.9;                                        // sidewalk 3.5 m + kerb
+      mesh(box(along ? L : 3.5, .16, along ? 3.5 : L), walk, SITE, new THREE.Vector3(r.x + (along ? 0 : sd * o), -0.22, r.z + (along ? sd * o : 0)));
+      mesh(box(along ? L : .2, .2, along ? .2 : L), kerb, SITE, new THREE.Vector3(r.x + (along ? 0 : sd * (o - 1.8)), -0.2, r.z + (along ? sd * (o - 1.8) : 0))); }
+    const dash = new THREE.InstancedMesh(box(along ? 3 : .15, .02, along ? .15 : 3), paint, Math.floor(L / 8)); const m4 = new THREE.Matrix4();
+    for (let i = 0; i < dash.count; i++) { const t = -L / 2 + 4 + i * 8; m4.makeTranslation(r.x + (along ? t : 0), -0.27, r.z + (along ? 0 : t)); dash.setMatrixAt(i, m4); }
+    SITE.add(dash);
+    for (const sd of [-1, 1]) mesh(box(along ? L : .12, .02, along ? .12 : L), yel, SITE, new THREE.Vector3(r.x + (along ? 0 : sd * (r.w / 2 - .4)), -0.27, r.z + (along ? sd * (r.d / 2 - .4) : 0))); }
+  // cars: south lot (stalls at z 12) and west lot, instanced body + cabin, varied colours
+  const cars = [];
+  for (let i = 0; i < 28; i++) if (Math.random() < .7) cars.push([-2.7 + i * 2.6, 12, 0]);
+  for (const x of [-27, -19, -11]) for (let i = 0; i < 20; i++) { const z = -62 + i * 2.6; if (Math.random() < .6) cars.push([x, z, Math.PI / 2]); }
+  for (const x of [-27, -19, -11]) for (let i = 0; i < 21; i++) mesh(box(5, .01, .12), paint, SITE, new THREE.Vector3(x, -0.28, -63.3 + i * 2.6));
+  const CC = [0xf4f4f2, 0x1d1f22, 0x8a9096, 0x7a1f22, 0x1f3a5f, 0xb8bcc2, 0x3a4a3a];
+  const body = new THREE.InstancedMesh(box(1.8, .75, 4.4, .12), new THREE.MeshStandardMaterial({ roughness: .35, metalness: .55 }), cars.length);
+  const cab = new THREE.InstancedMesh(box(1.6, .55, 2.3, .12), new THREE.MeshStandardMaterial({ color: 0x1b2430, roughness: .15, metalness: .6 }), cars.length);
+  const wheel = new THREE.InstancedMesh(cyl(.33, .22, 14), new THREE.MeshStandardMaterial({ color: 0x111111, roughness: .9 }), cars.length * 4);
+  const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), qw = new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0, Math.PI / 2)), one = new THREE.Vector3(1, 1, 1);
+  cars.forEach(([x, z, a], i) => { q.setFromEuler(new THREE.Euler(0, a, 0));
+    body.setMatrixAt(i, m4.compose(new THREE.Vector3(x, .25, z), q, one)); body.setColorAt(i, new THREE.Color(CC[(i * 7) % CC.length]));
+    cab.setMatrixAt(i, m4.compose(new THREE.Vector3(x, .85, z).add(new THREE.Vector3(0, 0, -.2).applyQuaternion(q)), q, one));
+    [[-.85, 1.35], [.85, 1.35], [-.85, -1.35], [.85, -1.35]].forEach(([dx, dz], k) => wheel.setMatrixAt(i * 4 + k, m4.compose(new THREE.Vector3(x, .03, z).add(new THREE.Vector3(dx, 0, dz).applyQuaternion(q)), q.clone().multiply(qw), one))); });
+  for (const im of [body, cab, wheel]) { im.castShadow = true; im.receiveShadow = true; SITE.add(im); }
+  // neighbouring buildings: plain massing with a window grid (reference context)
+  const winTex = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#d9d6cf'; g.fillRect(0, 0, w, h); for (let y = 0; y < 8; y++) for (let x = 0; x < 6; x++) { g.fillStyle = Math.random() < .25 ? '#7d8f9f' : '#5d6f80'; g.fillRect(8 + x * 41, 10 + y * 31, 30, 18); } });
+  winTex.wrapS = winTex.wrapT = THREE.RepeatWrapping;
+  const NB = [[-12, 72, 34, 22, 18], [34, 74, 30, 26, 30], [80, 70, 26, 20, 12], [150, 60, 30, 34, 24], [148, 10, 26, 30, 36], [146, -50, 30, 26, 16],
+              [150, -120, 34, 30, 22], [80, -122, 40, 26, 28], [20, -124, 36, 24, 14], [-40, -126, 30, 30, 20], [-92, -60, 26, 34, 26], [-94, 6, 28, 30, 12], [-90, 66, 26, 26, 18]];
+  for (const [x, z, w, d, h] of NB) { const t = winTex.clone(); t.needsUpdate = true; t.repeat.set(Math.max(1, Math.round(w / 6)), Math.max(1, Math.round(h / 3.6)));
+    const m = new THREE.MeshStandardMaterial({ map: t, roughness: .75, color: [0xffffff, 0xf1ebe0, 0xe6ebef][Math.abs(x + z) % 3] });
+    const b = mesh(box(w, h, d), m, SITE, new THREE.Vector3(x, h / 2 - .3, z)); b.castShadow = b.receiveShadow = true;
+    mesh(box(w + .6, .8, d + .6), MAT.concrete, SITE, new THREE.Vector3(x, h + .1, z)); }
+  // street trees every 10 m along the sidewalks; random park trees off the roads and buildings
+  const inNB = (x, z, m) => NB.some(([bx, bz, w, d]) => Math.abs(x - bx) < w / 2 + m && Math.abs(z - bz) < d / 2 + m);
+  for (const g of trees) if (onRoad(g.position.x, g.position.z, 5) || inNB(g.position.x, g.position.z, 3)) g.visible = false;
+  const crownI = [], trunkI = [];
+  for (const r of ROADS) { const along = r.w > r.d, L = along ? r.w : r.d;
+    for (const sd of [-1, 1]) for (let t = -L / 2 + 6; t < L / 2 - 6; t += 10) { const x = r.x + (along ? t : sd * (r.w / 2 + 3)), z = r.z + (along ? sd * (r.d / 2 + 3) : t);
+      if (ROADS.some(o => o !== r && onRoad(x, z, 4) && Math.abs(x - o.x) < o.w / 2 + 4 && Math.abs(z - o.z) < o.d / 2 + 4) || inNB(x, z, 1) || (x > -36 && x < 100 && z > -72 && z < 32)) continue;
+      trunkI.push([x, z]); crownI.push([x, z]); } }
+  const tI = new THREE.InstancedMesh(trunkG, trunkM, trunkI.length), cI = new THREE.InstancedMesh(crownG, leafM[1], crownI.length);
+  trunkI.forEach(([x, z], i) => { tI.setMatrixAt(i, m4.makeTranslation(x, 1.2, z)); cI.setMatrixAt(i, m4.compose(new THREE.Vector3(x, 4, z), new THREE.Quaternion(), new THREE.Vector3(1.1, 1.25, 1.1))); });
+  tI.castShadow = cI.castShadow = true; SITE.add(tI, cI); }
 const storeGlass = { material: { emissiveIntensity: 0 } };
 const AIRSIDE = { material: {} };
 
@@ -501,7 +552,7 @@ function applyWeather(W, t){
   storeGlass.material.emissiveIntensity = W.night ? .9 : .05;
   clouds.forEach((c, i) => { c.material.opacity = Math.min(.95, W.cover * (.45 + (i % 5) * .12)); c.material.color.set(W.rain ? 0x8c949b : W.night ? 0x40474f : 0xffffff); c.position.x += Math.sin(i) * .02; });
   rain.material.opacity = W.rain ? .55 : 0; WET.forEach(m => { m.roughness = W.rain ? .18 : (m === MAT.slab ? .9 : m.map === T.asphalt ? .85 : 1); m.color.set(W.rain ? 0x8a8f94 : 0xffffff); });
-  scene.fog = W.fog ? new THREE.FogExp2(0xcfd6dc, .018) : (W.rain ? new THREE.FogExp2(0x8a959d, .006) : new THREE.FogExp2(W.night ? 0x0d1520 : 0x9fb3c4, .0009));
+  scene.fog = W.fog ? new THREE.FogExp2(0xcfd6dc, .0055) : (W.rain ? new THREE.FogExp2(0x8a959d, .006) : new THREE.FogExp2(W.night ? 0x0d1520 : 0x9fb3c4, .0009));
   hazeMat.uniforms.k.value = W.hot ? Math.min(1, (W.temp - 35) / 4) : 0; hazeMat.uniforms.t.value = t;
   const key = [Math.round(W.hour * 4), Math.round(W.cover * 5), W.rain, W.night].join('|');
   if (key !== lastEnv) { lastEnv = key; scene.environment = pmrem.fromScene(skyScene(), .04).texture; }
@@ -637,7 +688,7 @@ function placeLabels(){ const w = host.clientWidth, h = host.clientHeight, shown
   d.querySelector('span').textContent = al.length ? (EFX[al[0].x][0] + (al.length > 1 ? ` +${al.length - 1}` : '')) : r.e.pt ? (run ? statusText(id) : 'Off / Standby') : ''; shown.push(id); }
   // r7: no overlapping equipment labels - alarms first, then the nearest; a label that would cover one already placed is hidden
   const now = performance.now(); if (now - LBLT < 150) { for (const id of shown) if (LBL[id].__hid) LBL[id].style.display = 'none'; return; } LBLT = now;
-  const rank = id => (/ alm/.test(LBL[id].className) ? 0 : / warn/.test(LBL[id].className) ? 1e4 : 2e4) + camera.position.distanceTo(eqTop(id));
+  const rank = id => (/ alm/.test(LBL[id].className) ? 0 : / warn/.test(LBL[id].className) ? 1e4 : 2e4) + camera.position.distanceTo(eqTop(id)) - (LBL[id].__hid === false ? 8 : 0);   // shown labels keep their place
   const placed = [];
   for (const id of shown.sort((a, b) => rank(a) - rank(b))) { const d = LBL[id], p = d.__p, x = (p.x + 1) / 2 * w, y = (1 - p.y) / 2 * h, lw = d.offsetWidth, lh = d.offsetHeight;
     const r = [x - lw / 2, y - lh, x + lw / 2, y], hit = placed.some(q => r[0] < q[2] + 4 && r[2] > q[0] - 4 && r[1] < q[3] + 2 && r[3] > q[1] - 2);
