@@ -8,6 +8,7 @@ Models are authored in the 3D page's local frame (metres, x = length, y = up, z 
 level) through V() so pipe nozzles land where the page's pipe network connects. Named nodes are the parts the page animates:
   chiller: comp, evap, cond, panel, screen, beacon      pump: motor, volute, motorFan, shaft
   ahu: fanWheel, screen                                 vav: damper                       tower: fanStack (body only; water / fan stay live)
+  oau: fanWheel, screen    roof_fan: fanWheel    panel: screen    (r5) dev_*: field devices, instanced by the page
 Sizes = R9 model (graphics3d/data/r9_model.json): chiller 3774 x 1771 x 2033, pump 1750 x 650 x 850, AHU 3600 x 1800 x 2100,
 cooling tower cell 2600 x 2600 x 2700, VAV box 550 x 600 x 250 mm."""
 import math, os, sys
@@ -62,7 +63,13 @@ def P():
         green=mat('beacon', srgb('#1b1b1b'), 0.0, 0.3, emit=srgb('#22c55e')), yellow=mat('guard_yellow', srgb('#f2c12e'), 0.2, 0.45, coat=0.3),
         copper=mat('copper', srgb('#b87333'), 1.0, 0.3), frp=mat('frp_white', srgb('#e8ece9'), 0.0, 0.48, coat=0.2), fill=mat('fill_pack', srgb('#33413f'), 0.0, 0.95),
         louver=mat('louver', srgb('#7c8a86'), 0.1, 0.6), ahuPanel=mat('ahu_panel', srgb('#dfe3e5'), 0.3, 0.38, coat=0.3), coil=mat('coil_fins', srgb('#c7b289'), 0.8, 0.35),
-        gauge=mat('gauge_face', srgb('#f4f4f0'), 0.0, 0.3), glass=mat('gauge_glass', srgb('#dfefff'), 0.0, 0.05, alpha=0.25))
+        gauge=mat('gauge_face', srgb('#f4f4f0'), 0.0, 0.3), glass=mat('gauge_glass', srgb('#dfefff'), 0.0, 0.05, alpha=0.25),
+        alu=mat('aluminium', srgb('#c3c8cc'), 0.9, 0.3), red=mat('vessel_red', srgb('#b3261e'), 0.3, 0.38, coat=0.4),
+        actuator=mat('actuator_grey', srgb('#4c5359'), 0.3, 0.45, coat=0.2), actuatorWhite=mat('actuator_white', srgb('#e9ebe8'), 0.1, 0.4, coat=0.2),
+        brass=mat('brass', srgb('#b5964a'), 1.0, 0.32), amber=mat('lamp_amber', srgb('#1b1b1b'), 0.0, 0.3, emit=srgb('#f59e0b')),
+        redLamp=mat('lamp_red', srgb('#1b1b1b'), 0.0, 0.3, emit=srgb('#ef4444')), blueCap=mat('cap_blue', srgb('#1e5fae'), 0.2, 0.4),
+        meterBlue=mat('meter_blue', srgb('#2a6fb0'), 0.4, 0.38, coat=0.3), vsd=mat('vsd_body', srgb('#2d3439'), 0.2, 0.45, coat=0.2),
+        panelWhite=mat('panel_white', srgb('#eef0ee'), 0.1, 0.45))
 
 
 def finish(o, m, name=None, smooth=True, bevel=0.0):
@@ -279,6 +286,14 @@ def tower(L=2.6, D=2.6, H=2.7, blades=None):
                               [torus(1.0, 0.03, (0, H + 0.1, 0), 'y', p['frp'])]))
     group('fanMotor', collect(lambda: [box(0.34, 0.3, 0.3, (0.95, H + 0.25, -0.75), p['motor'], bevel=0.02),
                                        box(0.24, 0.2, 0.14, (1.15, H + 0.25, -0.45), p['panel'], bevel=0.01)]))
+    # r6: condenser-water connections (coordinated with the pipes, tools/r9_connections.py): CDR -> hot-water header on the north face
+    # feeding both hot-water basins; CDS <- basin outlet on the south face
+    group('nozzles', collect(lambda: [cyl(0.11, 0.2, (0, 2.84 * H / 2.7, -D / 2 - 0.05), 'z', p['steel'], n=28),
+                                      cyl(0.09, L * 0.62, (0, 2.84 * H / 2.7, -D / 2 + 0.12), 'x', p['steel'], n=24)] +
+                             [cyl(0.07, 0.25, (s * L * 0.3, 2.84 * H / 2.7 - 0.05, -D / 2 + 0.12), 'y', p['steel'], n=20) for s in (-1, 1)] +
+                             flange((0, 2.84 * H / 2.7, -D / 2 - 0.15), 'z', 0.19, 0.11, 0.025, p['iron']) +
+                             [cyl(0.11, 0.17, (-0.7 * L / 2.6, 0.2, D / 2 + 0.065), 'z', p['steel'], n=28)] +
+                             flange((-0.7 * L / 2.6, 0.2, D / 2 + 0.15), 'z', 0.19, 0.11, 0.025, p['iron'])))
     if blades is not None:                                  # render only: the page draws its own spinning blades
         for i in range(6):
             a = blades + i * math.pi / 3
@@ -296,30 +311,46 @@ def fan(blades=0.0):
         box(0.42, 0.16, 0.02, (0.33 * math.cos(a), 0.33 * math.sin(a), 0.12), p['black'], bevel=0)
 
 
-def ahu(L=3.6, W=1.8, H=2.1):
-    """modular double-skin AHU: mixing box with OA louvre, filter, CHW coil, plug fan sections; access doors, handles, drain pan"""
+def ahu(L=3.6, W=1.8, H=2.1, oa_only=False):
+    """modular double-skin AHU, airflow west -> east (r6, coordinated with the R9 ducts and pipes, tools/r9_connections.py):
+    RA plenum (RA collar on top at the west end) -> mixing box (OA collar on the +z side at mid length) -> filter -> chilled-water coil
+    (CHS / CHR flanged stubs on the -z side, counter-flow: CHS on the leaving-air side, drain pan + trap) -> plug fan (SA collar on top
+    at the east end). Access doors with handles / hinges on the +z side, base frame."""
     p = P()
-    secs = [(-L / 2, -L / 2 + 0.7, 'mix'), (-L / 2 + 0.7, -L / 2 + 1.2, 'filter'), (-L / 2 + 1.2, -L / 2 + 2.1, 'coil'), (-L / 2 + 2.1, L / 2, 'fan')]
+    k = L / 3.6
+    secs = [(-L / 2, -1.0 * k, 'ra'), (-1.0 * k, .4 * k, 'mix'), (.4 * k, .8 * k, 'filter'), (.8 * k, 1.3 * k, 'coil'), (1.3 * k, L / 2, 'fan')]
     objs = []
     for x0, x1, kind in secs:
         objs += collect(lambda x0=x0, x1=x1: [box(x1 - x0 - 0.01, H, W, ((x0 + x1) / 2, H / 2 + 0.12, 0), p['ahuPanel'], bevel=0.02)])
-        objs += collect(lambda x0=x0, x1=x1: [box(0.04, H + 0.02, W + 0.02, (x1, H / 2 + 0.12, 0), p['steel'], bevel=0.006)])
-        if kind in ('filter', 'fan', 'coil'):
-            dx = (x1 - x0) * 0.7
+        objs += collect(lambda x1=x1: [box(0.04, H + 0.02, W + 0.02, (x1, H / 2 + 0.12, 0), p['steel'], bevel=0.006)])
+        if kind in ('filter', 'fan', 'coil', 'ra'):
+            dx = min((x1 - x0) * 0.7, 0.9)
             objs += collect(lambda x0=x0, x1=x1, dx=dx: [box(dx, H * 0.8, 0.02, ((x0 + x1) / 2, H / 2 + 0.12, W / 2 + 0.012), p['ahuPanel'], bevel=0.008),
                                                        box(0.03, 0.14, 0.04, ((x0 + x1) / 2 + dx * 0.4, H / 2 + 0.12, W / 2 + 0.03), p['black'], bevel=0.005),
                                                        box(0.06, 0.03, 0.03, ((x0 + x1) / 2 - dx * 0.48, H * 0.8, W / 2 + 0.03), p['steel']),
                                                        box(0.06, 0.03, 0.03, ((x0 + x1) / 2 - dx * 0.48, H * 0.3, W / 2 + 0.03), p['steel'])])
     objs += collect(lambda: [box(L, 0.12, W, (0, 0.06, 0), p['steel'], bevel=0.006)])
-    objs += collect(lambda: [box(0.02, 0.06, W * 0.85, (-L / 2 - 0.01, 0.4 + i * 0.09, 0), p['louver'], bevel=0.003) for i in range(14)])
-    objs += collect(lambda: [box(0.02, H * 0.6, 0.5, (-L / 2 + 1.65, H * 0.55, W / 2 + 0.02), p['coil'], bevel=0)])   # coil header face
-    objs += collect(lambda: [cyl(0.05, 0.4, (-L / 2 + 1.45, 0.6 + i * 0.9, W / 2 + 0.2), 'z', p['steel'], n=24) for i in (0, 1)])
-    objs += collect(lambda: [box(0.9, 0.06, 0.4, (-L / 2 + 1.65, 0.16, W / 2 - 0.25), p['steel'], bevel=0.006)])        # drain pan lip
+    # duct collars: RA (top, west end), SA (top, east end), OA (+z side, mid length, 1.47 m)
+    objs += collect(lambda: [box(0.62 * k, 0.12, W * 0.72, (L / 2 - 0.33 * k, H + 0.18, 0), p['galv'], bevel=0.004)])
+    if not oa_only:                                         # 100 % OA units (OAU / MAU) take air through the weather hood instead
+        objs += collect(lambda: [box(0.62 * k, 0.12, W * 0.72, (-L / 2 + 0.33 * k, H + 0.18, 0), p['galv'], bevel=0.004),
+                                 box(1.5 * k, 0.3, 0.12, (0, 1.47, W / 2 + 0.06), p['galv'], bevel=0.004)])
+        objs += collect(lambda: [box(1.4 * k, 0.03, 0.01, (0, 1.47 + 0.11 - i * 0.075, W / 2 + 0.125), p['louver'], bevel=0) for i in range(4)])
+    # coil: fin face visible through the -z inspection panel, headers, flanged CHS / CHR stubs, drain pan and trap
+    cx = 1.05 * k
+    objs += collect(lambda: [box(0.42 * k, H * 0.72, 0.012, (cx, H * 0.55, -W / 2 - 0.006), p['coil'], bevel=0)])
+    objs += collect(lambda: [cyl(0.06, H * 0.7, (cx - 0.2 * k, H * 0.55, -W / 2 - 0.07), 'y', p['copper'], n=20),
+                             cyl(0.06, H * 0.7, (cx + 0.1 * k, H * 0.55, -W / 2 - 0.07), 'y', p['copper'], n=20)])
+    for xs, ys in ((1.15 * k, 1.5 * H / 2.1), (0.85 * k, 0.9 * H / 2.1)):
+        objs += collect(lambda xs=xs, ys=ys: [cyl(0.045, 0.16, (xs, ys, -W / 2 - 0.07), 'z', p['steel'], n=20)] +
+                        flange((xs, ys, -W / 2 - 0.145), 'z', 0.09, 0.045, 0.012, p['iron'], bolts=4))
+    objs += collect(lambda: [box(0.5 * k, 0.06, 0.4, (cx, 0.16, -W / 2 + 0.25), p['steel'], bevel=0.006),
+                             cyl(0.02, 0.3, (cx, 0.1, -W / 2 - 0.15), 'z', p['black'], n=12, bevel=0)])
     group('casing', objs)
-    group('fanWheel', collect(lambda: [cyl(H * 0.3, 0.25, (L * 0.25, H / 2 + 0.12, 0), 'z', p['steel'], n=48)] +
-                              [box(H * 0.26, 0.04, 0.22, (L * 0.25 + H * 0.15 * math.cos(a), H / 2 + 0.12 + H * 0.15 * math.sin(a), 0), p['black'], bevel=0)
+    group('fanWheel', collect(lambda: [cyl(H * 0.28, 0.25, (1.55 * k, H / 2 + 0.12, 0), 'x', p['steel'], n=48)] +
+                              [box(0.22, 0.04, H * 0.24, (1.55 * k, H / 2 + 0.12 + H * 0.14 * math.sin(a), H * 0.14 * math.cos(a)), p['black'], bevel=0)
                                for a in [i * math.pi / 5 for i in range(10)]]))
-    box(0.5, 0.19, 0.004, (-L * 0.25, H * 0.85, W / 2 + 0.03), p['screen'], 'screen', bevel=0)
+    box(0.5, 0.19, 0.004, (-L / 2 + 0.4 * k, H * 0.85, W / 2 + 0.03), p['screen'], 'screen', bevel=0)
 
 
 def vav():
@@ -331,6 +362,185 @@ def vav():
                                      box(0.14, 0.12, 0.05, (-0.2, 0, 0.33), p['black'], bevel=0.008)] +
                             [cyl(0.004, 0.1, (-0.5, 0, 0.03 * i), 'z', p['steel'], n=8, bevel=0) for i in (-1, 1)]))
     box(0.01, 0.2, 0.2, (-0.3, 0, 0), p['steel'], 'damper', bevel=0)
+
+
+# ------------------------------------------------------------------ V7.9 r5: remaining equipment (R9 design) and field devices
+def oau(L=4.2, W=2.0, H=2.2):
+    """roof outdoor-air unit (also the R9 MAU): weatherproof AHU with rain canopy, OA intake hood + bird screen, roof curb"""
+    p = P()
+    ahu(L, W, H, oa_only=True)
+    group('weather', collect(lambda: [box(L + 0.16, 0.05, W + 0.16, (0, H + 0.17, 0), p['galv'], bevel=0.006),
+                                      box(L + 0.1, 0.12, W + 0.1, (0, -0.02, 0), p['steel'], bevel=0.006)] +
+                             [box(0.6, 0.04, W * 0.9, (-L / 2 - 0.3, H * 0.75 + 0.3 * 0.5, 0), p['galv'], bevel=0.004)] +
+                             [box(0.6, H * 0.55, 0.03, (-L / 2 - 0.3, H * 0.47, s * W * 0.45), p['galv'], bevel=0.004) for s in (-1, 1)] +
+                             [box(0.01, 0.01, W * 0.88, (-L / 2 - 0.58, 0.35 + i * 0.07, 0), p['steel'], bevel=0) for i in range(20)]))
+
+
+def roof_fan(L=1.2, H=1.1):
+    """centrifugal roof exhauster (R9 EF / KEF / TEF / CPEF / LSF / SEF / relief fan): curb, aluminium base, spun dome, motor
+    cover, bird screen; fanWheel spins on the page"""
+    p = P()
+    group('curb', collect(lambda: [box(L, 0.3, L, (0, 0.15, 0), p['galv'], bevel=0.01), box(L + 0.1, 0.04, L + 0.1, (0, 0.32, 0), p['steel'], bevel=0.004)]))
+    group('body', collect(lambda: [cyl(L * 0.42, 0.22, (0, 0.45, 0), 'y', p['alu'], n=48, r2=L * 0.36),
+                                   cyl(L * 0.5, H * 0.32, (0, 0.56 + H * 0.16, 0), 'y', p['alu'], n=48, r2=L * 0.46, open_ends=True),
+                                   sphere(L * 0.46, (0, 0.56 + H * 0.32, 0), p['alu'], half=True, scale=(1, 0.45, 1)),
+                                   cyl(L * 0.12, 0.12, (0, 0.56 + H * 0.32 + L * 0.21, 0), 'y', p['alu'], n=32)] +
+                            [box(0.02, H * 0.3, 0.02, (L * 0.48 * math.cos(a), 0.56 + H * 0.16, L * 0.48 * math.sin(a)), p['steel'], bevel=0)
+                             for a in [i * math.pi / 4 for i in range(8)]]))
+    group('fanWheel', collect(lambda: [cyl(L * 0.3, 0.04, (0, 0.62, 0), 'y', p['steel'], n=32)] +
+                              [box(L * 0.24, 0.12, 0.012, (L * 0.15 * math.cos(a), 0.69, L * 0.15 * math.sin(a)), p['black'], bevel=0)
+                               for a in [i * math.pi / 6 for i in range(12)]]))
+    box(0.16, 0.12, 0.1, (L * 0.5 + 0.08, 0.5, 0), p['panel'], 'isolator', bevel=0.008)
+
+
+def exptank(D=0.9, H=1.6):
+    """vertical diaphragm expansion vessel on legs: pre-charge valve, system connection with isolating valve, pressure gauge"""
+    p = P()
+    group('vessel', collect(lambda: [cyl(D * 0.45, H * 0.62, (0, 0.25 + H * 0.38, 0), 'y', p['red'], n=48),
+                                     sphere(D * 0.45, (0, 0.25 + H * 0.69, 0), p['red'], half=True, scale=(1, 0.45, 1)),
+                                     sphere(D * 0.45, (0, 0.25 + H * 0.07, 0), p['red'], scale=(1, 0.45, 1)),
+                                     torus(D * 0.452, 0.012, (0, 0.25 + H * 0.38, 0), 'y', p['paintDark'])] +
+                            [box(0.05, 0.3, 0.05, (D * 0.32 * math.cos(a), 0.15, D * 0.32 * math.sin(a)), p['steel'], bevel=0.004)
+                             for a in (0.5, 2.6, 4.7)] +
+                            [cyl(0.02, 0.06, (0, 0.25 + H * 0.92, 0), 'y', p['steel'], n=12, bevel=0)]))
+    group('connection', collect(lambda: [cyl(0.04, D * 0.06, (D * 0.47, 0.4 * H / 1.6, 0), 'x', p['steel'], n=20)] +       # r6: side connection (CHW-ET)
+                                flange((D * 0.5, 0.4 * H / 1.6, 0), 'x', 0.08, 0.04, 0.015, p['iron'], bolts=4) +
+                                gauge((0.15, 0.25 + H * 0.2, D * 0.42), 'z')))
+
+
+def bypass(L=1.3, W=0.5, H=1.04):
+    """differential-pressure bypass: motorised globe valve with actuator, two isolating valves, strainer, on a steel frame"""
+    p = P()
+    group('frame', collect(lambda: [box(0.06, H, 0.06, (s * L * 0.45, H / 2, z), p['steel'], bevel=0.004) for s in (-1, 1) for z in (-W * 0.4, W * 0.4)] +
+                           [box(L, 0.06, W * 0.86, (0, 0.03, 0), p['steel'], bevel=0.004)]))
+    group('pipe', collect(lambda: [cyl(0.06, L, (0, 0.62 * H / 1.04, 0), 'x', p['steel'], n=24)] +
+                          [x for xx in (-L * 0.38, L * 0.38) for x in flange((xx, 0.62 * H / 1.04, 0), 'x', 0.11, 0.065, 0.02, p['iron'], bolts=6) or []]))
+    group('valves', collect(lambda: [cyl(0.1, 0.06, (s * L * 0.3, 0.62 * H / 1.04, 0), 'x', p['iron'], n=24) for s in (-1, 1)] +
+                            [box(0.03, 0.22, 0.03, (s * L * 0.3, 0.62 * H / 1.04 + 0.14, 0), p['steel'], bevel=0) for s in (-1, 1)] +
+                            [box(0.2, 0.025, 0.04, (s * L * 0.3, 0.62 * H / 1.04 + 0.25, 0), p['red'], bevel=0.004) for s in (-1, 1)] +
+                            [sphere(0.11, (0, 0.62 * H / 1.04, 0), p['iron'], scale=(1.3, 1, 1)), cyl(0.025, 0.2, (0, 0.62 * H / 1.04 + 0.17, 0), 'y', p['steel'], n=12)] +
+                            [cyl(0.07, 0.18, (-L * 0.15, H * 0.5, 0), 'y', p['iron'], n=20)]))
+    group('actuator', collect(lambda: [box(0.2, 0.22, 0.16, (0, 0.62 * H / 1.04 + 0.37, 0), p['actuator'], bevel=0.015),
+                                       box(0.12, 0.05, 0.004, (0, 0.62 * H / 1.04 + 0.4, 0.082), p['black'], bevel=0)]))
+
+
+def panel(L=2.4, W=0.5, H=2.1):
+    """plant control panel / MCC: three-door cabinet on a plinth, door handles, pilot lights, ventilation louvres, HMI (screen),
+    cable tray on top"""
+    p = P()
+    n = 3
+    group('cabinet', collect(lambda: [box(L, 0.1, W, (0, 0.05, 0), p['black'], bevel=0.004), box(L, H - 0.1, W, (0, 0.1 + (H - 0.1) / 2, 0), p['panel'], bevel=0.008)] +
+                             [box(L / n - 0.02, H - 0.2, 0.012, (-L / 2 + (i + 0.5) * L / n, 0.1 + (H - 0.1) / 2, W / 2 + 0.006), p['panel'], bevel=0.004) for i in range(n)] +
+                             [box(0.025, 0.16, 0.03, (-L / 2 + (i + 1) * L / n - 0.08, 1.1, W / 2 + 0.025), p['black'], bevel=0.004) for i in range(n)] +
+                             [box(0.3, 0.012, 0.004, (-L / 2 + (i + 0.5) * L / n, 0.3 + j * 0.03, W / 2 + 0.014), p['paintDark'], bevel=0)
+                              for i in range(n) for j in range(5)] +
+                             [box(L, 0.08, 0.3, (0, H + 0.04, -0.05), p['galv'], bevel=0.004)]))
+    group('pilots', collect(lambda: [cyl(0.018, 0.02, (-L / 2 + 0.5 * L / n - 0.25 + k * 0.1, 1.55, W / 2 + 0.02), 'z', [p['green'], p['amber'], p['redLamp']][k % 3], n=16, bevel=0)
+                                     for k in range(6)]))
+    box(0.42, 0.26, 0.004, (0, 1.5, W / 2 + 0.016), p['screen'], 'screen', bevel=0)
+
+
+# field devices: authored at a reference size, local frame x = pipe / duct axis (flow), y = up (stem), origin = pipe centre
+def dev_mbfv(r=0.1):
+    """motorised wafer butterfly valve: lugged body, disc, top plate, electric quarter-turn actuator with position indicator"""
+    p = P()
+    cyl(r * 1.35, r * 0.6, (0, 0, 0), 'x', p['iron'], n=24, bevel=0.003)
+    cyl(r * 0.25, r * 1.2, (0, r * 1.6, 0), 'y', p['steel'], n=12, bevel=0)
+    box(r * 1.4, r * 0.12, r * 1.0, (0, r * 2.2, 0), p['steel'], bevel=0.002)
+    box(r * 1.7, r * 1.2, r * 1.2, (0, r * 2.85, 0), p['actuator'], bevel=0.008)
+    cyl(r * 0.3, r * 0.15, (0, r * 3.5, 0), 'y', p['amber'], n=16, bevel=0)
+
+
+def dev_picv(r=0.035):
+    """pressure-independent control valve (AHU coil): forged brass body, P/T test plugs, round actuator"""
+    p = P()
+    cyl(r * 1.15, r * 4.0, (0, 0, 0), 'x', p['brass'], n=20, bevel=0.002)
+    sphere(r * 1.6, (0, 0, 0), p['brass'], scale=(1.2, 1, 1))
+    for s in (-1, 1): cyl(r * 0.25, r * 0.9, (s * r * 1.2, r * 1.2, 0), 'y', p['redLamp'] if s < 0 else p['blueCap'], n=10, bevel=0)
+    cyl(r * 0.35, r * 1.4, (0, r * 2.1, 0), 'y', p['steel'], n=12, bevel=0)
+    cyl(r * 1.4, r * 2.0, (0, r * 3.6, 0), 'y', p['actuatorWhite'], n=24, bevel=0.004)
+
+
+def dev_tt(r=0.1):
+    """immersion temperature transmitter: thermowell boss, neck, aluminium head with cable gland"""
+    p = P()
+    cyl(r * 0.25, r * 0.35, (0, r * 1.05, 0), 'y', p['steel'], n=12, bevel=0)
+    cyl(0.012, 0.12, (0, r * 1.05 + 0.08, 0), 'y', p['steel'], n=10, bevel=0)
+    cyl(0.038, 0.05, (0, r * 1.05 + 0.16, 0), 'y', p['alu'], n=20, bevel=0.003)
+    cyl(0.008, 0.03, (0.045, r * 1.05 + 0.16, 0), 'x', p['black'], n=8, bevel=0)
+
+
+def dev_pt(r=0.1):
+    """pressure transmitter on an isolating ball valve: boss, valve with lever, stainless housing"""
+    p = P()
+    cyl(r * 0.2, r * 0.3, (0, r * 1.05, 0), 'y', p['steel'], n=12, bevel=0)
+    sphere(0.022, (0, r * 1.05 + 0.04, 0), p['brass'])
+    box(0.07, 0.008, 0.012, (0.035, r * 1.05 + 0.05, 0), p['red'], bevel=0)
+    cyl(0.022, 0.11, (0, r * 1.05 + 0.12, 0), 'y', p['steel'], n=16, bevel=0.002)
+    cyl(0.03, 0.03, (0, r * 1.05 + 0.19, 0), 'y', p['blueCap'], n=16, bevel=0.002)
+
+
+def dev_fm(r=0.1):
+    """electromagnetic flow meter: flanged spool with liner, terminal neck, converter with display (BTU / chiller flow)"""
+    p = P()
+    cyl(r * 1.25, r * 3.0, (0, 0, 0), 'x', p['meterBlue'], n=28, bevel=0.003)
+    for s in (-1, 1): cyl(r * 1.55, r * 0.18, (s * r * 1.5, 0, 0), 'x', p['steel'], n=28, bevel=0.002)
+    box(r * 0.5, r * 0.6, r * 0.5, (0, r * 1.5, 0), p['meterBlue'], bevel=0.004)
+    box(0.16, 0.12, 0.1, (0, r * 1.8 + 0.06, 0), p['alu'], bevel=0.01)
+    box(0.09, 0.05, 0.002, (0, r * 1.8 + 0.07, 0.051), p['screen'], bevel=0)
+
+
+def dev_btu(r=0.1):
+    """BTU / energy calculator: wall box with display and keypad, cable glands (paired TT + FM)"""
+    p = P()
+    box(0.2, 0.26, 0.09, (0, r * 1.6 + 0.13, 0), p['panel'], bevel=0.01)
+    box(0.13, 0.07, 0.002, (0, r * 1.6 + 0.18, 0.046), p['screen'], bevel=0)
+    for i in range(3): cyl(0.008, 0.03, (-0.05 + i * 0.05, r * 1.6, 0), 'y', p['black'], n=8, bevel=0)
+
+
+def dev_md(w=1.0, h=1.0):
+    """motorised opposed-blade damper (unit size 1 x 1, scaled by the page to w x h): frame, aerofoil blades, linkage, actuator"""
+    p = P()
+    t = 0.05
+    for s in (-1, 1):
+        box(0.15, t, w, (0, s * (h / 2 - t / 2), 0), p['galv'], bevel=0)
+        box(0.15, h, t, (0, 0, s * (w / 2 - t / 2)), p['galv'], bevel=0)
+    for i in range(5):
+        box(0.02, h / 5 * 0.85, w - 2 * t, (0, -h / 2 + (i + 0.5) * h / 5, 0), p['alu'], bevel=0)
+    box(0.18, 0.18, 0.14, (0.0, 0, w / 2 + 0.07), p['actuator'], bevel=0.01)
+
+
+def dev_vsd():
+    """variable speed drive: IP54 enclosure, heat-sink fins, keypad display"""
+    p = P()
+    box(0.42, 0.7, 0.24, (0, 0, 0), p['vsd'], bevel=0.01)
+    for i in range(8): box(0.008, 0.5, 0.04, (-0.17 + i * 0.048, 0, -0.14), p['alu'], bevel=0)
+    box(0.2, 0.1, 0.004, (0, 0.14, 0.121), p['screen'], bevel=0)
+    box(0.24, 0.02, 0.012, (0, -0.2, 0.125), p['black'], bevel=0)
+
+
+def dev_airtt():
+    """duct temperature sensor: housing with probe (averaging element for MAT)"""
+    p = P()
+    box(0.075, 0.065, 0.07, (0, 0.1, 0), p['panelWhite'], bevel=0.006)
+    cyl(0.009, 0.16, (0, 0, 0), 'y', p['steel'], n=10, bevel=0)
+
+
+def dev_airdp():
+    """differential pressure transmitter with + / - pressure tubes (filter / duct static)"""
+    p = P()
+    box(0.09, 0.11, 0.06, (0, 0.1, 0), p['panelWhite'], bevel=0.008)
+    box(0.06, 0.03, 0.002, (0, 0.11, 0.031), p['screen'], bevel=0)
+    for s in (-1, 1): cyl(0.004, 0.12, (s * 0.02, 0.0, 0), 'y', p['blueCap'] if s < 0 else p['redLamp'], n=8, bevel=0)
+
+
+def dev_afms():
+    """airflow measuring station: pitot / thermal grid in a frame with transmitter (OA minimum airflow)"""
+    p = P()
+    for s in (-1, 1):
+        box(0.08, 0.04, 0.6, (0, s * 0.28, 0), p['galv'], bevel=0); box(0.08, 0.6, 0.04, (0, 0, s * 0.28), p['galv'], bevel=0)
+    for i in range(4): cyl(0.008, 0.52, (0, 0, -0.21 + i * 0.14), 'y', p['steel'], n=8, bevel=0)
+    box(0.12, 0.14, 0.07, (0, 0.38, 0), p['panelWhite'], bevel=0.008)
 
 
 # ------------------------------------------------------------------ renders (Px sprites)
@@ -434,6 +644,10 @@ def sprites(outdir):
 
 
 if __name__ == '__main__':
-    for name, fn in (('chiller', chiller), ('pump', pump), ('tower', tower), ('ahu', ahu), ('vav', vav)):
+    for name, fn in (('chiller', chiller), ('pump', pump), ('tower', tower), ('ahu', ahu), ('vav', vav),
+                     ('oau', oau), ('roof_fan', roof_fan), ('exptank', exptank), ('bypass', bypass), ('panel', panel),
+                     ('dev_mbfv', dev_mbfv), ('dev_picv', dev_picv), ('dev_tt', dev_tt), ('dev_pt', dev_pt), ('dev_fm', dev_fm),
+                     ('dev_btu', dev_btu), ('dev_md', dev_md), ('dev_vsd', dev_vsd), ('dev_airtt', dev_airtt), ('dev_airdp', dev_airdp),
+                     ('dev_afms', dev_afms)):
         reset(); fn(); export(os.path.join(OUT, f'{name}.glb'))
     if RENDER: sprites(RENDER)

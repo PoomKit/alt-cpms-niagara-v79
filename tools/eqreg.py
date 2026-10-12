@@ -75,15 +75,15 @@ def installed(r):
 
 
 README = [
-    ('ทะเบียนอุปกรณ์ ALT_CP_Ref_V7_9', ''),
-    ('ใช้ทำอะไร', 'ไฟล์เดียวที่บอกว่าไซต์นี้มีอุปกรณ์อะไรบ้าง builder อ่านไฟล์นี้แล้วสร้าง station, Field IO, point mapping, 3D และแบบ 2D ให้ตรงกัน'),
-    ('Equipment', 'chiller / CHP / CDP / CT อย่างละ 6 slot (01-02 = เครื่องเดิมของ V7.8, 03-06 = slot ขยาย) · Installed = Y/N'),
-    ('Sensors', 'sensor เพิ่มเติม (SNS01...) ใส่กี่แถวก็ได้ อย่างน้อย 6 slot · Kind: Temp, RH, Pressure, DP, Flow, Power, Level, Generic'),
-    ('AirSide', 'AHU ประจำชั้น 2-8 (ชั้น 1 = AHU01/02, OAU01, FCU01-04 ของ V7.8) · Installed = Y/N'),
-    ('Systems', 'ระบบในอนาคต (fire alarm, fire protection, lighting, power) · ใส่อุปกรณ์ทีละแถว: ชั้น, ตำแหน่ง X/Y/Z (มม.), Point ใน station → ขึ้นใน 3D เป็นจุดพร้อมสถานะ'),
-    ('เพิ่มอุปกรณ์ (วิธีที่ 1, ไม่ต้องสร้างใหม่)', 'ใน Workbench ตั้ง <slot>_Installed = true (เช่น CH03_Installed) → logic นับเครื่องนั้นทันที → ต่อ Field IO กลุ่ม <slot> → ทดสอบ P2P'),
-    ('เพิ่มอุปกรณ์ (วิธีที่ 2, สร้างใหม่)', 'แก้ไฟล์นี้ (Installed = Y, Protocol, Device) → สั่ง make_v79.py --register ไฟล์นี้ → ได้ config.bog + ทะเบียนจุด + 3D ใหม่ที่ตรงกัน'),
-    ('ลดอุปกรณ์', 'ตั้ง Installed = N (หรือ <slot>_Installed = false ใน Workbench) → เครื่องนั้นไม่ถูกเลือก ไม่ถูกสั่งเดิน และเป็นเงาจางใน 3D'),
+    ('ALT_CP_Ref_V7_9 equipment register', ''),
+    ('Purpose', 'The single file that says which equipment the site has. The builder reads it and generates the station, Field IO, point mapping, 3D and 2D drawings consistently.'),
+    ('Equipment', 'chiller / CHP / CDP / CT, 6 slots each (01-02 = existing V7.8 units, 03-06 = expansion slots) · Installed = Y/N'),
+    ('Sensors', 'additional sensors (SNS01...), any number of rows, at least 6 slots · Kind: Temp, RH, Pressure, DP, Flow, Power, Level, Generic'),
+    ('AirSide', 'floor AHUs 2-8 (floor 1 = AHU01/02, OAU01 of V7.8) · Installed = Y/N'),
+    ('Systems', 'future systems (fire alarm, fire protection, lighting, power) · one device per row: floor, X/Y/Z position (mm), station point -> shown in 3D with its status'),
+    ('Add equipment (method 1, no rebuild)', 'In Workbench set <slot>_Installed = true (e.g. CH03_Installed) -> the logic counts the unit at once -> wire the Field IO group <slot> -> P2P test'),
+    ('Add equipment (method 2, rebuild)', 'Edit this file (Installed = Y, Protocol, Device) -> run make_v79.py --register <this file> -> new config.bog + point register + 3D that match'),
+    ('Remove equipment', 'Set Installed = N (or <slot>_Installed = false in Workbench) -> the unit is not selected, never started and shown as a ghost in 3D'),
     ('Protocol', '1 BACnet/IP · 2 BACnet MS/TP · 3 Modbus TCP · 4 Modbus RTU · 5 hard-wired I/O'),
 ]
 

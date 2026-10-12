@@ -5,6 +5,7 @@
   data/r9_model.json       MODEL: R9 coordinated geometry (plant in basement B1)
   data/office79.json       OFFICE: R9 office design (rooms, VAV, ducts, sensors, meters)
   data/office_points.json  r4 station points + alarms (tools/office_points.py) -> merged into PTS / MAP / ALARMS
+  data/r9_bindings.json    r5 station point of each R9 device (tools/r9_bindings.py) -> window.R9BIND, merged into PTS / MAP
   models/*.glb             Blender equipment models (tools/blender/equipment79.py) -> GLB (base64)
 usage: python3 rebuild_page.py [--check]      --check: exit 1 if the committed page is not what the sources give (CI)"""
 import base64, glob, json, os, subprocess, sys
@@ -20,11 +21,15 @@ def data_block():
     for n, s in sorted(op['points'].items()):
         pts.setdefault(n, s)
         if n not in have: mp.append({'p': n, 's': s, 'u': 'office / r4 point', 'ok': True})
+    for n, b in sorted(D('r9_bindings.json')['bind'].items()):
+        pts.setdefault(b['p'], b['s'])
+        if b['p'] not in have and b['p'] not in op['points']: have.add(b['p']); mp.append({'p': b['p'], 's': b['s'], 'u': 'R9 device ' + n, 'ok': True})
     names = {a['n'] for a in base['ALARMS']}
     alarms = base['ALARMS'] + [a for a in op['alarms'] if a['n'] not in names]
     glbs = {os.path.basename(f)[:-4]: base64.b64encode(open(f, 'rb').read()).decode() for f in sorted(glob.glob(os.path.join(HERE, 'models', '*.glb')))}
     return (f"window.MODEL={J(D('r9_model.json'))};window.ALARMS={J(alarms)};window.PTS={J(pts)};window.MAP={J(mp)};"
-            f"window.EFFECTS={J(base['EFFECTS'])};window.OFFICE={J(D('office79.json'))};window.GLB={J(glbs)};")
+            f"window.EFFECTS={J(base['EFFECTS'])};window.OFFICE_DESIGN=window.OFFICE={J(D('office79.json'))};window.R9BIND={J(D('r9_bindings.json')['bind'])};"
+            f"window.GLB={J(glbs)};")
 
 
 def build():

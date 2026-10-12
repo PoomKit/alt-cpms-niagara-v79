@@ -55,6 +55,9 @@ cts = [e['x'] for e in MD.EQ if e['type'] == 'ct']
 mdl = {'building': MD.B, 'roof_z': MD.ROOF_Z, 'room': MD.ROOM, 'core': MD.CORE, 'grid_x': MD.GRID_X, 'grid_y': MD.GRID_Y, 'equipment': eqs, 'air_equipment': air,
        'pipes': pipes, 'valves': valves, 'service': MD.SERVICE, 'project': MD.PROJECT, 'zones': zones, 'systems': MD.SYSTEMS, 'installed': MD.INST,
        'ct_span': [min(cts), max(cts)]}
+# r6: English UI - the lotus alarm helper labels are translated with the station UI table
+_EN = json.load(open(os.path.join(HERE, '..', 'tools', 'i18n', 'th_en_web.json'), encoding='utf-8'))
+for _v in AM.EFFECTS.values(): _v[0] = _EN.get(_v[0], _v[0])
 if __name__ == '__main__':
     subprocess.run(['npx', 'esbuild', 'scene79.js', '--bundle', '--minify', '--format=iife', '--outfile=build/scene79.min.js'], check=True, cwd=os.path.dirname(os.path.abspath(__file__)))
     js = open(os.path.join(HERE, 'build', 'scene79.min.js'), encoding='utf-8').read()

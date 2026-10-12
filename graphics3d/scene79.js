@@ -6,7 +6,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Sky } from 'three/examples/jsm/objects/Sky.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { buildOffice } from './office79.js';
+import { installR9 } from './r9office.js';
+import { buildDevices } from './devices79.js';
 
 const M = window.MODEL, AL = window.ALARMS, PTS = window.PTS, EFX = window.EFFECTS;
 const $ = id => document.getElementById(id);
@@ -83,6 +84,11 @@ const MAT = {
   frp: new THREE.MeshStandardMaterial({ color: 0xe9edef, roughness: .42, metalness: .05 }),
   screen: new THREE.MeshStandardMaterial({ color: 0x0d3550, emissive: 0x1a6ea0, emissiveIntensity: .8 }),
 };
+// r6 (R9 palette): neutral concrete, powder-coated housings, galvanised steel (reference appearance, not an as-built colour)
+MAT.almond.color.set('#dedbd0'); MAT.almond.roughness = .58; MAT.almond.metalness = .12; MAT.almondDark.color.set('#a4aaa7'); MAT.almondDark.roughness = .64;
+MAT.motor.color.set('#345e73'); MAT.motor.roughness = .52; MAT.iron.color.set('#526970'); MAT.iron.roughness = .65;
+MAT.panel.color.set('#d2d8d7'); MAT.panel.roughness = .62; MAT.panel.metalness = .12; MAT.galv.color.set('#a9b2b4'); MAT.galv.roughness = .48; MAT.galv.metalness = .68;
+MAT.frp.color.set('#e4e6df'); MAT.frp.roughness = .72; MAT.yellow.color.set('#c9ab50'); MAT.yellow.roughness = .68; MAT.steel.color.set('#667279'); MAT.steel.roughness = .65;
 const svcMat = {}; for (const k in M.service) { const [, col, ins] = M.service[k];
   svcMat[k] = ins ? new THREE.MeshStandardMaterial({ color: 0xd3d8dc, metalness: .85, roughness: .3 }) : new THREE.MeshStandardMaterial({ color: new THREE.Color(col), metalness: .35, roughness: .4 });
   svcMat[k + '_band'] = new THREE.MeshStandardMaterial({ color: new THREE.Color(col), metalness: .2, roughness: .5 }); }
@@ -113,6 +119,57 @@ for (let i = 0; i < 70; i++) { const a = Math.random() * Math.PI * 2, r = 62 + M
   mesh(trunkG, trunkM, g, new THREE.Vector3(0, 1.5, 0));
   for (let k = 0; k < 5; k++) { const c = mesh(crownG, leafM[(i + k) % leafM.length], g, new THREE.Vector3((Math.random() - .5) * 1.8, 3.4 + Math.random() * 1.4, (Math.random() - .5) * 1.8)); c.scale.setScalar(.55 + Math.random() * .4); }
   trees.push(g); }
+// ------------------------------------------------------------------ r7: site around the building - street grid with lanes and kerbs,
+// sidewalks, car parks with cars, street trees and neighbouring buildings (reference context only, not survey data)
+const SITE = new THREE.Group(); scene.add(SITE);
+{ const ROADS = [{ x: 35, z: 40, w: 380, d: 12 }, { x: 35, z: -85, w: 380, d: 12 }, { x: 110, z: -22, w: 12, d: 330 }, { x: -50, z: -22, w: 12, d: 330 }];
+  const onRoad = (x, z, m = 0) => ROADS.some(r => Math.abs(x - r.x) < r.w / 2 + m && Math.abs(z - r.z) < r.d / 2 + m);
+  const asph = new THREE.MeshStandardMaterial({ map: T.asphalt, color: 0x9a9a9a, roughness: .9 }), walk = new THREE.MeshStandardMaterial({ color: 0xc9c5bb, roughness: .95 });
+  const kerb = new THREE.MeshStandardMaterial({ color: 0xe2ded5, roughness: .8 }), paint = new THREE.MeshStandardMaterial({ color: 0xf2f2ea, roughness: .7 }), yel = new THREE.MeshStandardMaterial({ color: 0xe8c234, roughness: .7 });
+  for (const r of ROADS) { mesh(box(r.w, .04, r.d), asph, SITE, new THREE.Vector3(r.x, -0.3, r.z));
+    const along = r.w > r.d, L = along ? r.w : r.d;
+    for (const sd of [-1, 1]) { const o = (along ? r.d : r.w) / 2 + 1.9;                                        // sidewalk 3.5 m + kerb
+      mesh(box(along ? L : 3.5, .16, along ? 3.5 : L), walk, SITE, new THREE.Vector3(r.x + (along ? 0 : sd * o), -0.22, r.z + (along ? sd * o : 0)));
+      mesh(box(along ? L : .2, .2, along ? .2 : L), kerb, SITE, new THREE.Vector3(r.x + (along ? 0 : sd * (o - 1.8)), -0.2, r.z + (along ? sd * (o - 1.8) : 0))); }
+    const dash = new THREE.InstancedMesh(box(along ? 3 : .15, .02, along ? .15 : 3), paint, Math.floor(L / 8)); const m4 = new THREE.Matrix4();
+    for (let i = 0; i < dash.count; i++) { const t = -L / 2 + 4 + i * 8; m4.makeTranslation(r.x + (along ? t : 0), -0.27, r.z + (along ? 0 : t)); dash.setMatrixAt(i, m4); }
+    SITE.add(dash);
+    for (const sd of [-1, 1]) mesh(box(along ? L : .12, .02, along ? .12 : L), yel, SITE, new THREE.Vector3(r.x + (along ? 0 : sd * (r.w / 2 - .4)), -0.27, r.z + (along ? sd * (r.d / 2 - .4) : 0))); }
+  // cars: south lot (stalls at z 12) and west lot, instanced body + cabin, varied colours
+  const cars = [];
+  for (let i = 0; i < 28; i++) if (Math.random() < .7) cars.push([-2.7 + i * 2.6, 12, 0]);
+  for (const x of [-27, -19, -11]) for (let i = 0; i < 20; i++) { const z = -62 + i * 2.6; if (Math.random() < .6) cars.push([x, z, Math.PI / 2]); }
+  for (const x of [-27, -19, -11]) for (let i = 0; i < 21; i++) mesh(box(5, .01, .12), paint, SITE, new THREE.Vector3(x, -0.28, -63.3 + i * 2.6));
+  const CC = [0xf4f4f2, 0x1d1f22, 0x8a9096, 0x7a1f22, 0x1f3a5f, 0xb8bcc2, 0x3a4a3a];
+  const body = new THREE.InstancedMesh(box(1.8, .75, 4.4, .12), new THREE.MeshStandardMaterial({ roughness: .35, metalness: .55 }), cars.length);
+  const cab = new THREE.InstancedMesh(box(1.6, .55, 2.3, .12), new THREE.MeshStandardMaterial({ color: 0x1b2430, roughness: .15, metalness: .6 }), cars.length);
+  const wheel = new THREE.InstancedMesh(cyl(.33, .22, 14), new THREE.MeshStandardMaterial({ color: 0x111111, roughness: .9 }), cars.length * 4);
+  const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), qw = new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0, Math.PI / 2)), one = new THREE.Vector3(1, 1, 1);
+  cars.forEach(([x, z, a], i) => { q.setFromEuler(new THREE.Euler(0, a, 0));
+    body.setMatrixAt(i, m4.compose(new THREE.Vector3(x, .25, z), q, one)); body.setColorAt(i, new THREE.Color(CC[(i * 7) % CC.length]));
+    cab.setMatrixAt(i, m4.compose(new THREE.Vector3(x, .85, z).add(new THREE.Vector3(0, 0, -.2).applyQuaternion(q)), q, one));
+    [[-.85, 1.35], [.85, 1.35], [-.85, -1.35], [.85, -1.35]].forEach(([dx, dz], k) => wheel.setMatrixAt(i * 4 + k, m4.compose(new THREE.Vector3(x, .03, z).add(new THREE.Vector3(dx, 0, dz).applyQuaternion(q)), q.clone().multiply(qw), one))); });
+  for (const im of [body, cab, wheel]) { im.castShadow = true; im.receiveShadow = true; SITE.add(im); }
+  // neighbouring buildings: plain massing with a window grid (reference context)
+  const winTex = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#d9d6cf'; g.fillRect(0, 0, w, h); for (let y = 0; y < 8; y++) for (let x = 0; x < 6; x++) { g.fillStyle = Math.random() < .25 ? '#7d8f9f' : '#5d6f80'; g.fillRect(8 + x * 41, 10 + y * 31, 30, 18); } });
+  winTex.wrapS = winTex.wrapT = THREE.RepeatWrapping;
+  const NB = [[-12, 72, 34, 22, 18], [34, 74, 30, 26, 30], [80, 70, 26, 20, 12], [150, 60, 30, 34, 24], [148, 10, 26, 30, 36], [146, -50, 30, 26, 16],
+              [150, -120, 34, 30, 22], [80, -122, 40, 26, 28], [20, -124, 36, 24, 14], [-40, -126, 30, 30, 20], [-92, -60, 26, 34, 26], [-94, 6, 28, 30, 12], [-90, 66, 26, 26, 18]];
+  for (const [x, z, w, d, h] of NB) { const t = winTex.clone(); t.needsUpdate = true; t.repeat.set(Math.max(1, Math.round(w / 6)), Math.max(1, Math.round(h / 3.6)));
+    const m = new THREE.MeshStandardMaterial({ map: t, roughness: .75, color: [0xffffff, 0xf1ebe0, 0xe6ebef][Math.abs(x + z) % 3] });
+    const b = mesh(box(w, h, d), m, SITE, new THREE.Vector3(x, h / 2 - .3, z)); b.castShadow = b.receiveShadow = true;
+    mesh(box(w + .6, .8, d + .6), MAT.concrete, SITE, new THREE.Vector3(x, h + .1, z)); }
+  // street trees every 10 m along the sidewalks; random park trees off the roads and buildings
+  const inNB = (x, z, m) => NB.some(([bx, bz, w, d]) => Math.abs(x - bx) < w / 2 + m && Math.abs(z - bz) < d / 2 + m);
+  for (const g of trees) if (onRoad(g.position.x, g.position.z, 5) || inNB(g.position.x, g.position.z, 3)) g.visible = false;
+  const crownI = [], trunkI = [];
+  for (const r of ROADS) { const along = r.w > r.d, L = along ? r.w : r.d;
+    for (const sd of [-1, 1]) for (let t = -L / 2 + 6; t < L / 2 - 6; t += 10) { const x = r.x + (along ? t : sd * (r.w / 2 + 3)), z = r.z + (along ? sd * (r.d / 2 + 3) : t);
+      if (ROADS.some(o => o !== r && onRoad(x, z, 4) && Math.abs(x - o.x) < o.w / 2 + 4 && Math.abs(z - o.z) < o.d / 2 + 4) || inNB(x, z, 1) || (x > -36 && x < 100 && z > -72 && z < 32)) continue;
+      trunkI.push([x, z]); crownI.push([x, z]); } }
+  const tI = new THREE.InstancedMesh(trunkG, trunkM, trunkI.length), cI = new THREE.InstancedMesh(crownG, leafM[1], crownI.length);
+  trunkI.forEach(([x, z], i) => { tI.setMatrixAt(i, m4.makeTranslation(x, 1.2, z)); cI.setMatrixAt(i, m4.compose(new THREE.Vector3(x, 4, z), new THREE.Quaternion(), new THREE.Vector3(1.1, 1.25, 1.1))); });
+  tI.castShadow = cI.castShadow = true; SITE.add(tI, cI); }
 const storeGlass = { material: { emissiveIntensity: 0 } };
 const AIRSIDE = { material: {} };
 
@@ -153,7 +210,7 @@ onFloor(1, wall(0, R.y, 0, 0, RHm, []));
   for (let x = 6000; x < BLD.x; x += 9000) for (let y = 4000; y < BLD.y; y += 8000) { const q = P3(x, y, -500);
     mesh(box(1.2, .06, .2), new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff4e0, emissiveIntensity: 1.2 }), g, q); } }
 // floors, columns, curtain wall, core
-const glassM = new THREE.MeshStandardMaterial({ color: 0x9db8c2, metalness: .15, roughness: .04, transparent: true, opacity: .26, depthWrite: false, side: THREE.DoubleSide, envMapIntensity: 1.4 });
+const glassM = new THREE.MeshStandardMaterial({ color: 0x9db8c2, metalness: .15, roughness: .04, transparent: true, opacity: .42, depthWrite: false, side: THREE.DoubleSide, envMapIntensity: .65 });
 const mullM = new THREE.MeshStandardMaterial({ color: 0x3f4448, metalness: .6, roughness: .4 });   // dark anodised aluminium
 const slabM = MAT.slab.clone(); slabM.transparent = true; XRAY.push(slabM);
 for (let f = 2; f <= BLD.floors + 1; f++) { const z = f > BLD.floors ? ROOFZ : zOf(f);
@@ -230,24 +287,25 @@ function coolingTower(e){ const r = equipGroup(e), g = r.g, L = mm(e.L), D = mm(
   for (const [x, z] of [[-L / 2 + .1, -D / 2 + .1], [L / 2 - .1, -D / 2 + .1], [-L / 2 + .1, D / 2 - .1], [L / 2 - .1, D / 2 - .1], [0, -D / 2 + .1], [0, D / 2 - .1]])
     mesh(box(.15, legH, .15), st, g, new THREE.Vector3(x, -legH / 2, z));                                                           // steel support frame
   mesh(box(L, .1, D), st, g, new THREE.Vector3(0, -.05, 0));
-  r.parts.basin = mesh(box(L, .55, D, .02), frp, g, new THREE.Vector3(0, .275, 0));                                                // cold water basin
+  const bd = m => { m.userData.body = 1; return m; };                                                                              // r5: replaced by the Blender body
+  r.parts.basin = bd(mesh(box(L, .55, D, .02), frp, g, new THREE.Vector3(0, .275, 0)));                                            // cold water basin
   const wm = MAT.water.clone(); wm.map = T.water.clone(); wm.map.wrapS = wm.map.wrapT = THREE.RepeatWrapping; wm.map.needsUpdate = true;
   const water = mesh(new THREE.PlaneGeometry(L - .08, D - .08), wm, g, new THREE.Vector3(0, .45, 0), [-Math.PI / 2, 0, 0]); water.castShadow = false; r.parts.water = water;
-  for (const s of [-1, 1]) mesh(box(L, H - .55, .08), frp, g, new THREE.Vector3(0, .55 + (H - .55) / 2, s * D / 2));            // cased faces
+  for (const s of [-1, 1]) bd(mesh(box(L, H - .55, .08), frp, g, new THREE.Vector3(0, .55 + (H - .55) / 2, s * D / 2)));        // cased faces
   const fill = new THREE.MeshStandardMaterial({ color: 0x33413f, roughness: .95 });
-  for (const s of [-1, 1]) mesh(box(.55, H - 1.1, D - .3), fill, g, new THREE.Vector3(s * (L / 2 - .55), .55 + (H - 1.1) / 2 + .05, 0));   // fill packs
+  for (const s of [-1, 1]) bd(mesh(box(.55, H - 1.1, D - .3), fill, g, new THREE.Vector3(s * (L / 2 - .55), .55 + (H - 1.1) / 2 + .05, 0)));   // fill packs
   const curtain = new THREE.MeshBasicMaterial({ map: T.fall.clone(), transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide, color: 0xd6f0ff });
   curtain.map.wrapS = curtain.map.wrapT = THREE.RepeatWrapping; curtain.map.repeat.set(7, 2); curtain.map.needsUpdate = true; r.parts.curtain = curtain;
   for (const s of [-1, 1]) mesh(new THREE.PlaneGeometry(D - .32, H - 1.1), curtain, g, new THREE.Vector3(s * (L / 2 - .24), .55 + (H - 1.1) / 2, 0), [0, Math.PI / 2, 0]).castShadow = false;
   const lv = MAT.ctLouvre.clone(); lv.transparent = true; lv.opacity = .55; lv.depthWrite = false;
-  for (const s of [-1, 1]) mesh(box(.05, H - .95, D - .16), lv, g, new THREE.Vector3(s * (L / 2 - .03), .55 + (H - .95) / 2, 0));   // air-inlet louvres
-  mesh(box(L, .1, D), frp, g, new THREE.Vector3(0, H, 0));                                                                          // fan deck
+  for (const s of [-1, 1]) bd(mesh(box(.05, H - .95, D - .16), lv, g, new THREE.Vector3(s * (L / 2 - .03), .55 + (H - .95) / 2, 0)));   // air-inlet louvres
+  bd(mesh(box(L, .1, D), frp, g, new THREE.Vector3(0, H, 0)));                                                                      // fan deck
   r.parts.hot = []; for (const s of [-1, 1]) { const x = s * L * .3;                                                                 // hot water basins (open)
     for (const [w, d, px, pz] of [[L * .36, .04, x, D * .4], [L * .36, .04, x, -D * .4], [.04, D * .8, x - L * .18, 0], [.04, D * .8, x + L * .18, 0]]) mesh(box(w, .25, d), frp, g, new THREE.Vector3(px, H + .17, pz));
     const hm = wm.clone(); hm.map = T.water.clone(); hm.map.wrapS = hm.map.wrapT = THREE.RepeatWrapping; hm.map.needsUpdate = true; hm.opacity = .9;
     mesh(new THREE.PlaneGeometry(L * .35, D * .79), hm, g, new THREE.Vector3(x, H + .2, 0), [-Math.PI / 2, 0, 0]).castShadow = false; r.parts.hot.push(hm); }
   // fan + discharge elbow hood (white FRP), outlet facing south
-  mesh(new THREE.CylinderGeometry(.86, 1.08, .5, 48, 1, true), frp, g, new THREE.Vector3(0, H + .3, 0)).material.side = THREE.DoubleSide;
+  bd(mesh(new THREE.CylinderGeometry(.86, 1.08, .5, 48, 1, true), frp, g, new THREE.Vector3(0, H + .3, 0))).material.side = THREE.DoubleSide;
   const fan = new THREE.Group(); fan.position.set(0, H + .35, 0); g.add(fan); r.spin.push({ m: fan, axis: 'y', fan: true }); r.parts.fan = fan;
   for (let i = 0; i < 6; i++) { const b = mesh(box(.92, .025, .22), MAT.black, fan, null, [.22, i * Math.PI / 3, 0]); b.position.set(Math.cos(i * Math.PI / 3) * .5, 0, -Math.sin(i * Math.PI / 3) * .5); }
   mesh(cyl(.14, .22, 18), MAT.galv, fan, null);
@@ -256,7 +314,7 @@ function coolingTower(e){ const r = equipGroup(e), g = r.g, L = mm(e.L), D = mm(
   const rim = mesh(new THREE.TorusGeometry(.86, .045, 10, 48), frp, g, new THREE.Vector3(0, H + 1.5, -1.15));
   const scr = mesh(new THREE.CircleGeometry(.84, 40), new THREE.MeshStandardMaterial({ color: 0x9aa3a8, metalness: .6, roughness: .5, transparent: true, opacity: .22, side: THREE.DoubleSide, depthWrite: false }), g, new THREE.Vector3(0, H + 1.5, -1.13));
   scr.castShadow = false; r.parts.outlet = new THREE.Vector3(0, H + 1.5, -1.2);
-  mesh(box(.34, .3, .3), own(r, MAT.motor), g, new THREE.Vector3(.95, H + .25, -.75)); mesh(box(.24, .2, .14), MAT.panel, g, new THREE.Vector3(1.15, H + .25, -.45));   // fan motor + isolator
+  bd(mesh(box(.34, .3, .3), own(r, MAT.motor), g, new THREE.Vector3(.95, H + .25, -.75))); bd(mesh(box(.24, .2, .14), MAT.panel, g, new THREE.Vector3(1.15, H + .25, -.45)));   // fan motor + isolator
   // handrail around the fan deck (posts @ ~0.9 m, top + mid rail, toe board)
   const rail = MAT.yellow; const rh = H + .06;
   for (const z of [-D / 2 + .04, D / 2 - .04]) { mesh(box(L, .04, .04), rail, g, new THREE.Vector3(0, rh + 1.1, z)); mesh(box(L, .03, .03), rail, g, new THREE.Vector3(0, rh + .55, z));
@@ -307,21 +365,32 @@ function glb(name, cb){ const src = (window.GLB || {})[name]; if (!src) return;
   if (GLBS[name]) return cb(GLBS[name]); (GLB_WAIT[name] = GLB_WAIT[name] || []).push(cb); if (GLB_WAIT[name].length > 1) return;
   const bin = Uint8Array.from(atob(src), c => c.charCodeAt(0)).buffer;
   new GLTFLoader().parse(bin, '', g => { const m = g.scene; m.traverse(o => { if (o.isMesh) { o.castShadow = o.receiveShadow = true; } }); GLBS[name] = m; GLB_WAIT[name].forEach(f => f(m)); }, err => console.warn('GLB ' + name, err)); }
-function useModel(rec, model, map){ const L = mm(rec.e.L), W = mm(rec.e.W), H = mm(rec.e.H), ref = { chiller: [3.774, 1.771, 2.033], pump: [1.75, .65, .85], ahu: [3.6, 1.8, 2.1] }[rec.e.type];
-  for (const c of [...rec.g.children]) rec.g.remove(c);
-  const o = model.clone(true); o.scale.set(L / ref[0], H / ref[2], W / ref[1]); rec.g.add(o); rec.mats.clear();
+// reference size of each model [L, W, H] (m); the page scales a model to the R9 size of each unit
+const GLB_REF = { chiller: [3.774, 1.771, 2.033], pump: [1.75, .65, .85], ahu: [3.6, 1.8, 2.1], oau: [4.2, 2.0, 2.2], tower: [2.6, 2.6, 2.7],
+  roof_fan: [1.2, 1.2, 1.1], exptank: [.9, .9, 1.6], bypass: [1.3, .5, 1.04], panel: [2.4, .5, 2.1] };
+function useModel(rec, model, map, name){ const L = mm(rec.e.L), W = mm(rec.e.W), H = mm(rec.e.H), ref = GLB_REF[name || rec.e.type];
+  const live = rec.e.type === 'ct';                       // cooling tower: only the static body is replaced (water, fan, plume, rails stay)
+  for (const c of [...rec.g.children]) if (!live || c.userData.body) rec.g.remove(c);
+  const o = model.clone(true); o.scale.set(L / ref[0], H / ref[2], W / ref[1]); rec.g.add(o); if (!live) rec.mats.clear();
   o.traverse(m => { if (!m.isMesh) return; m.material = m.material.clone(); rec.mats.add(m.material); });
   const node = n => o.getObjectByName(n);
   for (const [part, n] of Object.entries(map)) { const x = node(n); if (x) rec.parts[part] = x; }
   if (rec.parts.screen && rec.parts.lcd) rec.parts.screen.material = rec.parts.lcd.mat;
   if (rec.parts.comp) rec.parts.compY = rec.parts.comp.position.y;
+  if (live) { rec.parts.basin = node('casing') || rec.parts.basin; rec.ghost = undefined; return; }
   rec.spin = []; if (rec.e.type === 'pump') for (const n of ['motorFan', 'shaft']) { const x = node(n); if (x) rec.spin.push({ m: x, axis: 'x' }); }
   if (rec.e.type === 'ahu') { const x = node('fanWheel'); if (x) rec.spin.push({ m: x, axis: 'z', fan: true }); }
+  if (rec.e.type === 'fan') { const x = node('fanWheel'); if (x) rec.spin.push({ m: x, axis: 'y', fan: true }); }
+  if (rec.e.type === 'panel') { const x = node('pilots'); rec.parts.leds = []; if (x) x.traverse(m => { if (m.isMesh) rec.parts.leds.push(m); }); }   // multi-material node = group of meshes
+  if (rec.e.type === 'panel' || rec.e.type === 'ahu') { const x = node('screen'); if (x && rec.parts.lcd) x.material = rec.parts.lcd.mat; }
   rec.ghost = undefined; }
 for (const id in EQ) { const r = EQ[id], t = r.e.type;
   if (t === 'chiller') glb('chiller', m => useModel(r, m, { comp: 'comp', evap: 'evap', cond: 'cond', panel: 'panel', screen: 'screen', beacon: 'beacon' }));
   else if (t === 'pump') glb('pump', m => useModel(r, m, { motor: 'motor', volute: 'volute' }));
-  else if (t === 'ahu' && r.e.L === 3600) glb('ahu', m => useModel(r, m, { screen: 'screen' })); }
+  else if (t === 'ahu') { const n = r.e.L > 3600 ? 'oau' : 'ahu'; glb(n, m => useModel(r, m, { screen: 'screen' }, n)); }
+  else if (t === 'ct') glb('tower', m => useModel(r, m, {}, 'tower'));
+  else if (t === 'fan') glb('roof_fan', m => useModel(r, m, {}, 'roof_fan'));
+  else if (t === 'exptank' || t === 'bypass' || t === 'panel') glb(t, m => useModel(r, m, { panel: 'cabinet' }, t)); }
 // roof: steel grillage under the towers + walkway
 mesh(box(mm(M.ct_span[1] - M.ct_span[0]) + 3, .25, 3.2), MAT.steel, plant, P3((M.ct_span[0] + M.ct_span[1]) / 2, 6000, ROOFZ + 900));
 mesh(box(mm(M.ct_span[1] - M.ct_span[0]) + 3, .05, .9), new THREE.MeshStandardMaterial({ color: 0x6b7378, metalness: .6, roughness: .5 }), plant, P3((M.ct_span[0] + M.ct_span[1]) / 2, 4100, ROOFZ + 30));
@@ -369,8 +438,8 @@ for (const p of M.pipes) { const g = new THREE.Group(); LAYER.piping.add(g); if 
   PIPE[p.id] = rec; }
 // supports: hangers (overhead), stanchions (low runs), sleepers (roof), riser clamps
 const SUP = new THREE.MeshStandardMaterial({ color: 0x8d969c, metalness: .7, roughness: .45 });
-const ceilingAt = z => { if (z < BLD.f1_h) return BLD.f1_h - BLD.slab; for (let f = 2; f <= BLD.floors; f++) if (z < zOf(f) + BLD.typ_h) return zOf(f) + BLD.typ_h - BLD.slab; return ROOFZ; };
-const floorAt = z => { if (z >= ROOFZ) return ROOFZ; if (z < BLD.f1_h) return 0; for (let f = BLD.floors; f >= 2; f--) if (z >= zOf(f)) return zOf(f); return 0; };
+const ceilingAt = z => { if (z < 0) return -800; if (z < BLD.f1_h) return BLD.f1_h - BLD.slab; for (let f = 2; f <= BLD.floors; f++) if (z < zOf(f) + BLD.typ_h) return zOf(f) + BLD.typ_h - BLD.slab; return ROOFZ; };
+const floorAt = z => { if (z < 0) return -6000; if (z >= ROOFZ) return ROOFZ; if (z < BLD.f1_h) return 0; for (let f = BLD.floors; f >= 2; f--) if (z >= zOf(f)) return zOf(f); return 0; };
 const levels = [...Array(BLD.floors - 1).keys()].map(i => zOf(i + 2)).concat([ROOFZ]);
 for (const p of M.pipes) { const rr = PIPE[p.id].rad, v = p.pts, G = PIPE[p.id].g;
   for (let i = 0; i < v.length - 1; i++) { const [a, b] = [v[i], v[i + 1]], L = Math.hypot(b[0] - a[0], b[1] - a[1]);
@@ -383,7 +452,7 @@ for (const p of M.pipes) { const rr = PIPE[p.id].rad, v = p.pts, G = PIPE[p.id].
       else { mesh(cyl(.045, mm(z - base) - rr, 10), SUP, G, P3(x, y, (z - rr * 1000 + base) / 2)); mesh(box(.3, .02, .3), SUP, G, P3(x, y, base + 10)); } } } }
 // valves, fittings, instruments.  local frame: y = pipe axis (flow), x = stem (up for horizontal pipes)
 const VALVE = [], VPOS = {}; const roomC = P3(R.x / 2, R.y / 2, 0);
-function frameQ(pos, dir){ const y = dir.clone().normalize(); const x = Math.abs(y.y) > .9 ? roomC.clone().sub(pos).setY(0).normalize() : YV.clone();
+function frameQ(pos, dir, stem){ const y = dir.clone().normalize(); const x = stem ? new THREE.Vector3(stem[0], stem[2], -stem[1]) : Math.abs(y.y) > .9 ? roomC.clone().sub(pos).setY(0).normalize() : YV.clone();   // r7: stem from tools/r9_clash.py
   x.sub(y.clone().multiplyScalar(x.dot(y))).normalize(); return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, new THREE.Vector3().crossVectors(x, y))); }
 const RUB = new THREE.MeshStandardMaterial({ color: 0x15171a, roughness: .9 });
 const dial = canvasTex(128, 128, g => { g.fillStyle = '#f4f4f0'; g.beginPath(); g.arc(64, 64, 62, 0, 7); g.fill(); g.strokeStyle = '#222'; g.lineWidth = 3;
@@ -391,8 +460,8 @@ const dial = canvasTex(128, 128, g => { g.fillStyle = '#f4f4f0'; g.beginPath(); 
   g.fillStyle = '#b91c1c'; g.fillRect(96, 90, 14, 6); });
 const DIAL = new THREE.MeshBasicMaterial({ map: dial });
 function flange(g, r, y){ mesh(cyl(r * 1.55, .028, 28), MAT.iron, g, new THREE.Vector3(0, y, 0)); }
-for (const v of M.valves) { const pr = PIPE[v.pipe]; if (!pr) continue; const pdn = pr.p.dn, ins = insul(pr.p.svc), r = dnR(v.dn || pdn);
-  const pos = P3(...v.xyz), dir = P3(...v.dir).sub(P3(0, 0, 0)).normalize(); const g = new THREE.Group(); g.position.copy(pos); g.quaternion.copy(frameQ(pos, dir)); pr.g.add(g); g.position.sub(pr.g.position);
+for (const v of M.valves) { const pr = PIPE[v.pipe]; if (!pr || v.hidden) continue;   /* r7: legacy valves replaced by the R9 PICV */ const pdn = pr.p.dn, ins = insul(pr.p.svc), r = dnR(v.dn || pdn);
+  const pos = P3(...v.xyz), dir = P3(...v.dir).sub(P3(0, 0, 0)).normalize(); const g = new THREE.Group(); g.position.copy(pos); g.quaternion.copy(frameQ(pos, dir, v.stem)); pr.g.add(g); g.position.sub(pr.g.position);
   const o = { v, g, pos: ['BFV'].includes(v.kind) ? 1 : 0, tgt: 1, k: v.kind, pr };
   const K = v.kind;
   if (['BFV', 'MBFV', 'MCV', 'CHECK'].includes(K)) { flange(g, r, -.045); flange(g, r, .045); mesh(cyl(r * 1.3, K === 'CHECK' ? .11 : .07, 28), MAT.iron, g);
@@ -468,8 +537,8 @@ function weather(){ const now = new Date(); const W = { temp: val('OA_Temperatur
   if (OVR.on) Object.assign(W, { temp: OVR.temp, rh: OVR.rh, hour: OVR.hour, wb: OVR.temp - (100 - OVR.rh) / 5 * .9 });
   W.night = W.hour < 6.1 || W.hour > 18.6; W.rain = W.rh >= 92 && W.temp <= 30; W.fog = W.rh >= 95 && (W.hour < 9 || W.night); W.hot = W.temp >= 36;
   W.cover = Math.max(0, Math.min(1, (W.rh - 50) / 40)) + (W.rain ? .3 : 0);
-  W.label = W.night ? (W.rain ? 'ฝนตกกลางคืน / Night rain' : 'กลางคืน / Night') : W.rain ? 'ฝนตก / Rain' : W.fog ? 'หมอก / Mist' : W.hot ? 'ร้อนจัด แดดแรง / Very hot' :
-    W.cover > .65 ? 'เมฆมาก / Overcast' : W.cover > .3 ? 'มีเมฆบางส่วน / Partly cloudy' : 'ท้องฟ้าแจ่มใส / Clear'; return W; }
+  W.label = W.night ? (W.rain ? 'Night rain' : 'Night') : W.rain ? 'Rain' : W.fog ? 'Mist' : W.hot ? 'Very hot, strong sun' :
+    W.cover > .65 ? 'Overcast' : W.cover > .3 ? 'Partly cloudy' : 'Clear sky'; return W; }
 let lastEnv = '';
 function applyWeather(W, t){
   const el = THREE.MathUtils.degToRad(Math.max(-20, 78 * Math.sin(Math.PI * (W.hour - 6.2) / 12.4))), az = THREE.MathUtils.degToRad(90 + (W.hour - 6) / 12 * 180);
@@ -477,13 +546,13 @@ function applyWeather(W, t){
   U.turbidity.value = 4 + W.cover * 10 + (W.hot ? 4 : 0); U.rayleigh.value = W.night ? .2 : 1.4 + W.cover * 1.5;
   sun.position.copy(sv.clone().multiplyScalar(90)).add(sun.target.position); const day = Math.max(0, Math.sin(el)); const dim = 1 - W.cover * .65;
   sun.intensity = (W.night ? 0 : 3.4 * Math.min(1, day * 2.2)) * dim; sun.color.setHSL(.09 + .04 * day, .55, .62 + .25 * day);
-  hemi.intensity = W.night ? .12 : .35 + .35 * day; hemi.color.set(W.cover > .6 ? 0xb8c4cc : 0xcfe3ff);
-  renderer.toneMappingExposure = W.night ? .4 : .42 + .1 * (1 - W.cover) + (W.hot ? .05 : 0);
+  hemi.intensity = W.night ? .22 : .45 + .3 * day; hemi.color.set(W.cover > .6 ? 0xb8c4cc : 0xcfe3ff);
+  renderer.toneMappingExposure = W.night ? .5 : .58 + .08 * (1 - W.cover);
   stars.material.opacity = W.night ? .85 * (1 - W.cover) : 0; lampLights.forEach(L => L.intensity = W.night || W.cover > .9 ? 60 : 0);
   storeGlass.material.emissiveIntensity = W.night ? .9 : .05;
   clouds.forEach((c, i) => { c.material.opacity = Math.min(.95, W.cover * (.45 + (i % 5) * .12)); c.material.color.set(W.rain ? 0x8c949b : W.night ? 0x40474f : 0xffffff); c.position.x += Math.sin(i) * .02; });
   rain.material.opacity = W.rain ? .55 : 0; WET.forEach(m => { m.roughness = W.rain ? .18 : (m === MAT.slab ? .9 : m.map === T.asphalt ? .85 : 1); m.color.set(W.rain ? 0x8a8f94 : 0xffffff); });
-  scene.fog = W.fog ? new THREE.FogExp2(0xcfd6dc, .018) : (W.rain ? new THREE.FogExp2(0x8a959d, .006) : new THREE.FogExp2(W.night ? 0x0d1520 : 0x9fb3c4, .0009));
+  scene.fog = W.fog ? new THREE.FogExp2(0xcfd6dc, .0055) : (W.rain ? new THREE.FogExp2(0x8a959d, .006) : new THREE.FogExp2(W.night ? 0x0d1520 : 0x9fb3c4, .0009));
   hazeMat.uniforms.k.value = W.hot ? Math.min(1, (W.temp - 35) / 4) : 0; hazeMat.uniforms.t.value = t;
   const key = [Math.round(W.hour * 4), Math.round(W.cover * 5), W.rain, W.night].join('|');
   if (key !== lastEnv) { lastEnv = key; scene.environment = pmrem.fromScene(skyScene(), .04).texture; }
@@ -609,13 +678,21 @@ function renderKpi(){ const k = $('kpi'); if (!k) return; const f = (n, d) => va
 // ------------------------------------------------------------------ HTML overlay: labels, alarm list, info panel
 const LBL = {}; for (const e of [...M.equipment, ...M.air_equipment]) { const d = document.createElement('div'); d.className = 'lbl'; d.innerHTML = `<b>${e.id}</b><span></span>`; $('labels').appendChild(d);
   d.onclick = () => info(e.id); LBL[e.id] = d; }
-function placeLabels(){ const w = host.clientWidth, h = host.clientHeight; for (const id in LBL) { const p = eqTop(id).project(camera); const d = LBL[id];
+let LBLT = 0;
+function placeLabels(){ const w = host.clientWidth, h = host.clientHeight, shown = []; for (const id in LBL) { const p = eqTop(id).project(camera); const d = LBL[id]; d.__p = p;
   const far = camera.position.distanceTo(eqTop(id)) > 60 && ![...ACTIVE.values()].some(a => a.e.includes(id));
   if (p.z > 1 || !$('labelsOn').checked || far || !EQ[id].g.visible || !EQ[id].g.parent.visible) { d.style.display = 'none'; continue; }
-  if (EQ[id].ghost) { d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`; d.className = 'lbl ghost'; d.querySelector('span').textContent = 'ยังไม่ติดตั้ง (slot ว่าง)'; continue; } d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`;
+  if (EQ[id].ghost) { d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`; d.className = 'lbl ghost'; d.querySelector('span').textContent = 'Not installed (empty slot)'; shown.push(id); continue; } d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`;
   const r = EQ[id], al = [...ACTIVE.values()].filter(a => a.e.includes(id)); const run = running(id);
   d.className = 'lbl' + (al.some(a => ['Critical', 'Emergency'].includes(a.c)) ? ' alm' : al.length ? ' warn' : run ? ' run' : '');
-  d.querySelector('span').textContent = al.length ? (EFX[al[0].x][0] + (al.length > 1 ? ` +${al.length - 1}` : '')) : r.e.pt ? (run ? statusText(id) : 'Off / Standby') : ''; } }
+  d.querySelector('span').textContent = al.length ? (EFX[al[0].x][0] + (al.length > 1 ? ` +${al.length - 1}` : '')) : r.e.pt ? (run ? statusText(id) : 'Off / Standby') : ''; shown.push(id); }
+  // r7: no overlapping equipment labels - alarms first, then the nearest; a label that would cover one already placed is hidden
+  const now = performance.now(); if (now - LBLT < 150) { for (const id of shown) if (LBL[id].__hid) LBL[id].style.display = 'none'; return; } LBLT = now;
+  const rank = id => (/ alm/.test(LBL[id].className) ? 0 : / warn/.test(LBL[id].className) ? 1e4 : 2e4) + camera.position.distanceTo(eqTop(id)) - (LBL[id].__hid === false ? 8 : 0);   // shown labels keep their place
+  const placed = [];
+  for (const id of shown.sort((a, b) => rank(a) - rank(b))) { const d = LBL[id], p = d.__p, x = (p.x + 1) / 2 * w, y = (1 - p.y) / 2 * h, lw = d.offsetWidth, lh = d.offsetHeight;
+    const r = [x - lw / 2, y - lh, x + lw / 2, y], hit = placed.some(q => r[0] < q[2] + 4 && r[2] > q[0] - 4 && r[1] < q[3] + 2 && r[3] > q[1] - 2);
+    d.__hid = hit; if (hit) d.style.display = 'none'; else placed.push(r); } }
 function statusText(id){ const e = EQ[id].e, p = e.pt; if (e.type === 'ahu') return `Valve ${val(p + '_ValveCmd', 0).toFixed(0)}% · ${e.floor > 8 ? 'roof' : 'floor ' + e.floor}`;
   if (e.type === 'fcu' || e.type === 'fan') return 'Run'; if (id.startsWith('CH-')) return `Load ${val(p + 'LoadPct', 0).toFixed(0)}% · LWT ${val(p + '_ChwSupplyTemp', 6.7).toFixed(1)}°C`;
   return `Run · ${val(p + 'SpeedCmd', 0).toFixed(0)}%`; }
@@ -624,25 +701,25 @@ function info(id){ const e = [...M.equipment, ...M.air_equipment].find(x => x.id
   <h4>Alarms of this unit (${al.length})</h4><div class="alist">${al.map(a => `<div class="${ACTIVE.has(a.n) ? 'on' : ''}" data-n="${a.n}"><i>${EFX[a.x][0]}</i>${a.t}</div>`).join('')}</div>`;
   $('info').className = 'open'; $('info').querySelectorAll('[data-n]').forEach(d => d.onclick = () => { if (DEMO) toggleAlarm(d.dataset.n); info(id); }); }
 function renderAlarmList(){ const list = [...ACTIVE.values()]; $('acount').textContent = list.length; $('acount').className = list.length ? 'n on' : 'n';
-  $('alist').innerHTML = list.length ? list.map(a => `<div class="${a.c}"><b>${a.e.join(', ')}</b> ${a.t}<i>${EFX[a.x][0]} / ${EFX[a.x][1]}</i></div>`).join('') : '<div class="none">ไม่มี alarm / No active alarm</div>'; }
+  $('alist').innerHTML = list.length ? list.map(a => `<div class="${a.c}"><b>${a.e.join(', ')}</b> ${a.t}<i>${EFX[a.x][0]} / ${EFX[a.x][1]}</i></div>`).join('') : '<div class="none">No active alarm</div>'; }
 function toggleAlarm(n, on){ const a = AL.find(x => x.n === n); if (!a) return; if (on ?? !ACTIVE.has(n)) ACTIVE.set(n, a); else ACTIVE.delete(n); renderAlarmList(); }
 const ray = new THREE.Raycaster(), mp = new THREE.Vector2();
 renderer.domElement.addEventListener('dblclick', ev => { const b = renderer.domElement.getBoundingClientRect(); mp.set((ev.clientX - b.left) / b.width * 2 - 1, -(ev.clientY - b.top) / b.height * 2 + 1);
   ray.setFromCamera(mp, camera); const hit = ray.intersectObjects([...plant.children, ...LAYER.air.children], true)[0]; let o = hit && hit.object; while (o && !o.userData.eq) o = o.parent; if (o) { const c = new THREE.Box3().setFromObject(o).getCenter(new THREE.Vector3()), d = camera.position.clone().sub(controls.target).setLength(9); flyTo(c.clone().add(d).toArray(), c.toArray()); return info(o.userData.eq); }
   const zh = ray.intersectObjects(LAYER.zones.children, true).find(h => h.object.userData.zone); if (zh) { const c = zh.object.position, d = camera.position.clone().sub(controls.target).setLength(22); flyTo(c.clone().add(d).toArray(), c.toArray()); zoneInfo(zh.object.userData.zone); } });
 function zoneInfo(code){ const z = ZONE[code].z, al = AL.filter(a => a.e.includes('Z-' + code));
-  $('info').innerHTML = `<h3>Zone ${code} · ${z.name}</h3><table><tr><td>ชั้น</td><td>${z.floor}</td></tr><tr><td>อุณหภูมิ</td><td>${val(z.t, NaN).toFixed(1)} °C</td></tr><tr><td>ความชื้น</td><td>${val(z.h, NaN).toFixed(0)} %RH</td></tr><tr><td>CO2</td><td>${val(z.c, NaN).toFixed(0)} ppm</td></tr><tr><td>Out of service</td><td>${V[z.oos] ? 'ใช่' : 'ไม่'}</td></tr><tr><td>จุดใน station</td><td>${z.t}<br>${z.h}<br>${z.c}</td></tr></table><h4>Alarm (${al.length})</h4><div class="alist">${al.map(a => `<div class="${ACTIVE.has(a.n) ? 'on' : ''}">${a.t}</div>`).join('')}</div>`; $('info').className = 'open'; }
+  $('info').innerHTML = `<h3>Zone ${code} · ${z.name}</h3><table><tr><td>Floor</td><td>${z.floor}</td></tr><tr><td>Temperature</td><td>${val(z.t, NaN).toFixed(1)} °C</td></tr><tr><td>Humidity</td><td>${val(z.h, NaN).toFixed(0)} %RH</td></tr><tr><td>CO2</td><td>${val(z.c, NaN).toFixed(0)} ppm</td></tr><tr><td>Out of service</td><td>${V[z.oos] ? 'Yes' : 'No'}</td></tr><tr><td>Station point</td><td>${z.t}<br>${z.h}<br>${z.c}</td></tr></table><h4>Alarm (${al.length})</h4><div class="alist">${al.map(a => `<div class="${ACTIVE.has(a.n) ? 'on' : ''}">${a.t}</div>`).join('')}</div>`; $('info').className = 'open'; }
 
 // ------------------------------------------------------------------ controls (demo simulator, weather override, views)
 const gal = $('gallery'); EFFECT_ORDER.forEach(k => { const b = document.createElement('button'); b.textContent = EFX[k][0]; b.title = EFX[k][1];
   b.onclick = () => { const a = AL.find(x => x.x === k && (k === 'airside' || x.e[0] !== 'BUILDING')) || AL.find(x => x.x === k); if (a) toggleAlarm(a.n); }; gal.appendChild(b); });
-$('asel').innerHTML = '<option value="">— เลือก alarm ใดก็ได้ (ทั้งหมด ' + AL.length + ' รายการ) —</option>' + EFFECT_ORDER.map(k => `<optgroup label="${EFX[k][0]} / ${EFX[k][1]}">${AL.filter(a => a.x === k).map(a => `<option value="${a.n}">${a.e.join(',')} · ${a.t}</option>`).join('')}</optgroup>`).join('');
+$('asel').innerHTML = '<option value="">— pick any alarm (all ' + AL.length + ' entries) —</option>' + EFFECT_ORDER.map(k => `<optgroup label="${EFX[k][0]} / ${EFX[k][1]}">${AL.filter(a => a.x === k).map(a => `<option value="${a.n}">${a.e.join(',')} · ${a.t}</option>`).join('')}</optgroup>`).join('');
 $('asel').onchange = e => { if (e.target.value) toggleAlarm(e.target.value); e.target.value = ''; };
 $('aclear').onclick = () => { ACTIVE.clear(); renderAlarmList(); };
 for (const k of ['temp', 'rh', 'hour']) $('w_' + k).oninput = e => { OVR[k] = +e.target.value; OVR.on = true; $('wovr').checked = true; };
 $('wovr').onchange = e => OVR.on = e.target.checked;
-$('xray').onchange = e => XRAY.forEach(m => { m.opacity = e.target.checked ? .16 : 1; m.depthWrite = !e.target.checked; }); $('xray').onchange({ target: $('xray') });
-const VIEWS = { iso: [[95, 70, 60], [30, 12, -20], 'all'], plant: [[26, 13, 4], [20, 1, -9], '1'], pumps: [[44, 9, 2], [37, 0, -7], '1'], room: [[1.5, 1.7, -13.6], [20, 1.2, -10.5], '1'], roof: [[34, 56, 20], [24, 36, -6], 'all'], floor: [[70, 40, 40], [32, 22, -20], '5'], site: [[150, 110, 120], [32, 10, -20], 'all'] };
+$('xray').onchange = e => { XRAY.forEach(m => { m.opacity = e.target.checked ? .16 : 1; m.depthWrite = !e.target.checked; }); glassM.opacity = e.target.checked ? .14 : .42; glassM.depthWrite = false; }; $('xray').onchange({ target: $('xray') });
+const VIEWS = { iso: [[112, 84, 82], [32, 14, -20], 'all'], plant: [[40, 20, 20], [20, 1, -9], '1'], pumps: [[51, 12, 5], [37, 1, -7], '1'], room: [[1.5, 1.7, -13.6], [20, 1.2, -10.5], '1'], roof: [[54, 58, 28], [26, 36, -6], 'all'], floor: [[70, 40, 40], [32, 22, -20], '5'], site: [[150, 110, 120], [32, 10, -20], 'all'] };
 if (BASEMENT) { const pl = M.equipment.filter(e => e.z < -1000), c = pl.reduce((a, e) => [a[0] + e.x / pl.length, a[1] + e.y / pl.length], [0, 0]), t = P3(c[0], c[1], B1Z + 1200);
   const pu = pl.filter(e => e.type === 'pump'), cp = pu.length ? pu.reduce((a, e) => [a[0] + e.x / pu.length, a[1] + e.y / pu.length], [0, 0]) : c, tp = P3(cp[0], cp[1], B1Z + 800);
   VIEWS.plant = [[t.x + 14, t.y + 13, t.z + 16], t.toArray(), '0']; VIEWS.pumps = [[tp.x + 7, tp.y + 7, tp.z + 9], tp.toArray(), '0'];
@@ -652,7 +729,7 @@ document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => { const 
 // ------------------------------------------------------------------ data: BajaScript (station) or DEMO
 // ------------------------------------------------------------------ data: BajaScript (station) or DEMO
 function demoTick(){ const t = Date.now() / 1000, h = new Date().getHours() + new Date().getMinutes() / 60, s = Math.sin, ph = Math.floor(t / 50) % 3;
-  try { if (OFF) OFF.demo(t, h); } catch (e) { /* office layer not built yet */ }
+  try { if (DEVS) DEVS.demo(t); } catch (e) { /* device layer not built yet */ }
   const inst = slot => (M.installed[slot] ?? false), chs = Object.keys(M.installed).filter(k => /^CH\d/.test(k) && inst(k));
   const nCh = Math.min(chs.length, [1, 2, 3][ph]), runCh = chs.slice(0, nCh), load = 270 * nCh + 25 * s(t / 30);
   Object.assign(V, { OA_Temperature: 30 + 5 * s(Math.PI * (h - 9) / 12), OA_Humidity: 66 - 14 * s(Math.PI * (h - 9) / 12), OA_WetBulb: 26.5,
@@ -672,9 +749,11 @@ function demoTick(){ const t = Date.now() / 1000, h = new Date().getHours() + ne
   for (const z of M.zones) { const k = z.floor * 7 + +z.code.slice(-2); V[z.t] = (occ ? 24 : 27.5) + 1.4 * s(t / 37 + k) + (k % 5 === 0 ? 2.2 : 0); V[z.h] = 58 + 8 * s(t / 45 + k); V[z.c] = (occ ? 720 : 480) + 180 * s(t / 53 + k) + (k % 6 === 0 ? 380 : 0); } }
 let DEMO_ID = 0;
 function startDemo(){ if (DEMO) return; DEMO = true; $('mode').textContent = 'DEMO · 1 → 2 → 3 chillers every 50 s (installed slots only)'; $('mode').className = 'mode demo'; demoTick(); DEMO_ID = setInterval(demoTick, 1000); $('sim').style.display = ''; }
-function startLive(){ const ready = window.BAJA_READY; if (!ready) return startDemo(); let ok = false; setTimeout(() => { if (!ok) startDemo(); }, 7000);
+function offline(){ if (DEMO) { clearInterval(DEMO_ID); DEMO = false; } $('mode').textContent = 'OFFLINE · no data from the station'; $('mode').className = 'mode offline'; $('sim').style.display = 'none'; }
+const SERVED = /^https?:$/.test(location.protocol) && !/[?&]demo\b/.test(location.search);   // served by the station: never fall back to DEMO numbers
+function startLive(){ const ready = window.BAJA_READY; if (!ready || !SERVED) return startDemo(); let ok = false; setTimeout(() => { if (!ok) offline(); }, 7000);
   ready.then(() => window.require(['baja!'], function (baja) { ok = true; if (DEMO) { clearInterval(DEMO_ID); DEMO = false; $('sim').style.display = 'none'; ACTIVE.clear(); }
-    $('mode').textContent = 'LIVE · ข้อมูลจาก station'; $('mode').className = 'mode live';
+    $('mode').textContent = 'LIVE · station data'; $('mode').className = 'mode live';
     const sub = new baja.Subscriber(); const KEY = new Map();   // component -> Set of keys (one point can be both a value and an alarm source)
     sub.attach('changed', function (prop) { if (prop.getName() === 'out') read(this); });
     function read(c){ for (const k of KEY.get(c) || []) read1(c, k); }
@@ -695,9 +774,9 @@ function startLive(){ const ready = window.BAJA_READY; if (!ready) return startD
       catch (e) { p = Promise.reject(e); }
       jobs.push(p.catch(() => Promise.all(part.map(one))));
     }
-    Promise.all(jobs).then(() => { if (!FAIL.size) return; $('mode').textContent = `LIVE · ข้อมูลจาก station · resolve ไม่ได้ ${FAIL.size} จุด (ดู Point mapping)`; $('mode').className = 'mode live warn';
+    Promise.all(jobs).then(() => { if (!FAIL.size) return; $('mode').textContent = `LIVE · station data · ${FAIL.size} points not resolved (see Point mapping)`; $('mode').className = 'mode live warn';
       console.warn('3D LIVE: ORDs not resolved', [...FAIL]); });
-  }, () => { ok = true; startDemo(); }), () => { ok = true; startDemo(); }); }
+  }, () => { ok = true; offline(); }), () => { ok = true; offline(); }); }
 startLive();
 
 // ------------------------------------------------------------------ installed / not installed (ghost), zones, future systems, floor filter, layers
@@ -750,11 +829,12 @@ function applyFloor(){ const plantOn = !ISO || FSEL === (BASEMENT ? '0' : '1') |
   for (const f in FLOORS) { const show = FSEL === 'all' || FSEL === 'roof' || (ISO ? +f === +FSEL : +f <= +FSEL); for (const o of FLOORS[f]) o.visible = show; }
   for (const id in LBL) LBL[id].dataset.hidden = EQ[id].g.visible && EQ[id].g.parent.visible ? '' : '1'; }
 function initPanels(){ const lay = $('layers'); if (!lay) return;
-  const names = { shell: 'อาคาร (โครงสร้าง/กระจก)', plant: 'Chiller plant', piping: 'ท่อ CHW / CDW', air: 'Air side (AHU/FCU/พัดลม)', zones: 'Zone AirPlug เดิม (4 zone/ชั้น)', systems: 'ระบบอื่น (fire / lighting ...)',
-    ...(LAYER.office ? { office: 'ห้อง (สีตาม temp / RH / CO2)', ducts: 'ท่อลม SA / RA / OA / EA', terminals: 'VAV / หัวจ่าย / เซนเซอร์ / มิเตอร์', airflow: 'ลมไหลในท่อ (ตาม airflow จริง)' } : {}) };
+  const names = { shell: 'Building (structure / glazing)', plant: 'Chiller plant', piping: 'CHW / CDW piping', air: 'Air side (AHU / fans)', zones: 'Legacy AirPlug zones (4 per floor)', systems: 'Other systems (fire / lighting ...)',
+    ...(LAYER.office ? { office: 'Rooms (colour by temp / RH / CO2)', ducts: 'SA / RA / OA / EA ducts', terminals: 'VAV / diffusers / sensors / meters', airflow: 'Airflow in ducts (measured airflow)' } : {}),
+    ...(LAYER.devices ? { devices: 'Field devices (Blender) / station points' } : {}) };
   lay.innerHTML = Object.entries(names).map(([k, n]) => `<label><input type="checkbox" data-layer="${k}" checked> ${n}</label>`).join('');
   lay.querySelectorAll('[data-layer]').forEach(c => c.onchange = () => { LAYER[c.dataset.layer].visible = c.checked; applyFloor(); });
-  $('fsel').innerHTML = '<option value="all">ทุกชั้น</option>' + (BASEMENT ? '<option value="0">B1 ห้องเครื่อง</option>' : '') + [...Array(BLD.floors).keys()].map(i => `<option value="${i + 1}">ชั้น ${i + 1}</option>`).join('') + '<option value="roof">ดาดฟ้า</option>';
+  $('fsel').innerHTML = '<option value="all">All floors</option>' + (BASEMENT ? '<option value="0">B1 plant room</option>' : '') + [...Array(BLD.floors).keys()].map(i => `<option value="${i + 1}">Floor ${i + 1}</option>`).join('') + '<option value="roof">Roof</option>';
   const goFloor = () => { applyFloor(); if (FSEL === 'all') return flyTo(...VIEWS.iso.slice(0, 2)); const z = FSEL === 'roof' ? ROOFZ : zOf(+FSEL);
     flyTo([62, mm(z) + 34, 22], [32, mm(z) + 1.5, -20]); };
   $('fsel').onchange = e => { FSEL = e.target.value; goFloor(); };
@@ -763,22 +843,25 @@ function initPanels(){ const lay = $('layers'); if (!lay) return;
   const step = d => { const opts = ['all', ...(BASEMENT ? ['0'] : []), ...[...Array(BLD.floors).keys()].map(i => String(i + 1)), 'roof'], i = Math.max(0, Math.min(opts.length - 1, opts.indexOf(FSEL) + d)); FSEL = opts[i]; $('fsel').value = FSEL; goFloor(); };
   const nav = { navUp: () => step(1), navDn: () => step(-1), navIn: () => zoomBy(.6), navOut: () => zoomBy(1.6), navHome: () => { FSEL = 'all'; $('fsel').value = 'all'; ISO = false; if ($('fiso')) $('fiso').checked = false; applyFloor(); flyTo(...VIEWS.iso.slice(0, 2)); } };
   for (const k in nav) if ($(k)) $(k).onclick = nav[k];
-  $('sysl').innerHTML = M.systems.map(sy => `<div><b style="color:${sy.color}">●</b> ${sy.name_th} <i>${sy.devices.length ? sy.devices.length + ' จุด' : 'วางแผน · เพิ่มอุปกรณ์ในทะเบียน sheet Systems'}</i></div>`).join(''); }
+  $('sysl').innerHTML = M.systems.map(sy => `<div><b style="color:${sy.color}">●</b> ${sy.name_th} <i>${sy.devices.length ? sy.devices.length + ' points' : 'planned · add devices in the register (sheet Systems)'}</i></div>`).join(''); }
 // ------------------------------------------------------------------ V7.9 r4 office layer (R9 design: rooms, VAV, ducts, airflow)
-const OFF = buildOffice({ scene, LAYER, onFloor, V, FAIL, glb });
-const alarmRooms = () => new Set([...ACTIVE.values()].flatMap(a => a.e).filter(e => e.startsWith('RM:')));
-renderer.domElement.addEventListener('dblclick', ev => { if (!OFF) return; const b = renderer.domElement.getBoundingClientRect();
+// V7.9 r5: Blender field devices with station bindings (devices79.js); water / core drawn by the R9 layer
+const DEVS = buildDevices({ scene, LAYER, onFloor, V, FAIL, glb, isDemo: () => DEMO, reapply: () => applyFloor() });
+renderer.domElement.addEventListener('dblclick', ev => { if (!DEVS || !LAYER.devices.visible) return; const b = renderer.domElement.getBoundingClientRect();
   mp.set((ev.clientX - b.left) / b.width * 2 - 1, -(ev.clientY - b.top) / b.height * 2 + 1); ray.setFromCamera(mp, camera);
   if (ray.intersectObjects([...plant.children, ...LAYER.air.children], true).some(h => h.object.visible)) return;
-  const id = OFF.pick(ray); if (!id) return; const al = AL.filter(a => a.e.includes('RM:' + id)).map(a => ({ t: a.t, on: ACTIVE.has(a.n) }));
-  $('info').innerHTML = OFF.roomInfo(id, al); $('info').className = 'open'; });
+  const dh = DEVS.pick(ray); if (dh) { ev.stopImmediatePropagation(); $('info').innerHTML = DEVS.info(dh); $('info').className = 'open'; } }, true);
 initPanels();
-if (OFF) { LAYER.zones.visible = false; const z = document.querySelector('[data-layer="zones"]'); if (z) z.checked = false; }
-window.__V = V; window.__EQ = EQ; window.__ZONE = ZONE; window.__PIPE = PIPE;  // test / diagnostics hooks (read only)
+window.__CAMSET = (p, t) => flyTo(p, t, 10); window.__DEVS = DEVS; window.__V = V; window.__EQ = EQ; window.__ZONE = ZONE; window.__PIPE = PIPE;  // test / diagnostics hooks (read only)
+// ------------------------------------------------------------------ V7.9 r6: R9 office / architecture / airflow layer (r9office.js)
+// S gives the R9 code the scene names it used inside the original page closure; the R9 code also wraps applyFloor / updateZones / ...
+const S = Object.defineProperties({}, { $: { get: () => $ }, FAIL: { get: () => FAIL }, devicesFloor: { get: () => DEVS && DEVS.floorVis }, BLD: { get: () => BLD }, DEMO: { get: () => DEMO }, EQ: { get: () => EQ }, LAYCHK: { get: () => LAYCHK }, LAYER: { get: () => LAYER }, LBL: { get: () => LBL }, M: { get: () => M }, MAT: { get: () => MAT }, MRANGE: { get: () => MRANGE }, P3: { get: () => P3 }, PIPE: { get: () => PIPE }, ROOFZ: { get: () => ROOFZ }, T: { get: () => T }, V: { get: () => V }, VALVE: { get: () => VALVE }, ZONE: { get: () => ZONE }, apron: { get: () => apron }, box: { get: () => box }, camera: { get: () => camera }, canvasTex: { get: () => canvasTex }, cyl: { get: () => cyl }, flyTo: { get: () => flyTo }, ground: { get: () => ground }, hemi: { get: () => hemi }, isInst: { get: () => isInst }, mesh: { get: () => mesh }, mm: { get: () => mm }, mp: { get: () => mp }, onFloor: { get: () => onFloor }, ray: { get: () => ray }, renderer: { get: () => renderer }, scene: { get: () => scene }, sky: { get: () => sky }, sun: { get: () => sun }, svcMat: { get: () => svcMat }, textSprite: { get: () => textSprite }, trees: { get: () => trees }, zOf: { get: () => zOf }, zoomBy: { get: () => zoomBy },
+  FSEL: { get: () => FSEL, set: v => { FSEL = v; } }, ISO: { get: () => ISO, set: v => { ISO = v; } }, METRIC: { get: () => METRIC, set: v => { METRIC = v; } }, applyFloor: { get: () => applyFloor, set: v => { applyFloor = v; } }, applyWeather: { get: () => applyWeather, set: v => { applyWeather = v; } }, updateGhosts: { get: () => updateGhosts, set: v => { updateGhosts = v; } }, updateZones: { get: () => updateZones, set: v => { updateZones = v; } } });
+installR9(S);
 
 // ------------------------------------------------------------------ loop
 renderer.setAnimationLoop(() => { const dt = Math.min(.05, clock.getDelta()), t = clock.elapsedTime; flyStep(); controls.update();
-  if (OFF) OFF.update(t, dt, { metric: METRIC, flow: !!($('flow') && $('flow').checked), showLabels: f => FSEL !== 'all' && FSEL !== 'roof' && +FSEL === f, alarmRooms: alarmRooms() });
+  if (DEVS) DEVS.update(t, dt, { flow: !!($('flow') && $('flow').checked) });
   const W = weather(); applyWeather(W, t);
   if (rain.material.opacity > 0) { rain.position.y -= dt * 24; if (rain.position.y < -20) rain.position.y += 20; }
   updateGhosts(); applyAlarms(t); animate(t, dt); updateZones(dt); updateSystems(t); placeLabels(); renderer.render(scene, camera); });
@@ -787,5 +870,5 @@ renderAlarmList();
 $('mapBtn').onclick = () => { const rows = window.MAP || []; const fmt = v => v === undefined ? '—' : typeof v === 'number' ? v.toFixed(2) : String(v);
   $('info').className = 'open wide'; const draw = () => { if (!$('info').classList.contains('wide')) return;
     const got = rows.filter(r => V[r.p] !== undefined).length, nf = rows.filter(r => FAIL.has(r.p)).length;
-    $('info').innerHTML = `<h3>Point mapping · ${DEMO ? 'DEMO (ค่าจำลอง)' : 'LIVE'} · รับค่าแล้ว ${got}/${rows.length} จุด${nf ? ` · resolve ไม่ได้ ${nf} จุด` : ''} · alarm ${AL.filter(a => a.s).length} จุด${FAIL.size - nf > 0 ? ` (resolve ไม่ได้ ${FAIL.size - nf})` : ''}</h3><button onclick="document.getElementById('info').className=''">ปิด</button>
-    <table>${rows.map(r => `<tr><td>${r.p}</td><td class="${V[r.p] === undefined ? 'no' : 'ok'}">${FAIL.has(r.p) ? 'resolve ไม่ได้' : fmt(V[r.p])}</td><td>${r.u}</td><td style="color:#9fb0c0">station:|slot:${r.s}</td></tr>`).join('')}</table>`; setTimeout(draw, 1000); }; draw(); };
+    $('info').innerHTML = `<h3>Point mapping · ${DEMO ? 'DEMO (simulated values)' : 'LIVE'} · values received ${got}/${rows.length} points${nf ? ` · not resolved ${nf} points` : ''} · alarm ${AL.filter(a => a.s).length} points${FAIL.size - nf > 0 ? ` (not resolved ${FAIL.size - nf})` : ''}</h3><button onclick="document.getElementById('info').className=''">off</button>
+    <table>${rows.map(r => `<tr><td>${r.p}</td><td class="${V[r.p] === undefined ? 'no' : 'ok'}">${FAIL.has(r.p) ? 'not resolved' : fmt(V[r.p])}</td><td>${r.u}</td><td style="color:#9fb0c0">station:|slot:${r.s}</td></tr>`).join('')}</table>`; setTimeout(draw, 1000); }; draw(); };

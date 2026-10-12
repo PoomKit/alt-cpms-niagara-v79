@@ -34,7 +34,13 @@ jobs:
         run: |
           cp -r station/shared/px /tmp/pxc && python tools/gen_px79o.py /tmp/pxc && diff -r station/shared/px /tmp/pxc
           python tools/office_points.py --check
-      - name: Office VAV / metering / plant protection tests on the layer test station (r4)
+          python tools/r9_bindings.py --check
+          python tools/gen_billing79.py --check
+      - name: Pipe / duct connections meet the Blender model ports (r6)
+        run: python tools/r9_connections.py
+      - name: Pipe / valve / instrument clashes and spacing (r7)
+        run: python tools/r9_clash.py
+      - name: Office VAV / metering / r6 sequences / plant protection tests on the layer test station
         working-directory: tools
         run: python v79office_tests.py /tmp/v79office_tests.csv
       - uses: actions/setup-node@v4

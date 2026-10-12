@@ -12,7 +12,7 @@ import eqreg
 REGISTER = os.environ.get('V79_REGISTER', os.path.join(ROOT, 'registers', 'ALT_V79_Equipment_Register.xlsx'))
 REG = eqreg.load(REGISTER)
 INST = {r['Slot']: eqreg.installed(r) for r in REG['Equipment']}
-PROJECT = {'name': 'CPMS Reference Building V7.9', 'name_th': 'อาคารอ้างอิง 8 ชั้น - ห้องเครื่องทำน้ำเย็นชั้น 1, cooling tower บนดาดฟ้า',
+PROJECT = {'name': 'CPMS Reference Building V7.9', 'name_th': '8-storey reference building - chiller plant room in basement B1, cooling towers on the roof',
            'station': 'ALT_CP_Ref_V7_9', 'company': 'AETERLINK (Thailand) Co., Ltd.',
            'note': 'Reference design for the logic and graphics (not a construction drawing): sizes and positions to be confirmed per site.'}
 B = {'x': 64000, 'y': 40000, 'floors': 8, 'f1_h': 5500, 'typ_h': 4200, 'slab': 250, 'parapet': 1200}
@@ -84,10 +84,10 @@ for f in range(2, B['floors'] + 1):
         ZONES.append(dict(code=f'{f:02d}_{f:02d}{z:02d}', name=n, floor=f, x0=x0, y0=y0, x1=x1, y1=y1))
 
 # future systems (register sheet 'Systems'): layer frame, devices are added there and appear in 3D as markers with live status
-SYSTEMS = [dict(id='fire_alarm', name='Fire alarm', name_th='ระบบแจ้งเหตุเพลิงไหม้', color='#d93025', status='planned', devices=[]),
-           dict(id='fire_protection', name='Fire protection', name_th='ระบบดับเพลิง', color='#b3261e', status='planned', devices=[]),
-           dict(id='lighting', name='Lighting', name_th='ระบบไฟฟ้าแสงสว่าง', color='#f0b323', status='planned', devices=[]),
-           dict(id='power', name='Power metering', name_th='ระบบไฟฟ้ากำลัง / มิเตอร์', color='#5f6b78', status='planned', devices=[])]
+SYSTEMS = [dict(id='fire_alarm', name='Fire alarm', name_th='Fire alarm', color='#d93025', status='planned', devices=[]),
+           dict(id='fire_protection', name='Fire protection', name_th='Fire protection', color='#b3261e', status='planned', devices=[]),
+           dict(id='lighting', name='Lighting', name_th='Lighting', color='#f0b323', status='planned', devices=[]),
+           dict(id='power', name='Power metering', name_th='Power / metering', color='#5f6b78', status='planned', devices=[])]
 for r in REG.get('Systems', []):
     sy = next((x for x in SYSTEMS if x['id'] == r.get('System')), None)
     if sy is None: sy = dict(id=r.get('System'), name=r.get('System'), name_th=r.get('System'), color='#7a8399', status='planned', devices=[]); SYSTEMS.append(sy)

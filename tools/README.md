@@ -9,7 +9,10 @@ Hooks are installed at import time (`FCX.field_io = ...`, `SC.scale = ...`), so 
 |---|---|
 | Entry points | `make_v79.py` (station), `rebuild_v79.sh` (both builds + tests), `gen_px79d.py` (Px pages), `v79tests.py` (offline tests) |
 | V7.9 layer | `v79_scale.py` (slots 03-06, supervisor, protections, sensors, Field IO numbers), `v79_air.py` (floors 2-8 AHU points), `v79_office.py` (r4: R9 office VAV AHUs, 123 VAV, 200 rooms, floor / tenant meters), `eqreg.py` (equipment register) |
-| r4 tools | `layer_sim.py` (executable test station of the V7.9 layers, no source bog), `v79office_tests.py` (17 tests), `office_points.py` (3D point map), `gen_px79o.py` (live floor VAV Px pages), `blender/equipment79.py` (Blender models + Px renders) |
+| r4 tools | `layer_sim.py` (executable test station of the V7.9 layers, no source bog), `v79office_tests.py` (19 tests), `office_points.py` (3D point map), `gen_px79o.py` (live floor VAV Px pages), `blender/equipment79.py` (Blender models + Px renders) |
+| r5 tools | `r9_bindings.py` (station point of every R9 device -> `graphics3d/data/r9_bindings.json` + `docs/R9_POINT_COVERAGE.csv`), `check_baseline_zip.py` (read-only comparison of a deployed station ZIP with the repository build) |
+| r6 tools | `v79_r6.py` (r6 logic layer, wraps `v79_scale.scale`), `r9_connections.py` (pipe / duct ends vs Blender model ports, `--apply` fixes the design data), `gen_billing79.py` (tenant billing page / Px / EPMS export register, `--check`), `i18n/*.json` (Thai -> English tables used for the web pages) |
+| r7 tools | `r9_clash.py` (pipe-to-pipe clashes, valve / instrument spacing, bends, stems; `--apply` re-routes and re-spaces the design data) |
 | Earlier layers | `make_v6.py`, `make_v7.py`, `make_v71.py` … `make_v77.py`, `v77_fieldcx.py`, `v77_smart.py`, `v77_cloud.py`, `v77_r9.py`, `v78_improve.py`, `v78_finish.py`, `units74.py` |
 | Px generators | `gen_px.py`, `gen_px7.py`, `gen_px71.py` … `gen_px79s.py` (not `gen_px77.py`), `gen_px79o.py`, `pipes71.py`, `pipes_svg.py`, `gauge73.py`, `compact_layout.py`, `check_symbols.py` |
 | Simulation | `sim6.py`, `sim7.py`, `simstart.py`, `bog_graph.py`, `trace.py` |

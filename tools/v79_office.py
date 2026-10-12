@@ -106,6 +106,9 @@ def common(S):
     p('AHU_FeedbackMismatchPct', 15.0, 'pct', 'command vs feedback (VSD, OA damper, PICV) difference -> alarm', 0)
     S.bparam('AirX_DCVEnable', True, folder=C, t='DCV on (people part of Vbz only when occupied)', f='DCV off (design Vbz always)',
              note='ASHRAE 62.1 6.2.7 demand-controlled ventilation')
+    # r5: toilet / janitor exhaust dampers (R9 MD-EA-*)
+    S.bparam('TE_ForceOpen', False, folder=C, t='Forced open', f='Schedule', note='toilet exhaust dampers open outside the schedule (cleaning / odour)')
+    S.bparam('TE_CloseOnFire', True, folder=C, t='Close', f='Stay open', note='toilet exhaust dampers close on fire alarm (PROJECT fire strategy decides)')
     M = 'Metering/Floors/Common'
     S.param('MTR_LowDeltaTK', 3.0, 'C', folder=M, prec=1, note='floor CHW dT below this with flow -> low dT alarm (design 5.5 K)')
     S.param('MTR_ReconTolPct', 2.0, 'pct', folder=M, prec=1, note='tenant sub-meters sum above the floor meter by more than this -> alarm')
@@ -419,6 +422,27 @@ def metering(S, m, fl_valves):
     simlink(S, f'PM_{p}_kW', f'Sim_{p}_kW')
 
 
+# ------------------------------------------------------------------ toilet / janitor exhaust dampers (r5)
+def exhaust_damper(S, d):
+    """R9 MD-EA-<room>: two-position exhaust damper on the toilet exhaust riser branch. Open while the building is occupied
+    (ASHRAE 62.1 Table 6-4: toilet exhaust whenever the space is occupied; R9 control note: exhaust schedule / interlock, no shutdown
+    from CO2), forced open by TE_ForceOpen, closed on fire alarm when TE_CloseOnFire (fire strategy). End-switch proof -> fault alarm."""
+    fl, n = d['floor'], f"TE_{nm(d['room'])}"; f = f'{AIR}/Floors/F{fl:02d}/Exhaust'
+    di(S, f, f'{n}_DmpFb', False, 'Open', 'Closed', note=f"FIELD DI: {d['id']} damper end switch (open)")
+    OR(S, f, f'{n}_Req', 'Sch_AHU', 'TE_ForceOpen')
+    OR(S, f, f'{n}_FireOK', 'NotFireAlarm', 'TE_FireStay')
+    AND(S, f, f'{n}_CmdLogic', f'{n}_Req', f'{n}_FireOK')
+    S.bpoint(f, f'{n}_DmpCmd', f'{n}_CmdLogic', 'Open', 'Closed', kind='do', note=f"FIELD DO: {d['id']} damper open command")
+    NOT(S, f, f'{n}_FbN', f'{n}_DmpFb'); NOT(S, f, f'{n}_CmdN', f'{n}_DmpCmd')
+    AND(S, f, f'{n}_NotOpened', f'{n}_DmpCmd', f'{n}_FbN'); AND(S, f, f'{n}_NotClosed', f'{n}_CmdN', f'{n}_DmpFb')
+    OR(S, f, f'{n}_Mismatch', f'{n}_NotOpened', f'{n}_NotClosed'); DLY(S, f, f'{n}_MismatchDly', f'{n}_Mismatch', tm(120000, 4000))
+    alarm(S, f, f'{n}_DamperFaultAlarm', f'{n}_MismatchDly', 'Fault', 'Normal', 'Warning', f"{d['id']}: exhaust damper does not follow its command (end switch)")
+    sf = f'{AIR}/Simulation/Floors/F{fl:02d}'
+    DLY(S, sf, f'Sim_{n}_Fb', f'{n}_DmpCmd', tm(15000, 1500), tm(15000, 1500), note='simulation: actuator stroke time')
+    simlink(S, f'{n}_DmpFb', f'Sim_{n}_Fb')
+    return n
+
+
 # ------------------------------------------------------------------ build
 def build_office(S):
     common(S)
@@ -448,11 +472,15 @@ def build_office(S):
     for fl, (vavs, rk, vk) in out.items():
         if fl > 1: ahu_sim(S, fl, vavs, rk)
         for v, k, vmax, ahu in vk: vav_sim(S, v, k, vmax, fl, f'{ahu}_SAT', 'Sch_AHU')
+    NOT(S, f'{AIR}/Floors/Common', 'TE_FireStay', 'TE_CloseOnFire')
+    te = [exhaust_damper(S, d) for d in od()['motorizedDampers'] if not d.get('integralVAV')]
     for m in od()['floorMeters']:
         fl = m['floor']
         metering(S, m, [f'{ahu_of(fl)}_ValveCmd'] if fl > 1 else ['AHU01_ValveCmd', 'AHU02_ValveCmd'])
     S.log.append(('V7.9 r4', 'AirSide/Floors', f"{len(vt)} VAV terminals, {len(od()['rooms'])} room sensors, {len(od()['floorMeters'])} floor meters",
                   'v79_office.py (R9 design)', '', ''))
+    S.log.append(('V7.9 r5', 'AirSide/Floors/Fnn/Exhaust', f'{len(te)} toilet / janitor exhaust dampers (schedule, fire close, end-switch proof)',
+                  'v79_office.py (R9 MD-EA)', '', ''))
 
 
 _scale = SC.scale

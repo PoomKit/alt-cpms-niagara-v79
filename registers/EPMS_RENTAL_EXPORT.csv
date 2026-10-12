@@ -1,0 +1,141 @@
+tenant,field,cpms_slot,epms_slot,epms_key,unit,description
+F02-A,register_kWh,/ChillerPlant/Metering/Floors/F02/PM_F02_A_kWh,/EPMS/Meters/RentalOffice/F02_A/PM_F02_A_kWh,rental.F02_A.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F02-A,power_kW,/ChillerPlant/Metering/Floors/F02/PM_F02_A_kW,/EPMS/Meters/RentalOffice/F02_A/PM_F02_A_kW,rental.F02_A.power_kW,kW,tenant feeder power
+F02-A,periodStart_kWh,/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F02_A/EPMS_F02_A_PeriodStart_kWh,rental.F02_A.periodStart_kWh,kWh,register latched at the last billing close
+F02-A,period_kWh,/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_Period_kWh,/EPMS/Meters/RentalOffice/F02_A/EPMS_F02_A_Period_kWh,rental.F02_A.period_kWh,kWh,electric energy this billing period
+F02-A,qualityOK,/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_QualityOK,/EPMS/Meters/RentalOffice/F02_A/EPMS_F02_A_QualityOK,rental.F02_A.qualityOK,bool,false = meter reset / rollover: billing hold
+F02-A,airShare,/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_AirShare,/EPMS/Meters/RentalOffice/F02_A/EPMS_F02_A_AirShare,rental.F02_A.airShare,-,tenant share of the floor VAV airflow
+F02-A,thermal_kW,/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_Thermal_kW,/EPMS/Meters/RentalOffice/F02_A/EPMS_F02_A_Thermal_kW,rental.F02_A.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F02-A,thermal_kWh,/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_Thermal_kWh,/EPMS/Meters/RentalOffice/F02_A/EPMS_F02_A_Thermal_kWh,rental.F02_A.thermal_kWh,kWh_th,allocated thermal energy register
+F02-A,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F02_A/EPMS_F02_A_PeriodThermal_kWh,rental.F02_A.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F02-A,thermalBillable,/ChillerPlant/Metering/EPMS/F02_A/EPMS_F02_A_ThermalBillable,/EPMS/Meters/RentalOffice/F02_A/EPMS_F02_A_ThermalBillable,rental.F02_A.thermalBillable,bool,thermal billing enabled by contract and quality good
+F02-B,register_kWh,/ChillerPlant/Metering/Floors/F02/PM_F02_B_kWh,/EPMS/Meters/RentalOffice/F02_B/PM_F02_B_kWh,rental.F02_B.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F02-B,power_kW,/ChillerPlant/Metering/Floors/F02/PM_F02_B_kW,/EPMS/Meters/RentalOffice/F02_B/PM_F02_B_kW,rental.F02_B.power_kW,kW,tenant feeder power
+F02-B,periodStart_kWh,/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F02_B/EPMS_F02_B_PeriodStart_kWh,rental.F02_B.periodStart_kWh,kWh,register latched at the last billing close
+F02-B,period_kWh,/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_Period_kWh,/EPMS/Meters/RentalOffice/F02_B/EPMS_F02_B_Period_kWh,rental.F02_B.period_kWh,kWh,electric energy this billing period
+F02-B,qualityOK,/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_QualityOK,/EPMS/Meters/RentalOffice/F02_B/EPMS_F02_B_QualityOK,rental.F02_B.qualityOK,bool,false = meter reset / rollover: billing hold
+F02-B,airShare,/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_AirShare,/EPMS/Meters/RentalOffice/F02_B/EPMS_F02_B_AirShare,rental.F02_B.airShare,-,tenant share of the floor VAV airflow
+F02-B,thermal_kW,/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_Thermal_kW,/EPMS/Meters/RentalOffice/F02_B/EPMS_F02_B_Thermal_kW,rental.F02_B.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F02-B,thermal_kWh,/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_Thermal_kWh,/EPMS/Meters/RentalOffice/F02_B/EPMS_F02_B_Thermal_kWh,rental.F02_B.thermal_kWh,kWh_th,allocated thermal energy register
+F02-B,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F02_B/EPMS_F02_B_PeriodThermal_kWh,rental.F02_B.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F02-B,thermalBillable,/ChillerPlant/Metering/EPMS/F02_B/EPMS_F02_B_ThermalBillable,/EPMS/Meters/RentalOffice/F02_B/EPMS_F02_B_ThermalBillable,rental.F02_B.thermalBillable,bool,thermal billing enabled by contract and quality good
+F03-A,register_kWh,/ChillerPlant/Metering/Floors/F03/PM_F03_A_kWh,/EPMS/Meters/RentalOffice/F03_A/PM_F03_A_kWh,rental.F03_A.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F03-A,power_kW,/ChillerPlant/Metering/Floors/F03/PM_F03_A_kW,/EPMS/Meters/RentalOffice/F03_A/PM_F03_A_kW,rental.F03_A.power_kW,kW,tenant feeder power
+F03-A,periodStart_kWh,/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F03_A/EPMS_F03_A_PeriodStart_kWh,rental.F03_A.periodStart_kWh,kWh,register latched at the last billing close
+F03-A,period_kWh,/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_Period_kWh,/EPMS/Meters/RentalOffice/F03_A/EPMS_F03_A_Period_kWh,rental.F03_A.period_kWh,kWh,electric energy this billing period
+F03-A,qualityOK,/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_QualityOK,/EPMS/Meters/RentalOffice/F03_A/EPMS_F03_A_QualityOK,rental.F03_A.qualityOK,bool,false = meter reset / rollover: billing hold
+F03-A,airShare,/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_AirShare,/EPMS/Meters/RentalOffice/F03_A/EPMS_F03_A_AirShare,rental.F03_A.airShare,-,tenant share of the floor VAV airflow
+F03-A,thermal_kW,/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_Thermal_kW,/EPMS/Meters/RentalOffice/F03_A/EPMS_F03_A_Thermal_kW,rental.F03_A.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F03-A,thermal_kWh,/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_Thermal_kWh,/EPMS/Meters/RentalOffice/F03_A/EPMS_F03_A_Thermal_kWh,rental.F03_A.thermal_kWh,kWh_th,allocated thermal energy register
+F03-A,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F03_A/EPMS_F03_A_PeriodThermal_kWh,rental.F03_A.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F03-A,thermalBillable,/ChillerPlant/Metering/EPMS/F03_A/EPMS_F03_A_ThermalBillable,/EPMS/Meters/RentalOffice/F03_A/EPMS_F03_A_ThermalBillable,rental.F03_A.thermalBillable,bool,thermal billing enabled by contract and quality good
+F03-B,register_kWh,/ChillerPlant/Metering/Floors/F03/PM_F03_B_kWh,/EPMS/Meters/RentalOffice/F03_B/PM_F03_B_kWh,rental.F03_B.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F03-B,power_kW,/ChillerPlant/Metering/Floors/F03/PM_F03_B_kW,/EPMS/Meters/RentalOffice/F03_B/PM_F03_B_kW,rental.F03_B.power_kW,kW,tenant feeder power
+F03-B,periodStart_kWh,/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F03_B/EPMS_F03_B_PeriodStart_kWh,rental.F03_B.periodStart_kWh,kWh,register latched at the last billing close
+F03-B,period_kWh,/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_Period_kWh,/EPMS/Meters/RentalOffice/F03_B/EPMS_F03_B_Period_kWh,rental.F03_B.period_kWh,kWh,electric energy this billing period
+F03-B,qualityOK,/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_QualityOK,/EPMS/Meters/RentalOffice/F03_B/EPMS_F03_B_QualityOK,rental.F03_B.qualityOK,bool,false = meter reset / rollover: billing hold
+F03-B,airShare,/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_AirShare,/EPMS/Meters/RentalOffice/F03_B/EPMS_F03_B_AirShare,rental.F03_B.airShare,-,tenant share of the floor VAV airflow
+F03-B,thermal_kW,/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_Thermal_kW,/EPMS/Meters/RentalOffice/F03_B/EPMS_F03_B_Thermal_kW,rental.F03_B.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F03-B,thermal_kWh,/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_Thermal_kWh,/EPMS/Meters/RentalOffice/F03_B/EPMS_F03_B_Thermal_kWh,rental.F03_B.thermal_kWh,kWh_th,allocated thermal energy register
+F03-B,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F03_B/EPMS_F03_B_PeriodThermal_kWh,rental.F03_B.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F03-B,thermalBillable,/ChillerPlant/Metering/EPMS/F03_B/EPMS_F03_B_ThermalBillable,/EPMS/Meters/RentalOffice/F03_B/EPMS_F03_B_ThermalBillable,rental.F03_B.thermalBillable,bool,thermal billing enabled by contract and quality good
+F04-A,register_kWh,/ChillerPlant/Metering/Floors/F04/PM_F04_A_kWh,/EPMS/Meters/RentalOffice/F04_A/PM_F04_A_kWh,rental.F04_A.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F04-A,power_kW,/ChillerPlant/Metering/Floors/F04/PM_F04_A_kW,/EPMS/Meters/RentalOffice/F04_A/PM_F04_A_kW,rental.F04_A.power_kW,kW,tenant feeder power
+F04-A,periodStart_kWh,/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F04_A/EPMS_F04_A_PeriodStart_kWh,rental.F04_A.periodStart_kWh,kWh,register latched at the last billing close
+F04-A,period_kWh,/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_Period_kWh,/EPMS/Meters/RentalOffice/F04_A/EPMS_F04_A_Period_kWh,rental.F04_A.period_kWh,kWh,electric energy this billing period
+F04-A,qualityOK,/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_QualityOK,/EPMS/Meters/RentalOffice/F04_A/EPMS_F04_A_QualityOK,rental.F04_A.qualityOK,bool,false = meter reset / rollover: billing hold
+F04-A,airShare,/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_AirShare,/EPMS/Meters/RentalOffice/F04_A/EPMS_F04_A_AirShare,rental.F04_A.airShare,-,tenant share of the floor VAV airflow
+F04-A,thermal_kW,/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_Thermal_kW,/EPMS/Meters/RentalOffice/F04_A/EPMS_F04_A_Thermal_kW,rental.F04_A.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F04-A,thermal_kWh,/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_Thermal_kWh,/EPMS/Meters/RentalOffice/F04_A/EPMS_F04_A_Thermal_kWh,rental.F04_A.thermal_kWh,kWh_th,allocated thermal energy register
+F04-A,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F04_A/EPMS_F04_A_PeriodThermal_kWh,rental.F04_A.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F04-A,thermalBillable,/ChillerPlant/Metering/EPMS/F04_A/EPMS_F04_A_ThermalBillable,/EPMS/Meters/RentalOffice/F04_A/EPMS_F04_A_ThermalBillable,rental.F04_A.thermalBillable,bool,thermal billing enabled by contract and quality good
+F04-B,register_kWh,/ChillerPlant/Metering/Floors/F04/PM_F04_B_kWh,/EPMS/Meters/RentalOffice/F04_B/PM_F04_B_kWh,rental.F04_B.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F04-B,power_kW,/ChillerPlant/Metering/Floors/F04/PM_F04_B_kW,/EPMS/Meters/RentalOffice/F04_B/PM_F04_B_kW,rental.F04_B.power_kW,kW,tenant feeder power
+F04-B,periodStart_kWh,/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F04_B/EPMS_F04_B_PeriodStart_kWh,rental.F04_B.periodStart_kWh,kWh,register latched at the last billing close
+F04-B,period_kWh,/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_Period_kWh,/EPMS/Meters/RentalOffice/F04_B/EPMS_F04_B_Period_kWh,rental.F04_B.period_kWh,kWh,electric energy this billing period
+F04-B,qualityOK,/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_QualityOK,/EPMS/Meters/RentalOffice/F04_B/EPMS_F04_B_QualityOK,rental.F04_B.qualityOK,bool,false = meter reset / rollover: billing hold
+F04-B,airShare,/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_AirShare,/EPMS/Meters/RentalOffice/F04_B/EPMS_F04_B_AirShare,rental.F04_B.airShare,-,tenant share of the floor VAV airflow
+F04-B,thermal_kW,/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_Thermal_kW,/EPMS/Meters/RentalOffice/F04_B/EPMS_F04_B_Thermal_kW,rental.F04_B.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F04-B,thermal_kWh,/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_Thermal_kWh,/EPMS/Meters/RentalOffice/F04_B/EPMS_F04_B_Thermal_kWh,rental.F04_B.thermal_kWh,kWh_th,allocated thermal energy register
+F04-B,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F04_B/EPMS_F04_B_PeriodThermal_kWh,rental.F04_B.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F04-B,thermalBillable,/ChillerPlant/Metering/EPMS/F04_B/EPMS_F04_B_ThermalBillable,/EPMS/Meters/RentalOffice/F04_B/EPMS_F04_B_ThermalBillable,rental.F04_B.thermalBillable,bool,thermal billing enabled by contract and quality good
+F05-A,register_kWh,/ChillerPlant/Metering/Floors/F05/PM_F05_A_kWh,/EPMS/Meters/RentalOffice/F05_A/PM_F05_A_kWh,rental.F05_A.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F05-A,power_kW,/ChillerPlant/Metering/Floors/F05/PM_F05_A_kW,/EPMS/Meters/RentalOffice/F05_A/PM_F05_A_kW,rental.F05_A.power_kW,kW,tenant feeder power
+F05-A,periodStart_kWh,/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F05_A/EPMS_F05_A_PeriodStart_kWh,rental.F05_A.periodStart_kWh,kWh,register latched at the last billing close
+F05-A,period_kWh,/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_Period_kWh,/EPMS/Meters/RentalOffice/F05_A/EPMS_F05_A_Period_kWh,rental.F05_A.period_kWh,kWh,electric energy this billing period
+F05-A,qualityOK,/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_QualityOK,/EPMS/Meters/RentalOffice/F05_A/EPMS_F05_A_QualityOK,rental.F05_A.qualityOK,bool,false = meter reset / rollover: billing hold
+F05-A,airShare,/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_AirShare,/EPMS/Meters/RentalOffice/F05_A/EPMS_F05_A_AirShare,rental.F05_A.airShare,-,tenant share of the floor VAV airflow
+F05-A,thermal_kW,/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_Thermal_kW,/EPMS/Meters/RentalOffice/F05_A/EPMS_F05_A_Thermal_kW,rental.F05_A.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F05-A,thermal_kWh,/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_Thermal_kWh,/EPMS/Meters/RentalOffice/F05_A/EPMS_F05_A_Thermal_kWh,rental.F05_A.thermal_kWh,kWh_th,allocated thermal energy register
+F05-A,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F05_A/EPMS_F05_A_PeriodThermal_kWh,rental.F05_A.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F05-A,thermalBillable,/ChillerPlant/Metering/EPMS/F05_A/EPMS_F05_A_ThermalBillable,/EPMS/Meters/RentalOffice/F05_A/EPMS_F05_A_ThermalBillable,rental.F05_A.thermalBillable,bool,thermal billing enabled by contract and quality good
+F05-B,register_kWh,/ChillerPlant/Metering/Floors/F05/PM_F05_B_kWh,/EPMS/Meters/RentalOffice/F05_B/PM_F05_B_kWh,rental.F05_B.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F05-B,power_kW,/ChillerPlant/Metering/Floors/F05/PM_F05_B_kW,/EPMS/Meters/RentalOffice/F05_B/PM_F05_B_kW,rental.F05_B.power_kW,kW,tenant feeder power
+F05-B,periodStart_kWh,/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F05_B/EPMS_F05_B_PeriodStart_kWh,rental.F05_B.periodStart_kWh,kWh,register latched at the last billing close
+F05-B,period_kWh,/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_Period_kWh,/EPMS/Meters/RentalOffice/F05_B/EPMS_F05_B_Period_kWh,rental.F05_B.period_kWh,kWh,electric energy this billing period
+F05-B,qualityOK,/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_QualityOK,/EPMS/Meters/RentalOffice/F05_B/EPMS_F05_B_QualityOK,rental.F05_B.qualityOK,bool,false = meter reset / rollover: billing hold
+F05-B,airShare,/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_AirShare,/EPMS/Meters/RentalOffice/F05_B/EPMS_F05_B_AirShare,rental.F05_B.airShare,-,tenant share of the floor VAV airflow
+F05-B,thermal_kW,/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_Thermal_kW,/EPMS/Meters/RentalOffice/F05_B/EPMS_F05_B_Thermal_kW,rental.F05_B.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F05-B,thermal_kWh,/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_Thermal_kWh,/EPMS/Meters/RentalOffice/F05_B/EPMS_F05_B_Thermal_kWh,rental.F05_B.thermal_kWh,kWh_th,allocated thermal energy register
+F05-B,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F05_B/EPMS_F05_B_PeriodThermal_kWh,rental.F05_B.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F05-B,thermalBillable,/ChillerPlant/Metering/EPMS/F05_B/EPMS_F05_B_ThermalBillable,/EPMS/Meters/RentalOffice/F05_B/EPMS_F05_B_ThermalBillable,rental.F05_B.thermalBillable,bool,thermal billing enabled by contract and quality good
+F06-A,register_kWh,/ChillerPlant/Metering/Floors/F06/PM_F06_A_kWh,/EPMS/Meters/RentalOffice/F06_A/PM_F06_A_kWh,rental.F06_A.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F06-A,power_kW,/ChillerPlant/Metering/Floors/F06/PM_F06_A_kW,/EPMS/Meters/RentalOffice/F06_A/PM_F06_A_kW,rental.F06_A.power_kW,kW,tenant feeder power
+F06-A,periodStart_kWh,/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F06_A/EPMS_F06_A_PeriodStart_kWh,rental.F06_A.periodStart_kWh,kWh,register latched at the last billing close
+F06-A,period_kWh,/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_Period_kWh,/EPMS/Meters/RentalOffice/F06_A/EPMS_F06_A_Period_kWh,rental.F06_A.period_kWh,kWh,electric energy this billing period
+F06-A,qualityOK,/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_QualityOK,/EPMS/Meters/RentalOffice/F06_A/EPMS_F06_A_QualityOK,rental.F06_A.qualityOK,bool,false = meter reset / rollover: billing hold
+F06-A,airShare,/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_AirShare,/EPMS/Meters/RentalOffice/F06_A/EPMS_F06_A_AirShare,rental.F06_A.airShare,-,tenant share of the floor VAV airflow
+F06-A,thermal_kW,/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_Thermal_kW,/EPMS/Meters/RentalOffice/F06_A/EPMS_F06_A_Thermal_kW,rental.F06_A.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F06-A,thermal_kWh,/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_Thermal_kWh,/EPMS/Meters/RentalOffice/F06_A/EPMS_F06_A_Thermal_kWh,rental.F06_A.thermal_kWh,kWh_th,allocated thermal energy register
+F06-A,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F06_A/EPMS_F06_A_PeriodThermal_kWh,rental.F06_A.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F06-A,thermalBillable,/ChillerPlant/Metering/EPMS/F06_A/EPMS_F06_A_ThermalBillable,/EPMS/Meters/RentalOffice/F06_A/EPMS_F06_A_ThermalBillable,rental.F06_A.thermalBillable,bool,thermal billing enabled by contract and quality good
+F06-B,register_kWh,/ChillerPlant/Metering/Floors/F06/PM_F06_B_kWh,/EPMS/Meters/RentalOffice/F06_B/PM_F06_B_kWh,rental.F06_B.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F06-B,power_kW,/ChillerPlant/Metering/Floors/F06/PM_F06_B_kW,/EPMS/Meters/RentalOffice/F06_B/PM_F06_B_kW,rental.F06_B.power_kW,kW,tenant feeder power
+F06-B,periodStart_kWh,/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F06_B/EPMS_F06_B_PeriodStart_kWh,rental.F06_B.periodStart_kWh,kWh,register latched at the last billing close
+F06-B,period_kWh,/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_Period_kWh,/EPMS/Meters/RentalOffice/F06_B/EPMS_F06_B_Period_kWh,rental.F06_B.period_kWh,kWh,electric energy this billing period
+F06-B,qualityOK,/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_QualityOK,/EPMS/Meters/RentalOffice/F06_B/EPMS_F06_B_QualityOK,rental.F06_B.qualityOK,bool,false = meter reset / rollover: billing hold
+F06-B,airShare,/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_AirShare,/EPMS/Meters/RentalOffice/F06_B/EPMS_F06_B_AirShare,rental.F06_B.airShare,-,tenant share of the floor VAV airflow
+F06-B,thermal_kW,/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_Thermal_kW,/EPMS/Meters/RentalOffice/F06_B/EPMS_F06_B_Thermal_kW,rental.F06_B.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F06-B,thermal_kWh,/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_Thermal_kWh,/EPMS/Meters/RentalOffice/F06_B/EPMS_F06_B_Thermal_kWh,rental.F06_B.thermal_kWh,kWh_th,allocated thermal energy register
+F06-B,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F06_B/EPMS_F06_B_PeriodThermal_kWh,rental.F06_B.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F06-B,thermalBillable,/ChillerPlant/Metering/EPMS/F06_B/EPMS_F06_B_ThermalBillable,/EPMS/Meters/RentalOffice/F06_B/EPMS_F06_B_ThermalBillable,rental.F06_B.thermalBillable,bool,thermal billing enabled by contract and quality good
+F07-A,register_kWh,/ChillerPlant/Metering/Floors/F07/PM_F07_A_kWh,/EPMS/Meters/RentalOffice/F07_A/PM_F07_A_kWh,rental.F07_A.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F07-A,power_kW,/ChillerPlant/Metering/Floors/F07/PM_F07_A_kW,/EPMS/Meters/RentalOffice/F07_A/PM_F07_A_kW,rental.F07_A.power_kW,kW,tenant feeder power
+F07-A,periodStart_kWh,/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F07_A/EPMS_F07_A_PeriodStart_kWh,rental.F07_A.periodStart_kWh,kWh,register latched at the last billing close
+F07-A,period_kWh,/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_Period_kWh,/EPMS/Meters/RentalOffice/F07_A/EPMS_F07_A_Period_kWh,rental.F07_A.period_kWh,kWh,electric energy this billing period
+F07-A,qualityOK,/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_QualityOK,/EPMS/Meters/RentalOffice/F07_A/EPMS_F07_A_QualityOK,rental.F07_A.qualityOK,bool,false = meter reset / rollover: billing hold
+F07-A,airShare,/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_AirShare,/EPMS/Meters/RentalOffice/F07_A/EPMS_F07_A_AirShare,rental.F07_A.airShare,-,tenant share of the floor VAV airflow
+F07-A,thermal_kW,/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_Thermal_kW,/EPMS/Meters/RentalOffice/F07_A/EPMS_F07_A_Thermal_kW,rental.F07_A.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F07-A,thermal_kWh,/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_Thermal_kWh,/EPMS/Meters/RentalOffice/F07_A/EPMS_F07_A_Thermal_kWh,rental.F07_A.thermal_kWh,kWh_th,allocated thermal energy register
+F07-A,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F07_A/EPMS_F07_A_PeriodThermal_kWh,rental.F07_A.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F07-A,thermalBillable,/ChillerPlant/Metering/EPMS/F07_A/EPMS_F07_A_ThermalBillable,/EPMS/Meters/RentalOffice/F07_A/EPMS_F07_A_ThermalBillable,rental.F07_A.thermalBillable,bool,thermal billing enabled by contract and quality good
+F07-B,register_kWh,/ChillerPlant/Metering/Floors/F07/PM_F07_B_kWh,/EPMS/Meters/RentalOffice/F07_B/PM_F07_B_kWh,rental.F07_B.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F07-B,power_kW,/ChillerPlant/Metering/Floors/F07/PM_F07_B_kW,/EPMS/Meters/RentalOffice/F07_B/PM_F07_B_kW,rental.F07_B.power_kW,kW,tenant feeder power
+F07-B,periodStart_kWh,/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F07_B/EPMS_F07_B_PeriodStart_kWh,rental.F07_B.periodStart_kWh,kWh,register latched at the last billing close
+F07-B,period_kWh,/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_Period_kWh,/EPMS/Meters/RentalOffice/F07_B/EPMS_F07_B_Period_kWh,rental.F07_B.period_kWh,kWh,electric energy this billing period
+F07-B,qualityOK,/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_QualityOK,/EPMS/Meters/RentalOffice/F07_B/EPMS_F07_B_QualityOK,rental.F07_B.qualityOK,bool,false = meter reset / rollover: billing hold
+F07-B,airShare,/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_AirShare,/EPMS/Meters/RentalOffice/F07_B/EPMS_F07_B_AirShare,rental.F07_B.airShare,-,tenant share of the floor VAV airflow
+F07-B,thermal_kW,/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_Thermal_kW,/EPMS/Meters/RentalOffice/F07_B/EPMS_F07_B_Thermal_kW,rental.F07_B.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F07-B,thermal_kWh,/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_Thermal_kWh,/EPMS/Meters/RentalOffice/F07_B/EPMS_F07_B_Thermal_kWh,rental.F07_B.thermal_kWh,kWh_th,allocated thermal energy register
+F07-B,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F07_B/EPMS_F07_B_PeriodThermal_kWh,rental.F07_B.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F07-B,thermalBillable,/ChillerPlant/Metering/EPMS/F07_B/EPMS_F07_B_ThermalBillable,/EPMS/Meters/RentalOffice/F07_B/EPMS_F07_B_ThermalBillable,rental.F07_B.thermalBillable,bool,thermal billing enabled by contract and quality good
+F08-A,register_kWh,/ChillerPlant/Metering/Floors/F08/PM_F08_A_kWh,/EPMS/Meters/RentalOffice/F08_A/PM_F08_A_kWh,rental.F08_A.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F08-A,power_kW,/ChillerPlant/Metering/Floors/F08/PM_F08_A_kW,/EPMS/Meters/RentalOffice/F08_A/PM_F08_A_kW,rental.F08_A.power_kW,kW,tenant feeder power
+F08-A,periodStart_kWh,/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F08_A/EPMS_F08_A_PeriodStart_kWh,rental.F08_A.periodStart_kWh,kWh,register latched at the last billing close
+F08-A,period_kWh,/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_Period_kWh,/EPMS/Meters/RentalOffice/F08_A/EPMS_F08_A_Period_kWh,rental.F08_A.period_kWh,kWh,electric energy this billing period
+F08-A,qualityOK,/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_QualityOK,/EPMS/Meters/RentalOffice/F08_A/EPMS_F08_A_QualityOK,rental.F08_A.qualityOK,bool,false = meter reset / rollover: billing hold
+F08-A,airShare,/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_AirShare,/EPMS/Meters/RentalOffice/F08_A/EPMS_F08_A_AirShare,rental.F08_A.airShare,-,tenant share of the floor VAV airflow
+F08-A,thermal_kW,/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_Thermal_kW,/EPMS/Meters/RentalOffice/F08_A/EPMS_F08_A_Thermal_kW,rental.F08_A.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F08-A,thermal_kWh,/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_Thermal_kWh,/EPMS/Meters/RentalOffice/F08_A/EPMS_F08_A_Thermal_kWh,rental.F08_A.thermal_kWh,kWh_th,allocated thermal energy register
+F08-A,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F08_A/EPMS_F08_A_PeriodThermal_kWh,rental.F08_A.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F08-A,thermalBillable,/ChillerPlant/Metering/EPMS/F08_A/EPMS_F08_A_ThermalBillable,/EPMS/Meters/RentalOffice/F08_A/EPMS_F08_A_ThermalBillable,rental.F08_A.thermalBillable,bool,thermal billing enabled by contract and quality good
+F08-B,register_kWh,/ChillerPlant/Metering/Floors/F08/PM_F08_B_kWh,/EPMS/Meters/RentalOffice/F08_B/PM_F08_B_kWh,rental.F08_B.register_kWh,kWh,tenant feeder energy register (revenue meter)
+F08-B,power_kW,/ChillerPlant/Metering/Floors/F08/PM_F08_B_kW,/EPMS/Meters/RentalOffice/F08_B/PM_F08_B_kW,rental.F08_B.power_kW,kW,tenant feeder power
+F08-B,periodStart_kWh,/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_PeriodStart_kWh,/EPMS/Meters/RentalOffice/F08_B/EPMS_F08_B_PeriodStart_kWh,rental.F08_B.periodStart_kWh,kWh,register latched at the last billing close
+F08-B,period_kWh,/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_Period_kWh,/EPMS/Meters/RentalOffice/F08_B/EPMS_F08_B_Period_kWh,rental.F08_B.period_kWh,kWh,electric energy this billing period
+F08-B,qualityOK,/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_QualityOK,/EPMS/Meters/RentalOffice/F08_B/EPMS_F08_B_QualityOK,rental.F08_B.qualityOK,bool,false = meter reset / rollover: billing hold
+F08-B,airShare,/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_AirShare,/EPMS/Meters/RentalOffice/F08_B/EPMS_F08_B_AirShare,rental.F08_B.airShare,-,tenant share of the floor VAV airflow
+F08-B,thermal_kW,/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_Thermal_kW,/EPMS/Meters/RentalOffice/F08_B/EPMS_F08_B_Thermal_kW,rental.F08_B.thermal_kW,kW,airflow-weighted share of the floor BTU meter
+F08-B,thermal_kWh,/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_Thermal_kWh,/EPMS/Meters/RentalOffice/F08_B/EPMS_F08_B_Thermal_kWh,rental.F08_B.thermal_kWh,kWh_th,allocated thermal energy register
+F08-B,periodThermal_kWh,/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_PeriodThermal_kWh,/EPMS/Meters/RentalOffice/F08_B/EPMS_F08_B_PeriodThermal_kWh,rental.F08_B.periodThermal_kWh,kWh_th,allocated thermal energy this billing period
+F08-B,thermalBillable,/ChillerPlant/Metering/EPMS/F08_B/EPMS_F08_B_ThermalBillable,/EPMS/Meters/RentalOffice/F08_B/EPMS_F08_B_ThermalBillable,rental.F08_B.thermalBillable,bool,thermal billing enabled by contract and quality good
