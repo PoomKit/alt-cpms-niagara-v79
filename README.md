@@ -61,6 +61,11 @@ Niagara components against API stubs (`java/altPlant/logic-test`, `java/altPlant
 
 ## Version
 
+**V7.9 r7** (3D clean-up): pipes no longer run through each other (B1 CDW headers / CHW risers, chiller branches, roof coil
+pipes, AHU-02 coil return; CHW pumps 600 mm east for room on the suction pipe), every valve / instrument spaced on its pipe axis with
+its stem clear of other pipes (`tools/r9_clash.py`, CI); calmer airflow (small chevrons, one down-arrow per supply diffuser on a single
+floor); white room / corridor cards with the value in the zone condition colour; overlapping labels hidden.
+
 **V7.9 r6** (R9 building 3D adopted, pipe / duct ports, logic completion, English UI, EPMS tenant billing, see `docs/R6_Changes.md`):
 - 3D page uses the R9 office / architecture layer (`graphics3d/r9office.js`: rooms, furniture, ducts with moving airflow, damper
   feedback, floor meters) with a LIVE adapter to the station points; plant, tower, AHU, OAU / MAU models rebuilt in Blender with

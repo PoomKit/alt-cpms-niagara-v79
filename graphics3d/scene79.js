@@ -401,7 +401,7 @@ for (const p of M.pipes) { const rr = PIPE[p.id].rad, v = p.pts, G = PIPE[p.id].
       else { mesh(cyl(.045, mm(z - base) - rr, 10), SUP, G, P3(x, y, (z - rr * 1000 + base) / 2)); mesh(box(.3, .02, .3), SUP, G, P3(x, y, base + 10)); } } } }
 // valves, fittings, instruments.  local frame: y = pipe axis (flow), x = stem (up for horizontal pipes)
 const VALVE = [], VPOS = {}; const roomC = P3(R.x / 2, R.y / 2, 0);
-function frameQ(pos, dir){ const y = dir.clone().normalize(); const x = Math.abs(y.y) > .9 ? roomC.clone().sub(pos).setY(0).normalize() : YV.clone();
+function frameQ(pos, dir, stem){ const y = dir.clone().normalize(); const x = stem ? new THREE.Vector3(stem[0], stem[2], -stem[1]) : Math.abs(y.y) > .9 ? roomC.clone().sub(pos).setY(0).normalize() : YV.clone();   // r7: stem from tools/r9_clash.py
   x.sub(y.clone().multiplyScalar(x.dot(y))).normalize(); return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, new THREE.Vector3().crossVectors(x, y))); }
 const RUB = new THREE.MeshStandardMaterial({ color: 0x15171a, roughness: .9 });
 const dial = canvasTex(128, 128, g => { g.fillStyle = '#f4f4f0'; g.beginPath(); g.arc(64, 64, 62, 0, 7); g.fill(); g.strokeStyle = '#222'; g.lineWidth = 3;
@@ -409,8 +409,8 @@ const dial = canvasTex(128, 128, g => { g.fillStyle = '#f4f4f0'; g.beginPath(); 
   g.fillStyle = '#b91c1c'; g.fillRect(96, 90, 14, 6); });
 const DIAL = new THREE.MeshBasicMaterial({ map: dial });
 function flange(g, r, y){ mesh(cyl(r * 1.55, .028, 28), MAT.iron, g, new THREE.Vector3(0, y, 0)); }
-for (const v of M.valves) { const pr = PIPE[v.pipe]; if (!pr) continue; const pdn = pr.p.dn, ins = insul(pr.p.svc), r = dnR(v.dn || pdn);
-  const pos = P3(...v.xyz), dir = P3(...v.dir).sub(P3(0, 0, 0)).normalize(); const g = new THREE.Group(); g.position.copy(pos); g.quaternion.copy(frameQ(pos, dir)); pr.g.add(g); g.position.sub(pr.g.position);
+for (const v of M.valves) { const pr = PIPE[v.pipe]; if (!pr || v.hidden) continue;   /* r7: legacy valves replaced by the R9 PICV */ const pdn = pr.p.dn, ins = insul(pr.p.svc), r = dnR(v.dn || pdn);
+  const pos = P3(...v.xyz), dir = P3(...v.dir).sub(P3(0, 0, 0)).normalize(); const g = new THREE.Group(); g.position.copy(pos); g.quaternion.copy(frameQ(pos, dir, v.stem)); pr.g.add(g); g.position.sub(pr.g.position);
   const o = { v, g, pos: ['BFV'].includes(v.kind) ? 1 : 0, tgt: 1, k: v.kind, pr };
   const K = v.kind;
   if (['BFV', 'MBFV', 'MCV', 'CHECK'].includes(K)) { flange(g, r, -.045); flange(g, r, .045); mesh(cyl(r * 1.3, K === 'CHECK' ? .11 : .07, 28), MAT.iron, g);
@@ -627,13 +627,21 @@ function renderKpi(){ const k = $('kpi'); if (!k) return; const f = (n, d) => va
 // ------------------------------------------------------------------ HTML overlay: labels, alarm list, info panel
 const LBL = {}; for (const e of [...M.equipment, ...M.air_equipment]) { const d = document.createElement('div'); d.className = 'lbl'; d.innerHTML = `<b>${e.id}</b><span></span>`; $('labels').appendChild(d);
   d.onclick = () => info(e.id); LBL[e.id] = d; }
-function placeLabels(){ const w = host.clientWidth, h = host.clientHeight; for (const id in LBL) { const p = eqTop(id).project(camera); const d = LBL[id];
+let LBLT = 0;
+function placeLabels(){ const w = host.clientWidth, h = host.clientHeight, shown = []; for (const id in LBL) { const p = eqTop(id).project(camera); const d = LBL[id]; d.__p = p;
   const far = camera.position.distanceTo(eqTop(id)) > 60 && ![...ACTIVE.values()].some(a => a.e.includes(id));
   if (p.z > 1 || !$('labelsOn').checked || far || !EQ[id].g.visible || !EQ[id].g.parent.visible) { d.style.display = 'none'; continue; }
-  if (EQ[id].ghost) { d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`; d.className = 'lbl ghost'; d.querySelector('span').textContent = 'Not installed (empty slot)'; continue; } d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`;
+  if (EQ[id].ghost) { d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`; d.className = 'lbl ghost'; d.querySelector('span').textContent = 'Not installed (empty slot)'; shown.push(id); continue; } d.style.display = ''; d.style.transform = `translate(${(p.x + 1) / 2 * w}px,${(1 - p.y) / 2 * h}px) translate(-50%,-100%)`;
   const r = EQ[id], al = [...ACTIVE.values()].filter(a => a.e.includes(id)); const run = running(id);
   d.className = 'lbl' + (al.some(a => ['Critical', 'Emergency'].includes(a.c)) ? ' alm' : al.length ? ' warn' : run ? ' run' : '');
-  d.querySelector('span').textContent = al.length ? (EFX[al[0].x][0] + (al.length > 1 ? ` +${al.length - 1}` : '')) : r.e.pt ? (run ? statusText(id) : 'Off / Standby') : ''; } }
+  d.querySelector('span').textContent = al.length ? (EFX[al[0].x][0] + (al.length > 1 ? ` +${al.length - 1}` : '')) : r.e.pt ? (run ? statusText(id) : 'Off / Standby') : ''; shown.push(id); }
+  // r7: no overlapping equipment labels - alarms first, then the nearest; a label that would cover one already placed is hidden
+  const now = performance.now(); if (now - LBLT < 150) { for (const id of shown) if (LBL[id].__hid) LBL[id].style.display = 'none'; return; } LBLT = now;
+  const rank = id => (/ alm/.test(LBL[id].className) ? 0 : / warn/.test(LBL[id].className) ? 1e4 : 2e4) + camera.position.distanceTo(eqTop(id));
+  const placed = [];
+  for (const id of shown.sort((a, b) => rank(a) - rank(b))) { const d = LBL[id], p = d.__p, x = (p.x + 1) / 2 * w, y = (1 - p.y) / 2 * h, lw = d.offsetWidth, lh = d.offsetHeight;
+    const r = [x - lw / 2, y - lh, x + lw / 2, y], hit = placed.some(q => r[0] < q[2] + 4 && r[2] > q[0] - 4 && r[1] < q[3] + 2 && r[3] > q[1] - 2);
+    d.__hid = hit; if (hit) d.style.display = 'none'; else placed.push(r); } }
 function statusText(id){ const e = EQ[id].e, p = e.pt; if (e.type === 'ahu') return `Valve ${val(p + '_ValveCmd', 0).toFixed(0)}% · ${e.floor > 8 ? 'roof' : 'floor ' + e.floor}`;
   if (e.type === 'fcu' || e.type === 'fan') return 'Run'; if (id.startsWith('CH-')) return `Load ${val(p + 'LoadPct', 0).toFixed(0)}% · LWT ${val(p + '_ChwSupplyTemp', 6.7).toFixed(1)}°C`;
   return `Run · ${val(p + 'SpeedCmd', 0).toFixed(0)}%`; }

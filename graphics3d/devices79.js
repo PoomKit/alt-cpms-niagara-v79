@@ -18,10 +18,13 @@ const KIND_TH = { TT: 'Temperature transmitter', PT: 'Pressure transmitter', FM:
   AirTT: 'Duct temperature sensor', AirDP: 'Differential pressure transmitter', AirFlow: 'Airflow measuring station', AirMD: 'AHU damper + actuator',
   fan: 'Roof fan (R9 design)', ahu: 'Make-up air unit (R9 design)' };
 
-function basis(dir, offY, scale){                                         // local x = pipe / duct axis, y = stem (up when possible)
+function basis(dir, offY, scale, stem){                                   // local x = pipe / duct axis, y = stem (up when possible)
   const x = dir.clone(); if (x.lengthSq() < 1e-9) x.set(1, 0, 0); x.normalize();
-  const ref = Math.abs(x.y) > .9 ? new THREE.Vector3(Math.abs(x.x) > .9 ? 0 : 1, 0, Math.abs(x.x) > .9 ? 1 : 0) : new THREE.Vector3(0, 1, 0);
-  const z = new THREE.Vector3().crossVectors(x, ref).normalize(), y = new THREE.Vector3().crossVectors(z, x).normalize();
+  let y, z;
+  if (stem) { y = P(stem); y.addScaledVector(x, -y.dot(x)); }                // r7: stem side chosen by tools/r9_clash.py (clear of other pipes)
+  if (stem && y.lengthSq() > 1e-6) { y.normalize(); z = new THREE.Vector3().crossVectors(x, y).normalize(); }
+  else { const ref = Math.abs(x.y) > .9 ? new THREE.Vector3(Math.abs(x.x) > .9 ? 0 : 1, 0, Math.abs(x.x) > .9 ? 1 : 0) : new THREE.Vector3(0, 1, 0);
+    z = new THREE.Vector3().crossVectors(x, ref).normalize(); y = new THREE.Vector3().crossVectors(z, x).normalize(); }
   const m = new THREE.Matrix4().makeBasis(x, y, z);
   if (offY) m.multiply(new THREE.Matrix4().makeTranslation(0, offY, 0));
   return m.multiply(new THREE.Matrix4().makeScale(...(Array.isArray(scale) ? scale : [scale, scale, scale]))); }
@@ -37,8 +40,8 @@ export function buildDevices(ctx){
   // ---------------------------------------------------------------- device records (one per R9 device drawn)
   const DEV = [], integral = new Set((OD.motorizedDampers || []).filter(d => d.integralVAV).map(d => d.id));   // integral MDs = the VAV box
   for (const d of OD.instruments || []) { const mdl = MODEL_OF[d.kind], r = d.radius || .05, ref = PIPE_REF[mdl];
-    const s = ref ? Math.max(.35, Math.min(3, r / ref)) : 1, off = ref ? 0 : r - .1;
-    DEV.push({ d, kind: d.kind, f: d.floor, mdl, pos: P(d.position), m: basis(P(d.direction || [1, 0, 0]), off, s), lamp: .18 + r * 1.6 }); }
+    const s = ref ? Math.max(.35, Math.min(3, r / ref)) : 1, off = ref ? 0 : r + (d.insulation || 0) - .1;   // taps sit on the insulation
+    DEV.push({ d, kind: d.kind, f: d.floor, mdl, pos: P(d.position), m: basis(P(d.direction || [1, 0, 0]), off, s, d.stem), lamp: .18 + r * 1.6 + (ref ? 0 : d.insulation || 0) }); }
   for (const d of OD.ahuAirDevices || []) { const mdl = MODEL_OF[d.kind];
     DEV.push({ d, kind: d.kind, f: d.floor, mdl, pos: P(d.position), m: basis(new THREE.Vector3(1, 0, 0), 0, d.kind === 'AirMD' ? [1, .55, .7] : 1), lamp: .45 }); }
   // r6: motorised dampers (integral VAV and toilet exhaust) are drawn by the R9 layer with a blade that follows the feedback
@@ -57,7 +60,7 @@ export function buildDevices(ctx){
     if (reapply) reapply(); });   // r6: models load after the floor filter ran
 
   // status lamps (one instanced sphere set per floor, colour per device)
-  const LAMPS = []; const lampG = new THREE.SphereGeometry(.045, 10, 8), lampM = new THREE.MeshBasicMaterial({ toneMapped: false });
+  const LAMPS = []; const lampG = new THREE.SphereGeometry(.032, 10, 8), lampM = new THREE.MeshBasicMaterial({ toneMapped: false });
   const lampFloor = {}; for (const r of DEV) (lampFloor[r.f] = lampFloor[r.f] || []).push(r);
   for (const f in lampFloor) { const list = lampFloor[f], im = new THREE.InstancedMesh(lampG, lampM, list.length);
     list.forEach((r, i) => { const up = new THREE.Vector3(0, 1, 0).applyMatrix4(new THREE.Matrix4().extractRotation(r.m)).normalize();

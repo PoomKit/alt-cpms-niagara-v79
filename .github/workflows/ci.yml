@@ -38,6 +38,8 @@ jobs:
           python tools/gen_billing79.py --check
       - name: Pipe / duct connections meet the Blender model ports (r6)
         run: python tools/r9_connections.py
+      - name: Pipe / valve / instrument clashes and spacing (r7)
+        run: python tools/r9_clash.py
       - name: Office VAV / metering / r6 sequences / plant protection tests on the layer test station
         working-directory: tools
         run: python v79office_tests.py /tmp/v79office_tests.csv
