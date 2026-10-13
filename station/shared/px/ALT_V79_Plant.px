@@ -26,7 +26,7 @@
           </BoundLabelBinding>
         </BoundLabel>
         <Label layout="1380.0,92.0,156.0,28.0" text="3D building" font="10.0pt sans-serif" foreground="#1559d6" halign="center" background="#edf3f6">
-          <HyperlinkBinding ord="file:^web/ALT_V79_Building3D.html" />
+          <PopupBinding ord="file:^px/ALT_V79_Building3D.px" title="3D building"/>
         </Label>
         <Label layout="1544.0,92.0,156.0,28.0" text="Equipment details" font="10.0pt sans-serif" foreground="#1559d6" halign="center" background="#edf3f6">
           <PopupBinding ord="file:^px/ALT_V79_Plant_Details.px" title="Equipment details" />

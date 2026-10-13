@@ -62,7 +62,7 @@
     </Label>
 
     <Label layout="1504.0,44.0,132.0,26.0" text="3D Live" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
-      <HyperlinkBinding ord="file:^web/ALT_V79_Building3D.html"/>
+      <PopupBinding ord="file:^px/ALT_V79_Building3D.px" title="3D building"/>
     </Label>
 
     <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,80.0,1904.0,250.0"/>
@@ -477,7 +477,7 @@
 
     <Label layout="1266.0,270.0,128.0,22.0" text="PICV fb" font="9.0pt sans-serif" foreground="#9aa5b1" halign="left"/>
 
-    <Label layout="648.0,298.0,140.0,22.0" text="RESET LATCHES" font="bold 9.0pt sans-serif" foreground="white" background="#c62828" halign="center" mouseOver="outline">
+    <Label layout="648.0,298.0,140.0,22.0" text="RESET LATCHES" font="bold 9.0pt sans-serif" foreground="white" background="#c62828" halign="center">
       <ActionBinding ord="station:|slot:/AirSide/Floors/F08/AHU_F08_ResetFire/fire" widgetEvent="actionPerformed"/>
     </Label>
 

@@ -65,7 +65,7 @@ def ahu_block(p, fl, x, y, w):
         status_led(p, cx, cy + 4, f'{u}_{a}', f'{u} {t}', 'alarm'); lbl(p, cx + 18, cy, 128, t, 9, LBL, h=22)
     o = p.ord(f'{u}_ResetFire') + '/fire'
     p.el.append(f'<Label layout="{ax:.1f},{yy + 54:.1f},140.0,22.0" text="RESET LATCHES" font="bold 9.0pt sans-serif" foreground="white" background="#c62828" '
-                f'halign="center" mouseOver="outline">\n  <ActionBinding ord="{o}" widgetEvent="actionPerformed"/>\n</Label>')
+                f'halign="center">\n  <ActionBinding ord="{o}" widgetEvent="actionPerformed"/>\n</Label>')
     p.map.append((f'{u}_ResetFire', o, f'{u} reset start-failure / high-static latches', 'action (fire)'))
 
 

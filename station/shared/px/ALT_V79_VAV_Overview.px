@@ -62,7 +62,7 @@
     </Label>
 
     <Label layout="1504.0,44.0,132.0,26.0" text="3D Live" font="bold 9.0pt sans-serif" foreground="#cfd8dc" background="#2c3440" halign="center">
-      <HyperlinkBinding ord="file:^web/ALT_V79_Building3D.html"/>
+      <PopupBinding ord="file:^px/ALT_V79_Building3D.px" title="3D building"/>
     </Label>
 
     <Rect fill="#1f252c" stroke="#3b4652" pen="1.0" geom="8.0,80.0,1904.0,460.0"/>

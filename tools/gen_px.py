@@ -38,7 +38,7 @@ class Page:
         self.el.append(f'<Polygon fill="{fill}" geom="' + ' '.join(f'{x:.1f},{y:.1f}' for x, y in pts) + ' "/>')
 
     def label(self, x, y, w, h, text, size=12, bold=False, fg='black', bg=None, halign='left', popup=None, ptitle=None, link=None):
-        """popup = Px / view ORD opened in a popup window; link = ORD the page navigates to (HyperlinkBinding, works in HTML5 too)."""
+        """popup = Px / view ORD opened in a popup window; link = web page ORD, opened through its Px wrapper (PopupBinding)."""
         per = int(w / (size * 0.62))
         if len(text) > per and h >= size * 3 and not popup:          # Px Label does not wrap: split into lines
             import textwrap
@@ -48,9 +48,9 @@ class Page:
             return
         a = f'layout="{x:.1f},{y:.1f},{w:.1f},{h:.1f}" text={quoteattr(text)} font="{"bold " if bold else ""}{size:.1f}pt sans-serif" foreground="{fg}"'
         a += (f' background="{bg}"' if bg else '') + f' halign="{halign}"'
-        if link:
-            self.el.append(f'<Label {a}>\n  <HyperlinkBinding ord={quoteattr(link)}/>\n</Label>')
-        elif popup:
+        if link and not popup:      # r8.4: HyperlinkBinding is not a Px type in N4.15 ("Unknown type HyperlinkBinding"); a web page opens through its Px wrapper
+            popup, ptitle = re.sub(r'^file:\^web/(\w+)\.html$', r'file:^px/\1.px', link), ptitle or text
+        if popup:
             self.el.append(f'<Label {a}>\n  <PopupBinding ord={quoteattr(popup)} title={quoteattr(ptitle or text)}/>\n</Label>')
         else:
             self.el.append(f'<Label {a}/>')
