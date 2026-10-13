@@ -52,6 +52,7 @@ jobs:
           npm ci --no-audit --no-fund
           npm run bundle
           python rebuild_page.py --check
+          python ../tools/lean_web79.py --check
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

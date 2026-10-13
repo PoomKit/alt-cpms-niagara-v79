@@ -10,6 +10,8 @@ import { installR9 } from './r9office.js';
 import { buildDevices } from './devices79.js';
 
 const M = window.MODEL, AL = window.ALARMS, PTS = window.PTS, EFX = window.EFFECTS;
+for (const k in PTS) if (PTS[k][0] !== '/') PTS[k] = '/' + PTS[k] + '/' + k;   // r8: compact slot paths in the data file
+AL.forEach(a => { if (a.f !== undefined) { a.s = '/' + a.f + '/' + a.n; delete a.f; } });
 const $ = id => document.getElementById(id);
 const mm = v => v / 1000;
 const P3 = (x, y, z) => new THREE.Vector3(mm(x), mm(z), -mm(y));          // model (x east, y north, z up) -> three
@@ -358,13 +360,15 @@ for (const e of [...M.equipment, ...M.air_equipment]) {
   else if (e.type === 'ahu') ahu(e); else if (e.type === 'fcu') fcu(e); else if (e.type === 'fan') fanUnit(e);
   else if (e.type === 'exptank') genericBox(e, MAT.red, true); else if (e.type === 'panel') genericBox(e, MAT.panel); else genericBox(e, MAT.galv); }
 
-// ------------------------------------------------------------------ V7.9 r4: Blender equipment models (window.GLB, base64 GLB per type)
+// ------------------------------------------------------------------ V7.9 r4: Blender equipment models (window.GLB_URL -> external GLB per type)
 // the procedural body is replaced by the model; animated / alarm parts are taken from the model's named nodes
 const GLBS = {}, GLB_WAIT = {};
-function glb(name, cb){ const src = (window.GLB || {})[name]; if (!src) return;
+// r8: models are external binary files (alt79/models/*.glb, content-hashed), fetched once on first use and shared by every unit
+function glb(name, cb){ const src = (window.GLB_URL || {})[name]; if (!src) return;
   if (GLBS[name]) return cb(GLBS[name]); (GLB_WAIT[name] = GLB_WAIT[name] || []).push(cb); if (GLB_WAIT[name].length > 1) return;
-  const bin = Uint8Array.from(atob(src), c => c.charCodeAt(0)).buffer;
-  new GLTFLoader().parse(bin, '', g => { const m = g.scene; m.traverse(o => { if (o.isMesh) { o.castShadow = o.receiveShadow = true; } }); GLBS[name] = m; GLB_WAIT[name].forEach(f => f(m)); }, err => console.warn('GLB ' + name, err)); }
+  fetch('alt79/' + src).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.arrayBuffer(); })
+    .then(bin => new GLTFLoader().parse(bin, '', g => { const m = g.scene; m.traverse(o => { if (o.isMesh) { o.castShadow = o.receiveShadow = true; } }); GLBS[name] = m; GLB_WAIT[name].forEach(f => f(m)); }, err => console.warn('GLB ' + name, err)))
+    .catch(err => console.warn('GLB ' + name + ' not loaded (procedural model kept)', err)); }
 // reference size of each model [L, W, H] (m); the page scales a model to the R9 size of each unit
 const GLB_REF = { chiller: [3.774, 1.771, 2.033], pump: [1.75, .65, .85], ahu: [3.6, 1.8, 2.1], oau: [4.2, 2.0, 2.2], tower: [2.6, 2.6, 2.7],
   roof_fan: [1.2, 1.2, 1.1], exptank: [.9, .9, 1.6], bypass: [1.3, .5, 1.04], panel: [2.4, .5, 2.1] };
@@ -533,6 +537,9 @@ const V = {}; let DEMO = false; const ACTIVE = new Map();   // alarm name -> ala
 const FAIL = new Set();   // LIVE: points / alarms whose station ORD did not resolve (shown in the mode badge and Point mapping)
 const OVR = { on: false, temp: 33, rh: 60, hour: 13 };
 function val(k, d){ const v = V[k]; return typeof v === 'number' && !isNaN(v) ? v : (typeof v === 'boolean' ? +v : d); }
+// r8: LIVE text shows only good-quality values; missing / BAD / STALE / OFFLINE / UNBOUND -> '—' (a DEMO default is never shown in LIVE)
+const Q = {}; let LIVE = false;
+function fx(k, dec, d){ const v = val(k, LIVE ? NaN : d); return Number.isFinite(v) ? v.toFixed(dec) : '—'; }
 function weather(){ const now = new Date(); const W = { temp: val('OA_Temperature', 33), rh: val('OA_Humidity', 62), wb: val('OA_WetBulb', 27), hour: now.getHours() + now.getMinutes() / 60 };
   if (OVR.on) Object.assign(W, { temp: OVR.temp, rh: OVR.rh, hour: OVR.hour, wb: OVR.temp - (100 - OVR.rh) / 5 * .9 });
   W.night = W.hour < 6.1 || W.hour > 18.6; W.rain = W.rh >= 92 && W.temp <= 30; W.fog = W.rh >= 95 && (W.hour < 9 || W.night); W.hot = W.temp >= 36;
@@ -556,7 +563,7 @@ function applyWeather(W, t){
   hazeMat.uniforms.k.value = W.hot ? Math.min(1, (W.temp - 35) / 4) : 0; hazeMat.uniforms.t.value = t;
   const key = [Math.round(W.hour * 4), Math.round(W.cover * 5), W.rain, W.night].join('|');
   if (key !== lastEnv) { lastEnv = key; scene.environment = pmrem.fromScene(skyScene(), .04).texture; }
-  $('wx').innerHTML = `<b>${W.label}</b><span>${W.temp.toFixed(1)} °C · RH ${W.rh.toFixed(0)}% · WB ${W.wb.toFixed(1)} °C · ${String(Math.floor(W.hour)).padStart(2, '0')}:${String(Math.floor(W.hour % 1 * 60)).padStart(2, '0')}</span>`; }
+  $('wx').innerHTML = `<b>${W.label}</b><span>${fx('OA_Temperature', 1, W.temp)} °C · RH ${fx('OA_Humidity', 0, W.rh)}% · WB ${fx('OA_WetBulb', 1, W.wb)} °C · ${String(Math.floor(W.hour)).padStart(2, '0')}:${String(Math.floor(W.hour % 1 * 60)).padStart(2, '0')}</span>`; }
 const envScene = new THREE.Scene(); const skyCopy = new Sky(); skyCopy.scale.setScalar(1000); envScene.add(skyCopy);
 function skyScene(){ for (const k in U) skyCopy.material.uniforms[k].value = U[k].value; return envScene; }
 
@@ -663,13 +670,13 @@ function animate(t, dt){
     p.wm.forEach(m => { m.uniforms.ph.value = p.ph; m.uniforms.on.value = f ? 1 : 0; m.uniforms.ice.value = p.ice ? 1 : 0; });
     if (p.clear !== clear) { p.clear = clear; p.oc = p.oc || p.mat.color.clone(); p.mat.color.copy(clear ? new THREE.Color(0xe4edf3) : p.oc); p.mat.metalness = clear ? .1 : (M.service[P.svc][2] ? .78 : .3); p.mat.needsUpdate = true; }
     if (!p.ghost) { p.mat.transparent = clear; p.mat.opacity = clear ? .22 : 1; p.mat.depthWrite = !clear; } p.waters.forEach(w => w.visible = clear && !w.userData.hide); }
-  if ((lcdT += dt) > .5) { lcdT = 0; VALVE.forEach(o => { if (o.lcd) o.lcd.draw([o.v.tag, (val(o.v.pt, 0)).toFixed(0) + ' gpm']); });
-    for (const id of ofType(/^CH-/)) { if (EQ[id].ghost) { EQ[id].parts.lcd.draw([id, 'NOT INSTALLED', ''], '#1a1d22', '#6b7280'); continue; } const p = EQ[id].e.pt, on = running(id); EQ[id].parts.lcd.draw(on ? [`${id} RUN`, `LWT ${val(p + '_ChwSupplyTemp', 6.7).toFixed(1)} C`, `Load ${val(p + 'LoadPct', 0).toFixed(0)} %`] : [`${id}`, 'STANDBY', ''], '#061a2a', on ? '#7fe3ff' : '#8899a6'); }
-    for (const id of ofType(/^AHU-/)) { const r = EQ[id], p = r.e.pt, on = running(id); r.parts.lcd && r.parts.lcd.draw([id + (on ? ' RUN' : ' OFF'), `Valve ${val(p + '_ValveCmd', 0).toFixed(0)} %`]); }
-    const cp = EQ['CP-01']; cp.parts.lcd.draw(['CPMS ' + (DEMO ? 'DEMO' : 'LIVE'), `kW/RT ${val('Plant_kW_per_RT', 0).toFixed(2)}`, `RT ${val('CoolingLoad_RT', 0).toFixed(0)}`]);
+  if ((lcdT += dt) > .5) { lcdT = 0; VALVE.forEach(o => { if (o.lcd) o.lcd.draw([o.v.tag, fx(o.v.pt, 0, 0) + ' gpm']); });
+    for (const id of ofType(/^CH-/)) { if (EQ[id].ghost) { EQ[id].parts.lcd.draw([id, 'NOT INSTALLED', ''], '#1a1d22', '#6b7280'); continue; } const p = EQ[id].e.pt, on = running(id); EQ[id].parts.lcd.draw(on ? [`${id} RUN`, `LWT ${fx(p + '_ChwSupplyTemp', 1, 6.7)} C`, `Load ${fx(p + 'LoadPct', 0, 0)} %`] : [`${id}`, 'STANDBY', ''], '#061a2a', on ? '#7fe3ff' : '#8899a6'); }
+    for (const id of ofType(/^AHU-/)) { const r = EQ[id], p = r.e.pt, on = running(id); r.parts.lcd && r.parts.lcd.draw([id + (on ? ' RUN' : ' OFF'), `Valve ${fx(p + '_ValveCmd', 0, 0)} %`]); }
+    const cp = EQ['CP-01']; cp.parts.lcd.draw(['CPMS ' + (DEMO ? 'DEMO' : 'LIVE'), `kW/RT ${fx('Plant_kW_per_RT', 2, 0)}`, `RT ${fx('CoolingLoad_RT', 0, 0)}`]);
     cp.parts.leds.forEach((l, i) => l.material.emissiveIntensity = Math.random() < .7 ? 1.4 : 0); }
   renderKpi(); }
-function renderKpi(){ const k = $('kpi'); if (!k) return; const f = (n, d) => val(n, NaN).toFixed(d);
+function renderKpi(){ const k = $('kpi'); if (!k) return; const f = (n, d) => fx(n, d, NaN);
   k.innerHTML = `<div class="big"><span>PLANT EFFICIENCY</span><b>${f('Plant_kW_per_RT', 2)}</b><i>kW/RT</i></div>
   <div><span>Cooling load</span><b>${f('CoolingLoad_RT', 0)}</b><i>RT</i></div><div><span>Plant power</span><b>${f('Plant_kW', 0)}</b><i>kW</i></div>
   <div><span>CHWS / CHWR</span><b>${f('CHWS', 1)} / ${f('CHWR', 1)}</b><i>°C</i></div><div><span>CDS / CDR</span><b>${f('CDS', 1)} / ${f('CDR', 1)}</b><i>°C</i></div>
@@ -693,9 +700,9 @@ function placeLabels(){ const w = host.clientWidth, h = host.clientHeight, shown
   for (const id of shown.sort((a, b) => rank(a) - rank(b))) { const d = LBL[id], p = d.__p, x = (p.x + 1) / 2 * w, y = (1 - p.y) / 2 * h, lw = d.offsetWidth, lh = d.offsetHeight;
     const r = [x - lw / 2, y - lh, x + lw / 2, y], hit = placed.some(q => r[0] < q[2] + 4 && r[2] > q[0] - 4 && r[1] < q[3] + 2 && r[3] > q[1] - 2);
     d.__hid = hit; if (hit) d.style.display = 'none'; else placed.push(r); } }
-function statusText(id){ const e = EQ[id].e, p = e.pt; if (e.type === 'ahu') return `Valve ${val(p + '_ValveCmd', 0).toFixed(0)}% · ${e.floor > 8 ? 'roof' : 'floor ' + e.floor}`;
-  if (e.type === 'fcu' || e.type === 'fan') return 'Run'; if (id.startsWith('CH-')) return `Load ${val(p + 'LoadPct', 0).toFixed(0)}% · LWT ${val(p + '_ChwSupplyTemp', 6.7).toFixed(1)}°C`;
-  return `Run · ${val(p + 'SpeedCmd', 0).toFixed(0)}%`; }
+function statusText(id){ const e = EQ[id].e, p = e.pt; if (e.type === 'ahu') return `Valve ${fx(p + '_ValveCmd', 0, 0)}% · ${e.floor > 8 ? 'roof' : 'floor ' + e.floor}`;
+  if (e.type === 'fcu' || e.type === 'fan') return 'Run'; if (id.startsWith('CH-')) return `Load ${fx(p + 'LoadPct', 0, 0)}% · LWT ${fx(p + '_ChwSupplyTemp', 1, 6.7)}°C`;
+  return `Run · ${fx(p + 'SpeedCmd', 0, 0)}%`; }
 function info(id){ const e = [...M.equipment, ...M.air_equipment].find(x => x.id === id), al = AL.filter(a => a.e.includes(id));
   $('info').innerHTML = `<h3>${id}</h3><table>${Object.entries(e.data).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}</table>
   <h4>Alarms of this unit (${al.length})</h4><div class="alist">${al.map(a => `<div class="${ACTIVE.has(a.n) ? 'on' : ''}" data-n="${a.n}"><i>${EFX[a.x][0]}</i>${a.t}</div>`).join('')}</div>`;
@@ -708,7 +715,7 @@ renderer.domElement.addEventListener('dblclick', ev => { const b = renderer.domE
   ray.setFromCamera(mp, camera); const hit = ray.intersectObjects([...plant.children, ...LAYER.air.children], true)[0]; let o = hit && hit.object; while (o && !o.userData.eq) o = o.parent; if (o) { const c = new THREE.Box3().setFromObject(o).getCenter(new THREE.Vector3()), d = camera.position.clone().sub(controls.target).setLength(9); flyTo(c.clone().add(d).toArray(), c.toArray()); return info(o.userData.eq); }
   const zh = ray.intersectObjects(LAYER.zones.children, true).find(h => h.object.userData.zone); if (zh) { const c = zh.object.position, d = camera.position.clone().sub(controls.target).setLength(22); flyTo(c.clone().add(d).toArray(), c.toArray()); zoneInfo(zh.object.userData.zone); } });
 function zoneInfo(code){ const z = ZONE[code].z, al = AL.filter(a => a.e.includes('Z-' + code));
-  $('info').innerHTML = `<h3>Zone ${code} · ${z.name}</h3><table><tr><td>Floor</td><td>${z.floor}</td></tr><tr><td>Temperature</td><td>${val(z.t, NaN).toFixed(1)} °C</td></tr><tr><td>Humidity</td><td>${val(z.h, NaN).toFixed(0)} %RH</td></tr><tr><td>CO2</td><td>${val(z.c, NaN).toFixed(0)} ppm</td></tr><tr><td>Out of service</td><td>${V[z.oos] ? 'Yes' : 'No'}</td></tr><tr><td>Station point</td><td>${z.t}<br>${z.h}<br>${z.c}</td></tr></table><h4>Alarm (${al.length})</h4><div class="alist">${al.map(a => `<div class="${ACTIVE.has(a.n) ? 'on' : ''}">${a.t}</div>`).join('')}</div>`; $('info').className = 'open'; }
+  $('info').innerHTML = `<h3>Zone ${code} · ${z.name}</h3><table><tr><td>Floor</td><td>${z.floor}</td></tr><tr><td>Temperature</td><td>${fx(z.t, 1, NaN)} °C</td></tr><tr><td>Humidity</td><td>${fx(z.h, 0, NaN)} %RH</td></tr><tr><td>CO2</td><td>${fx(z.c, 0, NaN)} ppm</td></tr><tr><td>Out of service</td><td>${V[z.oos] ? 'Yes' : 'No'}</td></tr><tr><td>Station point</td><td>${z.t}<br>${z.h}<br>${z.c}</td></tr></table><h4>Alarm (${al.length})</h4><div class="alist">${al.map(a => `<div class="${ACTIVE.has(a.n) ? 'on' : ''}">${a.t}</div>`).join('')}</div>`; $('info').className = 'open'; }
 
 // ------------------------------------------------------------------ controls (demo simulator, weather override, views)
 const gal = $('gallery'); EFFECT_ORDER.forEach(k => { const b = document.createElement('button'); b.textContent = EFX[k][0]; b.title = EFX[k][1];
@@ -748,18 +755,21 @@ function demoTick(){ const t = Date.now() / 1000, h = new Date().getHours() + ne
   for (const e of M.air_equipment) { const on = occ || e.type === 'fan' && /EF/.test(e.id); V[e.run] = on; if (e.type === 'ahu') V[e.pt + '_ValveCmd'] = on ? 55 + 20 * s(t / 23 + e.floor) : 0; }
   for (const z of M.zones) { const k = z.floor * 7 + +z.code.slice(-2); V[z.t] = (occ ? 24 : 27.5) + 1.4 * s(t / 37 + k) + (k % 5 === 0 ? 2.2 : 0); V[z.h] = 58 + 8 * s(t / 45 + k); V[z.c] = (occ ? 720 : 480) + 180 * s(t / 53 + k) + (k % 6 === 0 ? 380 : 0); } }
 let DEMO_ID = 0;
-function startDemo(){ if (DEMO) return; DEMO = true; $('mode').textContent = 'DEMO · 1 → 2 → 3 chillers every 50 s (installed slots only)'; $('mode').className = 'mode demo'; demoTick(); DEMO_ID = setInterval(demoTick, 1000); $('sim').style.display = ''; }
-function offline(){ if (DEMO) { clearInterval(DEMO_ID); DEMO = false; } $('mode').textContent = 'OFFLINE · no data from the station'; $('mode').className = 'mode offline'; $('sim').style.display = 'none'; }
+function startDemo(){ if (DEMO) return; DEMO = true; $('mode').textContent = 'DEMO · simulated data, no commands sent · 1 → 2 → 3 chillers every 50 s'; $('mode').className = 'mode demo'; document.body.classList.add('is-demo'); demoTick(); DEMO_ID = setInterval(demoTick, 1000); $('sim').style.display = ''; }
+function offline(){ LIVE = true; if (DEMO) { clearInterval(DEMO_ID); DEMO = false; } $('mode').textContent = 'OFFLINE · no data from the station'; $('mode').className = 'mode offline'; $('sim').style.display = 'none'; }
 const SERVED = /^https?:$/.test(location.protocol) && !/[?&]demo\b/.test(location.search);   // served by the station: never fall back to DEMO numbers
+function qState(st){ if (!st) return 'BAD'; if (st.isDown && st.isDown()) return 'OFFLINE'; if (st.isStale && st.isStale()) return 'STALE';
+  if ((st.isFault && st.isFault()) || (st.isNull && st.isNull()) || (st.isDisabled && st.isDisabled())) return 'BAD'; return 'OK'; }
+function qSummary(){ const n = { OK: 0, BAD: 0, STALE: 0, OFFLINE: 0, UNBOUND: 0 }; for (const k in PTS) n[FAIL.has(k) ? 'UNBOUND' : (Q[k] || 'UNBOUND')]++; return n; }
 function startLive(){ const ready = window.BAJA_READY; if (!ready || !SERVED) return startDemo(); let ok = false; setTimeout(() => { if (!ok) offline(); }, 7000);
-  ready.then(() => window.require(['baja!'], function (baja) { ok = true; if (DEMO) { clearInterval(DEMO_ID); DEMO = false; $('sim').style.display = 'none'; ACTIVE.clear(); }
+  ready.then(() => window.require(['baja!'], function (baja) { ok = true; LIVE = true; if (DEMO) { clearInterval(DEMO_ID); DEMO = false; $('sim').style.display = 'none'; ACTIVE.clear(); }
     $('mode').textContent = 'LIVE · station data'; $('mode').className = 'mode live';
     const sub = new baja.Subscriber(); const KEY = new Map();   // component -> Set of keys (one point can be both a value and an alarm source)
     sub.attach('changed', function (prop) { if (prop.getName() === 'out') read(this); });
     function read(c){ for (const k of KEY.get(c) || []) read1(c, k); }
     function read1(c, k){ try { const o = c.get('out'), v = o.getValue(), st = o.getStatus();
       if (k.alarm) { const a = k.alarm; const on = (st && st.isAlarm && st.isAlarm()) || (typeof v === 'boolean' && v === a.av); if (on) ACTIVE.set(a.n, a); else ACTIVE.delete(a.n); renderAlarmList(); }
-      else V[k.v] = v; } catch (e) {} }
+      else { const q = qState(st); Q[k.v] = q; if (q === 'OK') V[k.v] = v; else delete V[k.v]; } } catch (e) { if (k.v) { Q[k.v] = 'BAD'; delete V[k.v]; } } }
     const all = [...Object.entries(PTS).map(([k, s]) => ({ s, v: k })), ...AL.filter(a => a.s).map(a => ({ s: a.s, alarm: a }))];
     const BY = new Map(); for (const k of all) { const o = 'station:|slot:' + k.s; if (!BY.has(o)) BY.set(o, []); BY.get(o).push(k); }
     const attach = (o, c) => { if (!c) return failed(o); if (!KEY.has(c)) KEY.set(c, new Set()); BY.get(o).forEach(k => { KEY.get(c).add(k); FAIL.delete(k.v || k.alarm.n); }); read(c); };
@@ -774,7 +784,8 @@ function startLive(){ const ready = window.BAJA_READY; if (!ready || !SERVED) re
       catch (e) { p = Promise.reject(e); }
       jobs.push(p.catch(() => Promise.all(part.map(one))));
     }
-    Promise.all(jobs).then(() => { if (!FAIL.size) return; $('mode').textContent = `LIVE · station data · ${FAIL.size} points not resolved (see Point mapping)`; $('mode').className = 'mode live warn';
+    const showQ = () => { const n = qSummary(), bad = n.BAD + n.STALE + n.OFFLINE + n.UNBOUND; $('mode').textContent = `LIVE · OK ${n.OK} · BAD ${n.BAD} · STALE ${n.STALE} · OFFLINE ${n.OFFLINE} · UNBOUND ${n.UNBOUND}`; $('mode').className = 'mode live' + (bad ? ' warn' : ''); };
+    Promise.all(jobs).then(() => { showQ(); setInterval(showQ, 2000); if (!FAIL.size) return;
       console.warn('3D LIVE: ORDs not resolved', [...FAIL]); });
   }, () => { ok = true; offline(); }), () => { ok = true; offline(); }); }
 startLive();
@@ -867,7 +878,8 @@ renderer.setAnimationLoop(() => { const dt = Math.min(.05, clock.getDelta()), t 
   updateGhosts(); applyAlarms(t); animate(t, dt); updateZones(dt); updateSystems(t); placeLabels(); renderer.render(scene, camera); });
 renderAlarmList();
 // point mapping panel: every station point the 3D page reads, its slot ORD and the value received
-$('mapBtn').onclick = () => { const rows = window.MAP || []; const fmt = v => v === undefined ? '—' : typeof v === 'number' ? v.toFixed(2) : String(v);
+$('mapBtn').onclick = () => { if (!window.MAP && window.MAP_SRC) { const sc = document.createElement('script'); sc.src = 'alt79/' + window.MAP_SRC; sc.onload = () => $('mapBtn').onclick(); document.head.appendChild(sc); return; }   // r8: mapping table loads on demand
+ const rows = window.MAP || []; const fmt = v => v === undefined ? '—' : typeof v === 'number' ? v.toFixed(2) : String(v);
   $('info').className = 'open wide'; const draw = () => { if (!$('info').classList.contains('wide')) return;
     const got = rows.filter(r => V[r.p] !== undefined).length, nf = rows.filter(r => FAIL.has(r.p)).length;
     $('info').innerHTML = `<h3>Point mapping · ${DEMO ? 'DEMO (simulated values)' : 'LIVE'} · values received ${got}/${rows.length} points${nf ? ` · not resolved ${nf} points` : ''} · alarm ${AL.filter(a => a.s).length} points${FAIL.size - nf > 0 ? ` (not resolved ${FAIL.size - nf})` : ''}</h3><button onclick="document.getElementById('info').className=''">off</button>
