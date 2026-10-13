@@ -62,8 +62,10 @@ select,input[type=range]{width:100%} select{background:#0f161e;color:var(--txt);
 <section><div class="chk"><label><input type="checkbox" id="xray" checked> X-ray walls / roof</label><label><input type="checkbox" id="labelsOn" checked> Labels</label><label><input type="checkbox" id="flow" checked> Transparent pipes (water flow)</label></div><div style="margin-top:6px"><button id="mapBtn">Point mapping (connection status)</button></div>
 <div class="hint">Drag to rotate · scroll to zoom · double-click equipment for details</div></section>
 </aside><div id="info"></div>
-<script src="alt79/alt79-data.c608ba34.js"></script><script src="alt79/alt79-office.4ebea7e8.js"></script>
-<script src="alt79/alt79-app.084c45f4.js"></script>
+<script>/* r8.1: assets resolve against this page's own URL - works for /ord?file:^web/<page>.html (station), /ord/file:..., a Px WebBrowser and a plain HTTP server */
+window.ALT_URL=window.ALT_URL||function(p){var h=location.href.split('#')[0],m=h.match(/ALT_V79_[A-Za-z0-9_]+\.html/);return m?h.slice(0,m.index)+p:p;};
+window.ALT_LOAD=window.ALT_LOAD||function(a){a.forEach(function(n){document.write('<script src="'+ALT_URL('alt79/'+n)+'"><\/script>');});};</script><script>ALT_LOAD(["alt79-data.c608ba34.js","alt79-office.4ebea7e8.js"])</script>
+<script>ALT_LOAD(["alt79-app.49172adf.js"])</script>
 <div id="nav"><button id="navUp" title="Next floor">▲</button><button id="navDn" title="Previous floor">▼</button><button id="navIn" title="Zoom in">＋</button><button id="navOut" title="Zoom out">－</button><button id="navHome" title="Home view">⌂</button>
 <span>Left drag = rotate · right drag / Shift = pan · wheel = zoom at the cursor · double-click = go to that point · arrow keys = pan</span></div>
 <style>#nav{position:absolute;right:12px;bottom:14px;display:flex;gap:6px;align-items:center;z-index:5}#nav button{width:38px;height:38px;border-radius:8px;border:1px solid #2b3a4d;background:rgba(10,20,34,.88);color:#e8eef4;font-size:18px;cursor:pointer}

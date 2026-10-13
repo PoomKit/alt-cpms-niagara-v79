@@ -10,7 +10,8 @@ SRC = os.path.join(ROOT, 'graphics3d', 'data', 'office_r9_2d.json')
 PAGES = {'ALT_V79_RentalFloor.html': 'rental', 'ALT_V79_AHU_AllAir.html': 'ahu-allair', 'ALT_V79_Tenant_Metering.html': 'tenant-metering'}
 DROP = {'rental': {'ducts'}}          # read only as `DATA.ductBodies||DATA.ducts`; ductBodies is present
 INLINE = re.compile(r'const DATA=(?=\{)')
-EXT = re.compile(r'<script src="alt79/[a-z-]+-data\.[0-9a-f]{8}\.js"></script>')
+EXT = re.compile(r'<script src="alt79/[a-z-]+-data\.[0-9a-f]{8}\.js"></script>|<script>/\* r8\.1: assets.*?</script><script>ALT_LOAD\(\["[a-z-]+-data\.[0-9a-f]{8}\.js"\]\)</script>', re.S)
+LOADER = '<script>/* r8.1: assets resolve against this page\'s own URL - works for /ord?file:^web/<page>.html (station), /ord/file:..., a Px WebBrowser and a plain HTTP server */\nwindow.ALT_URL=window.ALT_URL||function(p){var h=location.href.split(\'#\')[0],m=h.match(/ALT_V79_[A-Za-z0-9_]+\\.html/);return m?h.slice(0,m.index)+p:p;};\nwindow.ALT_LOAD=window.ALT_LOAD||function(a){a.forEach(function(n){document.write(\'<script src="\'+ALT_URL(\'alt79/\'+n)+\'"><\\/script>\');});};</script>'
 J = lambda o: json.dumps(o, ensure_ascii=False, separators=(',', ':'))
 
 
@@ -37,8 +38,8 @@ def main(check):
         assert not re.search(r'DATA\[', code), f'{page}: dynamic DATA[...] access, key subset is not safe'
         js = ('window.ALT_R9_DATA=' + J(r6({k: full[k] for k in keys})) + ';').encode('utf-8')
         name = f'alt79/{tag}-data.{hashlib.sha256(js).hexdigest()[:8]}.js'
-        tagline = f'<script src="{name}"></script>'
-        html = EXT.sub(tagline, html) if EXT.search(html) else html.replace('<script>const DATA=window.ALT_R9_DATA', tagline + '<script>const DATA=window.ALT_R9_DATA', 1)
+        tagline = LOADER + f'<script>ALT_LOAD(["{os.path.basename(name)}"])</script>'
+        html = EXT.sub(lambda m: tagline, html) if EXT.search(html) else html.replace('<script>const DATA=window.ALT_R9_DATA', tagline + '<script>const DATA=window.ALT_R9_DATA', 1)
         assert tagline in html, f'{page}: could not place the data script'
         out[page] = html.encode('utf-8'); out[name] = js
         print(f'{page}: {len(out[page]):,} B html + {len(js):,} B data ({len(keys)} keys)')

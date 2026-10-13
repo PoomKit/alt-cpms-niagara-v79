@@ -9,11 +9,14 @@
   models/*.glb             Blender equipment models (tools/blender/equipment79.py) -> alt79/models/*.glb (fetched, not base64)
 r8 output: small HTML + content-hashed alt79/*.js|bin|glb (old hashed files of this page are removed on rebuild)
 usage: python3 rebuild_page.py [--check]      --check: exit 1 if the committed page is not what the sources give (CI)"""
-import array, glob, hashlib, json, os, subprocess, sys
+import array, glob, hashlib, json, os, re, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 WEB = os.path.join(HERE, '..', 'station', 'shared', 'web')
 D = lambda n: json.load(open(os.path.join(HERE, 'data', n), encoding='utf-8'))
 J = lambda v: json.dumps(v, ensure_ascii=False, separators=(',', ':'))
+
+
+LOADER = '<script>/* r8.1: assets resolve against this page\'s own URL - works for /ord?file:^web/<page>.html (station), /ord/file:..., a Px WebBrowser and a plain HTTP server */\nwindow.ALT_URL=window.ALT_URL||function(p){var h=location.href.split(\'#\')[0],m=h.match(/ALT_V79_[A-Za-z0-9_]+\\.html/);return m?h.slice(0,m.index)+p:p;};\nwindow.ALT_LOAD=window.ALT_LOAD||function(a){a.forEach(function(n){document.write(\'<script src="\'+ALT_URL(\'alt79/\'+n)+\'"><\\/script>\');});};</script>'
 
 
 def r6(o):
@@ -71,8 +74,8 @@ def files():
                    check=True, cwd=HERE, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     app_src = put('alt79-app', 'js', open(os.path.join(HERE, 'build', 'scene79.min.js'), 'rb').read())
     tpl = open(os.path.join(HERE, 'page79.html'), encoding='utf-8').read()
-    out['ALT_V79_Building3D.html'] = (tpl.replace('<script>/*DATA*/</script>', f'<script src="alt79/{data_src}"></script><script src="alt79/{office_src}"></script>')
-                                      .replace('<script>/*APP*/</script>', f'<script src="alt79/{app_src}"></script>')).encode('utf-8')
+    out['ALT_V79_Building3D.html'] = (tpl.replace('<script>/*DATA*/</script>', LOADER + f'<script>ALT_LOAD({J([data_src, office_src])})</script>')
+                                      .replace('<script>/*APP*/</script>', f'<script>ALT_LOAD({J([app_src])})</script>')).encode('utf-8')
     return out
 
 
@@ -89,5 +92,5 @@ if __name__ == '__main__':
     for root, _, fs in os.walk(os.path.join(WEB, 'alt79')):          # previous content-hashed builds of this page only
         for f in fs:
             q = os.path.normpath(os.path.join(root, f))
-            if q not in keep: os.remove(q)
+            if q not in keep and re.match(r'(alt79-(app|data|map|office)|office-shells)\.|[a-z_]+\.[0-9a-f]{8}\.glb$', f): os.remove(q)   # only this page's own older builds
     for p, b in sorted(new.items()): print(f'{len(b):>10}  {p}')
