@@ -16,7 +16,7 @@ D = lambda n: json.load(open(os.path.join(HERE, 'data', n), encoding='utf-8'))
 J = lambda v: json.dumps(v, ensure_ascii=False, separators=(',', ':'))
 
 
-LOADER = '<script>/* r8.1: assets resolve against this page\'s own URL - works for /ord?file:^web/<page>.html (station), /ord/file:..., a Px WebBrowser and a plain HTTP server */\nwindow.ALT_URL=window.ALT_URL||function(p){var h=location.href.split(\'#\')[0],m=h.match(/ALT_V79_[A-Za-z0-9_]+\\.html/);return m?h.slice(0,m.index)+p:p;};\nwindow.ALT_LOAD=window.ALT_LOAD||function(a){a.forEach(function(n){document.write(\'<script src="\'+ALT_URL(\'alt79/\'+n)+\'"><\\/script>\');});};</script>'
+LOADER = '<script>/* r8.1: assets resolve against this page\'s own URL - works for /ord?file:^web/<page>.html (station), /ord/file:..., a Px WebBrowser and a plain HTTP server */\nwindow.ALT_URL=window.ALT_URL||function(p){var h=location.href.split(\'#\')[0],m=h.match(/ALT_V79_[A-Za-z0-9_]+\\.html/);return m?h.slice(0,m.index)+p:p;};\nwindow.ALT_FAIL=window.ALT_FAIL||function(s){var d=document.getElementById(\'altFail\');if(!d){d=document.createElement(\'pre\');d.id=\'altFail\';d.style.cssText=\'position:fixed;left:8px;right:8px;bottom:8px;z-index:9999;margin:0;padding:8px;background:#7f1d1d;color:#fff;font:12px monospace;white-space:pre-wrap\';(document.body||document.documentElement).appendChild(d);d.textContent=\'Asset not loaded - page URL: \'+location.href;}d.textContent+=\'\\n  \'+s;};\nwindow.ALT_LOAD=window.ALT_LOAD||function(a){a.forEach(function(n){document.write(\'<script src="\'+ALT_URL(\'alt79/\'+n)+\'" onerror="ALT_FAIL(this.src)"><\\/script>\');});};</script>'
 
 
 def r6(o):
