@@ -11,6 +11,11 @@ import { buildDevices } from './devices79.js';
 
 const M = window.MODEL, AL = window.ALARMS, PTS = window.PTS, EFX = window.EFFECTS;
 for (const k in PTS) if (PTS[k][0] !== '/') PTS[k] = '/' + PTS[k] + '/' + k;   // r8: compact slot paths in the data file
+// r8.3: binary assets come from window.ALT_INLINE (base64, single-file page: Workbench serves the page alone as https://workbench/index.html)
+// or, when the page is served with its alt79/ folder, from that folder
+window.ALT_BIN = window.ALT_BIN || (p => { const b = window.ALT_INLINE && window.ALT_INLINE[p];
+  if (b) return Promise.resolve(Uint8Array.from(atob(b), c => c.charCodeAt(0)).buffer);
+  return fetch(window.ALT_URL ? window.ALT_URL('alt79/' + p) : 'alt79/' + p).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.arrayBuffer(); }); });
 AL.forEach(a => { if (a.f !== undefined) { a.s = '/' + a.f + '/' + a.n; delete a.f; } });
 const $ = id => document.getElementById(id);
 const mm = v => v / 1000;
@@ -366,7 +371,7 @@ const GLBS = {}, GLB_WAIT = {};
 // r8: models are external binary files (alt79/models/*.glb, content-hashed), fetched once on first use and shared by every unit
 function glb(name, cb){ const src = (window.GLB_URL || {})[name]; if (!src) return;
   if (GLBS[name]) return cb(GLBS[name]); (GLB_WAIT[name] = GLB_WAIT[name] || []).push(cb); if (GLB_WAIT[name].length > 1) return;
-  fetch(window.ALT_URL('alt79/' + src)).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.arrayBuffer(); })
+  window.ALT_BIN(src)
     .then(bin => new GLTFLoader().parse(bin, '', g => { const m = g.scene; m.traverse(o => { if (o.isMesh) { o.castShadow = o.receiveShadow = true; } }); GLBS[name] = m; GLB_WAIT[name].forEach(f => f(m)); }, err => console.warn('GLB ' + name, err)))
     .catch(err => console.warn('GLB ' + name + ' not loaded (procedural model kept)', err)); }
 // reference size of each model [L, W, H] (m); the page scales a model to the R9 size of each unit
@@ -878,7 +883,8 @@ renderer.setAnimationLoop(() => { const dt = Math.min(.05, clock.getDelta()), t 
   updateGhosts(); applyAlarms(t); animate(t, dt); updateZones(dt); updateSystems(t); placeLabels(); renderer.render(scene, camera); });
 renderAlarmList();
 // point mapping panel: every station point the 3D page reads, its slot ORD and the value received
-$('mapBtn').onclick = () => { if (!window.MAP && window.MAP_SRC) { const sc = document.createElement('script'); sc.src = window.ALT_URL('alt79/' + window.MAP_SRC); sc.onload = () => $('mapBtn').onclick(); document.head.appendChild(sc); return; }   // r8: mapping table loads on demand
+$('mapBtn').onclick = () => { if (!window.MAP && window.MAP_SRC && window.ALT_INLINE && window.ALT_INLINE[window.MAP_SRC]) (0, eval)(window.ALT_INLINE[window.MAP_SRC]);
+  if (!window.MAP && window.MAP_SRC) { const sc = document.createElement('script'); sc.src = window.ALT_URL('alt79/' + window.MAP_SRC); sc.onload = () => $('mapBtn').onclick(); document.head.appendChild(sc); return; }   // r8: mapping table loads on demand
  const rows = window.MAP || []; const fmt = v => v === undefined ? '—' : typeof v === 'number' ? v.toFixed(2) : String(v);
   $('info').className = 'open wide'; const draw = () => { if (!$('info').classList.contains('wide')) return;
     const got = rows.filter(r => V[r.p] !== undefined).length, nf = rows.filter(r => FAIL.has(r.p)).length;

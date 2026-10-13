@@ -9,7 +9,7 @@
   models/*.glb             Blender equipment models (tools/blender/equipment79.py) -> alt79/models/*.glb (fetched, not base64)
 r8 output: small HTML + content-hashed alt79/*.js|bin|glb (old hashed files of this page are removed on rebuild)
 usage: python3 rebuild_page.py [--check]      --check: exit 1 if the committed page is not what the sources give (CI)"""
-import array, glob, hashlib, json, os, re, subprocess, sys
+import array, base64, glob, hashlib, json, os, re, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 WEB = os.path.join(HERE, '..', 'station', 'shared', 'web')
 D = lambda n: json.load(open(os.path.join(HERE, 'data', n), encoding='utf-8'))
@@ -74,9 +74,15 @@ def files():
                    check=True, cwd=HERE, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     app_src = put('alt79-app', 'js', open(os.path.join(HERE, 'build', 'scene79.min.js'), 'rb').read())
     tpl = open(os.path.join(HERE, 'page79.html'), encoding='utf-8').read()
-    out['ALT_V79_Building3D.html'] = (tpl.replace('<script>/*DATA*/</script>', LOADER + f'<script>ALT_LOAD({J([data_src, office_src])})</script>')
-                                      .replace('<script>/*APP*/</script>', f'<script>ALT_LOAD({J([app_src])})</script>')).encode('utf-8')
-    return out
+    # r8.3: ONE self-contained page. Workbench (file view and Px WebBrowser) shows a station file as https://workbench/index.html,
+    # so nothing next to the page can be loaded there; data, app, models and duct shells are inlined (no files in alt79/).
+    inline = {p[len('alt79/'):]: (base64.b64encode(b).decode() if p.endswith(('.glb', '.bin')) else b.decode('utf-8'))
+              for p, b in out.items() if p.endswith(('.glb', '.bin')) or p.startswith('alt79/alt79-map.')}
+    S = lambda t: t.replace('</script', '<\\/script')
+    code = lambda p: S(out[p].decode('utf-8'))
+    page = (tpl.replace('<script>/*DATA*/</script>', '<script>' + f'window.ALT_INLINE={J(inline)};' + code('alt79/' + data_src) + code('alt79/' + office_src) + '</script>')
+               .replace('<script>/*APP*/</script>', '<script>' + code('alt79/' + app_src) + '</script>'))
+    return {'ALT_V79_Building3D.html': page.encode('utf-8')}
 
 
 if __name__ == '__main__':
